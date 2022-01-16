@@ -583,7 +583,7 @@ body {
 }
 .cubeSwitch {
   text-align: center;
-  width: 20%;
+  width: 50px;
   font-size: 0.8rem;
   background-color: #ebebeb;
   padding: 0.3rem;
@@ -593,7 +593,7 @@ body {
 }
 .cubeSwitchGreen {
   text-align: center;
-  width: 20%;
+  width: 50px;
   font-size: 0.8rem;
   background-color: #ebebeb;
   padding: 0.3rem;
@@ -607,7 +607,7 @@ body {
 .cubeSwitchGreen::after {
   content: "";
   height: 100%;
-  width: 100%;
+  width:  50px;
   background-color: #11999e;
   position: absolute;
   bottom: 0;
@@ -619,7 +619,7 @@ body {
 
 .cubeSwitchRed {
   text-align: center;
-  width: 20%;
+  width:  50px;
   font-size: 0.8rem;
   background-color: #ebebeb;
   padding: 0.3rem;
@@ -633,7 +633,7 @@ body {
 .cubeSwitchRed::after {
   content: "";
   height: 100%;
-  width: 100%;
+  width: 50px;
   background-color: #e92b59;
   position: absolute;
   bottom: 0;
@@ -673,7 +673,7 @@ body {
   background-color: #ebebeb;
   border-style: none;
   border-radius: 5px;
-  font-size: 20px;
+  font-size: 11px;
 }
 .inputStyle:focus {
   outline: none;

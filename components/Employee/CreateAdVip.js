@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ContactForm from "./FormInputs/Contact";
-import FirstForm from "./FormInputs/FirstForm";
+import FirstFormVip from "./FormInputs/FirstFormVip";
 import JobConditionVip from "./FormInputs/JobConditionVip";
 import StepButton from "./FormInputs/StepButton";
 import VerticalProgress from "./FormInputs/VerticalProgress";
@@ -69,7 +69,7 @@ const CreateEmployerAdVip = () => {
                 width: "83%",
               }}
             >
-              <FirstForm />
+              <FirstFormVip />
               {step < 2 && (
                 <StepButton handleStep={handleStep} step={2} ph={"30%"} />
               )}

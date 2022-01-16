@@ -2,7 +2,8 @@ import { useState } from "react";
 import StepButton from "./StepButton";
 import SelectOption from "./SelectOption";
 import ButtonTag from "./ButtonTag";
- import SoftExpert from "./SoftExpert";
+import SoftExpert from "./SoftExpert";
+import RadioButton from "./RadioButton";
 const JobConditionVip = (props) => {
   const [cubeSwitch, setCubeSwitch] = useState({
     yes: "cubeSwitchGreen",
@@ -59,7 +60,7 @@ const JobConditionVip = (props) => {
           marginBottom: "1rem",
         }}
       >
-        شرایط شغلی ما
+        اطلاعات شخصی
       </div>
       <div className="d-flex  justify-content-between">
         <div className="col-5">
@@ -71,7 +72,15 @@ const JobConditionVip = (props) => {
           >
             عنوان
           </label>
-          <input className="col-12 mb-3 inputStyle" type="text" />
+          <input
+            className="col-12 mb-3 "
+            style={{
+              backgroundColor: "#EBEBEB",
+              borderStyle: "none",
+              borderRadius: 5,
+            }}
+            type="text"
+          />
         </div>
         <div className="col-5">
           <label
@@ -95,6 +104,117 @@ const JobConditionVip = (props) => {
           </div>
         </div>
       </div>
+      <div className="d-flex  justify-content-between">
+        <div className="col-5">
+          <label
+            style={{
+              marginBottom: "0.5rem",
+              fontSize: "1rem",
+            }}
+          >
+            نام
+          </label>
+          <input
+            className="col-12 mb-3 "
+            style={{
+              backgroundColor: "#EBEBEB",
+              borderStyle: "none",
+              borderRadius: 5,
+            }}
+            type="text"
+          />
+        </div>
+        <div className="col-5">
+          <label
+            style={{
+              marginBottom: "0.5rem",
+              fontSize: "1rem",
+            }}
+          >
+            نام خانوادگی
+          </label>
+          <input
+            className="col-12 mb-3 "
+            style={{
+              backgroundColor: "#EBEBEB",
+              borderStyle: "none",
+              borderRadius: 5,
+            }}
+            type="text"
+          />
+        </div>
+      </div>
+      <div className="d-flex flex-column pt-4 col-6 justify-content-between">
+        <div className="col-12">
+          <label
+            style={{
+              marginBottom: "0.5rem",
+              fontSize: "1rem",
+            }}
+          >
+            تاریخ تولد
+          </label>
+        </div>
+
+        <div className="d-flex justify-content-center  mb-3    pe-2">
+          <input className="col-2   inputStyle " type="text" />
+          <div
+            className="d-flex align-items-center me-1 px-2"
+            style={{
+              backgroundColor: "#11999e",
+              height: "100%",
+              color: "#fff",
+              fontSize: 13,
+              borderTopLeftRadius: 5,
+              borderBottomLeftRadius: 5,
+            }}
+          >
+            روز
+          </div>
+          <input className="col-2   inputStyle " type="text" />
+          <div
+            className="d-flex align-items-center px-2 me-1"
+            style={{
+              backgroundColor: "#11999e",
+              height: "100%",
+              color: "#fff",
+              fontSize: 13,
+              borderTopLeftRadius: 5,
+              borderBottomLeftRadius: 5,
+            }}
+          >
+            ماه
+          </div>
+          <input className="col-2  inputStyle " type="text" />
+          <div
+            className="d-flex align-items-center px-2"
+            style={{
+              backgroundColor: "#11999e",
+              height: "100%",
+              color: "#fff",
+              fontSize: 13,
+              borderTopLeftRadius: 5,
+              borderBottomLeftRadius: 5,
+            }}
+          >
+            سال
+          </div>
+        </div>
+      </div>
+      <div className="d-flex   pt-4 col-6 justify-content-between">
+       <div className=" ">
+          <RadioButton
+            title={"جنسیت"}
+            choices={{ 1: "مرد", 2: "زن" }}
+          />
+        </div>
+        <div className=" ">
+          <RadioButton
+            title={"وضعیت تاهل"}
+            choices={{ 1: "مجرد", 2: "متاهل" }}
+          />
+        </div>
+      </div>
       <div
         style={{
           maxHeight: "6rem",
@@ -103,22 +223,11 @@ const JobConditionVip = (props) => {
       >
         <SelectOption
           data={cities}
-          name="دسته بندی"
+          name="دسته بندی شغلی"
           valueHandler={catHandler}
         />
       </div>
-      <div
-        style={{
-          maxHeight: "6rem",
-          zIndex: 9,
-        }}
-      >
-        <SelectOption
-          data={cities}
-          name="نوع همکاری"
-          valueHandler={catHandler}
-        />
-      </div>
+
       <div
         className="col-6"
         style={{
@@ -135,7 +244,31 @@ const JobConditionVip = (props) => {
           zIndex: 7,
         }}
       >
-        <SelectOption data={cities} name="شهر" valueHandler={catHandler} />
+        <SelectOption data={cities} name="منطقه" valueHandler={catHandler} />
+      </div>
+      <div
+        style={{
+          maxHeight: "6rem",
+          zIndex: 9,
+        }}
+      >
+        <SelectOption
+          data={cities}
+          name="وضعیت نظام وظیفه"
+          valueHandler={catHandler}
+        />
+      </div>
+      <div
+        style={{
+          maxHeight: "6rem",
+          zIndex: 9,
+        }}
+      >
+        <SelectOption
+          data={cities}
+          name="سابقه کاری"
+          valueHandler={catHandler}
+        />
       </div>
       <div className="d-flex flex-column col-12 pt-4 justify-content-between">
         <div className="col-12">
@@ -145,7 +278,7 @@ const JobConditionVip = (props) => {
               fontSize: "1rem",
             }}
           >
-            میزان حقوق دریافتی
+            میزان حقوق درخواستی
           </label>
         </div>
         <div className="d-flex col-12 justify-content-center">
@@ -195,129 +328,14 @@ const JobConditionVip = (props) => {
           </div>
         </div>
       </div>
-      <div
-        className="col-12"
-        style={{
-          maxHeight: "6rem",
-          zIndex: 7,
-        }}
-      >
-        <SelectOption
-          data={cities}
-          name=" نحوه پرداخت حقوق"
-          valueHandler={catHandler}
+
+      <div className="col-4">
+        <RadioButton
+          title={"تقاضای بیمه"}
+          choices={{ 1: "دارم", 2: "ندارم" }}
         />
       </div>
-      <div className="d-flex flex-column pt-4 col-12 justify-content-between">
-        <div className="col-12">
-          <label
-            style={{
-              marginBottom: "0.5rem",
-              fontSize: "1rem",
-            }}
-          >
-            ساعات کاری
-          </label>
-        </div>
-        <div className="d-flex col-12 justify-content-center">
-          از
-          <div
-            className="d-flex   mb-3 me-1 ms-2 pe-2"
-            style={{
-              backgroundColor: "#EBEBEB",
-              borderStyle: "none",
-              borderRadius: 5,
-              alignItems: "center",
-              width: "49%",
-            }}
-          >
-            <input className="col-8 me-auto inputStyle " type="text" />
-            <h6>ساعت</h6>
-          </div>
-          تا
-          <div
-            className="d-flex   mb-3 me-1 ms-2 pe-2"
-            style={{
-              backgroundColor: "#EBEBEB",
-              borderStyle: "none",
-              borderRadius: 5,
-              alignItems: "center",
-              width: "49%",
-            }}
-          >
-            <input className="col-8 me-auto inputStyle" type="text" />
-            <h6>ساعت</h6>
-          </div>
-        </div>
-      </div>
-      <div className="col-5">
-        <label
-          style={{
-            marginBottom: "0.5rem",
-            fontSize: "1rem",
-          }}
-        >
-          بیمه
-        </label>
-        <div className="d-flex">
-          <div
-            className={cubeSwitch["yes"]}
-            onClick={() =>
-              setCubeSwitch({
-                yes: "cubeSwitchGreen",
-                no: "cubeSwitch",
-              })
-            }
-          >
-            دارد
-          </div>
-          <div
-            className={cubeSwitch["no"]}
-            onClick={() =>
-              setCubeSwitch({
-                yes: "cubeSwitch",
-                no: "cubeSwitchRed",
-              })
-            }
-          >
-            ندارد
-          </div>
-        </div>
-      </div>
-      <div className="col-5">
-        <label
-          style={{
-            marginBottom: "0.5rem",
-            fontSize: "1rem",
-          }}
-        >
-          نیاز به سفر کاری
-        </label>
-        <div className="d-flex">
-          <div
-            className={cubeSwitch["yes"]}
-            onClick={() =>
-              setCubeSwitch({
-                yes: "cubeSwitchGreen",
-                no: "cubeSwitch",
-              })
-            }
-          >
-            دارد
-          </div>
-          <div
-            className={cubeSwitch["no"]}
-            onClick={() =>
-              setCubeSwitch({
-                yes: "cubeSwitch",
-                no: "cubeSwitchRed",
-              })
-            }
-          >
-            ندارد
-          </div>
-        </div>
-      </div>
+
       <div
         style={{
           maxHeight: "6rem",
@@ -360,7 +378,7 @@ const JobConditionVip = (props) => {
           <div className="  col-8 my-3 mx-auto ">
             <img
               className="img-flui "
-              src= "../../../../assets/images/line.png" 
+              src="../../../../assets/images/line.png"
               width="100%"
             />
           </div>
@@ -466,10 +484,10 @@ const JobConditionVip = (props) => {
               </div>
             </div>
             <div className="mt-5">
-              <SoftExpert name={'مهارت نرم افزاری'} />
+              <SoftExpert name={"مهارت نرم افزاری"} />
             </div>
             <div className="mt-5">
-              <SoftExpert name={'زبان'}/>
+              <SoftExpert name={"زبان"} />
             </div>
           </div>
         </>
@@ -481,7 +499,7 @@ const JobConditionVip = (props) => {
           <div className="  col-8 my-3 mx-auto ">
             <img
               className="img-flui "
-              src= "../../../../assets/images/line.png" 
+              src="../../../../assets/images/line.png"
               width="100%"
             />
           </div>

@@ -35,7 +35,7 @@ const VerticalProgress=({step,p_height})=>{
 <div
     className="sticky-top"
     style={{
-      paddingTop: "6rem",
+      paddingTop: "4rem",
     }}
   >
     <div
