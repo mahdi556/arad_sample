@@ -34,7 +34,14 @@ export default function Home() {
         </div>
         <div  style={{
           cursor:'pointer'
-        }} >
+        }} 
+        onClick={() => {
+          router.push({
+            pathname: '/employee/createAdPage',
+            query: { type: 'normal'}
+        })
+        }} 
+        >
           استخدام کارجو
         </div>
       </div>
