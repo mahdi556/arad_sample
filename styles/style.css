@@ -673,9 +673,20 @@ body {
   background-color: #ebebeb;
   border-style: none;
   border-radius: 5px;
-  font-size: 11px;
+  line-height: 2rem;
+  font-size: 17px;
 }
-.inputStyle:focus {
+.inputDanger {
+  background-color: #ebebeb;
+  border-style: solid;
+  border-color:#ec4b72 ;
+  border-width: 1px;
+  border-radius: 5px;
+  line-height: 2rem;
+  font-size: 17px;
+}
+ 
+.inputDanger , .inputStyle:focus {
   outline: none;
 }
 .TagButton {
@@ -693,7 +704,7 @@ body {
   margin-left: 15px;
   margin-bottom: 5px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px;
 }
 .deleteTag {
   margin-right: 15px;
@@ -740,6 +751,17 @@ body {
   border-width: 1px;
   border-bottom-color: #11999e;
   border-top-color: #11999e;
+  margin-left: 15px;
+  cursor: pointer;
+}
+.ButtonXDAnger{
+  display: inline-block;
+  background-color: #91c7c9;
+  border-radius: 6px;
+  padding: 5px 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ec4b72;
   margin-left: 15px;
   cursor: pointer;
 }

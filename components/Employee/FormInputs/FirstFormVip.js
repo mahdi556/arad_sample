@@ -1,6 +1,11 @@
 import Image from "next/image";
+import { useState } from "react";
 
 const FirstFormVip = () => {
+  const [socialInasta,setSocialInsta]=useState('');
+  const [socialYoutube,setSocialYoutube]=useState('');
+  const [socialWeb,setSocialWeb]=useState('');
+  const [socialTwitter,setSocialTwitter]=useState('');
   return (
     <div
       className="row pt-4 pb-4"
@@ -76,35 +81,39 @@ const FirstFormVip = () => {
           شبکه های اجتماعی من
           <div className="row col-12 offset-1 mt-4 mb-2">
             <div className="row mb-3">
-              <Image src="/assets/images/twitterx.png" width={30} height={25} />
+              <Image src="/assets/images/twitterx.png" width={35} height={10} />
               <input
-                className="col-9 ms-2 inputStyle"
+                className="col-9 ms-2 inputStyle" style={socialTwitter == '' ? {fontSize:11} :  {fontSize:18}}
                 placeholder=" وارد کردن لینک پروفایل توییتر"
                 type="text"
+                onChange={(e)=>setSocialTwitter(e.target.value) }
               />
             </div>
             <div className="row mb-3">
-              <Image src="/assets/images/webx.png" width={30} height={25} />
+              <Image src="/assets/images/webx.png" width={35} height={25} />
               <input
-                className="col-9 ms-2 inputStyle"
+                className="col-9 ms-2 inputStyle" style={socialWeb == '' ? {fontSize:11} :  {fontSize:18}}
                 placeholder=" وارد کردن لینک پروفایل دریبل"
                 type="text"
+                onChange={(e)=>setSocialWeb(e.target.value) }
               />
             </div>
             <div className="row mb-3">
-              <Image src="/assets/images/instax.png" width={30} height={25} />
+              <Image src="/assets/images/instax.png" width={35} height={25} />
               <input
-                className="col-9 ms-2 inputStyle"
+                className="col-9 ms-2 inputStyle " style={socialInasta == '' ? {fontSize:11} :  {fontSize:18}}  
                 placeholder=" وارد کردن لینک پروفایل ایسنتاگرام"
                 type="text"
+                onChange={(e)=>setSocialInsta(e.target.value) }
               />
             </div>
             <div className="row mb-3">
-              <Image src="/assets/images/youtubex.png" width={30} height={25} />
+              <Image src="/assets/images/youtubex.png" width={35} height={25} />
               <input
-                className="col-9 ms-2 inputStyle"
-                placeholder=" وارد کردن لینک پروفایل یوتیوب"
+                className="col-9 ms-2 inputStyle" style={socialYoutube == '' ? {fontSize:11} :  {fontSize:18}}
+                placeholder=" وارد کردن لینک پروفایل یوتیوب" 
                 type="text"
+                onChange={(e)=>setSocialYoutube(e.target.value) }
               />
             </div>
             <div

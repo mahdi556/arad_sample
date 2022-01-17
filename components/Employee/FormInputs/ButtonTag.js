@@ -1,7 +1,7 @@
 const ButtonTag = ({data}) => {
   return (
    
-      <div className="TagButton">
+      <div className="d-flex TagButton">
         {data}
         <img
           className="deleteTag"

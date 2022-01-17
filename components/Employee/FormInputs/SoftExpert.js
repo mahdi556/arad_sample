@@ -1,117 +1,96 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ButtonAdd from "./ButtonAdd";
-const Divx = ({ i, removeExpertt, texthandler, tex }) => {
-  const removeExpert = removeExpertt;
-  // const levelhandler = levelHandler;
-  const textHandler = texthandler;
-  const [text, setText] = useState(tex);
-  const [level, setLevel] = useState(null);
+import ButtonTag from "./ButtonTag";
+
+const SoftExpert = ({ name }) => {
+  const [dropdown, setDropdown] = useState("dropdown-close");
+  const [drop, setDrop] = useState(false);
+
   const [ButtonX, setButtonX] = useState({ 1: false, 2: false, 3: false });
-  const handleClass = (level, i) => {
-    setButtonX({ ...ButtonX, 1: false, 2: false, 3: false });
+  const [i, setI] = useState(1);
+  const [text, setText] = useState(null);
+  const [level, setLevel] = useState(null);
+  const [expert, setExpert] = useState([]);
+  const [ev, setEv] = useState("none");
+  const [input, setInput] = useState("inputStyle");
+  const [datas, setDatas] = useState(null);
+  const dropRef = useRef(null);
+  useEffect(() => {
+    setDatas(data);
+    document.addEventListener("click", handleClickOutside, false);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, false);
+    };
+  }, [drop]);
+  const handleClickOutside = (event) => {
+    if (
+      dropRef.current &&
+      !dropRef.current.contains(event.target) &&
+      drop == true
+    ) {
+      setDropdown("close-drop");
+      setDrop(false);
+    }
+  };
+
+  const handleClass = (j) => {
     ButtonX[1] = false;
     ButtonX[2] = false;
     ButtonX[3] = false;
-    setButtonX({ ...ButtonX, [level]: true });
-    // levelhandler(level, i);
-  };
-  return (
-    <div
-      className="d-flex mb-3 justify-content-between align-items-end expert "
-      id={i}
-    >
-      <div className="d-inline col-6 ">
-        <input
-          className="col-9 inputStyle"
-          type="text"
-          value={tex}
-          onChange={(e) => {
-            setText(e.target.value);
-            textHandler(e.target.value, i, level);
-          }}
-        />
-        <div
-          className="delete-expert"
-          onClick={(e) => {
-            removeExpert(i);
-          }}
-        >
-          حذف
-        </div>
-        {/* <div onClick={(e) => console.log(document.getElementById(i).id)}>
-          {i}-{tex}
-        </div> */}
-      </div>
-      <div className="d-inline col-6  offset-1">
-        <div
-          className={ButtonX[1] ? "ButtonXChecked" : "ButtonX"}
-          onClick={() => {
-            handleClass(1, i);
-            setLevel(1);
-            textHandler(tex, i, 1);
-          }}
-        >
-          مقدماتی
-        </div>
-        <div
-          className={ButtonX[2] ? "ButtonXChecked" : "ButtonX"}
-          onClick={() => {
-            handleClass(2, i);
-            setLevel(2);
-            textHandler(tex, i, 2);
-          }}
-        >
-          متوسط
-        </div>
-        <div
-          className={ButtonX[3] ? "ButtonXChecked" : "ButtonX"}
-          onClick={() => {
-            handleClass(3, i);
-            setLevel(3);
-            textHandler(tex, i, 3);
-          }}
-        >
-          پیشرفته
-        </div>
-      </div>
-    </div>
-  );
-};
-const SoftExpert = ({name}) => {
-  const [expert, setExpert] = useState([1]);
-  const [i, setI] = useState(1);
-  const [otext, setOText] = useState({ 1: "one" });
-  const [text, setText] = useState([{ id: 1, text: "one", level: 1 }]);
 
-  const addSec = (ii) => {
-    setExpert([...expert, ii]);
+    setButtonX({ ...ButtonX, [j]: true });
   };
-  const texthandler = (tex, j, level) => {
-    var index = text.findIndex((object) => {
-      return object.id == j;
+  const data = [
+    { id: 1, name: "اصفهان" },
+    { id: 2, name: "تهران" },
+    { id: 3, name: "شیراز" },
+    { id: 4, name: "تبریز" },
+    { id: 5, name: "قم" },
+    { id: 6, name: "ملایر" },
+    { id: 7, name: "زنجان" },
+    { id: 8, name: "بادرود" },
+    { id: 9, name: "تویسرکان" },
+    { id: 10, name: "امیدیه" },
+  ];
+  const dropfilter = (text) => {
+    let filterList = [];
+    setDatas(filterList);
+    data.filter(function check(item) {
+      if (item.name.indexOf(text) != -1) {
+        filterList.push({ id: item.id, name: item.name });
+      }
     });
-    if (index !== -1) {
-      text.splice(index, 1);
+    if (filterList.length == 0) {
+      setDrop(false);
     }
-    setText([...text, { id: j, text: tex, level: level }]);
-    setOText({ ...otext, [j]: tex });
   };
 
+  const handleExpert = () => {
+    if (text == "" || text == null) {
+      setInput("inputDanger");
+    } else if (level == null) {
+      setEv("");
+    } else {
+      setExpert([...expert, { id: i, text: text, level: level }]);
+      setText(""), setLevel(null);
+      ButtonX[1] = false;
+      ButtonX[2] = false;
+      ButtonX[3] = false;
+      setButtonX({ ...ButtonX });
+      setI(i + 1);
+    }
+  };
   const removeExpert = (i) => {
-    var index = expert.indexOf(i);
-    expert.splice(index, 1);
-    setExpert([...expert]);
-
-    var index1 = text.findIndex((object) => {
+    var index1 = expert.findIndex((object) => {
       return object.id == i;
     });
     if (index1 !== -1) {
-      text.splice(index1, 1);
+      expert.splice(index1, 1);
     }
-    setText([...text]);
-   
-  
+    setExpert([...expert]);
+    setText(null);
   };
+
   return (
     <>
       <label
@@ -120,33 +99,106 @@ const SoftExpert = ({name}) => {
           fontSize: "1rem",
         }}
       >
-      {name}
+        {name}
       </label>
-      {expert.map((item) => (
-        <>
-          <Divx
-            i={item}
-            tex={otext[item]}
-            removeExpertt={removeExpert}
-            texthandler={texthandler}
-          />
-        </>
-      ))}
 
-      <div
-        onClick={() => {
-          addSec(i + 1);
-          setI(i + 1);
-        }}
-      >
+      <div className="d-flex   justify-content-between align-items-start expert ">
+        <div className="d-inline col-6 ">
+          <input
+            placeholder="یک مهارت وارد کنید"
+            className={`col-12 ${input}`}
+            type="text"
+            value={text}
+            onChange={(e) => {
+              setText(e.target.value);
+              setInput("inputStyle");
+              setDrop(true);
+              dropfilter(e.target.value);
+              setDropdown("dropdown-open");
+            }}
+          />
+
+          {drop == true && (
+            <div className={dropdown} ref={dropRef}>
+              <div
+                style={{
+                  maxHeight: "8rem",
+                  width: "100%",
+                  overflowY: "scroll",
+                  paddingRight: "0.8rem",
+                  paddingLeft: "0.8rem",
+                }}
+              >
+                {datas.map((item, key) => (
+                  <div
+                    className="  dropdown-item"
+                    key={item.id}
+                    onClick={() => {
+                      setText(item.name);
+                      setDropdown("close-drop");
+                      setDrop(false);
+                    }}
+                  >
+                    {item.name}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="d-inline col-6  offset-1">
+          <div
+            className={ButtonX[1] ? "ButtonXChecked" : "ButtonX"}
+            onClick={() => {
+              setLevel({ id: 1, name: "مقدماتی" });
+              handleClass(1);
+              setEv("none");
+            }}
+          >
+            مقدماتی
+          </div>
+          <div
+            className={ButtonX[2] ? "ButtonXChecked" : "ButtonX"}
+            onClick={() => {
+              setLevel({ id: 2, name: "متوسط" });
+              handleClass(2);
+              setEv("none");
+            }}
+          >
+            متوسط
+          </div>
+          <div
+            className={ButtonX[3] ? "ButtonXChecked" : "ButtonX"}
+            onClick={() => {
+              setLevel({ id: 3, name: "پیشرفته" });
+              handleClass(3);
+              setEv("none");
+            }}
+          >
+            پیشرفته
+          </div>
+          <div
+            style={{
+              color: "#ec4b72",
+              fontSize: 15,
+              marginTop: 5,
+              display: ev,
+            }}
+          >
+            سطح مهارت را انتخاب کنید
+          </div>
+        </div>
+      </div>
+      <div className="d-flex my-2 flex-wrap">
+        {expert.map((item, key) => (
+          <div onClick={() => removeExpert(item.id)}>
+            <ButtonTag data={item.text + " : " + item.level.name} />
+          </div>
+        ))}
+      </div>
+      <div onClick={() => handleExpert()}>
         <ButtonAdd data={"افزودن"} />
       </div>
-{/* 
-      {text.map((item, key) => (
-        <div>
-          id:{item.id} ---- text:{item.text}--- level:{item.level}---
-        </div>
-      ))} */}
     </>
   );
 };
