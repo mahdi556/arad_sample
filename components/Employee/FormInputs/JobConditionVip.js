@@ -202,11 +202,8 @@ const JobConditionVip = (props) => {
         </div>
       </div>
       <div className="d-flex   pt-4 col-6 justify-content-between">
-       <div className=" ">
-          <RadioButton
-            title={"جنسیت"}
-            choices={{ 1: "مرد", 2: "زن" }}
-          />
+        <div className=" ">
+          <RadioButton title={"جنسیت"} choices={{ 1: "مرد", 2: "زن" }} />
         </div>
         <div className=" ">
           <RadioButton
@@ -246,18 +243,7 @@ const JobConditionVip = (props) => {
       >
         <SelectOption data={cities} name="منطقه" valueHandler={catHandler} />
       </div>
-      <div
-        style={{
-          maxHeight: "6rem",
-          zIndex: 9,
-        }}
-      >
-        <SelectOption
-          data={cities}
-          name="وضعیت نظام وظیفه"
-          valueHandler={catHandler}
-        />
-      </div>
+
       <div
         style={{
           maxHeight: "6rem",
@@ -336,41 +322,6 @@ const JobConditionVip = (props) => {
         />
       </div>
 
-      <div
-        style={{
-          maxHeight: "6rem",
-          zIndex: 6,
-        }}
-      >
-        <SelectOption
-          data={cities}
-          name="رده سازمان"
-          valueHandler={catHandler}
-        />
-      </div>
-      <div
-        style={{
-          maxHeight: "6rem",
-          zIndex: 6,
-        }}
-      >
-        <SelectOption
-          data={cities}
-          name="تسهیلات و مزایا"
-          valueHandler={catHandler}
-        />
-      </div>
-      <div className="d-flex flex-wrap">
-        <ButtonTag data={"وام"} />
-        <ButtonTag data={"وام"} />
-        <ButtonTag data={"وام"} />
-        <ButtonTag data={"وام"} />
-        <ButtonTag data={"وام"} />
-        <ButtonTag data={"وام"} />
-        <ButtonTag data={"وام"} />
-        <ButtonTag data={"وام"} />
-      </div>
-
       {step < 3 && <StepButton handleStep={handleStep} step={3} ph={"53%"} />}
 
       {step >= 3 && (
@@ -382,114 +333,6 @@ const JobConditionVip = (props) => {
               width="100%"
             />
           </div>
-          <div
-            style={{
-              fontWeight: "bold",
-              fontSize: "1.2rem",
-              marginBottom: "1rem",
-            }}
-          >
-            انتظار ما از شما
-          </div>
-          <div className="d-flex flex-column  col-6 justify-content-between">
-            <div className="col-12">
-              <label
-                style={{
-                  // marginBottom: "0.1rem",
-                  fontSize: "1rem",
-                }}
-              >
-                محدوده سنی
-              </label>
-            </div>
-            <div className="d-flex col-12 justify-content-center">
-              از
-              <div
-                className="d-flex  mb-3 me-1 ms-2 pe-2"
-                style={{
-                  backgroundColor: "#EBEBEB",
-                  borderStyle: "none",
-                  borderRadius: 5,
-                  alignItems: "center",
-                  width: "49%",
-                }}
-              >
-                <input className="col-8 me-auto inputStyle" type="text" />
-                <h6>سال</h6>
-              </div>
-              تا
-              <div
-                className="d-flex   mb-3 me-1 ms-2 pe-2"
-                style={{
-                  backgroundColor: "#EBEBEB",
-                  borderStyle: "none",
-                  borderRadius: 5,
-                  alignItems: "center",
-                  width: "49%",
-                }}
-              >
-                <input className="col-8 me-auto inputStyle" type="text" />
-                <h6>سال</h6>
-              </div>
-            </div>
-          </div>
-          <div
-            className="col-6"
-            style={{
-              maxHeight: "6rem",
-              zIndex: 7,
-            }}
-          >
-            <SelectOption data={cities} name="شهر" valueHandler={catHandler} />
-          </div>
-          <div className="d-flex flex-column col-12 pt-4 justify-content-between">
-            <div className="col-12">
-              <label
-                style={{
-                  marginBottom: "0.5rem",
-                  fontSize: "1rem",
-                }}
-              >
-                میزان حقوق دریافتی
-              </label>
-            </div>
-            <div className="d-flex col-12 justify-content-center">
-              از
-              <div
-                className="d-flex   mb-3 me-1 ms-2 pe-2"
-                style={{
-                  backgroundColor: "#EBEBEB",
-                  borderStyle: "none",
-                  borderRadius: 5,
-                  alignItems: "center",
-                  width: "49%",
-                }}
-              >
-                <input className="col-8 me-auto inputStyle" type="text" />
-                <h6>تومان</h6>
-              </div>
-              تا
-              <div
-                className="d-flex   mb-3 me-1 ms-2 pe-2"
-                style={{
-                  backgroundColor: "#EBEBEB",
-                  borderStyle: "none",
-                  borderRadius: 5,
-                  alignItems: "center",
-                  width: "49%",
-                }}
-              >
-                <input className="col-8 me-auto inputStyle  " type="text" />
-                <h6>تومان</h6>
-              </div>
-            </div>
-            <div className="mt-5">
-              <SoftExpert name={"مهارت نرم افزاری"} />
-            </div>
-            <div className="mt-5">
-              <SoftExpert name={"زبان"} />
-            </div>
-          </div>
         </>
       )}
 
@@ -498,12 +341,11 @@ const JobConditionVip = (props) => {
         <>
           <div className="  col-8 my-3 mx-auto ">
             <img
-              className="img-flui "
+              className="img-fluid"
               src="../../../../assets/images/line.png"
               width="100%"
             />
           </div>
-
           <div className="d-flex  justify-content-between">
             <div className="col-12">
               <label
