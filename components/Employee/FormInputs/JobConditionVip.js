@@ -4,6 +4,9 @@ import SelectOption from "./SelectOption";
 import ButtonTag from "./ButtonTag";
 import SoftExpert from "./SoftExpert";
 import RadioButton from "./RadioButton";
+import ButtonAdd from "../../Employer/FormInputs/ButtonAdd";
+import Image from "next/image";
+import JoBExperience from "./JobExperience";
 const JobConditionVip = (props) => {
   const [cubeSwitch, setCubeSwitch] = useState({
     yes: "cubeSwitchGreen",
@@ -315,7 +318,7 @@ const JobConditionVip = (props) => {
         </div>
       </div>
 
-      <div className="col-4">
+      <div className="col-12">
         <RadioButton
           title={"تقاضای بیمه"}
           choices={{ 1: "دارم", 2: "ندارم" }}
@@ -324,17 +327,7 @@ const JobConditionVip = (props) => {
 
       {step < 3 && <StepButton handleStep={handleStep} step={3} ph={"53%"} />}
 
-      {step >= 3 && (
-        <>
-          <div className="  col-8 my-3 mx-auto ">
-            <img
-              className="img-flui "
-              src="../../../../assets/images/line.png"
-              width="100%"
-            />
-          </div>
-        </>
-      )}
+      {step >= 3 && <></>}
 
       {step == 3 && <StepButton handleStep={handleStep} step={4} ph={"75%"} />}
       {step >= 4 && (
@@ -345,6 +338,46 @@ const JobConditionVip = (props) => {
               src="../../../../assets/images/line.png"
               width="100%"
             />
+          </div>
+        <JoBExperience />
+          <div className="  col-8 my-3 mx-auto ">
+            <img
+              className="img-fluid"
+              src="../../../../assets/images/line.png"
+              width="100%"
+            />
+          </div>
+          <div className="d-flex align-items-center">
+            <div
+              style={{
+                fontWeight: "bold",
+                fontSize: "1.2rem",
+                marginBottom: "1rem",
+                marginLeft: "auto",
+              }}
+            >
+              مدرک تحصیلی
+            </div>
+
+            <h6
+              className="me-2"
+              style={{
+                color: "#11999e",
+              }}
+            >
+              مدرک تحصیلی ندارم
+            </h6>
+
+            <Image
+              className=""
+              src="/assets/images/checkbox.png"
+              width={15}
+              height={15}
+            />
+
+            <div className="ms-3">
+              <ButtonAdd data={"اضافه کردن مدرک تحصیلی"} />
+            </div>
           </div>
           <div className="d-flex  justify-content-between">
             <div className="col-12">
