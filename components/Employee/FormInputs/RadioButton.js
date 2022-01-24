@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-const RadioButton = ({title,choices})=>{
+const RadioButton = ({title,choices,valueHandler})=>{
     const [cubeSwitch, setCubeSwitch] = useState({
         yes: "cubeSwitchGreen",
         no: "cubeSwitch",
       });
-    
+      
     
     return(
         <>
@@ -21,10 +21,10 @@ const RadioButton = ({title,choices})=>{
           <div
             className={cubeSwitch["yes"]}
             onClick={() =>
-              setCubeSwitch({
+              {setCubeSwitch({
                 yes: "cubeSwitchGreen",
                 no: "cubeSwitch",
-              })
+              });valueHandler(1)}
             }
           >
             {choices[1]}
@@ -32,10 +32,10 @@ const RadioButton = ({title,choices})=>{
           <div
             className={cubeSwitch["no"]}
             onClick={() =>
-              setCubeSwitch({
+              {setCubeSwitch({
                 yes: "cubeSwitch",
                 no: "cubeSwitchRed",
-              })
+              });valueHandler(0)}
             }
           >
             {choices[2]}

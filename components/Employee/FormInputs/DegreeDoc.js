@@ -13,14 +13,14 @@ const Divx = ({ i, data, dataHandler }) => {
   return (
     <>
       <div id={i}>
-        <div className="col-12">
+        <div className="col-12  mt-2">
           <label
             style={{
               marginBottom: "0.5rem",
               fontSize: "1rem",
             }}
           >
-            عنوان شغلی
+            آخرین مدرک تحصیلی
           </label>
           <input
             className="col-12 mb-3 "
@@ -38,7 +38,7 @@ const Divx = ({ i, data, dataHandler }) => {
                 name,
                 reason,
                 start,
-                finish,
+
                 active
               );
             }}
@@ -52,7 +52,7 @@ const Divx = ({ i, data, dataHandler }) => {
               fontSize: "1rem",
             }}
           >
-            نام سازمان
+            رشته تحصیلی
           </label>
           <input
             className="col-12 mb-3 "
@@ -64,52 +64,13 @@ const Divx = ({ i, data, dataHandler }) => {
             type="text"
             onChange={(e) => {
               setName(e.target.value);
-              datahandler(
-                i,
-                title,
-                e.target.value,
-                reason,
-                start,
-                finish,
-                active
-              );
+              datahandler(i, title, e.target.value, reason, start, active);
             }}
             value={data.name}
           />
         </div>
-        <div className="col-12">
-          <label
-            style={{
-              marginBottom: "0.5rem",
-              fontSize: "1rem",
-            }}
-          >
-            دلیل ترک (اختیاری)
-          </label>
-          <input
-            className="col-12 mb-3 "
-            style={{
-              backgroundColor: "#EBEBEB",
-              borderStyle: "none",
-              borderRadius: 5,
-            }}
-            type="text"
-            onChange={(e) => {
-              setReason(e.target.value);
-              datahandler(
-                i,
-                title,
-                name,
-                e.target.value,
-                start,
-                finish,
-                active
-              );
-            }}
-            value={data.reason}
-          />
-        </div>
-        <div className="d-flex flex-column pt-4 col-12  ">
+
+        <div className="d-flex flex-column pt-4 col-12   ">
           <div className="col-12">
             <label
               style={{
@@ -117,12 +78,11 @@ const Divx = ({ i, data, dataHandler }) => {
                 fontSize: "1rem",
               }}
             >
-              میزان سابقه
+              سال فارغ التحصیلی
             </label>
           </div>
-          <div className="d-flex justify-content-between  ">
-            <div className="d-flex  col-4 justify-content-start align-items-center  mb-3    pe-2">
-              شروع
+          <div className="d-flex justify-content-start  ">
+            <div className="d-flex  col-6 justify-content-start align-items-center  mb-3   me-2 pe-2">
               <input
                 className="  inputStyle "
                 type="text"
@@ -137,7 +97,37 @@ const Divx = ({ i, data, dataHandler }) => {
                     name,
                     reason,
                     { ...start, m: e.target.value },
-                    finish,
+                    active
+                  );
+                }}
+              />
+              <div
+                className="d-flex  align-items-center px-2 me-1"
+                style={{
+                  backgroundColor: "#11999e",
+                  height: "100%",
+                  color: "#fff",
+                  fontSize: 13,
+                  borderTopLeftRadius: 5,
+                  borderBottomLeftRadius: 5,
+                }}
+              >
+                روز
+              </div>
+              <input
+                className="  inputStyle "
+                type="text"
+                style={{
+                  width: "25%",
+                }}
+                onChange={(e) => {
+                  setStart({ ...start, m: e.target.value });
+                  datahandler(
+                    i,
+                    title,
+                    name,
+                    reason,
+                    { ...start, m: e.target.value },
                     active
                   );
                 }}
@@ -169,7 +159,6 @@ const Divx = ({ i, data, dataHandler }) => {
                     name,
                     reason,
                     { ...start, y: e.target.value },
-                    finish,
                     active
                   );
                 }}
@@ -188,83 +177,11 @@ const Divx = ({ i, data, dataHandler }) => {
                 سال
               </div>
             </div>
-            <div className="d-flex  col-4  mb-3    pe-2">
-              پایان
-              <input
-                className="inputStyle "
-                type="text"
-                style={{
-                  width: "25%",
-                }}
-                onChange={(e) => {
-                  setFinish({ ...finish, m: e.target.value });
-                  datahandler(
-                    i,
-                    title,
-                    name,
-                    reason,
-                    start,
-                    {
-                      ...finish,
-                      m: e.target.value,
-                    },
-                    active
-                  );
-                }}
-              />
-              <div
-                className="d-flex align-items-center px-2 me-1"
-                style={{
-                  backgroundColor: "#11999e",
-                  height: "100%",
-                  color: "#fff",
-                  fontSize: 13,
-                  borderTopLeftRadius: 5,
-                  borderBottomLeftRadius: 5,
-                }}
-              >
-                ماه
-              </div>
-              <input
-                className=" inputStyle "
-                type="text"
-                style={{
-                  width: "25%",
-                }}
-                onChange={(e) => {
-                  setFinish({ ...finish, y: e.target.value });
-                  datahandler(
-                    i,
-                    title,
-                    name,
-                    reason,
-                    start,
-                    {
-                      ...finish,
-                      y: e.target.value,
-                    },
-                    active
-                  );
-                }}
-              />
-              <div
-                className="d-flex align-items-center px-2"
-                style={{
-                  backgroundColor: "#11999e",
-                  height: "100%",
-                  color: "#fff",
-                  fontSize: 13,
-                  borderTopLeftRadius: 5,
-                  borderBottomLeftRadius: 5,
-                }}
-              >
-                سال
-              </div>
-            </div>
+
             <div
               className="d-flex align-items-center"
               onClick={() => {
-                datahandler(i, title, name, reason, start, finish, !active);
+                datahandler(i, title, name, reason, start, !active);
                 setActive(!active);
               }}
             >
@@ -279,7 +196,7 @@ const Divx = ({ i, data, dataHandler }) => {
                     : { color: "#11999e", fontSize: 16 }
                 }
               >
-                مشغول به کار هستم
+                مشغول به تحصیل هستم
               </h6>
 
               <Image
@@ -307,7 +224,7 @@ const Divx = ({ i, data, dataHandler }) => {
   );
 };
 
-const JoBExperience = () => {
+const DegreeDoc = () => {
   const [expert, setExpert] = useState([]);
   const [hasEx, setHasEx] = useState(false);
   const [data, setData] = useState([
@@ -317,14 +234,13 @@ const JoBExperience = () => {
       name: 1,
       reason: "",
       start: { m: "", y: "" },
-      finish: { m: "", y: "" },
     },
   ]);
   const addSec = (ii) => {
     setExpert([...expert, ii]);
   };
   const [i, setI] = useState(0);
-  const dataHandler = (i, title, name, reason, start, finish, active) => {
+  const dataHandler = (i, title, name, reason, start, active) => {
     var index = data.findIndex((object) => {
       return object.id == i;
     });
@@ -340,7 +256,6 @@ const JoBExperience = () => {
         name: name,
         reason: reason,
         start: start,
-        finish: finish,
         active: active,
       },
     ]);
@@ -361,11 +276,11 @@ const JoBExperience = () => {
           style={{
             fontWeight: "bold",
             fontSize: "1.2rem",
-            marginBottom: "1rem",
+            // marginBottom: "1rem",
             marginLeft: "auto",
           }}
         >
-          سابقه کاری
+          مدرک تحصیلی
         </div>
         <div
           className="d-flex align-items-center  "
@@ -386,7 +301,7 @@ const JoBExperience = () => {
                 : { color: "#e92b59" }
             }
           >
-            سابقه کاری ندارم
+            مدرک تحصیلی ندارم
           </h6>
           <Image
             className=""
@@ -409,7 +324,7 @@ const JoBExperience = () => {
             setHasEx(true);
           }}
         >
-          <ButtonAdd data={"اضافه کردن سابقه کاری"} />
+          <ButtonAdd data={"افزودن مدرک تحصیلی"} />
         </div>
       </div>
       {expert.map((item) => (
@@ -417,18 +332,8 @@ const JoBExperience = () => {
           <Divx i={item} data={dataSender(item)} dataHandler={dataHandler} />
         </>
       ))}
-      <div
-        onClick={() => {
-          addSec(i + 1);
-          dataHandler(i + 1, "", "", "", "", "", false);
-          setI(i + 1);
-          setHasEx(true);
-        }}
-      >
-        <ButtonAdd data={"افزودن"} />
-      </div>
     </>
   );
 };
 
-export default JoBExperience;
+export default DegreeDoc;

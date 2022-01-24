@@ -307,7 +307,7 @@ const Divx = ({ i, data, dataHandler }) => {
   );
 };
 
-const JoBExperience = () => {
+const CharTest = () => {
   const [expert, setExpert] = useState([]);
   const [hasEx, setHasEx] = useState(false);
   const [data, setData] = useState([
@@ -365,40 +365,9 @@ const JoBExperience = () => {
             marginLeft: "auto",
           }}
         >
-          سابقه کاری
+          تست های شخصیت شناسی
         </div>
-        <div
-          className="d-flex align-items-center  "
-          style={{ cursor: "pointer" }}
-          onClick={() => {
-            setHasEx(!hasEx);
-            setExpert([]);
-            setData([]);
-          }}
-        >
-          <h6
-            className="me-2"
-            style={
-              hasEx
-                ? {
-                    color: "#11999e",
-                  }
-                : { color: "#e92b59" }
-            }
-          >
-            سابقه کاری ندارم
-          </h6>
-          <Image
-            className=""
-            src={
-              hasEx
-                ? "/assets/images/checkbox.png"
-                : "/assets/images/checked.png"
-            }
-            height={17}
-            width={17}
-          />
-        </div>
+         
 
         <div
           className="ms-3"
@@ -409,7 +378,7 @@ const JoBExperience = () => {
             setHasEx(true);
           }}
         >
-          <ButtonAdd data={"اضافه کردن سابقه کاری"} />
+          <ButtonAdd data={"اضافه کردن تست"} />
         </div>
       </div>
       {expert.map((item) => (
@@ -417,18 +386,15 @@ const JoBExperience = () => {
           <Divx i={item} data={dataSender(item)} dataHandler={dataHandler} />
         </>
       ))}
-      <div
-        onClick={() => {
-          addSec(i + 1);
-          dataHandler(i + 1, "", "", "", "", "", false);
-          setI(i + 1);
-          setHasEx(true);
-        }}
-      >
-        <ButtonAdd data={"افزودن"} />
+       <div className="  col-8 my-3 mx-auto ">
+        <img
+          className="img-fluid"
+          src="../../../../assets/images/line.png"
+          width="100%"
+        />
       </div>
     </>
   );
 };
 
-export default JoBExperience;
+export default CharTest;
