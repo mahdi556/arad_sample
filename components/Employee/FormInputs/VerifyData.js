@@ -1,15 +1,35 @@
-const VerifyData = ({ personalData }) => {
+import Image from "next/image";
+
+const VerifyData = ({ personalData,handleStep }) => {
+  
   return (
     <>
       <div
+        className="col-12"
         style={{
+          display:'flex',
           fontWeight: "bold",
           fontSize: "1.2rem",
           marginBottom: "1rem",
           marginLeft: "auto",
+          alignItems:'center'
         }}
       >
         اطلاعات شخصی
+        <div className="ms-2 pt-2"
+
+        style={{
+          cursor:'pointer'
+        }}
+        onClick={()=>{handleStep(2,'30%')}}
+        >
+          <Image
+            src="/assets/images/editForm.png"
+            width={20}
+            height={20}
+            layout="fixed"
+          />
+        </div>
       </div>
       <div className="d-flex col-6 justify-content-start align-items-center mb-4 ">
         <h5 className="col-6">نام:</h5>

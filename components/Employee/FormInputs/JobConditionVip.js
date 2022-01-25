@@ -1,11 +1,6 @@
 import { useState } from "react";
 import StepButton from "./StepButton";
-import SelectOption from "./SelectOption";
-import ButtonTag from "./ButtonTag";
 import SoftExpert from "./SoftExpert";
-import RadioButton from "./RadioButton";
-import ButtonAdd from "../../Employer/FormInputs/ButtonAdd";
-import Image from "next/image";
 import JoBExperience from "./JobExperience";
 import DegreeDoc from "./DegreeDoc";
 import SampleEx from "./SampleEx";
@@ -58,16 +53,16 @@ const JobConditionVip = (props) => {
       city: informs.city,
     });
   };
-  console.log(data);
+
   return (
     <div className="row pt-4 pb-4 mt-4 sec2 ">
-      {step < 3 && <PersonalData personalHandler={personalHandler} />}
+      {step < 3 && <PersonalData personalHandler={personalHandler} predata={data} />}
 
       {step < 3 && <StepButton handleStep={handleStep} step={3} ph={"53%"} />}
 
       {step >= 3 && (
         <>
-          <VerifyData personalData={data} />
+          <VerifyData personalData={data} handleStep={handleStep} />
           <div className="  col-8 my-3 mx-auto ">
             <img
               className="img-fluid"

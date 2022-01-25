@@ -17,7 +17,7 @@ const cities = [
   { id: 10, name: "امیدیه" },
 ];
 
-const PersonalData = ({ personalHandler }) => {
+const PersonalData = ({ personalHandler,predata }) => {
   const catHandler = (id, name) => {
     setCat({ id: id, name: name });
   };
@@ -44,7 +44,7 @@ const PersonalData = ({ personalHandler }) => {
       year: "",
     },
     sex: 1,
-    married: 0,
+    married:1,
     insurrance: 1,
     province: "",
     city: "",
@@ -83,7 +83,8 @@ const PersonalData = ({ personalHandler }) => {
       birthday: { day: date.d, month: date.m, year: date.y },
     });
   };
-  return (
+  console.log(data)
+   return (
     <>
       <div
         style={{
@@ -112,6 +113,7 @@ const PersonalData = ({ personalHandler }) => {
               borderRadius: 5,
             }}
             type="text"
+            value={predata.title}
             onChange={(e) => {
               setData({ ...data, title: e.target.value });
               personalHandler({ ...data, title: e.target.value });
@@ -158,6 +160,7 @@ const PersonalData = ({ personalHandler }) => {
               borderRadius: 5,
             }}
             type="text"
+            value={predata.name}
             onChange={(e) => {
               setData({ ...data, name: e.target.value });
               personalHandler({ ...data, name: e.target.value });
@@ -181,6 +184,7 @@ const PersonalData = ({ personalHandler }) => {
               borderRadius: 5,
             }}
             type="text"
+            value={predata.lastname}
             onChange={(e) => {
               setData({ ...data, lastname: e.target.value });
               personalHandler({ ...data, lastname: e.target.value });
@@ -188,22 +192,24 @@ const PersonalData = ({ personalHandler }) => {
           />
         </div>
       </div>
-      <BirthDay birthdayHandler={birthdayHandler} />
+      <BirthDay birthdayHandler={birthdayHandler} predata={predata.birthday} />
       <div className="d-flex   pt-4 col-6 justify-content-between">
         <div className=" ">
           <RadioButton
             title={"جنسیت"}
             choices={{ 1: "مرد", 2: "زن" }}
             valueHandler={sexHandler}
+            predata={data.sex}
           />
         </div>
-        <div className=" ">
+        {/* <div className=" ">
           <RadioButton
             title={"وضعیت تاهل"}
             choices={{ 1: "مجرد", 2: "متاهل" }}
             valueHandler={marriedHandler}
+            predata={data.married}
           />
-        </div>
+        </div> */}
       </div>
       <div
         style={{
@@ -256,11 +262,11 @@ const PersonalData = ({ personalHandler }) => {
       <SalaryNeeded />
 
       <div className="col-12">
-        <RadioButton
+        {/* <RadioButton
           title={"تقاضای بیمه"}
           choices={{ 1: "دارم", 2: "ندارم" }}
           valueHandler={insuranceHandler}
-        />
+        /> */}
       </div>
     </>
   );

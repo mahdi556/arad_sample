@@ -1,6 +1,6 @@
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 
-const BirthDay = ({ birthdayHandler }) => {
+const BirthDay = ({ birthdayHandler,predata }) => {
   const [date, setDate] = useState({ d: "", m: "", y: "" });
   return (
     <>
@@ -20,6 +20,7 @@ const BirthDay = ({ birthdayHandler }) => {
           <input
             className="col-2   inputStyle "
             type="text"
+            value={predata.day}
             onChange={(e) => {
               setDate({ ...date, d: e.target.value });
               birthdayHandler({ ...date, d: e.target.value });
@@ -41,9 +42,11 @@ const BirthDay = ({ birthdayHandler }) => {
           <input
             className="col-2   inputStyle "
             type="text"
+            value={predata.month}
             onChange={(e) => {
               setDate({ ...date, m: e.target.value });
               birthdayHandler({ ...date, m: e.target.value });
+
             }}
           />
           <div
@@ -62,6 +65,7 @@ const BirthDay = ({ birthdayHandler }) => {
           <input
             className="col-2  inputStyle "
             type="text"
+            value={predata.year}
             onChange={(e) => {
               setDate({ ...date, y: e.target.value });
               birthdayHandler({ ...date, y: e.target.value });
