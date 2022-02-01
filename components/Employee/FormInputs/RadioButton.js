@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const RadioButton = ({ title, choices, valueHandler, predata }) => {
-  console.log(predata);
-  const [cubeSwitch, setCubeSwitch] = useState( predata == 1
-    ? {
-        yes: "cubeSwitchGreen",
-        no: "cubeSwitch",
-      }
-    : {
-        yes: "cubeSwitch",
-        no: "cubeSwitchRed",
-      });
-  
+  const [cubeSwitch, setCubeSwitch] = useState(
+    predata == 1
+      ? {
+          yes: "cubeSwitchGreen",
+          no: "cubeSwitch",
+        }
+      : {
+          yes: "cubeSwitch",
+          no: "cubeSwitchRed",
+        }
+  );
 
   return (
     <>

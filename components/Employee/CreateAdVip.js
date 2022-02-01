@@ -4,6 +4,7 @@ import FirstFormVip from "./FormInputs/FirstFormVip";
 import JobConditionVip from "./FormInputs/JobConditionVip";
 import StepButton from "./FormInputs/StepButton";
 import VerticalProgress from "./FormInputs/VerticalProgress";
+import VipProvider from "../../context/employeeContext/VipProvider";
 const CreateEmployerAdVip = () => {
   const [step, setStep] = useState(1);
   const [p_height, setP_height] = useState("10%");
@@ -13,7 +14,8 @@ const CreateEmployerAdVip = () => {
   };
   return (
     <>
-      <div
+    <VipProvider>
+    <div
         style={{
           width: "100%",
           backgroundColor: "#E5E5E5",
@@ -86,6 +88,8 @@ const CreateEmployerAdVip = () => {
           </div>
         </div>
       </div>
+    </VipProvider>
+      
     </>
   );
 };

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import VipContext from "../../../context/employeeContext/VipContext";
 
-const BirthDay = ({ birthdayHandler,predata }) => {
-  const [date, setDate] = useState({ d: "", m: "", y: "" });
+const BirthDay = () => {
+   const vipContext = useContext(VipContext);
   return (
     <>
       <div className="d-flex flex-column pt-4 col-6 justify-content-between">
@@ -20,10 +21,12 @@ const BirthDay = ({ birthdayHandler,predata }) => {
           <input
             className="col-2   inputStyle "
             type="text"
-            value={predata.day}
+            value={vipContext.data.birthday.day}
             onChange={(e) => {
-              setDate({ ...date, d: e.target.value });
-              birthdayHandler({ ...date, d: e.target.value });
+              vipContext.dispatch({
+                type: "birthday-d",
+                payload: e.target.value,
+              });
             }}
           />
           <div
@@ -42,11 +45,12 @@ const BirthDay = ({ birthdayHandler,predata }) => {
           <input
             className="col-2   inputStyle "
             type="text"
-            value={predata.month}
+            value={vipContext.data.birthday.month}
             onChange={(e) => {
-              setDate({ ...date, m: e.target.value });
-              birthdayHandler({ ...date, m: e.target.value });
-
+              vipContext.dispatch({
+                type: "birthday-m",
+                payload: e.target.value,
+              });
             }}
           />
           <div
@@ -65,10 +69,12 @@ const BirthDay = ({ birthdayHandler,predata }) => {
           <input
             className="col-2  inputStyle "
             type="text"
-            value={predata.year}
+            value={vipContext.data.birthday.year}
             onChange={(e) => {
-              setDate({ ...date, y: e.target.value });
-              birthdayHandler({ ...date, y: e.target.value });
+              vipContext.dispatch({
+                type: "birthday-y",
+                payload: e.target.value,
+              });
             }}
           />
           <div

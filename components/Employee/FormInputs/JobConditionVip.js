@@ -15,54 +15,22 @@ const JobConditionVip = (props) => {
     setP_height(ph);
     handleStep2(sn, ph);
   };
-  const [data, setData] = useState({
-    title: "",
-    name: "",
-    lastname: "",
-    birthday: {
-      day: "",
-      month: "",
-      year: "",
-    },
-    sex: 1,
-    married: 0,
-    insurrance: 1,
-    province: "",
-    city: "",
-  });
 
   const handleStep2 = props.handleStep;
 
   const [step, setStep] = useState(props.step);
 
   const [cat, setCat] = useState({ id: null, name: null });
-  const personalHandler = (informs) => {
-    setData({
-      title: informs.title,
-      name: informs.name,
-      lastname: informs.lastname,
-      birthday: {
-        day: informs.birthday.day,
-        month: informs.birthday.month,
-        year: informs.birthday.year,
-      },
-      sex: informs.sex,
-      married: informs.married,
-      insurrance: informs.insurrance,
-      province: informs.province,
-      city: informs.city,
-    });
-  };
 
   return (
     <div className="row pt-4 pb-4 mt-4 sec2 ">
-      {step < 3 && <PersonalData personalHandler={personalHandler} predata={data} />}
+      {step < 3 && <PersonalData />}
 
       {step < 3 && <StepButton handleStep={handleStep} step={3} ph={"53%"} />}
 
       {step >= 3 && (
         <>
-          <VerifyData personalData={data} handleStep={handleStep} />
+          <VerifyData handleStep={handleStep} />
           <div className="  col-8 my-3 mx-auto ">
             <img
               className="img-fluid"

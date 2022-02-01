@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-const SelectOption = ({ data, name, valueHandler }) => {
+const SelectOption = ({ data, name, valueHandler,predata }) => {
   const [dropLabel, setDropLabel] = useState("");
-  const [Placeholder, setPlaceholder] = useState("");
+  const [Placeholder, setPlaceholder] = useState(predata);
   const [dropdown, setDropdown] = useState("dropdown-close");
   const [drop, setDrop] = useState(false);
   const [search, setSearch] = useState(false);

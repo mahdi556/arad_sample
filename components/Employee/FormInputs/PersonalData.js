@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import VipContext from "../../../context/employeeContext/VipContext";
 import BirthDay from "./BirthDay";
 import RadioButton from "./RadioButton";
 import SalaryNeeded from "./SalaryNeeded";
@@ -17,7 +18,9 @@ const cities = [
   { id: 10, name: "امیدیه" },
 ];
 
-const PersonalData = ({ personalHandler,predata }) => {
+const PersonalData = () => {
+  const vipContext = useContext(VipContext);
+
   const catHandler = (id, name) => {
     setCat({ id: id, name: name });
   };
@@ -34,57 +37,25 @@ const PersonalData = ({ personalHandler,predata }) => {
     buttonClass[3] = "Ebutton";
     setButtonClass({ ...buttonClass, [i]: "Ebutton_clicked " });
   };
-  const [data, setData] = useState({
-    title: "",
-    name: "",
-    lastname: "",
-    birthday: {
-      day: "",
-      month: "",
-      year: "",
-    },
-    sex: 1,
-    married:1,
-    insurrance: 1,
-    province: "",
-    city: "",
-  });
   const sexHandler = (sex) => {
-    sex == 1 ? setData({ ...data, sex: 1 }) : setData({ ...data, sex: 0 });
-    personalHandler({ ...data, sex: sex });
+    vipContext.dispatch({ type: "sex", payload: sex });
   };
   const marriedHandler = (mar) => {
-    mar == 1
-      ? setData({ ...data, married: 1 })
-      : setData({ ...data, married: 0 });
-    personalHandler({ ...data, married: mar });
+    vipContext.dispatch({ type: "married", payload: mar });
   };
   const insuranceHandler = (ins) => {
-    ins == 1
-      ? setData({ ...data, insurrance: 1 })
-      : setData({ ...data, insurrance: 0 });
-    personalHandler({ ...data, insurrance: ins });
+    vipContext.dispatch({ type: "insurrance", payload: ins });
   };
+
   const provinceHandler = (id, name) => {
-    setData({ ...data, province: id });
-    personalHandler({ ...data, province: id });
+    vipContext.dispatch({ type: "province", payload: { id: id, name: name } });
   };
+
   const cityHandler = (id, name) => {
-    setData({ ...data, city: id });
-    personalHandler({ ...data, city: id });
+    vipContext.dispatch({ type: "city", payload: { id: id, name: name } });
   };
-  const birthdayHandler = (date) => {
-    setData({
-      ...data,
-      birthday: { day: date.d, month: date.m, year: date.y },
-    });
-    personalHandler({
-      ...data,
-      birthday: { day: date.d, month: date.m, year: date.y },
-    });
-  };
-  console.log(data)
-   return (
+
+  return (
     <>
       <div
         style={{
@@ -113,13 +84,13 @@ const PersonalData = ({ personalHandler,predata }) => {
               borderRadius: 5,
             }}
             type="text"
-            value={predata.title}
+            value={vipContext.data.title}
             onChange={(e) => {
-              setData({ ...data, title: e.target.value });
-              personalHandler({ ...data, title: e.target.value });
+              vipContext.dispatch({ type: "title", payload: e.target.value });
             }}
           />
         </div>
+
         <div className="col-5">
           <label
             style={{
@@ -160,10 +131,9 @@ const PersonalData = ({ personalHandler,predata }) => {
               borderRadius: 5,
             }}
             type="text"
-            value={predata.name}
+            value={vipContext.data.name}
             onChange={(e) => {
-              setData({ ...data, name: e.target.value });
-              personalHandler({ ...data, name: e.target.value });
+              vipContext.dispatch({ type: "name", payload: e.target.value });
             }}
           />
         </div>
@@ -184,32 +154,34 @@ const PersonalData = ({ personalHandler,predata }) => {
               borderRadius: 5,
             }}
             type="text"
-            value={predata.lastname}
+            value={vipContext.data.lastname}
             onChange={(e) => {
-              setData({ ...data, lastname: e.target.value });
-              personalHandler({ ...data, lastname: e.target.value });
+              vipContext.dispatch({
+                type: "lastname",
+                payload: e.target.value,
+              });
             }}
           />
         </div>
       </div>
-      <BirthDay birthdayHandler={birthdayHandler} predata={predata.birthday} />
+      <BirthDay />
       <div className="d-flex   pt-4 col-6 justify-content-between">
         <div className=" ">
           <RadioButton
             title={"جنسیت"}
             choices={{ 1: "مرد", 2: "زن" }}
             valueHandler={sexHandler}
-            predata={data.sex}
+            predata={vipContext.data.sex}
           />
         </div>
-        {/* <div className=" ">
+        <div className=" ">
           <RadioButton
             title={"وضعیت تاهل"}
             choices={{ 1: "مجرد", 2: "متاهل" }}
             valueHandler={marriedHandler}
-            predata={data.married}
+            predata={vipContext.data.married}
           />
-        </div> */}
+        </div>
       </div>
       <div
         style={{
@@ -235,6 +207,7 @@ const PersonalData = ({ personalHandler,predata }) => {
           data={cities}
           name="استان"
           valueHandler={provinceHandler}
+          predata={vipContext.data.province.name}
         />
       </div>
       <div
@@ -244,7 +217,12 @@ const PersonalData = ({ personalHandler,predata }) => {
           zIndex: 13,
         }}
       >
-        <SelectOption data={cities} name="منطقه" valueHandler={cityHandler} />
+        <SelectOption
+          data={cities}
+          name="منطقه"
+          valueHandler={cityHandler}
+          predata={vipContext.data.city.name}
+        />
       </div>
 
       <div
@@ -262,11 +240,12 @@ const PersonalData = ({ personalHandler,predata }) => {
       <SalaryNeeded />
 
       <div className="col-12">
-        {/* <RadioButton
+        <RadioButton
           title={"تقاضای بیمه"}
           choices={{ 1: "دارم", 2: "ندارم" }}
           valueHandler={insuranceHandler}
-        /> */}
+          predata={vipContext.data.insurrance}
+        />
       </div>
     </>
   );
