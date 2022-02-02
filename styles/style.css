@@ -607,7 +607,7 @@ body {
 .cubeSwitchGreen::after {
   content: "";
   height: 100%;
-  width:  50px;
+  width: 50px;
   background-color: #11999e;
   position: absolute;
   bottom: 0;
@@ -619,7 +619,7 @@ body {
 
 .cubeSwitchRed {
   text-align: center;
-  width:  50px;
+  width: 50px;
   font-size: 0.8rem;
   background-color: #ebebeb;
   padding: 0.3rem;
@@ -679,14 +679,15 @@ body {
 .inputDanger {
   background-color: #ebebeb;
   border-style: solid;
-  border-color:#ec4b72 ;
+  border-color: #ec4b72;
   border-width: 1px;
   border-radius: 5px;
   line-height: 2rem;
   font-size: 17px;
 }
- 
-.inputDanger , .inputStyle:focus {
+
+.inputDanger,
+.inputStyle:focus {
   outline: none;
 }
 .TagButton {
@@ -754,7 +755,7 @@ body {
   margin-left: 15px;
   cursor: pointer;
 }
-.ButtonXDAnger{
+.ButtonXDAnger {
   display: inline-block;
   background-color: #91c7c9;
   border-radius: 6px;
@@ -890,4 +891,32 @@ body {
   font-size: 14px;
   margin-right: 3px;
   cursor: pointer;
+}
+
+.EsubItem {
+  cursor: pointer;
+ }
+
+.EsubItem:hover {
+  border-radius: 10px;
+  color: #11999e;
+  background: linear-gradient(
+    90deg,
+    rgba(199, 228, 229, 0) 6%,
+    rgba(199, 228, 229, 1) 41%
+  );
+}
+
+.edrop{
+  overflow-y: hidden;
+ animation: edrop 5s;
+}
+
+@keyframes edrop {
+      0%{
+        height: 0%;
+      }
+      100%{
+        height:100%
+      }
 }

@@ -44,6 +44,18 @@ export default function Home() {
         >
           استخدام کارجو
         </div>
+        <div  style={{
+          cursor:'pointer'
+        }} 
+        onClick={() => {
+          router.push({
+            pathname: '/employee/DashBoard',
+            
+        })
+        }} 
+        >
+          داشبورد کارجو
+        </div>
       </div>
       <Footer />
      
