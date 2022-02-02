@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import { useState } from "react";
 const RightMenu = () => {
   return (
     <>
@@ -14,11 +14,14 @@ const RightMenu = () => {
       >
         <div className="d-flex ps-5 pt-4 align-items-center">
           <Image src="/assets/images/Eavatar.png" width={50} height={50} />
-          <h4 className="ms-3"
-          style={{
-              fontSize:19
-          }}
-          >مهدی حقیقتی</h4>
+          <h4
+            className="ms-3"
+            style={{
+              fontSize: 19,
+            }}
+          >
+            مهدی حقیقتی
+          </h4>
         </div>
         <div className="d-flex ms-4 mt-5">
           <div>
@@ -70,7 +73,7 @@ const RightMenu = () => {
           </h6>
         </div>
         <div>
-          <div className="d-flex ms-4 mt-4">
+          <div className="d-flex ms-4 mt-4" onClick={() => toggle(2)}>
             <div>
               <Image src="/assets/images/eresume.png" width={20} height={20} />
             </div>
@@ -86,15 +89,20 @@ const RightMenu = () => {
             </h6>
           </div>
           <div
-            className="ps-3 ms-4 mt-3 edrop"
-            style={{
-              borderRightStyle: "solid",
-              borderRightColor: "#000",
-              borderWidth: 2,
-            }}
+            className="ps-3 ms-4 mt-3  "
+            style={[
+              {
+                borderRightStyle: "solid",
+                borderRightColor: "#000",
+                borderWidth: 2,
+                visibility: "hidden",
+              } 
+            ]}
           >
-            <h6 className="mt-2 py-2 ps-2 EsubItem">تکمیل و دانلود رزومه</h6>
-            <h6 className="mt-2 py-2 ps-2 EsubItem">پیگیری رزومه های ارسال شده</h6>
+            <h6 className="mt-2 py-2 ps-2 EsubItem ">تکمیل و دانلود رزومه</h6>
+            <h6 className="mt-2 py-2 ps-2 EsubItem">
+              پیگیری رزومه های ارسال شده
+            </h6>
           </div>
         </div>
         <div>
@@ -210,4 +218,5 @@ const RightMenu = () => {
     </>
   );
 };
+
 export default RightMenu;

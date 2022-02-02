@@ -2,6 +2,7 @@ import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
 import RightMenu from "../../components/Employee/RightMenu/RightMenu";
 
+import ProgressBar from "../../components/Employee/Resume/ProgrressBar";
 const Dashboard = () => {
   return (
     <>
@@ -16,6 +17,7 @@ const Dashboard = () => {
         }}
       >
         <RightMenu />
+         <ProgressBar />
       </div>
 
       <Footer />

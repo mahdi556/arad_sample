@@ -895,7 +895,7 @@ body {
 
 .EsubItem {
   cursor: pointer;
- }
+}
 
 .EsubItem:hover {
   border-radius: 10px;
@@ -907,16 +907,55 @@ body {
   );
 }
 
-.edrop{
-  overflow-y: hidden;
- animation: edrop 5s;
+/* Employee REsume PROGRESSBAR  */
+/* START */
+.PContainer {
+  padding: 20px 30px;
 }
-
-@keyframes edrop {
-      0%{
-        height: 0%;
-      }
-      100%{
-        height:100%
-      }
+.stepCircle {
+  display: flex;
+  border-radius: 30px;
+  /* border:1px solid #11999e; */
+  width: 30px;
+  height: 30px;
+  position: relative;
+  text-align: center;
+  padding: auto;
+  align-items: center;
+  justify-content: center;
+  background-color: yellow;
 }
+.stepCircle_1 {
+  display: flex;
+  border-radius: 30px;
+  border: 1px solid #11999e;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+.beforeCircle {
+  border-radius: 30px;
+  border: 1px solid #9e1111;
+  width: 45px;
+  height: 45px;
+  background: red;
+  padding: auto;
+}
+.stepCircle::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 50%;
+  border-right: 2px solid #11999e;
+  height: 50px;
+  padding-right: 10px;
+}
+.progressLine {
+  border-right: 2px solid #11999e;
+  height: 50px;
+  padding-right: 10px;
+}
+/* Employee REsume PROGRESSBAR  */
+/* FINISH */
