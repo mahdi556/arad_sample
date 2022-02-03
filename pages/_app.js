@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.rtl.min.css';
 import '../styles/style.css';
+import '../styles/circle.scss'
 import { useEffect } from 'react';
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
