@@ -2,7 +2,7 @@
 
 // -- vars
 $bg-color: #34495e;
-$default-size: 1em;
+$default-size: 0.7em;
 $label-font-size: $default-size / 4;
 $label-font-size-redo: $default-size * 4;
 
@@ -38,7 +38,7 @@ $label-font-size-redo: $default-size * 4;
 
 @mixin draw-progress--solid($progress, $color, $bg-color) {
   background: linear-gradient(to right, $color 50%, $bg-color 50%);
-  
+
   &:before {
     @if $progress <= 50 {
       background: $bg-color;
@@ -57,23 +57,14 @@ $label-font-size-redo: $default-size * 4;
   box-sizing: border-box;
 }
 
-html,
-body {
-  background: #ecf0f1;
-  color: #444;
-  font-family: 'Lato', Tahoma, Geneva, sans-serif;
-  font-size: 16px;
-  padding: 10px;
-}
-
 .set-size {
-  font-size: 10em;
+  font-size: 4em;
 }
 
 .charts-container {
   &:after {
     clear: both;
-    content: '';
+    content: "";
     display: table;
   }
 }
@@ -83,7 +74,7 @@ body {
   float: left;
   margin: 15px;
   position: relative;
-  
+
   &:nth-child(3n + 1) {
     clear: both;
   }
@@ -107,7 +98,8 @@ body {
   }
 
   .label {
-    background: $bg-color;
+    background: transparent;
+    border: #11999e solid 1px;
     border-radius: 50%;
     bottom: $label-font-size-redo / 10;
     color: #ecf0f1;
@@ -115,7 +107,7 @@ body {
     display: block;
     font-size: $label-font-size;
     left: $label-font-size-redo / 10;
-    line-height: $label-font-size-redo * .70;
+    line-height: $label-font-size-redo * 0.7;
     position: absolute;
     right: $label-font-size-redo / 10;
     text-align: center;
@@ -123,7 +115,7 @@ body {
 
     .smaller {
       color: #bdc3c7;
-      font-size: .45em;
+      font-size: 0.45em;
       padding-bottom: 20px;
       vertical-align: super;
     }
@@ -146,29 +138,100 @@ body {
     }
   }
 
-  &.progress-30 {
-    @include draw-progress(50, #3498db);
-  }
-
-  
-}
-
-.pie-wrapper--solid {
-  border-radius: 50%;
-  overflow: hidden;
-
-  &:before {
-    border-radius: 0 100% 100% 0 / 50%;
-    content: '';
-    display: block;
-    height: 100%;
-    margin-left: 50%;
-    transform-origin: left;
-  }
-  
   .label {
     background: transparent;
+    border: #11999e solid 1px;
+    border-radius: 50%;
+    bottom: $label-font-size-redo / 10;
+    color: #000;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    left: $label-font-size-redo / 10;
+    line-height: $label-font-size-redo * 0.7;
+    position: absolute;
+    right: $label-font-size-redo / 10;
+    text-align: center;
+    top: $label-font-size-redo / 10;
+
+    // .smaller {
+    //   color: #bdc3c7;
+    //   font-size: 0.45em;
+    //   padding-bottom: 20px;
+    //   vertical-align: super;
+    // }
   }
-  
-   
- }
+
+  .shadow {
+    @include size(100%, 100%);
+    border: $default-size / 10 solid #bdc3c7;
+    border-radius: 50%;
+  }
+
+  &.style-2 {
+    .label {
+      background: none;
+      color: #7f8c8d;
+
+      .smaller {
+        color: #bdc3c7;
+      }
+    }
+  }
+
+
+  &.progress-0 {
+    @include draw-progress(0, #11999e);
+  }
+  &.progress-10 {
+    @include draw-progress(10, #11999e);
+  }
+  &.progress-20 {
+    @include draw-progress(20, #11999e);
+  }
+  &.progress-30 {
+    @include draw-progress(30, #11999e);
+  }
+  &.progress-40 {
+    @include draw-progress(40, #11999e);
+  }
+  &.progress-50 {
+    @include draw-progress(50, #11999e);
+  }
+  &.progress-60 {
+    @include draw-progress(60, #11999e);
+  }
+  &.progress-70 {
+    @include draw-progress(70, #11999e);
+  }
+  &.progress-80 {
+    @include draw-progress(80, #11999e);
+  }
+  &.progress-90 {
+    @include draw-progress(90, #11999e);
+  }
+
+  &.progress-100 {
+    @include draw-progress(100, #11999e);
+  }
+}
+
+// .pie-wrapper--solid {
+//   border-radius: 50%;
+//   overflow: hidden;
+
+//   // &:before {
+//   //   border-radius: 0 100% 100% 0 / 50%;
+//   //   content: "";
+//   //   display: block;
+//   //   height: 100%;
+//   //   // margin-left: 50%;
+//   //   transform-origin: left;
+//   // }
+
+//   .label {
+//     background: transparent;
+//   }
+// }
