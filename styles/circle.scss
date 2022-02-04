@@ -2,7 +2,7 @@
 
 // -- vars
 $bg-color: #34495e;
-$default-size: 0.7em;
+$default-size: 0.6em;
 $label-font-size: $default-size / 4;
 $label-font-size-redo: $default-size * 4;
 
@@ -88,7 +88,7 @@ $label-font-size-redo: $default-size * 4;
 
     .half-circle {
       @include size(100%, 100%);
-      border: ($default-size / 10) solid #3498db;
+      border: ($default-size / 6) solid #11999e;
       border-radius: 50%;
       clip: rect(0, $default-size / 2, $default-size, 0);
       left: 0;
@@ -105,7 +105,7 @@ $label-font-size-redo: $default-size * 4;
     color: #ecf0f1;
     cursor: default;
     display: block;
-    font-size: $label-font-size;
+    font-size: 13;
     left: $label-font-size-redo / 10;
     line-height: $label-font-size-redo * 0.7;
     position: absolute;
@@ -148,7 +148,7 @@ $label-font-size-redo: $default-size * 4;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 11px;
     left: $label-font-size-redo / 10;
     line-height: $label-font-size-redo * 0.7;
     position: absolute;

@@ -4,12 +4,13 @@ import RightMenu from "../../components/Employee/RightMenu/RightMenu";
 
 import ProgressBar from "../../components/Employee/Resume/ProgrressBar";
 import CreateResumeBody from "../../components/Employee/Resume/CreateResumeBody";
+import EnProgrressBar from "../../components/Employee/Resume/EnProgrressBar";
 const Dashboard = () => {
   return (
     <>
       <NavBar />
       <div
-        className="d-flex"
+        className="d-flex justify-content-between"
         style={{
           width: "100%",
           //   height: "100vh",
@@ -20,7 +21,7 @@ const Dashboard = () => {
         <RightMenu />
         <ProgressBar />
         <CreateResumeBody />
-        <ProgressBar />
+        <EnProgrressBar />
       </div>
 
       <Footer />

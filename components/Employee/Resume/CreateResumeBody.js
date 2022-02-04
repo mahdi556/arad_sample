@@ -15,9 +15,9 @@ const CreateResumeBody = () => {
   return (
     <>
       {/* <VipProvider> */}
-      <div  
+      <div  className="mx-auto"
         style={{
-          width: "60%",
+          width: "45%",
           backgroundColor: "#E5E5E5",
           // marginTop:'6rem',
           paddingTop: "2rem",
