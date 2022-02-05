@@ -49,7 +49,7 @@ export default function Home() {
         }} 
         onClick={() => {
           router.push({
-            pathname: '/employee/DashBoard',
+            pathname: '/employee/Dashboard',
             
         })
         }} 

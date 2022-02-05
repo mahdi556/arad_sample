@@ -1,21 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ContactForm from "../FormInputs/Contact";
 import FirstFormVip from "../FormInputs/FirstFormVip";
-import JobConditionVip from "../FormInputs/JobConditionVip";
-import StepButton from "../FormInputs/StepButton";
-// import VerticalProgress from "../FormInputs/VerticalProgress";
-// import VipProvider from "../../context/employeeContext/VipProvider";
-const CreateResumeBody = () => {
+import JobConditionVip from './FormInputs/JobConditionVip'
+ import StepButton from "../FormInputs/StepButton";
+import ResumeContext from '../../../context/employeeContext/CreateResume/ResumeContext'
+ const CreateResumeBody = () => {
+   const resumeContext = useContext(ResumeContext)
   const [step, setStep] = useState(1);
-  const [p_height, setP_height] = useState("10%");
-  const handleStep = (sn, ph) => {
+   const handleStep = (sn,ph) => {
     setStep(sn);
-    setP_height(ph);
+    resumeContext.dispatch({ type: "step", payload: sn });
   };
   return (
     <>
-      {/* <VipProvider> */}
-      <div  className="mx-auto"
+       <div  className="mx-auto"
         style={{
           width: "45%",
           backgroundColor: "#E5E5E5",
@@ -69,8 +67,7 @@ const CreateResumeBody = () => {
           </div>
         </div>
       </div>
-      {/* </VipProvider> */}
-    </>
+     </>
   );
 };
 

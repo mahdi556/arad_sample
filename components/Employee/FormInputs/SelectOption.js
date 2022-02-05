@@ -40,7 +40,7 @@ const SelectOption = ({ data, name, valueHandler,predata }) => {
   };
 
   return (
-    <div className="d-flex  py-4" ref={dropRef}>
+    <div className="d-flex  py-4 "  ref={dropRef}>
       <div className="col-12 ">
         <label
           className={dropLabel}
@@ -64,7 +64,7 @@ const SelectOption = ({ data, name, valueHandler,predata }) => {
             <div className=" arrow">
               <img
                 className="img-fluid  "
-                src= "../../../../assets/images/form-arrow.png" 
+                src= "../../../../assets/images/arrow-down.png" 
                 width="80%"
               />
             </div>
@@ -83,7 +83,7 @@ const SelectOption = ({ data, name, valueHandler,predata }) => {
               <div className="drop-arrow">
                 <img
                   className="img-fluid  "
-                  src= "../../../../assets/images/form-arrow.png" 
+                  src= "../../../../assets/images/arrow-down.png" 
                   width="80%"
                 />
               </div>

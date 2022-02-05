@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { useState } from "react";
+ 
+import { useContext, useState } from "react";
 const RightMenu = () => {
-  return (
+   return (
     <>
       <div
         className=""

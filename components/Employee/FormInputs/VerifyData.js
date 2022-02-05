@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { useContext } from "react";
-import VipContext from "../../../context/employeeContext/VipContext";
+import VipContext from "../../../context/employeeContext/CreateAd/VipContext";
 
 const VerifyData = ({ handleStep }) => {
   const vipContext = useContext(VipContext);
-  return (
+   return (
     <>
       <div
         className="col-12"

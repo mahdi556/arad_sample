@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import VipContext from "../../../context/employeeContext/VipContext";
+import VipContext from "../../../context/employeeContext/CreateAd/VipContext";
 import BirthDay from "./BirthDay";
 import RadioButton from "./RadioButton";
 import SalaryNeeded from "./SalaryNeeded";
@@ -164,7 +164,11 @@ const PersonalData = () => {
           />
         </div>
       </div>
-      <BirthDay />
+      <div className="d-flex flex-column pt-4 col-6 justify-content-between">
+        <BirthDay />
+      </div>
+
+      
       <div className="d-flex   pt-4 col-6 justify-content-between">
         <div className=" ">
           <RadioButton

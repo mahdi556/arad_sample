@@ -6,74 +6,77 @@ const EnProgrressBar = () => {
   return (
     <>
       <div className="PContainer">
+      <div className=" progressDownButton px-3 py-2" >
+          دانلود رزومه انگلیسی
+        </div>
         <div className="d-flex align-items-center mb-3">
           <h6 className="progressTitle">Introducing Me</h6>
-          <div class="set-size charts-container ms-1">
-            <div class="pie-wrapper    progress-60">
-              <span class="label">1</span>
-              <div class="pie">
-                <div class="left-side half-circle"></div>
-                <div class="right-side half-circle"></div>
+          <div className="set-size charts-container ms-1">
+            <div className="pie-wrapper    progress-60">
+              <span className="label">1</span>
+              <div className="pie">
+                <div className="left-side half-circle"></div>
+                <div className="right-side half-circle"></div>
               </div>
             </div>
           </div>
         </div>
         <div className="d-flex align-items-center mb-3">
           <h6 className="progressTitle">Introducing Me</h6>
-          <div class="set-size charts-container ms-1">
-            <div class="pie-wrapper    progress-60">
-              <span class="label">1</span>
-              <div class="pie">
-                <div class="left-side half-circle"></div>
-                <div class="right-side half-circle"></div>
+          <div className="set-size charts-container ms-1">
+            <div className="pie-wrapper    progress-60">
+              <span className="label">1</span>
+              <div className="pie">
+                <div className="left-side half-circle"></div>
+                <div className="right-side half-circle"></div>
               </div>
             </div>
           </div>
         </div>
         <div className="d-flex align-items-center mb-3">
           <h6 className="progressTitle">Introducing Me</h6>
-          <div class="set-size charts-container ms-1">
-            <div class="pie-wrapper    progress-60">
-              <span class="label">1</span>
-              <div class="pie">
-                <div class="left-side half-circle"></div>
-                <div class="right-side half-circle"></div>
+          <div className="set-size charts-container ms-1">
+            <div className="pie-wrapper    progress-60">
+              <span className="label">1</span>
+              <div className="pie">
+                <div className="left-side half-circle"></div>
+                <div className="right-side half-circle"></div>
               </div>
             </div>
           </div>
         </div>
         <div className="d-flex align-items-center mb-3">
           <h6 className="progressTitle">Introducing Me</h6>
-          <div class="set-size charts-container ms-1">
-            <div class="pie-wrapper    progress-60">
-              <span class="label">1</span>
-              <div class="pie">
-                <div class="left-side half-circle"></div>
-                <div class="right-side half-circle"></div>
+          <div className="set-size charts-container ms-1">
+            <div className="pie-wrapper    progress-60">
+              <span className="label">1</span>
+              <div className="pie">
+                <div className="left-side half-circle"></div>
+                <div className="right-side half-circle"></div>
               </div>
             </div>
           </div>
         </div>
         <div className="d-flex align-items-center mb-3">
           <h6 className="progressTitle">Introducing Me</h6>
-          <div class="set-size charts-container ms-1">
-            <div class="pie-wrapper    progress-60">
-              <span class="label">1</span>
-              <div class="pie">
-                <div class="left-side half-circle"></div>
-                <div class="right-side half-circle"></div>
+          <div className="set-size charts-container ms-1">
+            <div className="pie-wrapper    progress-60">
+              <span className="label">1</span>
+              <div className="pie">
+                <div className="left-side half-circle"></div>
+                <div className="right-side half-circle"></div>
               </div>
             </div>
           </div>
         </div>
         <div className="d-flex align-items-center mb-3">
           <h6 className="progressTitle">Introducing Me</h6>
-          <div class="set-size charts-container ms-1">
-            <div class="pie-wrapper    progress-60">
-              <span class="label">1</span>
-              <div class="pie">
-                <div class="left-side half-circle"></div>
-                <div class="right-side half-circle"></div>
+          <div className="set-size charts-container ms-1">
+            <div className="pie-wrapper    progress-60">
+              <span className="label">1</span>
+              <div className="pie">
+                <div className="left-side half-circle"></div>
+                <div className="right-side half-circle"></div>
               </div>
             </div>
           </div>

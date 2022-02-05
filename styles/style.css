@@ -388,8 +388,8 @@ body {
 .sec2 {
   background-color: #fff;
   border-radius: 1.2rem;
-  padding-right: 5rem;
-  padding-left: 5rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
   animation: sec2 1s;
   overflow-y: hidden;
 }
@@ -673,7 +673,7 @@ body {
   background-color: #ebebeb;
   border-style: none;
   border-radius: 5px;
-  line-height: 2rem;
+  line-height: 1rem;
   font-size: 17px;
 }
 .inputDanger {
@@ -960,6 +960,18 @@ body {
 }
 .progressTitle{
   font-size: 13px;
+}
+
+.progressDownButton{
+  text-align: center;
+  font-size: 18px;
+  background-color: #11999e;
+  color: #fff;
+  width: 90%;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  cursor: pointer;
+
 }
 /* Employee REsume PROGRESSBAR  */
 /* FINISH */

@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { useState } from "react";
-
+import { useContext, useState } from "react";
+ 
 const FirstFormVip = () => {
+ 
   const [socialInasta,setSocialInsta]=useState('');
   const [socialYoutube,setSocialYoutube]=useState('');
   const [socialWeb,setSocialWeb]=useState('');
