@@ -5,6 +5,7 @@ import SelectOption from "../../FormInputs/SelectOption";
 import RadioButton from "../../FormInputs/RadioButton";
 import SalaryNeeded from "../../FormInputs/SalaryNeeded";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import SalaryNeededEn from "./SalaryNeededEn";
 
 const cities = [
   { id: 1, name: "اصفهان" },
@@ -79,8 +80,8 @@ const PersonalData = () => {
       >
         اطلاعات شخصی
       </div>
-      <div className="col-5 ">
-        <div className="d-flex  justify-content-between">
+      <div className="d-flex flex-wrap col-5">
+        <div className="d-flex col-12 justify-content-between">
           <div className="col-5">
             <label
               style={{
@@ -135,10 +136,12 @@ const PersonalData = () => {
             />
           </div>
         </div>
-        <div className="d-flex flex-column pt-4 col-12 justify-content-between">
+        <div className="col-12">
           <BirthDay />
         </div>
+
         <div
+          className="col-12"
           style={{
             maxHeight: "6rem",
             zIndex: 15,
@@ -152,6 +155,7 @@ const PersonalData = () => {
         </div>
 
         <div
+          className="col-12"
           style={{
             maxHeight: "6rem",
             zIndex: 14,
@@ -168,6 +172,7 @@ const PersonalData = () => {
           className="col-12"
           style={{
             maxHeight: "6rem",
+            zIndex: 13,
           }}
         >
           <SelectOption
@@ -180,9 +185,8 @@ const PersonalData = () => {
 
         <SalaryNeeded />
       </div>
-      <div className="col-5 offset-1" dir="ltr">
-        <div className="d-flex  justify-content-between"></div>
-        <div className="d-flex  justify-content-between">
+      <div className="d-flex flex-wrap col-5  offset-1" dir="ltr">
+         <div className="d-flex col-12 justify-content-between">
           <div className="col-5">
             <label
               style={{
@@ -236,14 +240,14 @@ const PersonalData = () => {
             />
           </div>
         </div>
-        <div className="d-flex flex-column pt-4 col-12 justify-content-between">
+        <div className="d-flex flex-column   col-12 justify-content-between">
           <BirthDayEnglish />
         </div>
 
-        <div
+        <div  className="col-12"
           style={{
             maxHeight: "6rem",
-            zIndex: 5,
+            zIndex: 15,
           }}
         >
           <SelectOption
@@ -257,7 +261,8 @@ const PersonalData = () => {
           className="col-12"
           style={{
             maxHeight: "6rem",
-          }}
+            zIndex: 14,
+                    }}
         >
           <SelectOption
             data={cities}
@@ -266,10 +271,11 @@ const PersonalData = () => {
             predata={resumecontext.data.province.Ename}
           />
         </div>
-        <div
+        <div  className="col-12"
           className="col-12"
           style={{
             maxHeight: "6rem",
+            zIndex: 13,
           }}
         >
           <SelectOption
@@ -280,7 +286,7 @@ const PersonalData = () => {
           />
         </div>
 
-        <SalaryNeeded />
+        <SalaryNeededEn />
       </div>
       <div className="col-12">
         <div className="d-flex   pt-4 col-9 justify-content-between">

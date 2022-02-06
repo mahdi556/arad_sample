@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import StepButton from "../../FormInputs/StepButton";
-import JoBExperience from '../../FormInputs/JobExperience'
- import PersonalData from "./PersonalData";
- import DegreeDoc from '../../FormInputs/DegreeDoc'
+import JoBExperience from "./JobExperience";
+import PersonalData from "./PersonalData";
+import DegreeDoc from "./DegreeDoc";
 import VerifyData from "./VerifyData";
+import SoftExpert from "./SoftExpert";
+import SampleEx from "./SampleEx";
+import CharTest from "./CharTest";
+import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 const JobConditionVip = (props) => {
+  const resumeContext=useContext(ResumeContext)
   const [p_height, setP_height] = useState("10%");
 
   const handleStep = (sn, ph) => {
@@ -18,7 +23,7 @@ const JobConditionVip = (props) => {
   const [step, setStep] = useState(props.step);
 
   const [cat, setCat] = useState({ id: null, name: null });
-
+//  console.log(resumeContext.data)
   return (
     <div className="row pt-4 pb-4 mt-4 sec2 ">
       {step < 3 && <PersonalData />}
@@ -49,11 +54,14 @@ const JobConditionVip = (props) => {
               width="100%"
             />
           </div>
-          <DegreeDoc />
+          <div className="col-12">
+            <DegreeDoc />
+          </div>
+
           <div className="mt-5">
             <SoftExpert name={"مهارت نرم افزاری"} />
           </div>
-          <div className="mt-5">
+          <div className="mt-5 ">
             <SoftExpert name={"زبان"} />
           </div>
           <div className="  col-8 my-3 mx-auto ">

@@ -4,7 +4,7 @@ import RightMenu from "./RightMenu/RightMenu";
 import ProgressBar from "./Resume/ProgrressBar";
 import ResumeProvider from "../../context/employeeContext/CreateResume/ResumeProvider";
 import VipProvider from "../../context/employeeContext/CreateAd/VipProvider";
-const Resume = () => {
+ const Resume = () => {
   return (
     <>
       <ResumeProvider>
@@ -24,7 +24,7 @@ const Resume = () => {
           <CreateResumeBody />
           <EnProgrressBar />
         </div>
-      </ResumeProvider>
+       </ResumeProvider>
     </>
   );
 };

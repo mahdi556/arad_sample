@@ -168,7 +168,6 @@ const PersonalData = () => {
         <BirthDay />
       </div>
 
-      
       <div className="d-flex   pt-4 col-6 justify-content-between">
         <div className=" ">
           <RadioButton

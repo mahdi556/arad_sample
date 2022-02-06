@@ -56,6 +56,10 @@ const resumeReducer = (state, action) => {
         ...state,
         city: { name: action.payload.name, id: action.payload.id },
       };
+      case "experience":
+        return{
+          ...state,experience:action.payload.data
+        }
   }
 };
 export default resumeReducer;

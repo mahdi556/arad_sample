@@ -36,6 +36,7 @@ const initialData = {
     name: "",
     Ename: "",
   },
+  experiences:{}
 };
 
 const ResumeProvider = (props) => {
