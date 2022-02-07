@@ -1,20 +1,30 @@
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
 import Image from "next/image";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 
 const Divx = ({ i, data, dataHandler }) => {
-  const [title, setTilte] = useState("");
-  const [name, setName] = useState("");
-  const [reason, setReason] = useState("");
-  const [start, setStart] = useState({ m: "", y: "" });
-  const [finish, setFinish] = useState({ m: "", y: "" });
-  const [active, setActive] = useState(false);
+   const [localData, setLocalData] = useState({
+    id: i,
+    title: "",
+    name: "",
+    reason: "",
+    start: { m: "", y: "" },
+    finish: { m: "", y: "" },
+    active: false,
+    Entitle: "",
+    Enname: "",
+    Enreason: "",
+    Enstart: { m: "", y: "" },
+    Enfinish: { m: "", y: "" },
+    Enactive: false,
+  });
   const datahandler = dataHandler;
+
   return (
     <>
-      <div className="col-6" id={i}>
-        <div className="col-12">
+      <div className="col-6">
+        <div className="col-12" id={i}>
           <label
             style={{
               marginBottom: "0.5rem",
@@ -32,16 +42,8 @@ const Divx = ({ i, data, dataHandler }) => {
             }}
             type="text"
             onChange={(e) => {
-              setTilte(e.target.value);
-              datahandler(
-                i,
-                e.target.value,
-                name,
-                reason,
-                start,
-                finish,
-                active
-              );
+              setLocalData({ ...localData, title: e.target.value });
+              datahandler({ ...localData, title: e.target.value });
             }}
             value={data.title}
           />
@@ -64,16 +66,8 @@ const Divx = ({ i, data, dataHandler }) => {
             }}
             type="text"
             onChange={(e) => {
-              setName(e.target.value);
-              datahandler(
-                i,
-                title,
-                e.target.value,
-                reason,
-                start,
-                finish,
-                active
-              );
+              setLocalData({ ...localData, name: e.target.value });
+              datahandler({ ...localData, name: e.target.value });
             }}
             value={data.name}
           />
@@ -96,16 +90,8 @@ const Divx = ({ i, data, dataHandler }) => {
             }}
             type="text"
             onChange={(e) => {
-              setReason(e.target.value);
-              datahandler(
-                i,
-                title,
-                name,
-                e.target.value,
-                start,
-                finish,
-                active
-              );
+              setLocalData({ ...localData, reason: e.target.value });
+              datahandler({ ...localData, reason: e.target.value });
             }}
             value={data.reason}
           />
@@ -130,17 +116,16 @@ const Divx = ({ i, data, dataHandler }) => {
                 style={{
                   width: "25%",
                 }}
+                value={data.start.m}
                 onChange={(e) => {
-                  setStart({ ...start, m: e.target.value });
-                  datahandler(
-                    i,
-                    title,
-                    name,
-                    reason,
-                    { ...start, m: e.target.value },
-                    finish,
-                    active
-                  );
+                  setLocalData({
+                    ...localData,
+                    start: { ...localData.start, m: e.target.value },
+                  });
+                  datahandler({
+                    ...localData,
+                    start: { ...localData.start, m: e.target.value },
+                  });
                 }}
               />
               <div
@@ -162,17 +147,16 @@ const Divx = ({ i, data, dataHandler }) => {
                 style={{
                   width: "25%",
                 }}
+                value={data.start.y}
                 onChange={(e) => {
-                  setStart({ ...start, y: e.target.value });
-                  datahandler(
-                    i,
-                    title,
-                    name,
-                    reason,
-                    { ...start, y: e.target.value },
-                    finish,
-                    active
-                  );
+                  setLocalData({
+                    ...localData,
+                    start: { ...localData.start, y: e.target.value },
+                  });
+                  datahandler({
+                    ...localData,
+                    start: { ...localData.start, y: e.target.value },
+                  });
                 }}
               />
               <div
@@ -197,20 +181,16 @@ const Divx = ({ i, data, dataHandler }) => {
                 style={{
                   width: "25%",
                 }}
+                value={data.finish.m}
                 onChange={(e) => {
-                  setFinish({ ...finish, m: e.target.value });
-                  datahandler(
-                    i,
-                    title,
-                    name,
-                    reason,
-                    start,
-                    {
-                      ...finish,
-                      m: e.target.value,
-                    },
-                    active
-                  );
+                  setLocalData({
+                    ...localData,
+                    finish: { ...localData.finish, m: e.target.value },
+                  });
+                  datahandler({
+                    ...localData,
+                    finish: { ...localData.finish, m: e.target.value },
+                  });
                 }}
               />
               <div
@@ -232,20 +212,16 @@ const Divx = ({ i, data, dataHandler }) => {
                 style={{
                   width: "25%",
                 }}
+                value={data.finish.y}
                 onChange={(e) => {
-                  setFinish({ ...finish, y: e.target.value });
-                  datahandler(
-                    i,
-                    title,
-                    name,
-                    reason,
-                    start,
-                    {
-                      ...finish,
-                      y: e.target.value,
-                    },
-                    active
-                  );
+                  setLocalData({
+                    ...localData,
+                    finish: { ...localData.finish, y: e.target.value },
+                  });
+                  datahandler({
+                    ...localData,
+                    finish: { ...localData.finish, y: e.target.value },
+                  });
                 }}
               />
               <div
@@ -265,14 +241,14 @@ const Divx = ({ i, data, dataHandler }) => {
             <div
               className="d-flex align-items-center"
               onClick={() => {
-                datahandler(i, title, name, reason, start, finish, !active);
-                setActive(!active);
+                setLocalData({ ...localData, active: !localData.active });
+                datahandler({ ...localData, active: !localData.active });
               }}
             >
               <h6
                 className="me-2"
                 style={
-                  active
+                  localData.active
                     ? {
                         color: "#e92b59",
                         fontSize: 16,
@@ -286,7 +262,7 @@ const Divx = ({ i, data, dataHandler }) => {
               <Image
                 className=""
                 src={
-                  active
+                  localData.active
                     ? "/assets/images/checked.png"
                     : "/assets/images/checkbox.png"
                 }
@@ -304,7 +280,7 @@ const Divx = ({ i, data, dataHandler }) => {
           />
         </div>
       </div>
-      <div className="col-6" id={i} dir="ltr">
+      <div className="col-6" dir="ltr">
         <div className="col-12">
           <label
             style={{
@@ -323,18 +299,10 @@ const Divx = ({ i, data, dataHandler }) => {
             }}
             type="text"
             onChange={(e) => {
-              setTilte(e.target.value);
-              datahandler(
-                i,
-                e.target.value,
-                name,
-                reason,
-                start,
-                finish,
-                active
-              );
+              setLocalData({ ...localData, Entitle: e.target.value });
+              datahandler({ ...localData, Entitle: e.target.value });
             }}
-            value={data.title}
+            value={data.Entitle}
           />
         </div>
         <div className="col-12">
@@ -355,18 +323,10 @@ const Divx = ({ i, data, dataHandler }) => {
             }}
             type="text"
             onChange={(e) => {
-              setName(e.target.value);
-              datahandler(
-                i,
-                title,
-                e.target.value,
-                reason,
-                start,
-                finish,
-                active
-              );
+              setLocalData({ ...localData, Enname: e.target.value });
+              datahandler({ ...localData, Enname: e.target.value });
             }}
-            value={data.name}
+            value={data.Enname}
           />
         </div>
         <div className="col-12">
@@ -387,18 +347,10 @@ const Divx = ({ i, data, dataHandler }) => {
             }}
             type="text"
             onChange={(e) => {
-              setReason(e.target.value);
-              datahandler(
-                i,
-                title,
-                name,
-                e.target.value,
-                start,
-                finish,
-                active
-              );
+              setLocalData({ ...localData, Enreason: e.target.value });
+              datahandler({ ...localData, Enreason: e.target.value });
             }}
-            value={data.reason}
+            value={data.Enreason}
           />
         </div>
         <div className="d-flex flex-column pt-4 col-12  ">
@@ -424,17 +376,16 @@ const Divx = ({ i, data, dataHandler }) => {
                 style={{
                   width: "25%",
                 }}
+                value={data.Enstart.m}
                 onChange={(e) => {
-                  setStart({ ...start, m: e.target.value });
-                  datahandler(
-                    i,
-                    title,
-                    name,
-                    reason,
-                    { ...start, m: e.target.value },
-                    finish,
-                    active
-                  );
+                  setLocalData({
+                    ...localData,
+                    Enstart: { ...localData.Enstart, m: e.target.value },
+                  });
+                  datahandler({
+                    ...localData,
+                    Enstart: { ...localData.Enstart, m: e.target.value },
+                  });
                 }}
               />
               <div
@@ -456,17 +407,16 @@ const Divx = ({ i, data, dataHandler }) => {
                 style={{
                   width: "25%",
                 }}
+                value={data.Enstart.y}
                 onChange={(e) => {
-                  setStart({ ...start, y: e.target.value });
-                  datahandler(
-                    i,
-                    title,
-                    name,
-                    reason,
-                    { ...start, y: e.target.value },
-                    finish,
-                    active
-                  );
+                  setLocalData({
+                    ...localData,
+                    Enstart: { ...localData.Enstart, y: e.target.value },
+                  });
+                  datahandler({
+                    ...localData,
+                    Enstart: { ...localData.Enstart, y: e.target.value },
+                  });
                 }}
               />
               <div
@@ -491,17 +441,16 @@ const Divx = ({ i, data, dataHandler }) => {
                 style={{
                   width: "25%",
                 }}
+                value={data.Enfinish.m}
                 onChange={(e) => {
-                  setStart({ ...start, m: e.target.value });
-                  datahandler(
-                    i,
-                    title,
-                    name,
-                    reason,
-                    { ...start, m: e.target.value },
-                    finish,
-                    active
-                  );
+                  setLocalData({
+                    ...localData,
+                    Enfinish: { ...localData.Enfinish, m: e.target.value },
+                  });
+                  datahandler({
+                    ...localData,
+                    Enfinish: { ...localData.Enfinish, m: e.target.value },
+                  });
                 }}
               />
               <div
@@ -523,17 +472,16 @@ const Divx = ({ i, data, dataHandler }) => {
                 style={{
                   width: "25%",
                 }}
+                value={data.Enfinish.y}
                 onChange={(e) => {
-                  setStart({ ...start, y: e.target.value });
-                  datahandler(
-                    i,
-                    title,
-                    name,
-                    reason,
-                    { ...start, y: e.target.value },
-                    finish,
-                    active
-                  );
+                  setLocalData({
+                    ...localData,
+                    Enfinish: { ...localData.Enfinish, y: e.target.value },
+                  });
+                  datahandler({
+                    ...localData,
+                    Enfinish: { ...localData.Enfinish, y: e.target.value },
+                  });
                 }}
               />
               <div
@@ -553,14 +501,14 @@ const Divx = ({ i, data, dataHandler }) => {
             <div
               className="d-flex align-items-center"
               onClick={() => {
-                datahandler(i, title, name, reason, start, finish, !active);
-                setActive(!active);
+                setLocalData({ ...localData, Enactive: !localData.Enactive });
+                datahandler({ ...localData, Enactive: !localData.Enactive });
               }}
             >
               <h6
                 className="ms-2"
                 style={
-                  active
+                  localData.Enactive
                     ? {
                         color: "#e92b59",
                         fontSize: 16,
@@ -574,7 +522,7 @@ const Divx = ({ i, data, dataHandler }) => {
                 <Image
                   className=""
                   src={
-                    active
+                    localData.Enactive
                       ? "/assets/images/checked.png"
                       : "/assets/images/checkbox.png"
                   }
@@ -598,45 +546,70 @@ const Divx = ({ i, data, dataHandler }) => {
 };
 
 const JoBExperience = () => {
-  const resumeContext=useContext(ResumeContext)
+  const resumeContext = useContext(ResumeContext);
   const [expert, setExpert] = useState([]);
   const [hasEx, setHasEx] = useState(false);
-  const [data, setData] = useState([
-    {
-      id: 1,
-      title: "",
-      name: 1,
-      reason: "",
-      start: { m: "", y: "" },
-      finish: { m: "", y: "" },
-    },
-  ]);
+  const [data, setData] = useState([]);
+  //   {
+  //     id: 1,
+  //     title: "",
+  //     name: "",
+  //     reason: "",
+  //     start: { m: "", y: "" },
+  //     finish: { m: "", y: "" },
+  //     active: false,
+  //     Entitle: "",
+  //     Enname: "",
+  //     Enreason: "",
+  //     Enstart: { m: "", y: "" },
+  //     Enfinish: { m: "", y: "" },
+  //     Enactive: false,
+  //   },
+  // ]);
+  useEffect(() => {
+    resumeContext.dispatch({
+      type: "experiences",
+      payload: { data: data },
+    });
+  }, [data]);
   const addSec = (ii) => {
     setExpert([...expert, ii]);
   };
   const [i, setI] = useState(0);
-  const dataHandler = (i, title, name, reason, start, finish, active) => {
-    var index = data.findIndex((object) => {
-      return object.id == i;
-    });
-    if (index !== -1) {
-      data.splice(index, 1);
-    }
 
-    setData([
-      ...data,
-      {
-        id: i,
-        title: title,
-        name: name,
-        reason: reason,
-        start: start,
-        finish: finish,
-        active: active,
-      },
-    ]);
-    resumeContext.dispatch({type:'experiences',payload:data})
-   };
+  const indexHandler = (props) => {
+    return new Promise((resolve, reject) => {
+      var index = data.findIndex((object) => {
+        return object.id == props.id;
+      });
+      if (index !== -1) {
+        data.splice(index, 1);
+      }
+      setData([
+        ...data,
+        {
+          id: props.id,
+          title: props.title,
+          name: props.name,
+          reason: props.reason,
+          start: props.start,
+          finish: props.finish,
+          active: props.active,
+          Entitle: props.Entitle,
+          Enname: props.Enname,
+          Enreason: props.Enreason,
+          Enstart: props.Enstart,
+          Enfinish: props.Enfinish,
+          Enactive: props.Enactive,
+        },
+      ]);
+      resolve();
+    });
+  };
+
+  const dataHandler = async (props) => {
+    await indexHandler(props);
+  };
   const dataSender = (j) => {
     var index = data.findIndex((object) => {
       return object.id == j;
@@ -645,7 +618,7 @@ const JoBExperience = () => {
       return data[index];
     }
   };
-   return (
+  return (
     <>
       <div className="d-flex align-items-center">
         <div
@@ -691,33 +664,65 @@ const JoBExperience = () => {
           />
         </div>
 
-        <div
-          className="ms-3"
-          onClick={() => {
-            addSec(i + 1);
-            dataHandler(i + 1, "", "", "", "", "", false);
-            setI(i + 1);
-            setHasEx(true);
-          }}
-        >
-          <ButtonAdd data={"اضافه کردن سابقه کاری"} />
-        </div>
+        {expert.length < 1 && (
+          <div
+            className="ms-3"
+            onClick={() => {
+              addSec(i + 1);
+              dataHandler({
+                id: i + 1,
+                title: "",
+                name: "",
+                reason: "",
+                start: { m: "", y: "" },
+                finish: { m: "", y: "" },
+                active: false,
+                Entitle: "",
+                Enname: "",
+                Enreason: "",
+                Enstart: { m: "", y: "" },
+                Enfinish: { m: "", y: "" },
+                Enactive: false,
+              });
+              setI(i + 1);
+              setHasEx(true);
+            }}
+          >
+            <ButtonAdd data={"اضافه کردن سابقه کاری"} />
+          </div>
+        )}
       </div>
-      {expert.map((item) => (
+      {expert.map((item, key) => (
         <>
           <Divx i={item} data={dataSender(item)} dataHandler={dataHandler} />
         </>
       ))}
-      <div
-        onClick={() => {
-          addSec(i + 1);
-          dataHandler(i + 1, "", "", "", "", "", false);
-          setI(i + 1);
-          setHasEx(true);
-        }}
-      >
-        <ButtonAdd data={"افزودن"} />
-      </div>
+      {expert.length > 0 && (
+        <div
+          onClick={() => {
+            addSec(i + 1);
+            dataHandler({
+              id: i + 1,
+              title: "",
+              name: "",
+              reason: "",
+              start: { m: "", y: "" },
+              finish: { m: "", y: "" },
+              active: false,
+              Entitle: "",
+              Enname: "",
+              Enreason: "",
+              Enstart: { m: "", y: "" },
+              Enfinish: { m: "", y: "" },
+              Enactive: false,
+            });
+            setI(i + 1);
+            setHasEx(true);
+          }}
+        >
+          <ButtonAdd data={"افزودن"} />
+        </div>
+      )}
     </>
   );
 };

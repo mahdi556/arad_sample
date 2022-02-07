@@ -1,20 +1,18 @@
 import { useContext, useEffect, useState } from "react";
- import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
 const ProgressBar = () => {
   const resumecontext = useContext(ResumeContext);
-   
+
   const [step, setStep] = useState(1);
-  useEffect(()=>{
- setStep(resumecontext.data.step)
-  },[])
-   
+  useEffect(() => {
+    setStep(resumecontext.data.step);
+  }, []);
+
   return (
     <>
       <div className="PContainer">
-        <div className=" progressDownButton px-3 py-2" >
-          دانلود رزومه فارسی
-        </div>
-      <div className="d-flex align-items-center mb-3">
+        <div className=" progressDownButton px-3 py-2">دانلود رزومه فارسی</div>
+        <div className="d-flex align-items-center mb-3">
           <div className="set-size charts-container me-3">
             <div className="pie-wrapper    progress-60">
               <span className="label">1</span>
@@ -24,9 +22,7 @@ const ProgressBar = () => {
               </div>
             </div>
           </div>
-          <h6 className="progressTitle">
-          سابقه کاری
-          </h6>
+          <h6 className="progressTitle">سابقه کاری</h6>
         </div>
         <div className="d-flex align-items-center mb-3">
           <div className="set-size charts-container me-3">
@@ -38,9 +34,7 @@ const ProgressBar = () => {
               </div>
             </div>
           </div>
-          <h6 className="progressTitle">
-          سابقه کاری
-          </h6>
+          <h6 className="progressTitle">سابقه کاری</h6>
         </div>
         <div className="d-flex align-items-center mb-3">
           <div className="set-size charts-container me-2">
@@ -52,10 +46,7 @@ const ProgressBar = () => {
               </div>
             </div>
           </div>
-          <h6 className="progressTitle">
-          سابقه کاری
-          </h6>
-          
+          <h6 className="progressTitle">سابقه کاری</h6>
         </div>
         <div className="d-flex align-items-center mb-3">
           <div className="set-size charts-container me-2">
@@ -67,9 +58,7 @@ const ProgressBar = () => {
               </div>
             </div>
           </div>
-          <h6 className="progressTitle">
-          سابقه کاری
-          </h6>
+          <h6 className="progressTitle">سابقه کاری</h6>
         </div>
         <div className="d-flex align-items-center mb-3">
           <div className="set-size charts-container me-2">
@@ -81,9 +70,7 @@ const ProgressBar = () => {
               </div>
             </div>
           </div>
-          <h6 className="progressTitle">
-          سابقه کاری
-          </h6>
+          <h6 className="progressTitle">سابقه کاری</h6>
         </div>
         <div className="d-flex align-items-center mb-3">
           <div className="set-size charts-container me-2">
@@ -95,14 +82,13 @@ const ProgressBar = () => {
               </div>
             </div>
           </div>
-          <h6 className="progressTitle">
-          سابقه کاری
-          </h6>
+          <h6 className="progressTitle">سابقه کاری</h6>
         </div>
         <div className="d-flex align-items-center mb-5">
           <div className="me-3  stepCircle_1">6</div>نمونه کار
         </div>
       </div>
+       
     </>
   );
 };

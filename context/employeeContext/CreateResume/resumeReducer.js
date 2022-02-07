@@ -56,10 +56,43 @@ const resumeReducer = (state, action) => {
         ...state,
         city: { name: action.payload.name, id: action.payload.id },
       };
-      case "experience":
-        return{
-          ...state,experience:action.payload.data
-        }
+    case "experiences":
+      return {
+        ...state,
+        experiences: action.payload.data,
+      };
+    case "salary-fa-from":
+      return {
+        ...state,
+        salary: {
+          ...state.salary,
+          fa: { to: state.salary.fa.to, from: action.payload },
+        },
+      };
+    case "salary-fa-to":
+      return {
+        ...state,
+        salary: {
+          ...state.salary,
+          fa: { from: state.salary.fa.from, to: action.payload },
+        },
+      };
+    case "salary-en-from":
+      return {
+        ...state,
+        salary: {
+          ...state.salary,
+          en: { to: state.salary.en.to, from: action.payload },
+        },
+      };
+    case "salary-en-to":
+      return {
+        ...state,
+        salary: {
+          ...state.salary,
+          en: { from: state.salary.en.from, to: action.payload },
+        },
+      };
   }
 };
 export default resumeReducer;

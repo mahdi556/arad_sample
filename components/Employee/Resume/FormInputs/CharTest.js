@@ -1,5 +1,5 @@
- import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
- import Image from "next/image";
+import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
+import Image from "next/image";
 import { useState } from "react";
 
 const Divx = ({ i, data, dataHandler }) => {
@@ -353,8 +353,7 @@ const CharTest = () => {
       return data[index];
     }
   };
-  console.log(data);
-  return (
+   return (
     <>
       <div className="d-flex align-items-center">
         <div
@@ -367,7 +366,6 @@ const CharTest = () => {
         >
           تست های شخصیت شناسی
         </div>
-         
 
         <div
           className="ms-3"
@@ -386,7 +384,7 @@ const CharTest = () => {
           <Divx i={item} data={dataSender(item)} dataHandler={dataHandler} />
         </>
       ))}
-       <div className="  col-8 my-3 mx-auto ">
+      <div className="  col-8 my-3 mx-auto ">
         <img
           className="img-fluid"
           src="../../../../assets/images/line.png"

@@ -1,6 +1,9 @@
+import { useContext } from "react";
+import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 
-const SalaryNeeded=()=>{
-return(
+const SalaryNeeded = () => {
+  const resumeContext=useContext(ResumeContext)
+  return (
     <>
       <div className="d-flex flex-column col-12 pt-4 justify-content-between">
         <div className="col-12">
@@ -32,6 +35,7 @@ return(
                 borderStyle: "none",
                 borderRadius: 5,
               }}
+              onChange={(e) => resumeContext.dispatch({type:"salary-fa-from",payload:e.target.value})}
               type="text"
             />
             <h6>تومان</h6>
@@ -54,15 +58,14 @@ return(
                 borderStyle: "none",
                 borderRadius: 5,
               }}
+              onChange={(e) => resumeContext.dispatch({type:"salary-fa-to",payload:e.target.value})}
               type="text"
             />
             <h6>تومان</h6>
           </div>
         </div>
       </div>
-
     </>
-)
-
-}
-export default SalaryNeeded
+  );
+};
+export default SalaryNeeded;

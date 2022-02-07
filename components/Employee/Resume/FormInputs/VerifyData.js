@@ -112,7 +112,15 @@ const VerifyData = ({ handleStep }) => {
         <h5 className="col-6">city:</h5>
         <h6 className="col-6">{resumeContext.data.city.Ename}</h6>
       </div>
-    </>
+      <div className="d-flex col-6 justify-content-start align-items-center mb-4" >
+        <h5 className="col-6">حقوق درخواستی :</h5>
+        <h6 className="col-6"> از {resumeContext.data.salary.fa.from} تا   {resumeContext.data.salary.fa.to}</h6>
+      </div>
+      <div className="d-flex col-6 justify-content-start align-items-center mb-4" dir="ltr" >
+        <h5 className="col-6">Amount of salary requested :</h5>
+        <h6 className="col-6"> از {resumeContext.data.salary.en.from} تا   {resumeContext.data.salary.en.to}</h6>
+      </div>
+     </>
   );
 };
 

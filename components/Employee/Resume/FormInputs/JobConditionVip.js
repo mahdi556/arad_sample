@@ -8,8 +8,9 @@ import SoftExpert from "./SoftExpert";
 import SampleEx from "./SampleEx";
 import CharTest from "./CharTest";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import VerifyExperience from "./VerifyExperience";
 const JobConditionVip = (props) => {
-  const resumeContext=useContext(ResumeContext)
+  const resumeContext = useContext(ResumeContext);
   const [p_height, setP_height] = useState("10%");
 
   const handleStep = (sn, ph) => {
@@ -23,7 +24,7 @@ const JobConditionVip = (props) => {
   const [step, setStep] = useState(props.step);
 
   const [cat, setCat] = useState({ id: null, name: null });
-//  console.log(resumeContext.data)
+  console.log(resumeContext.data.salary)
   return (
     <div className="row pt-4 pb-4 mt-4 sec2 ">
       {step < 3 && <PersonalData />}
@@ -40,13 +41,17 @@ const JobConditionVip = (props) => {
               width="100%"
             />
           </div>
-          <JoBExperience />
+          {step == 3 && <JoBExperience />}
         </>
       )}
 
       {step == 3 && <StepButton handleStep={handleStep} step={4} ph={"75%"} />}
       {step >= 4 && (
         <>
+          {resumeContext.data.experiences.length > 0 && (
+            <VerifyExperience handleStep={handleStep} />
+          )}
+
           <div className="  col-8 my-3 mx-auto ">
             <img
               className="img-fluid"

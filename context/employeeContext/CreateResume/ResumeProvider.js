@@ -36,7 +36,11 @@ const initialData = {
     name: "",
     Ename: "",
   },
-  experiences:{}
+  salary:{
+    fa:{from:'',to:''},
+    en:{from:'',to:''}
+  },
+  experiences:[]
 };
 
 const ResumeProvider = (props) => {

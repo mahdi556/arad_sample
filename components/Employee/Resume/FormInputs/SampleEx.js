@@ -236,8 +236,7 @@ const SampleEx = () => {
       return data[index];
     }
   };
-  console.log(data);
-  return (
+   return (
     <>
       <div className="d-flex align-items-center">
         <div

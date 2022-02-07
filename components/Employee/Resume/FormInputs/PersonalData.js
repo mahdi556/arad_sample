@@ -3,9 +3,9 @@ import BirthDay from "./BirthDay";
 import BirthDayEnglish from "./BirthDayEnglish";
 import SelectOption from "../../FormInputs/SelectOption";
 import RadioButton from "../../FormInputs/RadioButton";
-import SalaryNeeded from "../../FormInputs/SalaryNeeded";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import SalaryNeededEn from "./SalaryNeededEn";
+import SalaryNeeded from "./SalaryNeeded";
 
 const cities = [
   { id: 1, name: "اصفهان" },
@@ -186,7 +186,7 @@ const PersonalData = () => {
         <SalaryNeeded />
       </div>
       <div className="d-flex flex-wrap col-5  offset-1" dir="ltr">
-         <div className="d-flex col-12 justify-content-between">
+        <div className="d-flex col-12 justify-content-between">
           <div className="col-5">
             <label
               style={{
@@ -244,7 +244,8 @@ const PersonalData = () => {
           <BirthDayEnglish />
         </div>
 
-        <div  className="col-12"
+        <div
+          className="col-12"
           style={{
             maxHeight: "6rem",
             zIndex: 15,
@@ -262,7 +263,7 @@ const PersonalData = () => {
           style={{
             maxHeight: "6rem",
             zIndex: 14,
-                    }}
+          }}
         >
           <SelectOption
             data={cities}
@@ -271,7 +272,8 @@ const PersonalData = () => {
             predata={resumecontext.data.province.Ename}
           />
         </div>
-        <div  className="col-12"
+        <div
+          className="col-12"
           className="col-12"
           style={{
             maxHeight: "6rem",
