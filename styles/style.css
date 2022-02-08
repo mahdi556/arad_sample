@@ -388,11 +388,10 @@ body {
 .sec2 {
   background-color: #fff;
   border-radius: 1.2rem;
-  padding-right: 2rem;
-  padding-left: 2rem;
-  animation: sec2 1s;
+  /* padding-right: 2rem; */
+   animation: sec2 1s;
   overflow-y: hidden;
-}
+ }
 @keyframes sec2 {
   0% {
     height: 0%;
@@ -673,7 +672,7 @@ body {
   background-color: #ebebeb;
   border-style: none;
   border-radius: 5px;
-  line-height: 1rem;
+  line-height: 1.7rem;
   font-size: 17px;
 }
 .inputDanger {
@@ -978,3 +977,11 @@ body {
 
 /* Employee REsume PROGRESSBAR  */
 /* FINISH */
+ /* resume Boxshadow */
+ .rShadow{
+  box-shadow: 0px 3px 7px rgba(0,0,0,0.18);
+ }
+ .shadow1{
+  box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+
+ }

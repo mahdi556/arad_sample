@@ -72,7 +72,7 @@ const BirthDayEnglish = () => {
               backgroundColor: "#11999e",
               height: "100%",
               color: "#fff",
-              fontSize: 13,
+              fontSize: 12,
               borderTopLeftRadius: 5,
               borderBottomLeftRadius: 5,
             }}

@@ -24,9 +24,8 @@ const JobConditionVip = (props) => {
   const [step, setStep] = useState(props.step);
 
   const [cat, setCat] = useState({ id: null, name: null });
-  console.log(resumeContext.data.salary)
   return (
-    <div className="row pt-4 pb-4 mt-4 sec2 ">
+    <div className="row  pt-4 pb-4 mt-4 sec2 ">
       {step < 3 && <PersonalData />}
 
       {step < 3 && <StepButton handleStep={handleStep} step={3} ph={"53%"} />}

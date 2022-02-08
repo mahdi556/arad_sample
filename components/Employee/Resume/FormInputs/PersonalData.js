@@ -76,11 +76,13 @@ const PersonalData = () => {
           fontWeight: "bold",
           fontSize: "1.2rem",
           marginBottom: "1rem",
+          width:'100%'
         }}
       >
         اطلاعات شخصی
       </div>
-      <div className="d-flex flex-wrap col-5">
+      <div className="d-flex justify-content-around col-12 ">
+      <div className="d-flex flex-wrap col-5 ">
         <div className="d-flex col-12 justify-content-between">
           <div className="col-5">
             <label
@@ -185,9 +187,9 @@ const PersonalData = () => {
 
         <SalaryNeeded />
       </div>
-      <div className="d-flex flex-wrap col-5  offset-1" dir="ltr">
+      <div className="d-flex flex-wrap col-5  " dir="ltr">
         <div className="d-flex col-12 justify-content-between">
-          <div className="col-5">
+          <div className="col-5  ">
             <label
               style={{
                 marginBottom: "0.5rem",
@@ -290,6 +292,8 @@ const PersonalData = () => {
 
         <SalaryNeededEn />
       </div>
+      </div>
+      
       <div className="col-12">
         <div className="d-flex   pt-4 col-9 justify-content-between">
           <div className=" ">

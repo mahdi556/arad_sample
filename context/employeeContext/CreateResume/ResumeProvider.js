@@ -3,6 +3,15 @@ import ResumeContext from "./ResumeContext";
 import resumeReducer from "./resumeReducer";
 
 const initialData = {
+  userImage: "",
+  userImageFile:{},
+  userVideo: "",
+  socials: {
+    twitter: "",
+    instagram: "",
+    youtube: "",
+    dribble: "",
+  },
   step: 1,
   name: "",
   lastname: "",
@@ -36,11 +45,11 @@ const initialData = {
     name: "",
     Ename: "",
   },
-  salary:{
-    fa:{from:'',to:''},
-    en:{from:'',to:''}
+  salary: {
+    fa: { from: "", to: "" },
+    en: { from: "", to: "" },
   },
-  experiences:[]
+  experiences: [],
 };
 
 const ResumeProvider = (props) => {

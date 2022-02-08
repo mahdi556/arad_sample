@@ -1,21 +1,23 @@
 import { useContext, useState } from "react";
 import ContactForm from "../FormInputs/Contact";
-import FirstFormVip from "../FormInputs/FirstFormVip";
-import JobConditionVip from './FormInputs/JobConditionVip'
- import StepButton from "../FormInputs/StepButton";
-import ResumeContext from '../../../context/employeeContext/CreateResume/ResumeContext'
- const CreateResumeBody = () => {
-   const resumeContext = useContext(ResumeContext)
+import JobConditionVip from "./FormInputs/JobConditionVip";
+import StepButton from "../FormInputs/StepButton";
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import VerifyFirstForm from "./FormInputs/VerifyFirstForm";
+import FirstFormVip from "./FormInputs/FirstFormVip";
+const CreateResumeBody = () => {
+  const resumeContext = useContext(ResumeContext);
   const [step, setStep] = useState(1);
-   const handleStep = (sn,ph) => {
+  const handleStep = (sn, ph) => {
     setStep(sn);
     resumeContext.dispatch({ type: "step", payload: sn });
   };
   return (
     <>
-       <div  className="mx-auto"
+      <div
+        className="mx-auto"
         style={{
-          width: "45%",
+          width: "50%",
           backgroundColor: "#E5E5E5",
           // marginTop:'6rem',
           paddingTop: "2rem",
@@ -25,7 +27,7 @@ import ResumeContext from '../../../context/employeeContext/CreateResume/ResumeC
         <div
           style={{
             width: "100%",
-           }}
+          }}
         >
           <div
             className="d-flex px-3 py-2  mb-5 align-items-center "
@@ -37,20 +39,19 @@ import ResumeContext from '../../../context/employeeContext/CreateResume/ResumeC
                 fontSize: "1rem",
                 // fontWeight: "bold",
                 lineHeight: "1.4rem",
-                
               }}
             >
               با تکمیل رزومه 15 هزار تومان اعتبار هدیه بگیرید.{" "}
             </h3>
           </div>
           <div className="d-flex justify-content-between  ">
-          
             <div
               style={{
                 width: "100%",
               }}
             >
-              <FirstFormVip />
+              {step == 1 && <FirstFormVip />}
+              {step > 1 && <VerifyFirstForm handleStep={handleStep} />}
               {step < 2 && (
                 <StepButton handleStep={handleStep} step={2} ph={"30%"} />
               )}
@@ -67,7 +68,7 @@ import ResumeContext from '../../../context/employeeContext/CreateResume/ResumeC
           </div>
         </div>
       </div>
-     </>
+    </>
   );
 };
 

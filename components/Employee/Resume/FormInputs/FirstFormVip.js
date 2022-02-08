@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
-import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 
 const FirstFormVip = () => {
   const [socialInasta, setSocialInsta] = useState("");
@@ -36,15 +36,16 @@ const FirstFormVip = () => {
       style={{
         background: "#fff",
         borderRadius: 15,
-        paddingRight: "5rem",
-        paddingLeft: "5rem",
+        paddingRight: "1rem",
+        // paddingLeft: "1rem",
       }}
     >
-      <div className="d-flex align-items-start pt-1">
+      <div className="d-flex   align-items-start  pt-1">
         <div
-          className="d-flex col-6 flex-column   pe-2"
+          className="d-flex col-6  flex-column   pe-2"
           style={{
-            fontWeight: 600,
+            fontWeight: "bold",
+            fontSize: 17,
           }}
         >
           معرفی من
@@ -85,18 +86,20 @@ const FirstFormVip = () => {
           ) : (
             <label
               htmlFor="imageInput"
-              className="d-flex  "
+              className="d-flex flex-column shadow1 "
               style={{
-                height: 130,
+                height: 120,
                 backgroundColor: "#EBEBEB",
                 justifyContent: "center",
                 alignItems: "center",
                 textAlign: "center",
                 borderRadius: 7,
-                width: "50%",
+                width: "35%",
                 marginTop: 25,
                 fontWeight: 300,
                 cursor: "pointer",
+                fontWeight: "bold",
+                fontSize: 18,
               }}
             >
               <input
@@ -106,14 +109,14 @@ const FirstFormVip = () => {
                 onChange={(e) => setImage(e.target.files)}
               />
               <img
-                className="me-2"
+                className="me-2 mb-2"
                 src="../../../../assets/images/upload-logo.png"
                 width="10%"
               />
-              {imageUrl.map((imageSrc) => (
+              {/* {imageUrl.map((imageSrc) => (
                 <img src={imageSrc} width="50%" />
-              ))}
-              آپلود تصویر
+              ))} */}
+              <h5>آپلود عکس</h5>
             </label>
           )}
           {videofile.length > 0 ? (
@@ -161,8 +164,8 @@ const FirstFormVip = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 fontSize: 12,
-                borderRadius: 10,
-                width: "50%",
+                borderRadius: 30,
+                width: "35%",
                 cursor: "pointer",
               }}
             >
@@ -184,7 +187,7 @@ const FirstFormVip = () => {
             className="row col-12  mt-2"
             style={{
               color: "#11999E",
-              fontSize: 12,
+              fontSize: 14,
               fontWeight: 300,
             }}
           >
@@ -192,14 +195,32 @@ const FirstFormVip = () => {
             کارفرماها تقاضای رزومه ویدیویی دارند)
           </div>
         </div>
-        <div className="  col-6 ps-3 pt-2 fw-bold ">
-          شبکه های اجتماعی من
-          <div className="row col-12 offset-1 mt-4 mb-2">
-            <div className="row mb-3">
-              <Image src="/assets/images/twitterx.png" width={35} height={10} />
+        <div className="  col-5 offset-1  pt-2 fw-bold ">
+          <h6 className="fw-bold"> شبکه های اجتماعی من</h6>
+
+          <div className="row col-12  mt-4 mb-2">
+            <div
+              className="d-flex col-12 align-items-start   justify-content-end "
+              style={{
+                marginBottom: 1,
+              }}
+            >
+              <div
+                style={{
+                  width: 40,
+                  height: 40,
+                }}
+              >
+                <Image
+                  src="/assets/images/twitterx.png"
+                  width={35}
+                  height={30}
+                />
+              </div>
+
               <input
                 dir="ltr"
-                className="col-9 ms-2 inputStyle"
+                className="col-10   inputStyle"
                 style={
                   socialTwitter == "" ? { fontSize: 11 } : { fontSize: 18 }
                 }
@@ -214,11 +235,24 @@ const FirstFormVip = () => {
                 value={resumeContext.data.socials.twitter}
               />
             </div>
-            <div className="row mb-3">
-              <Image src="/assets/images/webx.png" width={35} height={25} />
+            <div
+              className="d-flex col-12  align-items-start justify-content-end"
+              style={{
+                marginBottom: 1,
+              }}
+            >
+              <div
+                style={{
+                  width: 40,
+                  height: 40,
+                }}
+              >
+                <Image src="/assets/images/webx.png" width={33} height={30} />
+              </div>
+
               <input
                 dir="ltr"
-                className="col-9 ms-2 inputStyle"
+                className="col-10   inputStyle"
                 style={socialWeb == "" ? { fontSize: 11 } : { fontSize: 18 }}
                 placeholder=" وارد کردن لینک پروفایل دریبل"
                 type="text"
@@ -231,11 +265,23 @@ const FirstFormVip = () => {
                 value={resumeContext.data.socials.dribble}
               />
             </div>
-            <div className="row mb-3">
-              <Image src="/assets/images/instax.png" width={35} height={25} />
+            <div
+              className="d-flex col-12 align-items-start justify-content-end"
+              style={{
+                marginBottom: 1,
+              }}
+            >
+              <div
+                style={{
+                  width: 40,
+                  height: 40,
+                }}
+              >
+                <Image src="/assets/images/instax.png" width={32} height={30} />
+              </div>
               <input
                 dir="ltr"
-                className="col-9 ms-2 inputStyle "
+                className="col-10   inputStyle "
                 style={socialInasta == "" ? { fontSize: 11 } : { fontSize: 18 }}
                 placeholder=" وارد کردن لینک پروفایل ایسنتاگرام"
                 type="text"
@@ -248,11 +294,27 @@ const FirstFormVip = () => {
                 value={resumeContext.data.socials.instagram}
               />
             </div>
-            <div className="row mb-3">
-              <Image src="/assets/images/youtubex.png" width={35} height={25} />
+            <div
+              className="d-flex col-12 align-items-start justify-content-end "
+              style={{
+                marginBottom: 5,
+              }}
+            >
+              <div
+                style={{
+                  width: 40,
+                  height: 40,
+                }}
+              >
+                <Image
+                  src="/assets/images/youtubex.png"
+                  width={30}
+                  height={25}
+                />
+              </div>
               <input
                 dir="ltr"
-                className="col-9 ms-2 inputStyle"
+                className="col-10  inputStyle"
                 style={
                   socialYoutube == "" ? { fontSize: 11 } : { fontSize: 18 }
                 }

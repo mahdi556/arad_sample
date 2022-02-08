@@ -1,7 +1,32 @@
 const resumeReducer = (state, action) => {
   switch (action.type) {
     case "step":
-      return { ...state, step: action.payload };
+    case "userImage":
+      return { ...state, userImage: action.payload };
+      case "userImageFile":
+      return { ...state, userImageFile: action.payload };
+    case "userVideo":
+      return { ...state, userVideo: action.payload };
+    case "social-twitter":
+      return {
+        ...state,
+        socials: { ...state.socials, twitter: action.payload },
+      };
+    case "social-insta":
+      return {
+        ...state,
+        socials: { ...state.socials, instagram: action.payload },
+      };
+    case "social-youtube":
+      return {
+        ...state,
+        socials: { ...state.socials, youtube: action.payload },
+      };
+    case "social-dribble":
+      return {
+        ...state,
+        socials: { ...state.socials, dribble: action.payload },
+      };
     case "title":
       return { ...state, title: action.payload };
     case "name":
