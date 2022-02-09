@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ContactForm from "../FormInputs/Contact";
 import JobConditionVip from "./FormInputs/JobConditionVip";
 import StepButton from "../FormInputs/StepButton";
@@ -8,18 +8,21 @@ import FirstFormVip from "./FormInputs/FirstFormVip";
 const CreateResumeBody = () => {
   const resumeContext = useContext(ResumeContext);
   const [step, setStep] = useState(1);
-  const handleStep = (sn, ph) => {
+  useEffect(()=>{
+    setStep(resumeContext.data.step)
+  },[resumeContext.data.step])
+  const handleStep = (sn) => {
     setStep(sn);
     resumeContext.dispatch({ type: "step", payload: sn });
   };
+  console.log(step);
   return (
     <>
       <div
         className="mx-auto"
         style={{
           width: "50%",
-          backgroundColor: "#E5E5E5",
-          // marginTop:'6rem',
+          backgroundColor: "#f2f5f6",
           paddingTop: "2rem",
           paddingBottom: 400,
         }}
@@ -51,19 +54,13 @@ const CreateResumeBody = () => {
               }}
             >
               {step == 1 && <FirstFormVip />}
-              {step > 1 && <VerifyFirstForm handleStep={handleStep} />}
-              {step < 2 && (
-                <StepButton handleStep={handleStep} step={2} ph={"30%"} />
-              )}
-
+              {step > 1 && <VerifyFirstForm />}
               {step >= 2 && (
-                <JobConditionVip step={step} handleStep={handleStep} />
+                <JobConditionVip step={step} />
               )}
-              {step == 4 && (
-                <StepButton handleStep={handleStep} step={5} ph={"98%"} />
-              )}
-
               {step > 4 && <ContactForm />}
+
+              <StepButton handleStep={handleStep} step={step} />
             </div>
           </div>
         </div>

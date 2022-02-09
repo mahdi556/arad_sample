@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { useContext } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
-const VerifyExperience = ({ handleStep }) => {
+import BreakLine from "./BreakLine";
+const VerifyExperience = () => {
   const resumeContext = useContext(ResumeContext);
   return (
     <>
@@ -23,7 +24,7 @@ const VerifyExperience = ({ handleStep }) => {
             cursor: "pointer",
           }}
           onClick={() => {
-            handleStep(3, "30%");
+            resumeContext.dispatch({ type: "step", payload: 3 });
           }}
         >
           <Image
@@ -100,15 +101,8 @@ const VerifyExperience = ({ handleStep }) => {
               {item.Enfinish.y}/{item.Enfinish.m}
             </h6>
             {item.Enactive && <h6 className="mt-4">I am working</h6>}
-
           </div>
-          <div className="  col-8 my-3 mx-auto ">
-            <img
-              className="img-fluid"
-              src="../../../../assets/images/line.png"
-              width="100%"
-            />
-          </div>
+          <BreakLine />
         </>
       ))}
     </>

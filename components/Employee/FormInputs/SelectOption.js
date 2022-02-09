@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const SelectOption = ({ data, name, valueHandler,predata }) => {
-  const [dropLabel, setDropLabel] = useState("");
+  const [dropLabel, setDropLabel] = useState("dropLabelBack");
   const [Placeholder, setPlaceholder] = useState(predata);
   const [dropdown, setDropdown] = useState("dropdown-close");
   const [drop, setDrop] = useState(false);
@@ -46,7 +46,7 @@ const SelectOption = ({ data, name, valueHandler,predata }) => {
           className={dropLabel}
           style={{
             marginBottom: "0.5rem",
-            fontSize: "1rem",
+                    
           }}
         >
           {name}

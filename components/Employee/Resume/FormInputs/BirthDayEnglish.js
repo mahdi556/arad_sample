@@ -5,17 +5,19 @@ const BirthDayEnglish = () => {
   return (
     <>
       <div className="col-12">
-        <label
+        <label className="fs-6  "
           style={{
             marginBottom: "0.5rem",
-            fontSize: "1rem",
+            fontFamily:'roboto'
+
+            
           }}
         >
           Date Of Birth
         </label>
       </div>
       <div className="col-12  d-flex">
-        <div className="input-group input-group-sm mx-1">
+        <div className="input-group input-group-sm ms-2">
           <span
             className="input-group-text"
             style={{
@@ -25,6 +27,7 @@ const BirthDayEnglish = () => {
               fontSize: 13,
               borderTopLeftRadius: 5,
               borderBottomLeftRadius: 5,
+              fontFamily:'roboto'
             }}
           >
             Day
@@ -40,7 +43,7 @@ const BirthDayEnglish = () => {
             }}
           />
         </div>
-        <div className="input-group input-group-sm mx-1 ">
+        <div className="input-group input-group-sm mx-3 ">
           <span
             className="input-group-text"
             style={{
@@ -50,6 +53,7 @@ const BirthDayEnglish = () => {
               fontSize: 13,
               borderTopLeftRadius: 5,
               borderBottomLeftRadius: 5,
+              fontFamily:'roboto'
             }}
           >
             Month
@@ -65,7 +69,7 @@ const BirthDayEnglish = () => {
             }}
           />
         </div>
-        <div className="input-group input-group-sm mx-1">
+        <div className="input-group input-group-sm me-2">
           <span
             className="input-group-text"
             style={{
@@ -75,6 +79,7 @@ const BirthDayEnglish = () => {
               fontSize: 12,
               borderTopLeftRadius: 5,
               borderBottomLeftRadius: 5,
+              fontFamily:'roboto'
             }}
           >
             Year

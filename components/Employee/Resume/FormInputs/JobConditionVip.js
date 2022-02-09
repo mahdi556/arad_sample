@@ -9,99 +9,66 @@ import SampleEx from "./SampleEx";
 import CharTest from "./CharTest";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import VerifyExperience from "./VerifyExperience";
-const JobConditionVip = (props) => {
+import BreakLine from "./BreakLine";
+const JobConditionVip = ({ step, handleStep }) => {
   const resumeContext = useContext(ResumeContext);
-  const [p_height, setP_height] = useState("10%");
-
-  const handleStep = (sn, ph) => {
-    setStep(sn);
-    setP_height(ph);
-    handleStep2(sn, ph);
-  };
-
-  const handleStep2 = props.handleStep;
-
-  const [step, setStep] = useState(props.step);
 
   const [cat, setCat] = useState({ id: null, name: null });
   return (
-    <div className="row  pt-4 pb-4 mt-4 sec2 ">
-      {step < 3 && <PersonalData />}
+    <>
+      <div className="row  pt-4 pb-4 mt-4 sec2 ">
+        {step == 2 && <PersonalData />}
 
-      {step < 3 && <StepButton handleStep={handleStep} step={3} ph={"53%"} />}
+        {step >= 3 && <VerifyData />}
+        <BreakLine />
+        {step == 3 && <JoBExperience />}
 
-      {step >= 3 && (
-        <>
-          <VerifyData handleStep={handleStep} />
-          <div className="  col-8 my-3 mx-auto ">
-            <img
-              className="img-fluid"
-              src="../../../../assets/images/line.png"
-              width="100%"
-            />
-          </div>
-          {step == 3 && <JoBExperience />}
-        </>
-      )}
+        {step > 3 && resumeContext.data.experiences.length > 0 && (
+          <VerifyExperience />
+        )}
 
-      {step == 3 && <StepButton handleStep={handleStep} step={4} ph={"75%"} />}
-      {step >= 4 && (
-        <>
-          {resumeContext.data.experiences.length > 0 && (
-            <VerifyExperience handleStep={handleStep} />
-          )}
-
-          <div className="  col-8 my-3 mx-auto ">
-            <img
-              className="img-fluid"
-              src="../../../../assets/images/line.png"
-              width="100%"
-            />
-          </div>
-          <div className="col-12">
-            <DegreeDoc />
-          </div>
-
-          <div className="mt-5">
-            <SoftExpert name={"مهارت نرم افزاری"} />
-          </div>
-          <div className="mt-5 ">
-            <SoftExpert name={"زبان"} />
-          </div>
-          <div className="  col-8 my-3 mx-auto ">
-            <img
-              className="img-fluid"
-              src="../../../../assets/images/line.png"
-              width="100%"
-            />
-          </div>
-          <SampleEx />
-          <CharTest />
-          <div className="d-flex  justify-content-between">
+        {step >= 4 && (
+          <>
+            <BreakLine />
             <div className="col-12">
-              <label
-                style={{
-                  marginBottom: "0.5rem",
-                  fontSize: "1rem",
-                }}
-              >
-                توضیحات آگهی
-              </label>
-              <textarea
-                className="col-12 mb-3 "
-                style={{
-                  backgroundColor: "#EBEBEB",
-                  borderStyle: "none",
-                  borderRadius: 5,
-                  height: "10rem",
-                }}
-                type="text"
-              />
+              <DegreeDoc />
             </div>
-          </div>
-        </>
-      )}
-    </div>
+
+            <div className="mt-5">
+              <SoftExpert name={"مهارت نرم افزاری"} />
+            </div>
+            <div className="mt-5 ">
+              <SoftExpert name={"زبان"} />
+            </div>
+            <BreakLine />
+            <SampleEx />
+            <CharTest />
+            <div className="d-flex  justify-content-between">
+              <div className="col-12">
+                <label
+                  style={{
+                    marginBottom: "0.5rem",
+                    fontSize: "1rem",
+                  }}
+                >
+                  توضیحات آگهی
+                </label>
+                <textarea
+                  className="col-12 mb-3 "
+                  style={{
+                    backgroundColor: "#EBEBEB",
+                    borderStyle: "none",
+                    borderRadius: 5,
+                    height: "10rem",
+                  }}
+                  type="text"
+                />
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </>
   );
 };
 

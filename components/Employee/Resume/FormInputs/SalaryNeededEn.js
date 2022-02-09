@@ -11,122 +11,70 @@ const SalaryNeededEn = () => {
             style={{
               marginBottom: "0.5rem",
               fontSize: "1rem",
+              fontFamily:'roboto'
             }}
           >
             Amount of salary requested
           </label>
         </div>
-        <div className="d-flex col-12 justify-content-center align-items-start">
+        <div className="d-flex col-12 justify-content-center align-items-center"
+        style={{
+          fontFamily:'roboto'
+        }}
+        >
           From
-          <div class="input-group input-group-sm mb-3">
+          <div className="   input-group input-group-sm mx-2" dir="rtl">
+          
             <span
-              class="input-group-text order-2"
+              className="input-group-text order-1"
               style={{
                 backgroundColor: "#EBEBEB",
-                borderStyle: "none",
-                // borderRadius: 5,
-                alignItems: "center",
-                width: "50%",
+                height: "100%",
                 color: "#000",
-                fontSize: 12,
-              }}
-              id="basic-addon1"
-            >
-              Tooman
-            </span>
-            <input
-              type="text"
-              class="form-control order-1"
-              style={{
-                backgroundColor: "#EBEBEB",
-                borderStyle: "none",
-                // borderRadius: 5,
+                fontSize: 13,
+                fontFamily:'roboto',
+                border: "none",
+                lineHeight:'1.5rem'
               }}
               onChange={(e) =>
                 resumeContext.dispatch({
-                  type: "salary-en-from",
+                  type: "salary-fa-from",
                   payload: e.target.value,
                 })
               }
-            />
-          </div>
-          {/* <div
-            className="d-flex   mb-3 me-1 ms-2 pe-2"
-            style={{
-              backgroundColor: "#EBEBEB",
-              borderStyle: "none",
-              borderRadius: 5,
-              alignItems: "center",
-              width: "49%",
-            }}
-          >
-            <input
-              className="col-8 me-auto form-input"
-              style={{
-                backgroundColor: "#EBEBEB",
-                borderStyle: "none",
-                borderRadius: 5,
-              }}
               type="text"
-            />
-            <h6>تومان</h6>
-          </div> */}
-          To
-          <div class="input-group input-group-sm mb-3">
-            <span
-              class="input-group-text order-2"
-              style={{
-                backgroundColor: "#EBEBEB",
-                borderStyle: "none",
-                // borderRadius: 5,
-                alignItems: "center",
-                width: "50%",
-                color: "#000",
-                fontSize: 12,
-              }}
-              id="basic-addon1"
             >
               Tooman
             </span>
-            <input
-              type="text"
-              class="form-control order-1"
+            <input className="form-control inputStyle2 order-2" />
+          </div>
+          to
+          <div className="   input-group input-group-sm  me-2" dir="rtl">
+          
+            <span
+              className="input-group-text order-1"
               style={{
                 backgroundColor: "#EBEBEB",
-                borderStyle: "none",
-                // borderRadius: 5,
+                height: "100%",
+                color: "#000",
+                fontSize: 13,
+                fontFamily:'roboto',
+                border: "none",
+                lineHeight:'1.5rem'
               }}
               onChange={(e) =>
                 resumeContext.dispatch({
-                  type: "salary-en-to",
+                  type: "salary-fa-to",
                   payload: e.target.value,
                 })
               }
-            />
+            >
+              Tooman
+            </span>
+            <input className="form-control inputStyle2 order-2 " />
           </div>
-          {/* <div
-            className="d-flex   mb-3 me-1 ms-2 pe-2"
-            style={{
-              backgroundColor: "#EBEBEB",
-              borderStyle: "none",
-              borderRadius: 5,
-              alignItems: "center",
-              width: "49%",
-            }}
-          >
-            <input
-              className="col-8 me-auto form-input"
-              style={{
-                backgroundColor: "#EBEBEB",
-                borderStyle: "none",
-                borderRadius: 5,
-              }}
-              type="text"
-            />
-            <h6>تومان</h6>
-          </div> */}
         </div>
-      </div>
+       </div>
     </>
   );
 };

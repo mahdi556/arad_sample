@@ -5,17 +5,18 @@ const BirthDay = () => {
   return (
     <>
       <div className="col-12">
-        <label
+        <label className="fs-6 "
           style={{
             marginBottom: "0.5rem",
-            fontSize: "1rem",
+            // fontWeight:'normal'
+            
           }}
         >
           تاریخ تولد
         </label>
       </div>
       <div className="col-12  d-flex">
-        <div className="input-group input-group-sm mx-1">
+        <div className="input-group input-group-sm me-2">
           <input className="form-control inputStyle" 
            value={resumeContext.data.birthday.day}
            onChange={(e) => {
@@ -39,7 +40,7 @@ const BirthDay = () => {
             روز
           </span>
         </div>
-        <div className="input-group input-group-sm mx-1 ">
+        <div className="input-group input-group-sm mx-3 ">
           <input className="form-control inputStyle"
           value={resumeContext.data.birthday.month}
           onChange={(e) => {
@@ -63,7 +64,7 @@ const BirthDay = () => {
             ماه
           </span>
         </div>
-        <div className="input-group input-group-sm mx-1">
+        <div className="input-group input-group-sm ms-2">
           <input className="form-control inputStyle" 
           
           value={resumeContext.data.birthday.year}

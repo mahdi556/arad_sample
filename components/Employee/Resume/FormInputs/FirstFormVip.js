@@ -76,7 +76,7 @@ const FirstFormVip = () => {
                   />
                   <img
                     className="me-2"
-                    src="../../../../assets/images/upload-logo.png"
+                    src="../../../../assets/images/upload-1.png"
                     width="10%"
                   />
                   تغییر تصویر
@@ -110,12 +110,10 @@ const FirstFormVip = () => {
               />
               <img
                 className="me-2 mb-2"
-                src="../../../../assets/images/upload-logo.png"
-                width="10%"
+                src="../../../../assets/images/upload-1.png"
+                width="20%"
               />
-              {/* {imageUrl.map((imageSrc) => (
-                <img src={imageSrc} width="50%" />
-              ))} */}
+               
               <h5>آپلود عکس</h5>
             </label>
           )}
@@ -146,7 +144,7 @@ const FirstFormVip = () => {
                   />
                   <img
                     className="me-2"
-                    src="../../../../assets/images/upload-logo.png"
+                    src="../../../../assets/images/upload2.png"
                     width="10%"
                   />
                   تغییر ویدیو
@@ -155,13 +153,13 @@ const FirstFormVip = () => {
             </>
           ) : (
             <label
-              className="d-flex col-6  mt-3   px-2 py-2"
+              className="d-flex col-6  mt-3 px-1 py-1 "
               htmlFor="VideoUpload"
               style={{
                 borderWidth: 2,
                 borderStyle: "dotted",
                 borderColor: "#11999E",
-                justifyContent: "center",
+                justifyContent: "start",
                 alignItems: "center",
                 fontSize: 12,
                 borderRadius: 30,
@@ -177,8 +175,8 @@ const FirstFormVip = () => {
               />
               <img
                 className="me-4"
-                src="../../../../assets/images/upload-logo.png"
-                width="15%"
+                src="../../../../assets/images/upload2.png"
+                width="25%"
               />
               آپلود ویدیو
             </label>
@@ -330,7 +328,7 @@ const FirstFormVip = () => {
               />
             </div>
             <div
-              className="d-flex align-items-center justify-content-start p-0"
+              className="d-flex align-items-center justify-content-start "
               style={{
                 color: "#11999e",
                 fontWeight: 300,

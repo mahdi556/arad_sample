@@ -2,6 +2,7 @@ import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import BreakLine from "./BreakLine";
 
 const Divx = ({ i, data, dataHandler }) => {
    const [localData, setLocalData] = useState({
@@ -272,13 +273,7 @@ const Divx = ({ i, data, dataHandler }) => {
             </div>
           </div>
         </div>
-        <div className="  col-8 my-3 mx-auto ">
-          <img
-            className="img-fluid"
-            src="../../../../assets/images/line.png"
-            width="100%"
-          />
-        </div>
+         <BreakLine />
       </div>
       <div className="col-6" dir="ltr">
         <div className="col-12">
@@ -550,22 +545,7 @@ const JoBExperience = () => {
   const [expert, setExpert] = useState([]);
   const [hasEx, setHasEx] = useState(false);
   const [data, setData] = useState([]);
-  //   {
-  //     id: 1,
-  //     title: "",
-  //     name: "",
-  //     reason: "",
-  //     start: { m: "", y: "" },
-  //     finish: { m: "", y: "" },
-  //     active: false,
-  //     Entitle: "",
-  //     Enname: "",
-  //     Enreason: "",
-  //     Enstart: { m: "", y: "" },
-  //     Enfinish: { m: "", y: "" },
-  //     Enactive: false,
-  //   },
-  // ]);
+  
   useEffect(() => {
     resumeContext.dispatch({
       type: "experiences",

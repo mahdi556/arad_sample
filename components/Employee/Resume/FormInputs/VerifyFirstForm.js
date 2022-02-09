@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
-const VerifyFirstForm = ({ handleStep }) => {
+const VerifyFirstForm = () => {
   const [imageUrl, setImageUrl] = useState("");
   const resumeContext = useContext(ResumeContext);
   useEffect(() => {
@@ -46,7 +46,7 @@ const VerifyFirstForm = ({ handleStep }) => {
                   cursor: "pointer",
                 }}
                 onClick={() => {
-                  handleStep(1, "30%");
+                  resumeContext.dispatch({type:'step',payload:1})
                 }}
               >
                 <Image
@@ -126,53 +126,6 @@ const VerifyFirstForm = ({ handleStep }) => {
                 <h6 className="ms-4 text-center w-100">
                   {resumeContext.data.socials.youtube}
                 </h6>
-              </div>
-
-              <div
-                className="d-flex align-items-center justify-content-start p-0"
-                style={{
-                  color: "#11999e",
-                  fontWeight: 300,
-                }}
-              >
-                <svg
-                  className=" AddTag"
-                  width="21"
-                  height="20"
-                  viewBox="0 0 21 20"
-                  fill="#11999e"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10.5 19V1"
-                    stroke="#11999e"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M16.5 10H19.5"
-                    stroke="#11999e"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M1.5 10H9.99"
-                    stroke="#11999e"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M10.5 19V1"
-                    stroke="#11999e"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                اضافه کردن
               </div>
             </div>
           </div>

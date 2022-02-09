@@ -14,7 +14,7 @@ import VipProvider from "../../context/employeeContext/CreateAd/VipProvider";
             width: "100%",
             //   height: "100vh",
             marginTop: 80,
-            backgroundColor: "#E5E5E5",
+            backgroundColor: "#f2f5f6",
           }}
         >
           <RightMenu />

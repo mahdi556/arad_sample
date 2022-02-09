@@ -76,224 +76,230 @@ const PersonalData = () => {
           fontWeight: "bold",
           fontSize: "1.2rem",
           marginBottom: "1rem",
-          width:'100%'
+          width: "100%",
+          paddingRight: "1rem",
         }}
       >
         اطلاعات شخصی
       </div>
-      <div className="d-flex justify-content-around col-12 ">
-      <div className="d-flex flex-wrap col-5 ">
-        <div className="d-flex col-12 justify-content-between">
-          <div className="col-5">
-            <label
-              style={{
-                marginBottom: "0.5rem",
-                fontSize: "1rem",
-              }}
-            >
-              نام
-            </label>
-            <input
-              className="col-12 mb-3 "
-              style={{
-                backgroundColor: "#EBEBEB",
-                borderStyle: "none",
-                borderRadius: 5,
-              }}
-              type="text"
-              value={resumecontext.data.name}
-              onChange={(e) => {
-                resumecontext.dispatch({
-                  type: "name",
-                  payload: e.target.value,
-                });
-              }}
-            />
-            {resumecontext.data.name}
+      <div className="d-flex justify-content-between col-12 px-4 ">
+        <div className="d-flex flex-wrap pe-4 col-6 ">
+          <div className="d-flex col-12 justify-content-between">
+            <div className="col-5 mb-3">
+              <label
+                className="fs-6  "
+                style={{
+                  marginBottom: "0.5rem",
+                  fontWeight: "normal",
+                }}
+              >
+                نام
+              </label>
+              <input
+                className="col-12 mb-3 "
+                style={{
+                  backgroundColor: "#EBEBEB",
+                  borderStyle: "none",
+                  borderRadius: 5,
+                }}
+                type="text"
+                value={resumecontext.data.name}
+                onChange={(e) => {
+                  resumecontext.dispatch({
+                    type: "name",
+                    payload: e.target.value,
+                  });
+                }}
+              />
+            </div>
+            <div className="col-5">
+              <label
+                className="fs-6 "
+                style={{
+                  marginBottom: "0.5rem",
+                  fontWeight: "normal",
+                }}
+              >
+                نام خانوادگی
+              </label>
+              <input
+                className="col-12 mb-3 "
+                style={{
+                  backgroundColor: "#EBEBEB",
+                  borderStyle: "none",
+                  borderRadius: 5,
+                }}
+                type="text"
+                value={resumecontext.data.lastname}
+                onChange={(e) => {
+                  resumecontext.dispatch({
+                    type: "lastname",
+                    payload: e.target.value,
+                  });
+                }}
+              />
+            </div>
           </div>
-          <div className="col-5">
-            <label
-              style={{
-                marginBottom: "0.5rem",
-                fontSize: "1rem",
-              }}
-            >
-              نام خانوادگی
-            </label>
-            <input
-              className="col-12 mb-3 "
-              style={{
-                backgroundColor: "#EBEBEB",
-                borderStyle: "none",
-                borderRadius: 5,
-              }}
-              type="text"
-              value={resumecontext.data.lastname}
-              onChange={(e) => {
-                resumecontext.dispatch({
-                  type: "lastname",
-                  payload: e.target.value,
-                });
-              }}
+          <div className="col-12">
+            <BirthDay />
+          </div>
+
+          <div
+            className="col-12"
+            style={{
+              maxHeight: "6rem",
+              zIndex: 15,
+            }}
+          >
+            <SelectOption
+              data={cities}
+              name="دسته بندی شغلی"
+              valueHandler={catHandler}
             />
           </div>
-        </div>
-        <div className="col-12">
-          <BirthDay />
-        </div>
 
-        <div
-          className="col-12"
-          style={{
-            maxHeight: "6rem",
-            zIndex: 15,
-          }}
-        >
-          <SelectOption
-            data={cities}
-            name="دسته بندی شغلی"
-            valueHandler={catHandler}
-          />
-        </div>
+          <div
+            className="col-12"
+            style={{
+              maxHeight: "6rem",
+              zIndex: 14,
+            }}
+          >
+            <SelectOption
+              data={cities}
+              name="استان"
+              valueHandler={provinceHandler}
+              predata={resumecontext.data.province.name}
+            />
+          </div>
+          <div
+            className="col-12"
+            style={{
+              maxHeight: "6rem",
+              zIndex: 13,
+            }}
+          >
+            <SelectOption
+              data={cities}
+              name="منطقه"
+              valueHandler={cityHandler}
+              predata={resumecontext.data.city.name}
+            />
+          </div>
 
-        <div
-          className="col-12"
-          style={{
-            maxHeight: "6rem",
-            zIndex: 14,
-          }}
-        >
-          <SelectOption
-            data={cities}
-            name="استان"
-            valueHandler={provinceHandler}
-            predata={resumecontext.data.province.name}
-          />
+          <SalaryNeeded />
         </div>
-        <div
-          className="col-12"
-          style={{
-            maxHeight: "6rem",
-            zIndex: 13,
-          }}
-        >
-          <SelectOption
-            data={cities}
-            name="منطقه"
-            valueHandler={cityHandler}
-            predata={resumecontext.data.city.name}
-          />
-        </div>
+        <div className="d-flex flex-wrap col-6 ps-4  " dir="ltr">
+          <div className="d-flex col-12 justify-content-between">
+            <div className="col-5 mb-3  ">
+              <label
+                className="fs-6  "
+                style={{
+                  marginBottom: "0.5rem",
+                  fontWeight: 400,
+                  fontFamily: "roboto",
+                }}
+              >
+                Name
+              </label>
+              <input
+                className="col-12 mb-3 "
+                style={{
+                  backgroundColor: "#EBEBEB",
+                  borderStyle: "none",
+                  borderRadius: 5,
+                }}
+                type="text"
+                value={resumecontext.data.Ename}
+                onChange={(e) => {
+                  resumecontext.dispatch({
+                    type: "Ename",
+                    payload: e.target.value,
+                  });
+                }}
+              />
+            </div>
+            <div className="col-5 ">
+              <label
+                className="fs-6  "
+                style={{
+                  marginBottom: "0.5rem",
+                  fontFamily: "roboto",
+                  fontWeight: 400,
+                }}
+              >
+                Last name
+              </label>
+              <input
+                className="col-12 mb-3 "
+                style={{
+                  backgroundColor: "#EBEBEB",
+                  borderStyle: "none",
+                  borderRadius: 5,
+                }}
+                type="text"
+                value={resumecontext.data.Elastname}
+                onChange={(e) => {
+                  resumecontext.dispatch({
+                    type: "Elastname",
+                    payload: e.target.value,
+                  });
+                }}
+              />
+            </div>
+          </div>
+          <div className="d-flex flex-column   col-12 justify-content-between">
+            <BirthDayEnglish />
+          </div>
 
-        <SalaryNeeded />
+          <div
+            className="col-12"
+            style={{
+              maxHeight: "6rem",
+              zIndex: 15,
+            }}
+          >
+            <SelectOption
+              data={cities}
+              name="Job category"
+              valueHandler={catHandler}
+            />
+          </div>
+
+          <div
+            className="col-12"
+            style={{
+              maxHeight: "6rem",
+              zIndex: 14,
+            }}
+          >
+            <SelectOption
+              data={cities}
+              name="State"
+              valueHandler={EprovinceHandler}
+              predata={resumecontext.data.province.Ename}
+            />
+          </div>
+          <div
+            className="col-12"
+            className="col-12"
+            style={{
+              maxHeight: "6rem",
+              zIndex: 13,
+            }}
+          >
+            <SelectOption
+              data={cities}
+              name="Region"
+              valueHandler={EcityHandler}
+              predata={resumecontext.data.city.Ename}
+            />
+          </div>
+
+          <SalaryNeededEn />
+        </div>
       </div>
-      <div className="d-flex flex-wrap col-5  " dir="ltr">
-        <div className="d-flex col-12 justify-content-between">
-          <div className="col-5  ">
-            <label
-              style={{
-                marginBottom: "0.5rem",
-                fontSize: "1rem",
-              }}
-            >
-              Name
-            </label>
-            <input
-              className="col-12 mb-3 "
-              style={{
-                backgroundColor: "#EBEBEB",
-                borderStyle: "none",
-                borderRadius: 5,
-              }}
-              type="text"
-              value={resumecontext.data.Ename}
-              onChange={(e) => {
-                resumecontext.dispatch({
-                  type: "Ename",
-                  payload: e.target.value,
-                });
-              }}
-            />
-          </div>
-          <div className="col-5">
-            <label
-              style={{
-                marginBottom: "0.5rem",
-                fontSize: "1rem",
-              }}
-            >
-              Last Name
-            </label>
-            <input
-              className="col-12 mb-3 "
-              style={{
-                backgroundColor: "#EBEBEB",
-                borderStyle: "none",
-                borderRadius: 5,
-              }}
-              type="text"
-              value={resumecontext.data.Elastname}
-              onChange={(e) => {
-                resumecontext.dispatch({
-                  type: "Elastname",
-                  payload: e.target.value,
-                });
-              }}
-            />
-          </div>
-        </div>
-        <div className="d-flex flex-column   col-12 justify-content-between">
-          <BirthDayEnglish />
-        </div>
 
-        <div
-          className="col-12"
-          style={{
-            maxHeight: "6rem",
-            zIndex: 15,
-          }}
-        >
-          <SelectOption
-            data={cities}
-            name="Job category"
-            valueHandler={catHandler}
-          />
-        </div>
-
-        <div
-          className="col-12"
-          style={{
-            maxHeight: "6rem",
-            zIndex: 14,
-          }}
-        >
-          <SelectOption
-            data={cities}
-            name="State"
-            valueHandler={EprovinceHandler}
-            predata={resumecontext.data.province.Ename}
-          />
-        </div>
-        <div
-          className="col-12"
-          className="col-12"
-          style={{
-            maxHeight: "6rem",
-            zIndex: 13,
-          }}
-        >
-          <SelectOption
-            data={cities}
-            name="Region"
-            valueHandler={EcityHandler}
-            predata={resumecontext.data.city.Ename}
-          />
-        </div>
-
-        <SalaryNeededEn />
-      </div>
-      </div>
-      
       <div className="col-12">
         <div className="d-flex   pt-4 col-9 justify-content-between">
           <div className=" ">

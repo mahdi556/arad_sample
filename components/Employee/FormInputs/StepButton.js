@@ -1,13 +1,15 @@
+import { useContext, useEffect, useState } from "react"
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext"
+
  
-const StepButton=({step,ph,handleStep})=>{
-    
-   
+const StepButton=({handleStep,step})=>{
+       
     return(
         <div
         className="d-flex mt-5 justify-content-center"
         onClick={() => {
-         handleStep(step,ph)
-        }}
+          handleStep(step +1)
+         }}
       >
         <div
           className="py-2 text-white"

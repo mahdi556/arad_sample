@@ -1,9 +1,10 @@
 const resumeReducer = (state, action) => {
   switch (action.type) {
     case "step":
+      return { ...state, step: action.payload };
     case "userImage":
       return { ...state, userImage: action.payload };
-      case "userImageFile":
+    case "userImageFile":
       return { ...state, userImageFile: action.payload };
     case "userVideo":
       return { ...state, userVideo: action.payload };
