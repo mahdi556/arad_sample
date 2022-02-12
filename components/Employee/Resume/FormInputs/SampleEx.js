@@ -1,14 +1,17 @@
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 
 const Divx = ({ i, data, dataHandler }) => {
-  const [title, setTilte] = useState("");
-  const [name, setName] = useState("");
-  const [reason, setReason] = useState("");
-  const [start, setStart] = useState({ m: "", y: "" });
-  const [finish, setFinish] = useState({ m: "", y: "" });
-  const [active, setActive] = useState(false);
+  const [localData, setLocalData] = useState({
+    id: i,
+    title: "",
+    Entitle: "",
+    link: "",
+    faDiscription: "",
+    enDiscription: "",
+  });
   const datahandler = dataHandler;
   return (
     <>
@@ -64,16 +67,8 @@ const Divx = ({ i, data, dataHandler }) => {
                     }}
                     type="text"
                     onChange={(e) => {
-                      setTilte(e.target.value);
-                      datahandler(
-                        i,
-                        e.target.value,
-                        name,
-                        reason,
-                        start,
-
-                        active
-                      );
+                      setLocalData({ ...localData, title: e.target.value });
+                      datahandler({ ...localData, title: e.target.value });
                     }}
                     value={data.title}
                   />
@@ -96,16 +91,8 @@ const Divx = ({ i, data, dataHandler }) => {
                     }}
                     type="text"
                     onChange={(e) => {
-                      setTilte(e.target.value);
-                      datahandler(
-                        i,
-                        e.target.value,
-                        name,
-                        reason,
-                        start,
-
-                        active
-                      );
+                      setLocalData({ ...localData, Entitle: e.target.value });
+                      datahandler({ ...localData, Entitle: e.target.value });
                     }}
                     value={data.title}
                   />
@@ -129,52 +116,76 @@ const Divx = ({ i, data, dataHandler }) => {
                   }}
                   type="text"
                   onChange={(e) => {
-                    setTilte(e.target.value);
-                    datahandler(
-                      i,
-                      e.target.value,
-                      name,
-                      reason,
-                      start,
-
-                      active
-                    );
+                    setLocalData({ ...localData, link: e.target.value });
+                    datahandler({ ...localData, link: e.target.value });
                   }}
                   value={data.title}
                 />
               </div>
               <div className="d-flex col-12">
-                <div className="d-flex flex-column col-12 text-right">
-                  <label
-                    style={{
-                      marginBottom: "0.5rem",
-                      fontSize: "0.9rem",
-                    }}
-                  >
-                    توضیحات
-                  </label>
-                  <textarea
-                    className="col-12 mb-3 "
-                    style={{
-                      backgroundColor: "#EBEBEB",
-                      borderStyle: "none",
-                      borderRadius: 5,
-                    }}
-                    type="text"
-                    onChange={(e) => {
-                      setTilte(e.target.value);
-                      datahandler(
-                        i,
-                        e.target.value,
-                        name,
-                        reason,
-                        start,
-
-                        active
-                      );
-                    }}
-                    value={data.title}
-                  />
+                <div className="col-6 pe-4">
+                  <div className="d-flex flex-column col-12 text-right">
+                    <label
+                      style={{
+                        marginBottom: "0.5rem",
+                        fontSize: "0.9rem",
+                      }}
+                    >
+                      توضیحات
+                    </label>
+                    <textarea
+                      className="col-12 mb-3 "
+                      style={{
+                        backgroundColor: "#EBEBEB",
+                        borderStyle: "none",
+                        borderRadius: 5,
+                      }}
+                      type="text"
+                      onChange={(e) => {
+                        setLocalData({
+                          ...localData,
+                          faDiscription: e.target.value,
+                        });
+                        datahandler({
+                          ...localData,
+                          faDiscription: e.target.value,
+                        });
+                      }}
+                      value={data.title}
+                    />
+                  </div>
+                </div>
+                <div className="col-6 ps-4" dir="ltr">
+                  <div className="d-flex flex-column col-12 text-right">
+                    <label
+                      style={{
+                        marginBottom: "0.5rem",
+                        fontSize: "0.9rem",
+                      }}
+                    >
+                      Description
+                    </label>
+                    <textarea
+                      className="col-12 mb-3 "
+                      style={{
+                        backgroundColor: "#EBEBEB",
+                        borderStyle: "none",
+                        borderRadius: 5,
+                      }}
+                      type="text"
+                      onChange={(e) => {
+                        setLocalData({
+                          ...localData,
+                          enDiscription: e.target.value,
+                        });
+                        datahandler({
+                          ...localData,
+                          enDiscription: e.target.value,
+                        });
+                      }}
+                      value={data.title}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -193,25 +204,23 @@ const Divx = ({ i, data, dataHandler }) => {
 };
 
 const SampleEx = () => {
+  const resumeContext = useContext(ResumeContext);
   const [expert, setExpert] = useState([]);
   const [hasEx, setHasEx] = useState(false);
-  const [data, setData] = useState([
-    {
-      id: 1,
-      title: "",
-      Entitle:'',
-       link:'',
-       faDiscription:'',
-       enDiscription
-      },
-  ]);
+  const [data, setData] = useState([]);
   const addSec = (ii) => {
     setExpert([...expert, ii]);
   };
   const [i, setI] = useState(0);
-  const dataHandler = (i, title, name, reason, start, active) => {
+  useEffect(() => {
+    resumeContext.dispatch({
+      type: "SampleEx",
+      payload: { data: data },
+    });
+  }, [data]);
+  const dataHandler = (props) => {
     var index = data.findIndex((object) => {
-      return object.id == i;
+      return object.id == props.id;
     });
     if (index !== -1) {
       data.splice(index, 1);
@@ -220,12 +229,12 @@ const SampleEx = () => {
     setData([
       ...data,
       {
-        id: i,
-        title: title,
-        name: name,
-        reason: reason,
-        start: start,
-        active: active,
+        id: props.id,
+        title: props.title,
+        Entitle: props.Entitle,
+        link: props.link,
+        faDiscription: props.faDiscription,
+        enDiscription: props.enDiscription,
       },
     ]);
   };
@@ -237,7 +246,7 @@ const SampleEx = () => {
       return data[index];
     }
   };
-   return (
+  return (
     <>
       <div className="d-flex align-items-center">
         <div
