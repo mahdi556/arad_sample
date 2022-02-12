@@ -3,9 +3,9 @@ import { useContext, useEffect, useRef, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
 import ButtonTag from "../../FormInputs/ButtonTag";
-import SoftExpertEn from "./SoftExpertEn";
+import LangExpertEn from "./LangExpertEn";
 
-const SoftExpert = () => {
+const LangExpert = () => {
   const [dropdown, setDropdown] = useState("dropdown-close");
   const [drop, setDrop] = useState(false);
 
@@ -23,7 +23,7 @@ const SoftExpert = () => {
   const dropRef = useRef(null);
   useEffect(() => {
     resumeContext.dispatch({
-      type: "softExpert",
+      type: "langExpert",
       payload: { data: expert },
     });
 
@@ -34,10 +34,10 @@ const SoftExpert = () => {
     };
   }, [drop, expert]);
   useEffect(() => {
-    setExpert(resumeContext.data.softExpert);
+    setExpert(resumeContext.data.langExpert);
     if (
-      resumeContext.data.softExpert.length > 0 ||
-      resumeContext.data.softExpertEn.length > 0
+      resumeContext.data.langExpert.length > 0 ||
+      resumeContext.data.langExpertEn.length > 0
     )
       setHasEx(true);
   }, []);
@@ -121,7 +121,7 @@ const SoftExpert = () => {
             marginLeft: "auto",
           }}
         >
-          مهارت های نرم افزاری
+          مهارت های زبان
         </div>
         <div
           className="d-flex align-items-center  "
@@ -142,7 +142,7 @@ const SoftExpert = () => {
                 : { color: "#e92b59" }
             }
           >
-            مهارت نرم افزاری ندارم
+            مهارت زبان ندارم
           </h6>
           <Image
             className=""
@@ -175,13 +175,13 @@ const SoftExpert = () => {
                 fontSize: "1rem",
               }}
             >
-              نام مهارت
+              نام زبان
             </label>
 
             <div className="d-flex   justify-content-between flex-wrap align-items-start expert ">
               <div className="d-inline col-12 ">
                 <input
-                  placeholder="یک مهارت وارد کنید"
+                  placeholder="یک زبان وارد کنید"
                   className={`col-12 ${input}`}
                   type="text"
                   value={text}
@@ -262,7 +262,7 @@ const SoftExpert = () => {
                   display: ev,
                 }}
               >
-                سطح مهارت را انتخاب کنید
+                سطح زبان را انتخاب کنید
               </div>
             </div>
             <div className="d-flex my-2 flex-wrap">
@@ -284,11 +284,11 @@ const SoftExpert = () => {
               </div>
             )}
           </div>
-          <SoftExpertEn />
+          <LangExpertEn />
         </div>
       )}
     </>
   );
 };
 
-export default SoftExpert;
+export default LangExpert;

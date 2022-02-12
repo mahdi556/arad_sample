@@ -82,9 +82,15 @@
 body {
   font-family: iransansdn;
   font-style: normal;
+  font-weight: 400;
+}
+.fw-light {
+  font-weight: 300;
+}
+.ff-roboto {
+  font-family: roboto;
   font-weight: normal;
 }
-
 .navitems {
   color: #000;
   font-weight: 600;
@@ -389,9 +395,9 @@ body {
   background-color: #fff;
   border-radius: 1.2rem;
   /* padding-right: 2rem; */
-   animation: sec2 1s;
+  animation: sec2 1s;
   overflow-y: hidden;
- }
+}
 @keyframes sec2 {
   0% {
     height: 0%;
@@ -534,7 +540,7 @@ body {
 
 .dropLabel {
   font-size: 1rem;
-    transition: all 1s;
+  transition: all 1s;
   animation: label 0.4s forwards;
 }
 
@@ -550,7 +556,7 @@ body {
   display: flex;
   flex-direction: column;
   font-size: 1rem;
-   height: 100%;
+  height: 100%;
   width: 100%;
   border-radius: 0.7rem;
   border-style: solid;
@@ -573,7 +579,7 @@ body {
 .dropLabelBack {
   font-size: 1rem;
   font-weight: normal;
-   animation: labelback 0.4s forwards;
+  animation: labelback 0.4s forwards;
 }
 
 @keyframes labelback {
@@ -968,11 +974,11 @@ body {
   height: 55px;
   padding-right: 10px;
 }
-.progressTitle{
+.progressTitle {
   font-size: 13px;
 }
 
-.progressDownButton{
+.progressDownButton {
   text-align: center;
   font-size: 18px;
   background-color: #11999e;
@@ -981,18 +987,14 @@ body {
   border-radius: 10px;
   margin-bottom: 12px;
   cursor: pointer;
-
 }
-
- 
 
 /* Employee REsume PROGRESSBAR  */
 /* FINISH */
- /* resume Boxshadow */
- .rShadow{
-  box-shadow: 0px 3px 7px rgba(0,0,0,0.18);
- }
- .shadow1{
-  box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
-
- }
+/* resume Boxshadow */
+.rShadow {
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.18);
+}
+.shadow1 {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}

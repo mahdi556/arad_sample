@@ -23,7 +23,7 @@ const VerifyData = ({ handleStep }) => {
             cursor: "pointer",
           }}
           onClick={() => {
-            resumeContext.dispatch({type:'step',payload:2})
+            resumeContext.dispatch({ type: "step", payload: 2 });
           }}
         >
           <Image
@@ -109,7 +109,7 @@ const VerifyData = ({ handleStep }) => {
           </h6>
         </div>
         <div className="d-flex col-6 justify-content-start align-items-center mb-4">
-          <h5 className="col-6 fs-6">تقاضای بیمه:</h5>
+          <h5 className="col-6  fs-6 ">تقاضای بیمه:</h5>
           <h6 className="col-6 fs-6 fw-bold">
             {resumeContext.data.insurrance == 1 ? "دارم" : "ندارم"}
           </h6>

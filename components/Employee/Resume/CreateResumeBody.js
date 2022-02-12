@@ -15,8 +15,8 @@ const CreateResumeBody = () => {
     setStep(sn);
     resumeContext.dispatch({ type: "step", payload: sn });
   };
-  console.log(step);
-  return (
+  console.log(resumeContext.data.langExpertEn)
+   return (
     <>
       <div
         className="mx-auto"
@@ -58,7 +58,7 @@ const CreateResumeBody = () => {
               {step >= 2 && (
                 <JobConditionVip step={step} />
               )}
-              {step > 4 && <ContactForm />}
+              {step == 10 && <ContactForm />}
 
               <StepButton handleStep={handleStep} step={step} />
             </div>

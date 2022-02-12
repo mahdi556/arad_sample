@@ -1,15 +1,18 @@
 import { useContext, useState } from "react";
-import StepButton from "../../FormInputs/StepButton";
-import JoBExperience from "./JobExperience";
+ import JoBExperience from "./JobExperience";
 import PersonalData from "./PersonalData";
 import DegreeDoc from "./DegreeDoc";
 import VerifyData from "./VerifyData";
-import SoftExpert from "./SoftExpert";
-import SampleEx from "./SampleEx";
+ import SampleEx from "./SampleEx";
 import CharTest from "./CharTest";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import VerifyExperience from "./VerifyExperience";
 import BreakLine from "./BreakLine";
+import VerifyDegree from "./VerifyDegree";
+import LangExpert from "./LangExpert";
+import VerifyLangExpert from "./VerifyLangExpert";
+import VerifySoftExpert from "./VerifySoftExpert";
+import SoftExpert from "./SoftExpert";
 const JobConditionVip = ({ step, handleStep }) => {
   const resumeContext = useContext(ResumeContext);
 
@@ -27,45 +30,49 @@ const JobConditionVip = ({ step, handleStep }) => {
           <VerifyExperience />
         )}
 
-        {step >= 4 && (
-          <>
-            <BreakLine />
+        {step == 4 && (
+          <div className="col-12">
+            <DegreeDoc />
+          </div>
+        )}
+        {step > 4 && <VerifyDegree />}
+        {step == 5 && (
+          <div className="mt-5">
+            <LangExpert />
+          </div>
+        )}
+        {step > 5 && <VerifyLangExpert />}
+        {step == 6 && (
+          <div className="mt-5">
+            <SoftExpert />
+          </div>
+        )}
+        {step > 6 && <VerifySoftExpert />}
+        {step == 7 && <SampleEx />}
+        {step == 8 && <CharTest />}
+        {step == 9 && (
+          <div className="d-flex  justify-content-between">
             <div className="col-12">
-              <DegreeDoc />
+              <label
+                style={{
+                  marginBottom: "0.5rem",
+                  fontSize: "1rem",
+                }}
+              >
+                توضیحات آگهی
+              </label>
+              <textarea
+                className="col-12 mb-3 "
+                style={{
+                  backgroundColor: "#EBEBEB",
+                  borderStyle: "none",
+                  borderRadius: 5,
+                  height: "10rem",
+                }}
+                type="text"
+              />
             </div>
-
-            <div className="mt-5">
-              <SoftExpert name={"مهارت نرم افزاری"} />
-            </div>
-            <div className="mt-5 ">
-              <SoftExpert name={"زبان"} />
-            </div>
-            <BreakLine />
-            <SampleEx />
-            <CharTest />
-            <div className="d-flex  justify-content-between">
-              <div className="col-12">
-                <label
-                  style={{
-                    marginBottom: "0.5rem",
-                    fontSize: "1rem",
-                  }}
-                >
-                  توضیحات آگهی
-                </label>
-                <textarea
-                  className="col-12 mb-3 "
-                  style={{
-                    backgroundColor: "#EBEBEB",
-                    borderStyle: "none",
-                    borderRadius: 5,
-                    height: "10rem",
-                  }}
-                  type="text"
-                />
-              </div>
-            </div>
-          </>
+          </div>
         )}
       </div>
     </>

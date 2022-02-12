@@ -87,8 +87,10 @@ const ProgressBar = () => {
         <div className="d-flex align-items-center mb-5">
           <div className="me-3  stepCircle_1">6</div>نمونه کار
         </div>
+        <button className="btn btn-success me-2" onClick={()=>resumecontext.dispatch({type:'step',payload:step+1})} > + </button>
+        <button className="btn btn-danger" onClick={()=>resumecontext.dispatch({type:'step',payload:step-1})}>  - </button>
       </div>
-       
+         
     </>
   );
 };

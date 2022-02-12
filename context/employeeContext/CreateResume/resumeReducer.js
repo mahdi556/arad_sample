@@ -87,6 +87,36 @@ const resumeReducer = (state, action) => {
         ...state,
         experiences: action.payload.data,
       };
+    case "degree":
+      return {
+        ...state,
+        degree: action.payload.data,
+      };
+    case "langExpert":
+      return {
+        ...state,
+        langExpert: action.payload.data,
+      };
+    case "langExpertEn":
+      return {
+        ...state,
+        langExpertEn: action.payload.data,
+      };
+    case "softExpert":
+      return {
+        ...state,
+        softExpert: action.payload.data,
+      };
+    case "softExpertEn":
+      return {
+        ...state,
+        softExpertEn: action.payload.data,
+      };
+      case "SampleEx":
+      return {
+        ...state,
+        SampleEx: action.payload.data,
+      };
     case "salary-fa-from":
       return {
         ...state,

@@ -50,6 +50,12 @@ const initialData = {
     en: { from: "", to: "" },
   },
   experiences: [],
+  degree: [],
+  langExpert: [],
+  langExpertEn: [],
+  softExpert: [],
+  softExpertEn: [],
+  SampleEx: [],
 };
 
 const ResumeProvider = (props) => {

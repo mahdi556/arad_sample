@@ -1,19 +1,25 @@
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 
 const Divx = ({ i, data, dataHandler }) => {
-  const [title, setTilte] = useState("");
-  const [name, setName] = useState("");
-  const [reason, setReason] = useState("");
-  const [start, setStart] = useState({ m: "", y: "" });
-  const [finish, setFinish] = useState({ m: "", y: "" });
-  const [active, setActive] = useState(false);
+  const [localData, setLocalData] = useState({
+    id: i,
+    title: "",
+    degree: "",
+    date: { d: "", m: "", y: "" },
+    active: false,
+    Entitle: "",
+    Endegree: "",
+    Endate: { d: "", m: "", y: "" },
+    Enactive: false,
+  });
   const datahandler = dataHandler;
   return (
     <>
-      <div className="d-flex col-12" id={i}>
-        <div className="col-5">
+      <div className="d-flex col-12 px-3 mt-3 " id={i}>
+        <div className="col-6 pe-3">
           <div className="col-12  mt-2">
             <label
               style={{
@@ -32,16 +38,8 @@ const Divx = ({ i, data, dataHandler }) => {
               }}
               type="text"
               onChange={(e) => {
-                setTilte(e.target.value);
-                datahandler(
-                  i,
-                  e.target.value,
-                  name,
-                  reason,
-                  start,
-
-                  active
-                );
+                setLocalData({ ...localData, title: e.target.value });
+                datahandler({ ...localData, title: e.target.value });
               }}
               value={data.title}
             />
@@ -64,10 +62,10 @@ const Divx = ({ i, data, dataHandler }) => {
               }}
               type="text"
               onChange={(e) => {
-                setName(e.target.value);
-                datahandler(i, title, e.target.value, reason, start, active);
+                setLocalData({ ...localData, degree: e.target.value });
+                datahandler({ ...localData, degree: e.target.value });
               }}
-              value={data.name}
+              value={data.degree}
             />
           </div>
 
@@ -91,19 +89,18 @@ const Divx = ({ i, data, dataHandler }) => {
                     width: "25%",
                   }}
                   onChange={(e) => {
-                    setStart({ ...start, m: e.target.value });
-                    datahandler(
-                      i,
-                      title,
-                      name,
-                      reason,
-                      { ...start, m: e.target.value },
-                      active
-                    );
+                    setLocalData({
+                      ...localData,
+                      date: { ...localData.date, d: e.target.value },
+                    });
+                    datahandler({
+                      ...localData,
+                      date: { ...localData.date, d: e.target.value },
+                    });
                   }}
                 />
                 <div
-                  className="d-flex  align-items-center px-2 me-1"
+                  className="d-flex  align-items-center px-2 me-3"
                   style={{
                     backgroundColor: "#11999e",
                     height: "100%",
@@ -122,19 +119,18 @@ const Divx = ({ i, data, dataHandler }) => {
                     width: "25%",
                   }}
                   onChange={(e) => {
-                    setStart({ ...start, m: e.target.value });
-                    datahandler(
-                      i,
-                      title,
-                      name,
-                      reason,
-                      { ...start, m: e.target.value },
-                      active
-                    );
+                    setLocalData({
+                      ...localData,
+                      date: { ...localData.date, m: e.target.value },
+                    });
+                    datahandler({
+                      ...localData,
+                      date: { ...localData.date, m: e.target.value },
+                    });
                   }}
                 />
                 <div
-                  className="d-flex  align-items-center px-2 me-1"
+                  className="d-flex  align-items-center px-2   me-3"
                   style={{
                     backgroundColor: "#11999e",
                     height: "100%",
@@ -153,19 +149,18 @@ const Divx = ({ i, data, dataHandler }) => {
                     width: "25%",
                   }}
                   onChange={(e) => {
-                    setStart({ ...start, y: e.target.value });
-                    datahandler(
-                      i,
-                      title,
-                      name,
-                      reason,
-                      { ...start, y: e.target.value },
-                      active
-                    );
+                    setLocalData({
+                      ...localData,
+                      date: { ...localData.date, y: e.target.value },
+                    });
+                    datahandler({
+                      ...localData,
+                      date: { ...localData.date, y: e.target.value },
+                    });
                   }}
                 />
                 <div
-                  className="d-flex align-items-center px-2"
+                  className="d-flex align-items-center px-2 "
                   style={{
                     backgroundColor: "#11999e",
                     height: "100%",
@@ -183,14 +178,14 @@ const Divx = ({ i, data, dataHandler }) => {
             <div
               className="d-flex align-items-center mt-2"
               onClick={() => {
-                datahandler(i, title, name, reason, start, !active);
-                setActive(!active);
+                setLocalData({ ...localData, active: !localData.active });
+                datahandler({ ...localData, active: !localData.active });
               }}
             >
               <h6
                 className="me-2"
                 style={
-                  active
+                  localData.active
                     ? {
                         color: "#e92b59",
                         fontSize: 16,
@@ -204,7 +199,7 @@ const Divx = ({ i, data, dataHandler }) => {
               <Image
                 className=""
                 src={
-                  active
+                  localData.active
                     ? "/assets/images/checked.png"
                     : "/assets/images/checkbox.png"
                 }
@@ -213,15 +208,8 @@ const Divx = ({ i, data, dataHandler }) => {
               />
             </div>
           </div>
-          <div className="  col-8 my-3 mx-auto ">
-            <img
-              className="img-fluid"
-              src="../../../../assets/images/line.png"
-              width="100%"
-            />
-          </div>
         </div>
-        <div id={i} className="col-5 offset-1" dir="ltr">
+        <div id={i} className="col-6 ps-3 " dir="ltr">
           <div className="col-12  mt-2">
             <label
               style={{
@@ -240,18 +228,10 @@ const Divx = ({ i, data, dataHandler }) => {
               }}
               type="text"
               onChange={(e) => {
-                setTilte(e.target.value);
-                datahandler(
-                  i,
-                  e.target.value,
-                  name,
-                  reason,
-                  start,
-
-                  active
-                );
+                setLocalData({ ...localData, Entitle: e.target.value });
+                datahandler({ ...localData, Entitle: e.target.value });
               }}
-              value={data.title}
+              value={data.Entitle}
             />
           </div>
           <div className="col-12">
@@ -271,11 +251,12 @@ const Divx = ({ i, data, dataHandler }) => {
                 borderRadius: 5,
               }}
               type="text"
+              type="text"
               onChange={(e) => {
-                setName(e.target.value);
-                datahandler(i, title, e.target.value, reason, start, active);
+                setLocalData({ ...localData, Endegree: e.target.value });
+                datahandler({ ...localData, Endegree: e.target.value });
               }}
-              value={data.name}
+              value={data.Endegree}
             />
           </div>
 
@@ -299,20 +280,18 @@ const Divx = ({ i, data, dataHandler }) => {
                     width: "25%",
                   }}
                   onChange={(e) => {
-                    setStart({ ...start, m: e.target.value });
-                    datahandler(
-                      i,
-                      title,
-                      name,
-                      reason,
-                      { ...start, m: e.target.value },
-                      finish,
-                      active
-                    );
+                    setLocalData({
+                      ...localData,
+                      Endate: { ...localData.Endate, d: e.target.value },
+                    });
+                    datahandler({
+                      ...localData,
+                      Endate: { ...localData.Endate, d: e.target.value },
+                    });
                   }}
                 />
                 <div
-                  className="d-flex  align-items-center px-2 ms-2 "
+                  className="d-flex  align-items-center px-2 ms-3 "
                   style={{
                     backgroundColor: "#11999e",
                     height: "100%",
@@ -331,20 +310,18 @@ const Divx = ({ i, data, dataHandler }) => {
                     width: "25%",
                   }}
                   onChange={(e) => {
-                    setStart({ ...start, y: e.target.value });
-                    datahandler(
-                      i,
-                      title,
-                      name,
-                      reason,
-                      { ...start, y: e.target.value },
-                      finish,
-                      active
-                    );
+                    setLocalData({
+                      ...localData,
+                      Endate: { ...localData.Endate, m: e.target.value },
+                    });
+                    datahandler({
+                      ...localData,
+                      Endate: { ...localData.Endate, m: e.target.value },
+                    });
                   }}
                 />
                 <div
-                  className="d-flex  align-items-center px-2 ms-2 "
+                  className="d-flex  align-items-center px-2 ms-3 "
                   style={{
                     backgroundColor: "#11999e",
                     height: "100%",
@@ -363,16 +340,14 @@ const Divx = ({ i, data, dataHandler }) => {
                     width: "25%",
                   }}
                   onChange={(e) => {
-                    setStart({ ...start, m: e.target.value });
-                    datahandler(
-                      i,
-                      title,
-                      name,
-                      reason,
-                      { ...start, m: e.target.value },
-                      finish,
-                      active
-                    );
+                    setLocalData({
+                      ...localData,
+                      Endate: { ...localData.Endate, y: e.target.value },
+                    });
+                    datahandler({
+                      ...localData,
+                      Endate: { ...localData.Endate, y: e.target.value },
+                    });
                   }}
                 />
                 <div
@@ -394,14 +369,14 @@ const Divx = ({ i, data, dataHandler }) => {
             <div
               className="d-flex align-items-center mt-2"
               onClick={() => {
-                datahandler(i, title, name, reason, start, !active);
-                setActive(!active);
+                setLocalData({ ...localData, Enactive: !localData.Enactive });
+                datahandler({ ...localData, Enactive: !localData.Enactive });
               }}
             >
               <h6
                 className="ms-2 "
                 style={
-                  active
+                  localData.Enactive
                     ? {
                         color: "#e92b59",
                         fontSize: 16,
@@ -415,7 +390,7 @@ const Divx = ({ i, data, dataHandler }) => {
                 <Image
                   className=""
                   src={
-                    active
+                    localData.Enactive
                       ? "/assets/images/checked.png"
                       : "/assets/images/checkbox.png"
                   }
@@ -424,13 +399,6 @@ const Divx = ({ i, data, dataHandler }) => {
                 />
               </div>
             </div>
-          </div>
-          <div className="  col-8 my-3 mx-auto ">
-            <img
-              className="img-fluid"
-              src="../../../../assets/images/line.png"
-              width="100%"
-            />
           </div>
         </div>
       </div>
@@ -441,22 +409,21 @@ const Divx = ({ i, data, dataHandler }) => {
 const DegreeDoc = () => {
   const [expert, setExpert] = useState([]);
   const [hasEx, setHasEx] = useState(false);
-  const [data, setData] = useState([
-    {
-      id: 1,
-      title: "",
-      name: 1,
-      reason: "",
-      start: { m: "", y: "" },
-    },
-  ]);
+  const [data, setData] = useState([]);
+  const resumeContext=useContext(ResumeContext);
+  useEffect(() => {
+    resumeContext.dispatch({
+      type: "degree",
+      payload: { data: data },
+    });
+  }, [data]);
   const addSec = (ii) => {
     setExpert([...expert, ii]);
   };
   const [i, setI] = useState(0);
-  const dataHandler = (i, title, name, reason, start, active) => {
+  const dataHandler = (props) => {
     var index = data.findIndex((object) => {
-      return object.id == i;
+      return object.id == props.id;
     });
     if (index !== -1) {
       data.splice(index, 1);
@@ -465,12 +432,15 @@ const DegreeDoc = () => {
     setData([
       ...data,
       {
-        id: i,
-        title: title,
-        name: name,
-        reason: reason,
-        start: start,
-        active: active,
+        id: props.id,
+        title: props.title,
+        degree: props.degree,
+        date: props.date,
+        active: props.active,
+        Entitle: props.Entitle,
+        Endegree: props.Endegree,
+        Endate: props.Endate,
+        Enactive: props.Enactive,
       },
     ]);
   };
@@ -528,23 +498,58 @@ const DegreeDoc = () => {
           />
         </div>
 
-        <div
-          className="ms-3"
-          onClick={() => {
-            addSec(i + 1);
-            dataHandler(i + 1, "", "", "", "", "", false);
-            setI(i + 1);
-            setHasEx(true);
-          }}
-        >
-          <ButtonAdd data={"افزودن مدرک تحصیلی"} />
+        
+          {expert.length < 1 && (
+            <div
+              className="ms-3"
+              onClick={() => {
+                addSec(i + 1);
+                dataHandler({
+                  id: i + 1,
+                  title: "",
+                  degree: "",
+                  date: { d: "", m: "", y: "" },
+                  active: false,
+                  Entitle: "",
+                  degree: "",
+                  Endate: { d: "", m: "", y: "" },
+                  Enactive: false,
+                });
+                setI(i + 1);
+                setHasEx(true);
+              }}
+            >
+              <ButtonAdd data={"افزودن مدرک تحصیلی"} />
+            </div>
+          )}
         </div>
-      </div>
-      {expert.map((item) => (
+       {expert.map((item) => (
         <>
           <Divx i={item} data={dataSender(item)} dataHandler={dataHandler} />
         </>
       ))}
+      {expert.length > 0 && (
+        <div
+          onClick={() => {
+            addSec(i + 1);
+            dataHandler({
+              id: i + 1,
+              title: "",
+              degree: "",
+              date: { d: "", m: "", y: "" },
+              active: false,
+              Entitle: "",
+              degree: "",
+              Endate: { d: "", m: "", y: "" },
+              Enactive: false,
+            });
+            setI(i + 1);
+            setHasEx(true);
+          }}
+        >
+          <ButtonAdd data={"افزودن"} />
+        </div>
+      )}
     </>
   );
 };

@@ -199,10 +199,11 @@ const SampleEx = () => {
     {
       id: 1,
       title: "",
-      name: 1,
-      reason: "",
-      start: { m: "", y: "" },
-    },
+      Entitle:'',
+       link:'',
+       faDiscription:'',
+       enDiscription
+      },
   ]);
   const addSec = (ii) => {
     setExpert([...expert, ii]);
