@@ -13,6 +13,7 @@ import LangExpert from "./LangExpert";
 import VerifyLangExpert from "./VerifyLangExpert";
 import VerifySoftExpert from "./VerifySoftExpert";
 import SoftExpert from "./SoftExpert";
+import VerifySampleEx from "./VerifySampleEx";
 const JobConditionVip = ({ step, handleStep }) => {
   const resumeContext = useContext(ResumeContext);
 
@@ -49,6 +50,7 @@ const JobConditionVip = ({ step, handleStep }) => {
         )}
         {step > 6 && <VerifySoftExpert />}
         {step == 7 && <SampleEx />}
+        {step > 7 && <VerifySampleEx />}
         {step == 8 && <CharTest />}
         {step == 9 && (
           <div className="d-flex  justify-content-between">

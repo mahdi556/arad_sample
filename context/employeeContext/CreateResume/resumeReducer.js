@@ -112,10 +112,10 @@ const resumeReducer = (state, action) => {
         ...state,
         softExpertEn: action.payload.data,
       };
-      case "SampleEx":
+      case "sampleEx":
       return {
         ...state,
-        SampleEx: action.payload.data,
+        sampleEx: action.payload.data,
       };
     case "salary-fa-from":
       return {

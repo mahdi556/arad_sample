@@ -5,14 +5,15 @@ import ResumeContext from "../../../../context/employeeContext/CreateResume/Resu
 
 const Divx = ({ i, data, dataHandler }) => {
   const [localData, setLocalData] = useState({
-    id: i,
-    title: "",
-    Entitle: "",
-    link: "",
-    faDiscription: "",
-    enDiscription: "",
+    id: data.id,
+    title: data.title,
+    Entitle: data.Entitle,
+    link: data.link,
+    faDiscription: data.faDiscription,
+    enDiscription: data.enDiscription,
   });
   const datahandler = dataHandler;
+  console.log(i, data);
   return (
     <>
       <div id={i}>
@@ -70,7 +71,7 @@ const Divx = ({ i, data, dataHandler }) => {
                       setLocalData({ ...localData, title: e.target.value });
                       datahandler({ ...localData, title: e.target.value });
                     }}
-                    value={data.title}
+                    value={localData.title}
                   />
                 </div>
                 <div className="d-flex flex-column col-5 text-right" dir="ltr">
@@ -94,7 +95,7 @@ const Divx = ({ i, data, dataHandler }) => {
                       setLocalData({ ...localData, Entitle: e.target.value });
                       datahandler({ ...localData, Entitle: e.target.value });
                     }}
-                    value={data.title}
+                    value={localData.Entitle}
                   />
                 </div>
               </div>
@@ -119,7 +120,7 @@ const Divx = ({ i, data, dataHandler }) => {
                     setLocalData({ ...localData, link: e.target.value });
                     datahandler({ ...localData, link: e.target.value });
                   }}
-                  value={data.title}
+                  value={localData.link}
                 />
               </div>
               <div className="d-flex col-12">
@@ -151,7 +152,7 @@ const Divx = ({ i, data, dataHandler }) => {
                           faDiscription: e.target.value,
                         });
                       }}
-                      value={data.title}
+                      value={localData.faDiscription}
                     />
                   </div>
                 </div>
@@ -183,7 +184,7 @@ const Divx = ({ i, data, dataHandler }) => {
                           enDiscription: e.target.value,
                         });
                       }}
-                      value={data.title}
+                      value={localData.enDiscription}
                     />
                   </div>
                 </div>
@@ -209,22 +210,30 @@ const SampleEx = () => {
   const [hasEx, setHasEx] = useState(false);
   const [data, setData] = useState([]);
   const addSec = (ii) => {
-    setExpert([...expert, ii]);
+    setExpert([...expert, { id: ii }]);
   };
   const [i, setI] = useState(0);
   useEffect(() => {
     resumeContext.dispatch({
-      type: "SampleEx",
+      type: "sampleEx",
       payload: { data: data },
     });
   }, [data]);
+  useEffect(() => {
+    setData(resumeContext.data.sampleEx);
+    setI(resumeContext.data.sampleEx.length);
+    setExpert(resumeContext.data.sampleEx);
+  }, []);
+
   const dataHandler = (props) => {
+    console.log(resumeContext.data.sampleEx, "expert1");
     var index = data.findIndex((object) => {
       return object.id == props.id;
     });
     if (index !== -1) {
       data.splice(index, 1);
     }
+    console.log(resumeContext.data.sampleEx, "expert2");
 
     setData([
       ...data,
@@ -237,7 +246,9 @@ const SampleEx = () => {
         enDiscription: props.enDiscription,
       },
     ]);
+    console.log(resumeContext.data.sampleEx, "expert3");
   };
+  console.log(resumeContext.data.sampleEx);
   const dataSender = (j) => {
     var index = data.findIndex((object) => {
       return object.id == j;
@@ -246,6 +257,7 @@ const SampleEx = () => {
       return data[index];
     }
   };
+
   return (
     <>
       <div className="d-flex align-items-center">
@@ -291,34 +303,55 @@ const SampleEx = () => {
             width={17}
           />
         </div>
-
+        {expert.length < 1 && (
+          <div
+            className="ms-3"
+            onClick={() => {
+              addSec(i + 1);
+              dataHandler({
+                id: i + 1,
+                title: "",
+                Entitle: "",
+                faDiscription: "",
+                enDiscription: "",
+                link: "",
+              });
+              setHasEx(true);
+              setI(i + 1);
+            }}
+          >
+            <ButtonAdd data={"افزودن نمونه کار"} />
+          </div>
+        )}
+      </div>
+      {expert.map((item) => (
+        <>
+          <Divx
+            i={item.id}
+            data={dataSender(item.id)}
+            dataHandler={dataHandler}
+          />
+        </>
+      ))}
+      {expert.length > 0 && (
         <div
-          className="ms-3"
           onClick={() => {
             addSec(i + 1);
-            dataHandler(i + 1, "", "", "", "", "", false);
+            dataHandler({
+              id: i + 1,
+              title: "",
+              Entitle: "",
+              link: "",
+              faDiscription: "",
+              enDiscription: "",
+            });
             setI(i + 1);
             setHasEx(true);
           }}
         >
-          <ButtonAdd data={"افزودن نمونه کار"} />
+          <ButtonAdd data={"افزودن"} />
         </div>
-      </div>
-      {expert.map((item) => (
-        <>
-          <Divx i={item} data={dataSender(item)} dataHandler={dataHandler} />
-        </>
-      ))}
-      <div
-        onClick={() => {
-          addSec(i + 1);
-          dataHandler(i + 1, "", "", "", "", "", false);
-          setI(i + 1);
-          setHasEx(true);
-        }}
-      >
-        <ButtonAdd data={"افزودن"} />
-      </div>
+      )}
       <div className="  col-8 my-3 mx-auto ">
         <img
           className="img-fluid"

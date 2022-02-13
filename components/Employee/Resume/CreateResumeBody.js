@@ -8,15 +8,14 @@ import FirstFormVip from "./FormInputs/FirstFormVip";
 const CreateResumeBody = () => {
   const resumeContext = useContext(ResumeContext);
   const [step, setStep] = useState(1);
-  useEffect(()=>{
-    setStep(resumeContext.data.step)
-  },[resumeContext.data.step])
+  useEffect(() => {
+    setStep(resumeContext.data.step);
+  }, [resumeContext.data.step]);
   const handleStep = (sn) => {
     setStep(sn);
     resumeContext.dispatch({ type: "step", payload: sn });
   };
-  console.log(resumeContext.data.langExpertEn)
-   return (
+  return (
     <>
       <div
         className="mx-auto"
@@ -55,9 +54,7 @@ const CreateResumeBody = () => {
             >
               {step == 1 && <FirstFormVip />}
               {step > 1 && <VerifyFirstForm />}
-              {step >= 2 && (
-                <JobConditionVip step={step} />
-              )}
+              {step >= 2 && <JobConditionVip step={step} />}
               {step == 10 && <ContactForm />}
 
               <StepButton handleStep={handleStep} step={step} />

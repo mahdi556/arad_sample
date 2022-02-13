@@ -12,7 +12,7 @@ const initialData = {
     youtube: "",
     dribble: "",
   },
-  step: 1,
+  step: 7,
   name: "",
   lastname: "",
   Ename: "",
@@ -55,7 +55,7 @@ const initialData = {
   langExpertEn: [],
   softExpert: [],
   softExpertEn: [],
-  SampleEx: [],
+  sampleEx: [],
 };
 
 const ResumeProvider = (props) => {
