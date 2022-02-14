@@ -12,8 +12,6 @@ const Divx = ({ i, data, dataHandler }) => {
     faDiscription: data.faDiscription,
     enDiscription: data.enDiscription,
   });
-  const datahandler = dataHandler;
-  console.log(i, data);
   return (
     <>
       <div id={i}>
@@ -69,7 +67,7 @@ const Divx = ({ i, data, dataHandler }) => {
                     type="text"
                     onChange={(e) => {
                       setLocalData({ ...localData, title: e.target.value });
-                      datahandler({ ...localData, title: e.target.value });
+                      dataHandler({ ...localData, title: e.target.value });
                     }}
                     value={localData.title}
                   />
@@ -93,7 +91,7 @@ const Divx = ({ i, data, dataHandler }) => {
                     type="text"
                     onChange={(e) => {
                       setLocalData({ ...localData, Entitle: e.target.value });
-                      datahandler({ ...localData, Entitle: e.target.value });
+                      dataHandler({ ...localData, Entitle: e.target.value });
                     }}
                     value={localData.Entitle}
                   />
@@ -118,7 +116,7 @@ const Divx = ({ i, data, dataHandler }) => {
                   type="text"
                   onChange={(e) => {
                     setLocalData({ ...localData, link: e.target.value });
-                    datahandler({ ...localData, link: e.target.value });
+                    dataHandler({ ...localData, link: e.target.value });
                   }}
                   value={localData.link}
                 />
@@ -147,7 +145,7 @@ const Divx = ({ i, data, dataHandler }) => {
                           ...localData,
                           faDiscription: e.target.value,
                         });
-                        datahandler({
+                        dataHandler({
                           ...localData,
                           faDiscription: e.target.value,
                         });
@@ -179,7 +177,7 @@ const Divx = ({ i, data, dataHandler }) => {
                           ...localData,
                           enDiscription: e.target.value,
                         });
-                        datahandler({
+                        dataHandler({
                           ...localData,
                           enDiscription: e.target.value,
                         });
@@ -192,13 +190,7 @@ const Divx = ({ i, data, dataHandler }) => {
             </div>
           </div>
         </div>
-        <div className="  col-8 my-3 mx-auto ">
-          <img
-            className="img-fluid"
-            src="../../../../assets/images/line.png"
-            width="100%"
-          />
-        </div>
+        
       </div>
     </>
   );
@@ -213,27 +205,35 @@ const SampleEx = () => {
     setExpert([...expert, { id: ii }]);
   };
   const [i, setI] = useState(0);
-  useEffect(() => {
-    resumeContext.dispatch({
-      type: "sampleEx",
-      payload: { data: data },
-    });
-  }, [data]);
-  useEffect(() => {
-    setData(resumeContext.data.sampleEx);
-    setI(resumeContext.data.sampleEx.length);
-    setExpert(resumeContext.data.sampleEx);
-  }, []);
 
+  const regData = () => {
+    return new Promise((resolve, reject) => {
+      setData(resumeContext.data.sampleEx);
+      if (data.length > 0) {
+        resolve();
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (data.length > 0) {
+      resumeContext.dispatch({
+        type: "sampleEx",
+        payload: { data: data },
+      });
+    }
+  }, [data]);
+  useEffect(async () => {
+    await regData();
+    setI(data.length);
+  }, []);
   const dataHandler = (props) => {
-    console.log(resumeContext.data.sampleEx, "expert1");
     var index = data.findIndex((object) => {
       return object.id == props.id;
     });
     if (index !== -1) {
       data.splice(index, 1);
     }
-    console.log(resumeContext.data.sampleEx, "expert2");
 
     setData([
       ...data,
@@ -246,9 +246,7 @@ const SampleEx = () => {
         enDiscription: props.enDiscription,
       },
     ]);
-    console.log(resumeContext.data.sampleEx, "expert3");
   };
-  console.log(resumeContext.data.sampleEx);
   const dataSender = (j) => {
     var index = data.findIndex((object) => {
       return object.id == j;
@@ -303,7 +301,7 @@ const SampleEx = () => {
             width={17}
           />
         </div>
-        {expert.length < 1 && (
+        {data.length < 1 && (
           <div
             className="ms-3"
             onClick={() => {
@@ -324,7 +322,7 @@ const SampleEx = () => {
           </div>
         )}
       </div>
-      {expert.map((item) => (
+      {data.map((item) => (
         <>
           <Divx
             i={item.id}
@@ -333,19 +331,19 @@ const SampleEx = () => {
           />
         </>
       ))}
-      {expert.length > 0 && (
+      {data.length > 0 && (
         <div
           onClick={() => {
-            addSec(i + 1);
+            addSec(data.length + 1);
             dataHandler({
-              id: i + 1,
+              id: data.length + 1,
               title: "",
               Entitle: "",
               link: "",
               faDiscription: "",
               enDiscription: "",
             });
-            setI(i + 1);
+            setI(data.length + 1);
             setHasEx(true);
           }}
         >
