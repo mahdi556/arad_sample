@@ -1,13 +1,22 @@
 import { useContext, useEffect, useState } from "react";
 import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
 const ProgressBar = () => {
-  const resumecontext = useContext(ResumeContext);
+  const resumeContext = useContext(ResumeContext);
 
   const [step, setStep] = useState(1);
+  const [progress, setProgress] = useState(0);
   useEffect(() => {
     setStep(resumecontext.data.step);
   }, []);
-
+      const handlePersonalData=()=>{
+        resumeContext.data.name !== '' &&
+        setProgress(progress + 10)
+        resumeContext.data.lastname !== '' &&
+        setProgress(progress + 10)
+        resumeContext.data.lastname !== '' &&
+        setProgress(progress + 10)
+      }
+   
   return (
     <>
       <div className="PContainer">
@@ -22,12 +31,24 @@ const ProgressBar = () => {
               </div>
             </div>
           </div>
-          <h6 className="progressTitle">سابقه کاری</h6>
+          <h6 className="progressTitle">معرفی من</h6>
         </div>
         <div className="d-flex align-items-center mb-3">
           <div className="set-size charts-container me-3">
             <div className="pie-wrapper    progress-60">
               <span className="label">2</span>
+              <div className="pie">
+                <div className="left-side half-circle"></div>
+                <div className="right-side half-circle"></div>
+              </div>
+            </div>
+          </div>
+          <h6 className="progressTitle">اطلاعات شخصی</h6>
+        </div>
+        <div className="d-flex align-items-center mb-3">
+          <div className="set-size charts-container me-3">
+            <div className="pie-wrapper    progress-0">
+              <span className="label">۲</span>
               <div className="pie">
                 <div className="left-side half-circle"></div>
                 <div className="right-side half-circle"></div>
@@ -46,7 +67,7 @@ const ProgressBar = () => {
               </div>
             </div>
           </div>
-          <h6 className="progressTitle">سابقه کاری</h6>
+          <h6 className="progressTitle">مدرک تحصیلی</h6>
         </div>
         <div className="d-flex align-items-center mb-3">
           <div className="set-size charts-container me-2">
@@ -58,7 +79,7 @@ const ProgressBar = () => {
               </div>
             </div>
           </div>
-          <h6 className="progressTitle">سابقه کاری</h6>
+          <h6 className="progressTitle">مهارت های زبان</h6>
         </div>
         <div className="d-flex align-items-center mb-3">
           <div className="set-size charts-container me-2">
@@ -70,7 +91,7 @@ const ProgressBar = () => {
               </div>
             </div>
           </div>
-          <h6 className="progressTitle">سابقه کاری</h6>
+          <h6 className="progressTitle">مهارت های نرم افزاری</h6>
         </div>
         <div className="d-flex align-items-center mb-3">
           <div className="set-size charts-container me-2">
@@ -82,13 +103,13 @@ const ProgressBar = () => {
               </div>
             </div>
           </div>
-          <h6 className="progressTitle">سابقه کاری</h6>
+          <h6 className="progressTitle">نمونه کار</h6>
         </div>
-        <div className="d-flex align-items-center mb-5">
+        {/* <div className="d-flex align-items-center mb-5">
           <div className="me-3  stepCircle_1">6</div>نمونه کار
-        </div>
-        <button className="btn btn-success me-2" onClick={()=>resumecontext.dispatch({type:'step',payload:step+1})} > + </button>
-        <button className="btn btn-danger" onClick={()=>resumecontext.dispatch({type:'step',payload:step-1})}>  - </button>
+        </div> */}
+        {/* <button className="btn btn-success me-2" onClick={()=>resumecontext.dispatch({type:'step',payload:step+1})} > + </button>
+        <button className="btn btn-danger" onClick={()=>resumecontext.dispatch({type:'step',payload:step-1})}>  - </button> */}
       </div>
          
     </>

@@ -5,15 +5,15 @@ import ResumeContext from "../../../../context/employeeContext/CreateResume/Resu
 
 const Divx = ({ i, data, dataHandler }) => {
   const [localData, setLocalData] = useState({
-    id: i,
-    title: "",
-    degree: "",
-    date: { d: "", m: "", y: "" },
-    active: false,
-    Entitle: "",
-    Endegree: "",
-    Endate: { d: "", m: "", y: "" },
-    Enactive: false,
+    id: data.id,
+    title: data.title,
+    degree: data.degree,
+    date: data.date,
+    active: data.active,
+    Entitle: data.Entitle,
+    Endegree: data.Endegree,
+    Endate: data.Endate,
+    Enactive: data.Enactive,
   });
   const datahandler = dataHandler;
   return (
@@ -30,18 +30,17 @@ const Divx = ({ i, data, dataHandler }) => {
               آخرین مدرک تحصیلی
             </label>
             <input
-              className="col-12 mb-3 "
-              style={{
-                backgroundColor: "#EBEBEB",
-                borderStyle: "none",
-                borderRadius: 5,
-              }}
+              className={
+                localData.title == ""
+                  ? "col-12 mb-3 ps-2 inputStyle"
+                  : "col-12 mb-3 ps-2 inputFilled"
+              }
               type="text"
               onChange={(e) => {
                 setLocalData({ ...localData, title: e.target.value });
                 datahandler({ ...localData, title: e.target.value });
               }}
-              value={data.title}
+              value={localData.title}
             />
           </div>
           <div className="col-12">
@@ -54,18 +53,17 @@ const Divx = ({ i, data, dataHandler }) => {
               رشته تحصیلی
             </label>
             <input
-              className="col-12 mb-3 "
-              style={{
-                backgroundColor: "#EBEBEB",
-                borderStyle: "none",
-                borderRadius: 5,
-              }}
+              className={
+                localData.degree == ""
+                  ? "col-12 mb-3 ps-2 inputStyle"
+                  : "col-12 mb-3 ps-2 inputFilled"
+              }
               type="text"
               onChange={(e) => {
                 setLocalData({ ...localData, degree: e.target.value });
                 datahandler({ ...localData, degree: e.target.value });
               }}
-              value={data.degree}
+              value={localData.degree}
             />
           </div>
 
@@ -80,97 +78,114 @@ const Divx = ({ i, data, dataHandler }) => {
                 سال فارغ التحصیلی
               </label>
             </div>
-            <div className="d-flex justify-content-start  ">
-              <div className="d-flex  col-12 justify-content-start align-items-center  mb-3   me-2 pe-2">
-                <input
-                  className="  inputStyle "
-                  type="text"
-                  style={{
-                    width: "25%",
-                  }}
-                  onChange={(e) => {
-                    setLocalData({
-                      ...localData,
-                      date: { ...localData.date, d: e.target.value },
-                    });
-                    datahandler({
-                      ...localData,
-                      date: { ...localData.date, d: e.target.value },
-                    });
-                  }}
-                />
-                <div
-                  className="d-flex  align-items-center px-2 me-3"
-                  style={{
-                    backgroundColor: "#11999e",
-                    height: "100%",
-                    color: "#fff",
-                    fontSize: 13,
-                    borderTopLeftRadius: 5,
-                    borderBottomLeftRadius: 5,
-                  }}
-                >
-                  روز
+            <div className="d-flex justify-content-between flex-wrap col-12 ">
+              <div className="d-flex col-12 justify-content-center align-items-center mb-3">
+                <div className="   input-group input-group-sm mx-2">
+                  <input
+                    className={
+                      localData.date.d == ""
+                        ? "col-8 inputStyle"
+                        : "col-8 inputFilled"
+                    }
+                    onChange={(e) => {
+                      setLocalData({
+                        ...localData,
+                        date: { ...localData.date, d: e.target.value },
+                      });
+                      datahandler({
+                        ...localData,
+                        date: { ...localData.date, d: e.target.value },
+                      });
+                    }}
+                    value={localData.date.d}
+                    type="text"
+                  />
+                  <span
+                    className="input-group-text"
+                    style={{
+                      backgroundColor: "#11999e",
+                      height: "100%",
+                      color: "#fff",
+                      fontSize: 13,
+                      borderTopLeftRadius: 5,
+                      borderBottomLeftRadius: 5,
+                      border: "none",
+                      lineHeight: "1.5rem",
+                    }}
+                  >
+                    روز
+                  </span>
                 </div>
-                <input
-                  className="  inputStyle "
-                  type="text"
-                  style={{
-                    width: "25%",
-                  }}
-                  onChange={(e) => {
-                    setLocalData({
-                      ...localData,
-                      date: { ...localData.date, m: e.target.value },
-                    });
-                    datahandler({
-                      ...localData,
-                      date: { ...localData.date, m: e.target.value },
-                    });
-                  }}
-                />
-                <div
-                  className="d-flex  align-items-center px-2   me-3"
-                  style={{
-                    backgroundColor: "#11999e",
-                    height: "100%",
-                    color: "#fff",
-                    fontSize: 13,
-                    borderTopLeftRadius: 5,
-                    borderBottomLeftRadius: 5,
-                  }}
-                >
-                  ماه
+                <div className="   input-group input-group-sm mx-2">
+                  <input
+                    className={
+                      localData.date.m == ""
+                        ? "col-8 inputStyle"
+                        : "col-8 inputFilled"
+                    }
+                    type="text"
+                    onChange={(e) => {
+                      setLocalData({
+                        ...localData,
+                        date: { ...localData.date, m: e.target.value },
+                      });
+                      datahandler({
+                        ...localData,
+                        date: { ...localData.date, m: e.target.value },
+                      });
+                    }}
+                    value={localData.date.m}
+                  />
+                  <span
+                    className="input-group-text"
+                    style={{
+                      backgroundColor: "#11999e",
+                      height: "100%",
+                      color: "#fff",
+                      fontSize: 13,
+                      borderTopLeftRadius: 5,
+                      borderBottomLeftRadius: 5,
+                      border: "none",
+                      lineHeight: "1.5rem",
+                    }}
+                  >
+                    ماه
+                  </span>
                 </div>
-                <input
-                  className=" inputStyle "
-                  type="text"
-                  style={{
-                    width: "25%",
-                  }}
-                  onChange={(e) => {
-                    setLocalData({
-                      ...localData,
-                      date: { ...localData.date, y: e.target.value },
-                    });
-                    datahandler({
-                      ...localData,
-                      date: { ...localData.date, y: e.target.value },
-                    });
-                  }}
-                />
-                <div
-                  className="d-flex align-items-center px-2 "
-                  style={{
-                    backgroundColor: "#11999e",
-                    height: "100%",
-                    color: "#fff",
-                    fontSize: 13,
-                    borderTopLeftRadius: 5,
-                    borderBottomLeftRadius: 5,
-                  }}
-                >
-                  سال
+                <div className="   input-group input-group-sm  ms-2">
+                  <input
+                    className={
+                      data.date.y == ""
+                        ? "col-8 inputStyle"
+                        : "col-8 inputFilled"
+                    }
+                    onChange={(e) => {
+                      setLocalData({
+                        ...localData,
+                        date: { ...localData.date, y: e.target.value },
+                      });
+                      datahandler({
+                        ...localData,
+                        date: { ...localData.date, y: e.target.value },
+                      });
+                    }}
+                    value={localData.date.y}
+                  />
+                  <span
+                    className="input-group-text"
+                    style={{
+                      backgroundColor: "#11999e",
+                      height: "100%",
+                      color: "#fff",
+                      fontSize: 13,
+                      borderTopLeftRadius: 5,
+                      borderBottomLeftRadius: 5,
+                      border: "none",
+                      lineHeight: "1.5rem",
+                    }}
+                  >
+                    سال
+                  </span>
                 </div>
               </div>
             </div>
@@ -231,7 +246,7 @@ const Divx = ({ i, data, dataHandler }) => {
                 setLocalData({ ...localData, Entitle: e.target.value });
                 datahandler({ ...localData, Entitle: e.target.value });
               }}
-              value={data.Entitle}
+              value={localData.Entitle}
             />
           </div>
           <div className="col-12">
@@ -264,104 +279,122 @@ const Divx = ({ i, data, dataHandler }) => {
             <div className="col-12">
               <label
                 style={{
-                  marginBottom: "0.5rem",
+                  marginBottom: "0.7rem",
                   fontSize: "1rem",
                 }}
               >
                 Years of graduation
               </label>
             </div>
-            <div className="d-flex justify-content-start  ">
-              <div className="d-flex  col-12 justify-content-start align-items-center  mb-3   ">
-                <input
-                  className="  inputStyle "
-                  type="text"
-                  style={{
-                    width: "25%",
-                  }}
-                  onChange={(e) => {
-                    setLocalData({
-                      ...localData,
-                      Endate: { ...localData.Endate, d: e.target.value },
-                    });
-                    datahandler({
-                      ...localData,
-                      Endate: { ...localData.Endate, d: e.target.value },
-                    });
-                  }}
-                />
-                <div
-                  className="d-flex  align-items-center px-2 ms-3 "
-                  style={{
-                    backgroundColor: "#11999e",
-                    height: "100%",
-                    color: "#fff",
-                    fontSize: 13,
-                    borderTopRightRadius: 5,
-                    borderBottomRightRadius: 5,
-                  }}
-                >
-                  Day
+            <div className="d-flex justify-content-between flex-wrap col-12 ">
+              <div className="d-flex col-12 justify-content-center align-items-center mb-3">
+                <div className="   input-group input-group-sm ms-2" dir="rtl">
+                  <input
+                    className={
+                      data.Endate.d == ""
+                        ? "col-7 inputStyle"
+                        : "col-7 inputFilled"
+                    }
+                    type="text"
+                    onChange={(e) => {
+                      setLocalData({
+                        ...localData,
+                        Endate: { ...localData.Endate, d: e.target.value },
+                      });
+                      datahandler({
+                        ...localData,
+                        Endate: { ...localData.Endate, d: e.target.value },
+                      });
+                    }}
+                    value={localData.Endate.d}
+                  />
+                  <span
+                    className="input-group-text"
+                    style={{
+                      backgroundColor: "#11999e",
+                      height: "100%",
+                      color: "#fff",
+                      fontSize: 13,
+                      borderTopLeftRadius: 5,
+                      borderBottomLeftRadius: 5,
+                      border: "none",
+                      lineHeight: "1.5rem",
+                    }}
+                  >
+                    Day
+                  </span>
                 </div>
-                <input
-                  className=" inputStyle "
-                  type="text"
-                  style={{
-                    width: "25%",
-                  }}
-                  onChange={(e) => {
-                    setLocalData({
-                      ...localData,
-                      Endate: { ...localData.Endate, m: e.target.value },
-                    });
-                    datahandler({
-                      ...localData,
-                      Endate: { ...localData.Endate, m: e.target.value },
-                    });
-                  }}
-                />
-                <div
-                  className="d-flex  align-items-center px-2 ms-3 "
-                  style={{
-                    backgroundColor: "#11999e",
-                    height: "100%",
-                    color: "#fff",
-                    fontSize: 13,
-                    borderTopRightRadius: 5,
-                    borderBottomRightRadius: 5,
-                  }}
-                >
-                  Month
+                <div className="   input-group input-group-sm ms-2" dir="rtl">
+                  <input
+                    className={
+                      data.Endate.m == ""
+                        ? "col-7 inputStyle"
+                        : "col-7 inputFilled"
+                    }
+                    type="text"
+                    onChange={(e) => {
+                      setLocalData({
+                        ...localData,
+                        Endate: { ...localData.Endate, m: e.target.value },
+                      });
+                      datahandler({
+                        ...localData,
+                        Endate: { ...localData.Endate, m: e.target.value },
+                      });
+                    }}
+                    value={localData.Endate.m}
+                  />
+                  <span
+                    className="input-group-text col-5"
+                    style={{
+                      backgroundColor: "#11999e",
+                      height: "100%",
+                      color: "#fff",
+                      fontSize: 13,
+                      borderTopLeftRadius: 5,
+                      borderBottomLeftRadius: 5,
+                      border: "none",
+                      lineHeight: "1.5rem",
+                    }}
+                  >
+                    Month
+                  </span>
                 </div>
-                <input
-                  className="  inputStyle "
-                  type="text"
-                  style={{
-                    width: "25%",
-                  }}
-                  onChange={(e) => {
-                    setLocalData({
-                      ...localData,
-                      Endate: { ...localData.Endate, y: e.target.value },
-                    });
-                    datahandler({
-                      ...localData,
-                      Endate: { ...localData.Endate, y: e.target.value },
-                    });
-                  }}
-                />
-                <div
-                  className="d-flex  align-items-center px-2 ms-2 "
-                  style={{
-                    backgroundColor: "#11999e",
-                    height: "100%",
-                    color: "#fff",
-                    fontSize: 13,
-                    borderTopRightRadius: 5,
-                    borderBottomRightRadius: 5,
-                  }}
-                >
-                  Year
+                <div className="   input-group input-group-sm  ms-2 " dir="rtl">
+                  <input
+                    className={
+                      data.Endate.y == ""
+                        ? "col-8 inputStyle"
+                        : "col-8 inputFilled"
+                    }
+                    onChange={(e) => {
+                      setLocalData({
+                        ...localData,
+                        Endate: { ...localData.Endate, y: e.target.value },
+                      });
+                      datahandler({
+                        ...localData,
+                        Endate: { ...localData.Endate, y: e.target.value },
+                      });
+                    }}
+                    value={localData.Endate.y}
+                  />
+
+                  <span
+                    className="input-group-text"
+                    style={{
+                      backgroundColor: "#11999e",
+                      height: "100%",
+                      color: "#fff",
+                      fontSize: 13,
+                      borderTopLeftRadius: 5,
+                      borderBottomLeftRadius: 5,
+                      border: "none",
+                      lineHeight: "1.5rem",
+                    }}
+                  >
+                    Year
+                  </span>
                 </div>
               </div>
             </div>
@@ -407,19 +440,28 @@ const Divx = ({ i, data, dataHandler }) => {
 };
 
 const DegreeDoc = () => {
-  const [expert, setExpert] = useState([]);
   const [hasEx, setHasEx] = useState(false);
   const [data, setData] = useState([]);
-  const resumeContext=useContext(ResumeContext);
+  const resumeContext = useContext(ResumeContext);
+  const regData = () => {
+    return new Promise((resolve, reject) => {
+      setData(resumeContext.data.degree);
+      if (data.length > 0) {
+        resolve();
+      }
+    });
+  };
   useEffect(() => {
     resumeContext.dispatch({
       type: "degree",
       payload: { data: data },
     });
   }, [data]);
-  const addSec = (ii) => {
-    setExpert([...expert, ii]);
-  };
+  useEffect(async () => {
+    await regData();
+    setI(data.length);
+  }, []);
+
   const [i, setI] = useState(0);
   const dataHandler = (props) => {
     var index = data.findIndex((object) => {
@@ -459,7 +501,7 @@ const DegreeDoc = () => {
           style={{
             fontWeight: "bold",
             fontSize: "1.2rem",
-            // marginBottom: "1rem",
+
             marginLeft: "auto",
           }}
         >
@@ -470,7 +512,7 @@ const DegreeDoc = () => {
           style={{ cursor: "pointer" }}
           onClick={() => {
             setHasEx(!hasEx);
-            setExpert([]);
+
             setData([]);
           }}
         >
@@ -498,42 +540,43 @@ const DegreeDoc = () => {
           />
         </div>
 
-        
-          {expert.length < 1 && (
-            <div
-              className="ms-3"
-              onClick={() => {
-                addSec(i + 1);
-                dataHandler({
-                  id: i + 1,
-                  title: "",
-                  degree: "",
-                  date: { d: "", m: "", y: "" },
-                  active: false,
-                  Entitle: "",
-                  degree: "",
-                  Endate: { d: "", m: "", y: "" },
-                  Enactive: false,
-                });
-                setI(i + 1);
-                setHasEx(true);
-              }}
-            >
-              <ButtonAdd data={"افزودن مدرک تحصیلی"} />
-            </div>
-          )}
-        </div>
-       {expert.map((item) => (
+        {data.length < 1 && (
+          <div
+            className="ms-3"
+            onClick={() => {
+              dataHandler({
+                id: i + 1,
+                title: "",
+                degree: "",
+                date: { d: "", m: "", y: "" },
+                active: false,
+                Entitle: "",
+                degree: "",
+                Endate: { d: "", m: "", y: "" },
+                Enactive: false,
+              });
+              setI(i + 1);
+              setHasEx(true);
+            }}
+          >
+            <ButtonAdd data={"افزودن مدرک تحصیلی"} />
+          </div>
+        )}
+      </div>
+      {data.map((item) => (
         <>
-          <Divx i={item} data={dataSender(item)} dataHandler={dataHandler} />
+          <Divx
+            i={item.id}
+            data={dataSender(item.id)}
+            dataHandler={dataHandler}
+          />
         </>
       ))}
-      {expert.length > 0 && (
+      {data.length > 0 && (
         <div
           onClick={() => {
-            addSec(i + 1);
             dataHandler({
-              id: i + 1,
+              id: data.length + 1,
               title: "",
               degree: "",
               date: { d: "", m: "", y: "" },
@@ -543,7 +586,7 @@ const DegreeDoc = () => {
               Endate: { d: "", m: "", y: "" },
               Enactive: false,
             });
-            setI(i + 1);
+            setI(data.length + 1);
             setHasEx(true);
           }}
         >

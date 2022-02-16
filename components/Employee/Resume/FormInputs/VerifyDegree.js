@@ -37,8 +37,8 @@ const VerifyDegree = () => {
       </div>
       {resumeContext.data.degree.length == 0 ? (
         <div className="text-center">
-                 مدرک ثبت نشده است
-                 <BreakLine />
+          مدرک ثبت نشده است
+          <BreakLine />
         </div>
       ) : (
         resumeContext.data.degree.map((item, key) => (
@@ -69,7 +69,7 @@ const VerifyDegree = () => {
             </div>
 
             <div className="d-flex col-6 justify-content-start align-items-center mb-4">
-              <h5 className="col-6 fs-6 ">سال فارغ التحصیلی:</h5>
+              <h5 className="col-6 fs-6 fw-light">سال فارغ التحصیلی:</h5>
               <h6 className="col-6">
                 {item.date.y}/{item.date.m}/{item.date.d}
               </h6>

@@ -31,16 +31,7 @@ const BirthDay = () => {
             }}
           />
           <span
-            className="input-group-text col-4"
-            style={{
-              backgroundColor: "#11999e",
-              height: "100%",
-              color: "#fff",
-              fontSize: 13,
-              borderTopLeftRadius: 5,
-              borderBottomLeftRadius: 5,
-            }}
-          >
+            className="input-group-text col-4 spanInputGroup"   >
             روز
           </span>
         </div>
@@ -60,16 +51,7 @@ const BirthDay = () => {
             }}
           />
           <span
-            className="input-group-text"
-            style={{
-              backgroundColor: "#11999e",
-              height: "100%",
-              color: "#fff",
-              fontSize: 13,
-              borderTopLeftRadius: 5,
-              borderBottomLeftRadius: 5,
-            }}
-          >
+            className="input-group-text spanInputGroup col-4" >
             ماه
           </span>
         </div>
@@ -89,16 +71,7 @@ const BirthDay = () => {
             }}
           />
           <span
-            className="input-group-text"
-            style={{
-              backgroundColor: "#11999e",
-              height: "100%",
-              color: "#fff",
-              fontSize: 13,
-              borderTopLeftRadius: 5,
-              borderBottomLeftRadius: 5,
-            }}
-          >
+            className="input-group-text col-4 spanInputGroup">
             سال
           </span>
         </div>

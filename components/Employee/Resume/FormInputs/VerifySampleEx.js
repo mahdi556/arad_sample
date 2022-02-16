@@ -35,7 +35,13 @@ const VerifySampleEx = () => {
           />
         </div>
       </div>
-      {resumeContext.data.sampleEx.map((item, key) => (
+      {resumeContext.data.sampleEx.length == 0 ? (
+        <div className="text-center">
+          نمونه کار ثبت نشده است
+           
+        </div>
+      ) : (
+      resumeContext.data.sampleEx.map((item, key) => (
         <>
           <div className="d-flex col-12">
             <div className="col-6 mb-3">
@@ -68,7 +74,7 @@ const VerifySampleEx = () => {
             </div>
           </div>
         </>
-      ))}
+      )))}
 
       <BreakLine />
     </>

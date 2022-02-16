@@ -58,12 +58,11 @@ const Divx = ({ i, data, dataHandler }) => {
                     عنوان
                   </label>
                   <input
-                    className="col-12 mb-3 "
-                    style={{
-                      backgroundColor: "#EBEBEB",
-                      borderStyle: "none",
-                      borderRadius: 5,
-                    }}
+                    className={
+                      localData.title == ""
+                        ? "col-12 inputStyle"
+                        : "col-12 inputFilled"
+                    }
                     type="text"
                     onChange={(e) => {
                       setLocalData({ ...localData, title: e.target.value });
@@ -82,12 +81,11 @@ const Divx = ({ i, data, dataHandler }) => {
                     title
                   </label>
                   <input
-                    className="col-12 mb-3 "
-                    style={{
-                      backgroundColor: "#EBEBEB",
-                      borderStyle: "none",
-                      borderRadius: 5,
-                    }}
+                    className={
+                      localData.Entitle == ""
+                        ? "col-12 inputStyle"
+                        : "col-12 inputFilled"
+                    }
                     type="text"
                     onChange={(e) => {
                       setLocalData({ ...localData, Entitle: e.target.value });
@@ -107,12 +105,11 @@ const Divx = ({ i, data, dataHandler }) => {
                   لینک
                 </label>
                 <input
-                  className="col-12 mb-3 "
-                  style={{
-                    backgroundColor: "#EBEBEB",
-                    borderStyle: "none",
-                    borderRadius: 5,
-                  }}
+                  className={
+                    localData.link == ""
+                      ? "col-12 inputStyle"
+                      : "col-12 inputFilled"
+                  }
                   type="text"
                   onChange={(e) => {
                     setLocalData({ ...localData, link: e.target.value });
@@ -133,12 +130,11 @@ const Divx = ({ i, data, dataHandler }) => {
                       توضیحات
                     </label>
                     <textarea
-                      className="col-12 mb-3 "
-                      style={{
-                        backgroundColor: "#EBEBEB",
-                        borderStyle: "none",
-                        borderRadius: 5,
-                      }}
+                      className={
+                        localData.faDiscription == ""
+                          ? "col-12 inputStyle"
+                          : "col-12 inputFilled"
+                      }
                       type="text"
                       onChange={(e) => {
                         setLocalData({
@@ -165,12 +161,11 @@ const Divx = ({ i, data, dataHandler }) => {
                       Description
                     </label>
                     <textarea
-                      className="col-12 mb-3 "
-                      style={{
-                        backgroundColor: "#EBEBEB",
-                        borderStyle: "none",
-                        borderRadius: 5,
-                      }}
+                      className={
+                        localData.enDiscription == ""
+                          ? "col-12 inputStyle"
+                          : "col-12 inputFilled"
+                      }
                       type="text"
                       onChange={(e) => {
                         setLocalData({
@@ -190,7 +185,6 @@ const Divx = ({ i, data, dataHandler }) => {
             </div>
           </div>
         </div>
-        
       </div>
     </>
   );
@@ -198,12 +192,9 @@ const Divx = ({ i, data, dataHandler }) => {
 
 const SampleEx = () => {
   const resumeContext = useContext(ResumeContext);
-  const [expert, setExpert] = useState([]);
   const [hasEx, setHasEx] = useState(false);
   const [data, setData] = useState([]);
-  const addSec = (ii) => {
-    setExpert([...expert, { id: ii }]);
-  };
+   
   const [i, setI] = useState(0);
 
   const regData = () => {
@@ -274,7 +265,10 @@ const SampleEx = () => {
           style={{ cursor: "pointer" }}
           onClick={() => {
             setHasEx(!hasEx);
-            setExpert([]);
+            resumeContext.dispatch({
+              type: "sampleEx",
+              payload: { data: [] },
+            });
             setData([]);
           }}
         >
@@ -305,7 +299,7 @@ const SampleEx = () => {
           <div
             className="ms-3"
             onClick={() => {
-              addSec(i + 1);
+            
               dataHandler({
                 id: i + 1,
                 title: "",

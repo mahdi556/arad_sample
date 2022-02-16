@@ -31,20 +31,7 @@ const BirthDayEnglish = () => {
               });
             }}
           />
-          <span
-            className="input-group-text col-4"
-            style={{
-              backgroundColor: "#11999e",
-              height: "100%",
-              color: "#fff",
-              fontSize: 13,
-              borderTopLeftRadius: 5,
-              borderBottomLeftRadius: 5,
-              fontFamily: "roboto",
-            }}
-          >
-            Day
-          </span>
+          <span className="input-group-text col-4 spanInputGroup">Day</span>
         </div>
         <div className="input-group input-group-sm mx-3 " dir="rtl">
           <input
@@ -61,20 +48,7 @@ const BirthDayEnglish = () => {
               });
             }}
           />
-          <span
-            className="input-group-text col-5"
-            style={{
-              backgroundColor: "#11999e",
-              height: "100%",
-              color: "#fff",
-              fontSize: 13,
-              borderTopLeftRadius: 5,
-              borderBottomLeftRadius: 5,
-              fontFamily: "roboto",
-            }}
-          >
-            Month
-          </span>
+          <span className="input-group-text col-5 spanInputGroup">Month</span>
         </div>
         <div className="input-group input-group-sm me-2" dir="rtl">
           <input
@@ -91,20 +65,7 @@ const BirthDayEnglish = () => {
               });
             }}
           />
-          <span
-            className="input-group-text col-4"
-            style={{
-              backgroundColor: "#11999e",
-              height: "100%",
-              color: "#fff",
-              fontSize: 12,
-              borderTopLeftRadius: 5,
-              borderBottomLeftRadius: 5,
-              fontFamily: "roboto",
-            }}
-          >
-            Year
-          </span>
+          <span className="input-group-text col-4 spanInputGroup">Year</span>
         </div>
       </div>
     </>

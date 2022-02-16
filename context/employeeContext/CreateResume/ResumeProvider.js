@@ -4,7 +4,7 @@ import resumeReducer from "./resumeReducer";
 
 const initialData = {
   userImage: "",
-  userImageFile:{},
+  userImageFile: {},
   userVideo: "",
   socials: {
     twitter: "",

@@ -36,32 +36,30 @@ const VerifyData = ({ handleStep }) => {
       </div>
       <div className="d-flex col-12 flex-wrap px-4">
         <div className="d-flex col-6 justify-content-start align-items-center mb-4 ">
-          <h5 className="col-6 fs-6">نام:</h5>
-          <h6 className="col-6 fs-6 fw-bold">{resumeContext.data.name}</h6>
+          <h5 className="col-6 fs-6 fw-light">نام:</h5>
+          <h6 className="col-6 fs-6  ">{resumeContext.data.name}</h6>
         </div>
         <div
           className="d-flex col-6 justify-content-start align-items-center mb-4"
           dir="ltr"
         >
-          <h5 className="col-6 fs-6">name:</h5>
-          <h6 className="col-6  fs-6 fw-bold">{resumeContext.data.Ename}</h6>
+          <h5 className="col-6 fs-6 fw-light">name:</h5>
+          <h6 className="col-6  fs-6  ">{resumeContext.data.Ename}</h6>
         </div>
         <div className="d-flex col-6 justify-content-start align-items-center mb-4 ">
-          <h5 className="col-6 fs-6">نام خانوادگی:</h5>
-          <h6 className="col-6  fs-6 fw-bold">{resumeContext.data.lastname}</h6>
+          <h5 className="col-6 fs-6 fw-light">نام خانوادگی:</h5>
+          <h6 className="col-6  fs-6  ">{resumeContext.data.lastname}</h6>
         </div>
         <div
           className="d-flex col-6 justify-content-start align-items-center mb-4 "
           dir="ltr"
         >
-          <h5 className="col-6 fs-6">lastname:</h5>
-          <h6 className="col-6  fs-6 fw-bold ">
-            {resumeContext.data.Elastname}
-          </h6>
+          <h5 className="col-6 fs-6 fw-light">lastname:</h5>
+          <h6 className="col-6  fs-6   ">{resumeContext.data.Elastname}</h6>
         </div>
         <div className="d-flex col-6 justify-content-start align-items-center mb-4">
-          <h5 className="col-6 fs-6">تاریخ تولد:</h5>
-          <h6 className="col-6  fs-6 fw-bold">
+          <h5 className="col-6 fs-6 fw-light">تاریخ تولد:</h5>
+          <h6 className="col-6  fs-6  ">
             {resumeContext.data.birthday.year}/
             {resumeContext.data.birthday.month}/
             {resumeContext.data.birthday.day}
@@ -71,16 +69,16 @@ const VerifyData = ({ handleStep }) => {
           className="d-flex col-6 justify-content-start align-items-center mb-4"
           dir="ltr"
         >
-          <h5 className="col-6 fs-6">birthday:</h5>
-          <h6 className="col-6  fs-6 fw-bold">
+          <h5 className="col-6 fs-6 fw-light">birthday:</h5>
+          <h6 className="col-6  fs-6  ">
             {resumeContext.data.Ebirthday.year}/
             {resumeContext.data.Ebirthday.month}/
             {resumeContext.data.Ebirthday.day}
           </h6>
         </div>
         <div className="d-flex col-6 justify-content-start align-items-center mb-4">
-          <h5 className="col-6 fs-6">جنسیت:</h5>
-          <h6 className="col-6  fs-6 fw-bold">
+          <h5 className="col-6 fs-6 fw-light">جنسیت:</h5>
+          <h6 className="col-6  fs-6  ">
             {resumeContext.data.sex == 1 ? "مرد" : "زن"}
           </h6>
         </div>
@@ -88,14 +86,14 @@ const VerifyData = ({ handleStep }) => {
           className="d-flex col-6 justify-content-start align-items-center mb-4"
           dir="ltr"
         >
-          <h5 className="col-6 fs-6">sex:</h5>
-          <h6 className="col-6  fs-6 fw-bold">
+          <h5 className="col-6 fs-6 fw-light">sex:</h5>
+          <h6 className="col-6  fs-6  ">
             {resumeContext.data.sex == 1 ? "Male" : "Female"}
           </h6>
         </div>
         <div className="d-flex col-6 justify-content-start align-items-center mb-4">
-          <h5 className="col-6 fs-6">وضعیت تاهل:</h5>
-          <h6 className="col-6  fs-6 fw-bold">
+          <h5 className="col-6 fs-6 fw-light">وضعیت تاهل:</h5>
+          <h6 className="col-6  fs-6  ">
             {resumeContext.data.married == 1 ? "مجرد" : "متاهل"}
           </h6>
         </div>
@@ -103,14 +101,14 @@ const VerifyData = ({ handleStep }) => {
           className="d-flex col-6 justify-content-start align-items-center mb-4"
           dir="ltr"
         >
-          <h5 className="col-6 fs-6">Married:</h5>
-          <h6 className="col-6  fs-6 fw-bold">
+          <h5 className="col-6 fs-6 fw-light">Married:</h5>
+          <h6 className="col-6  fs-6  ">
             {resumeContext.data.married == 1 ? "Single" : "Married"}
           </h6>
         </div>
         <div className="d-flex col-6 justify-content-start align-items-center mb-4">
-          <h5 className="col-6  fs-6 ">تقاضای بیمه:</h5>
-          <h6 className="col-6 fs-6 fw-bold">
+          <h5 className="col-6  fs-6 fw-light">تقاضای بیمه:</h5>
+          <h6 className="col-6 fs-6  ">
             {resumeContext.data.insurrance == 1 ? "دارم" : "ندارم"}
           </h6>
         </div>
@@ -118,29 +116,25 @@ const VerifyData = ({ handleStep }) => {
           className="d-flex col-6 justify-content-start align-items-center mb-4"
           dir="ltr"
         >
-          <h5 className="col-6 fs-6">Need Insurrance:</h5>
-          <h6 className="col-6 fs-6 fw-bold">
+          <h5 className="col-6 fs-6 fw-light">Need Insurrance:</h5>
+          <h6 className="col-6 fs-6  ">
             {resumeContext.data.insurrance == 1 ? "Yes" : "No"}
           </h6>
         </div>
         <div className="d-flex col-6 justify-content-start align-items-center mb-4">
-          <h5 className="col-6 fs-6">استان:</h5>
-          <h6 className="col-6 fs-6 fw-bold">
-            {resumeContext.data.province.name}
-          </h6>
+          <h5 className="col-6 fs-6 fw-light">استان:</h5>
+          <h6 className="col-6 fs-6  ">{resumeContext.data.province.name}</h6>
         </div>{" "}
         <div
           className="d-flex col-6 justify-content-start align-items-center mb-4"
           dir="ltr"
         >
-          <h5 className="col-6 fs-6">state:</h5>
-          <h6 className="col-6 fs-6 fw-bold">
-            {resumeContext.data.province.Ename}
-          </h6>
+          <h5 className="col-6 fs-6 fw-light">state:</h5>
+          <h6 className="col-6 fs-6  ">{resumeContext.data.province.Ename}</h6>
         </div>{" "}
         <div className="d-flex col-6 justify-content-start align-items-center mb-4">
-          <h5 className="col-6 fs-6">منطقه:</h5>
-          <h6 className="col-6 fs-6 fw-bold">{resumeContext.data.city.name}</h6>
+          <h5 className="col-6 fs-6 fw-light">منطقه:</h5>
+          <h6 className="col-6 fs-6  ">{resumeContext.data.city.name}</h6>
         </div>
         <div
           className="d-flex col-6 justify-content-start align-items-center mb-4"
@@ -152,8 +146,8 @@ const VerifyData = ({ handleStep }) => {
           </h6>
         </div>
         <div className="d-flex col-6 justify-content-start align-items-center mb-4">
-          <h5 className="col-6 fs-6 ">حقوق درخواستی :</h5>
-          <h6 className="col-6 fs-6 fw-bold">
+          <h5 className="col-6 fs-6 fw-light ">حقوق درخواستی :</h5>
+          <h6 className="col-6 fs-6  ">
             {" "}
             از {resumeContext.data.salary.fa.from} تا{" "}
             {resumeContext.data.salary.fa.to}
@@ -163,8 +157,8 @@ const VerifyData = ({ handleStep }) => {
           className="d-flex col-6 justify-content-start align-items-center mb-4"
           dir="ltr"
         >
-          <h5 className="col-6 fs-6">Amount of salary requested :</h5>
-          <h6 className="col-6 fs-6 fw-bold">
+          <h5 className="col-6 fs-6 fw-light">Amount of salary requested :</h5>
+          <h6 className="col-6 fs-6  ">
             {" "}
             from {resumeContext.data.salary.en.from} to{" "}
             {resumeContext.data.salary.en.to}
