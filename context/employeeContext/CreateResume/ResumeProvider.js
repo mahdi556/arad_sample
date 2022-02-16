@@ -12,7 +12,7 @@ const initialData = {
     youtube: "",
     dribble: "",
   },
-  step: 7,
+  step: 1,
   name: "",
   lastname: "",
   Ename: "",

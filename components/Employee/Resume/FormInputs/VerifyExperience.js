@@ -35,7 +35,13 @@ const VerifyExperience = () => {
           />
         </div>
       </div>
-      {resumeContext.data.experiences.map((item, key) => (
+      {resumeContext.data.experiences.length == 0 ? (
+        <div className="text-center">
+                 سابقه کاری ثبت نشده است
+                 <BreakLine />
+        </div>
+      ) : (
+      resumeContext.data.experiences.map((item, key) => (
         <>
           <div className="d-flex col-6 justify-content-start align-items-center mb-4 ">
             <h5 className="col-6">عنوان شغلی:</h5>
@@ -104,7 +110,9 @@ const VerifyExperience = () => {
           </div>
           <BreakLine />
         </>
-      ))}
+      ))
+      )}
+      
     </>
   );
 };

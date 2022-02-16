@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
 import BirthDay from "./BirthDay";
 import BirthDayEnglish from "./BirthDayEnglish";
-import SelectOption from "../../FormInputs/SelectOption";
+ import SelectOption from "./SelectOption";
 import RadioButton from "../../FormInputs/RadioButton";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import SalaryNeededEn from "./SalaryNeededEn";
 import SalaryNeeded from "./SalaryNeeded";
+import SelectOptionEn from "./SelectOptionEn";
 
 const cities = [
   { id: 1, name: "اصفهان" },
@@ -96,12 +97,11 @@ const PersonalData = () => {
                 نام
               </label>
               <input
-                className="col-12 mb-3 "
-                style={{
-                  backgroundColor: "#EBEBEB",
-                  borderStyle: "none",
-                  borderRadius: 5,
-                }}
+                className={
+                  resumecontext.data.name == ""
+                    ? "col-12 mb-3 ps-2 inputStyle"
+                    : "col-12 mb-3 ps-2 inputFilled"
+                }
                 type="text"
                 value={resumecontext.data.name}
                 onChange={(e) => {
@@ -123,12 +123,11 @@ const PersonalData = () => {
                 نام خانوادگی
               </label>
               <input
-                className="col-12 mb-3 "
-                style={{
-                  backgroundColor: "#EBEBEB",
-                  borderStyle: "none",
-                  borderRadius: 5,
-                }}
+                className={
+                  resumecontext.data.lastname == ""
+                    ? "col-12 mb-3 ps-2 inputStyle"
+                    : "col-12 mb-3 ps-2 inputFilled"
+                }
                 type="text"
                 value={resumecontext.data.lastname}
                 onChange={(e) => {
@@ -203,12 +202,11 @@ const PersonalData = () => {
                 Name
               </label>
               <input
-                className="col-12 mb-3 "
-                style={{
-                  backgroundColor: "#EBEBEB",
-                  borderStyle: "none",
-                  borderRadius: 5,
-                }}
+                className={
+                  resumecontext.data.Ename == ""
+                    ? "col-12 mb-3 ps-2 inputStyle"
+                    : "col-12 mb-3 ps-2 inputFilled"
+                }
                 type="text"
                 value={resumecontext.data.Ename}
                 onChange={(e) => {
@@ -231,12 +229,11 @@ const PersonalData = () => {
                 Last name
               </label>
               <input
-                className="col-12 mb-3 "
-                style={{
-                  backgroundColor: "#EBEBEB",
-                  borderStyle: "none",
-                  borderRadius: 5,
-                }}
+                className={
+                  resumecontext.data.Elastname == ""
+                    ? "col-12 mb-3 ps-2 inputStyle"
+                    : "col-12 mb-3 ps-2 inputFilled"
+                }
                 type="text"
                 value={resumecontext.data.Elastname}
                 onChange={(e) => {
@@ -259,7 +256,7 @@ const PersonalData = () => {
               zIndex: 15,
             }}
           >
-            <SelectOption
+            <SelectOptionEn
               data={cities}
               name="Job category"
               valueHandler={catHandler}
@@ -273,7 +270,7 @@ const PersonalData = () => {
               zIndex: 14,
             }}
           >
-            <SelectOption
+            <SelectOptionEn
               data={cities}
               name="State"
               valueHandler={EprovinceHandler}
@@ -288,7 +285,7 @@ const PersonalData = () => {
               zIndex: 13,
             }}
           >
-            <SelectOption
+            <SelectOptionEn
               data={cities}
               name="Region"
               valueHandler={EcityHandler}

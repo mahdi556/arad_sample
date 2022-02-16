@@ -5,35 +5,24 @@ const BirthDayEnglish = () => {
   return (
     <>
       <div className="col-12">
-        <label className="fs-6  "
+        <label
+          className="fs-6  "
           style={{
             marginBottom: "0.5rem",
-            fontFamily:'roboto'
-
-            
+            fontFamily: "roboto",
           }}
         >
           Date Of Birth
         </label>
       </div>
       <div className="col-12  d-flex">
-        <div className="input-group input-group-sm ms-2">
-          <span
-            className="input-group-text"
-            style={{
-              backgroundColor: "#11999e",
-              height: "100%",
-              color: "#fff",
-              fontSize: 13,
-              borderTopLeftRadius: 5,
-              borderBottomLeftRadius: 5,
-              fontFamily:'roboto'
-            }}
-          >
-            Day
-          </span>
+        <div className="input-group input-group-sm ms-2" dir="rtl">
           <input
-            className="form-control inputStyle"
+            className={
+              resumeContext.data.Ebirthday.day == ""
+                ? "col-8 inputStyle"
+                : "col-8 inputFilled"
+            }
             value={resumeContext.data.Ebirthday.day}
             onChange={(e) => {
               resumeContext.dispatch({
@@ -42,10 +31,8 @@ const BirthDayEnglish = () => {
               });
             }}
           />
-        </div>
-        <div className="input-group input-group-sm mx-3 ">
           <span
-            className="input-group-text"
+            className="input-group-text col-4"
             style={{
               backgroundColor: "#11999e",
               height: "100%",
@@ -53,13 +40,19 @@ const BirthDayEnglish = () => {
               fontSize: 13,
               borderTopLeftRadius: 5,
               borderBottomLeftRadius: 5,
-              fontFamily:'roboto'
+              fontFamily: "roboto",
             }}
           >
-            Month
+            Day
           </span>
+        </div>
+        <div className="input-group input-group-sm mx-3 " dir="rtl">
           <input
-            className="form-control inputStyle"
+            className={
+              resumeContext.data.Ebirthday.month == ""
+                ? "col-7 inputStyle"
+                : "col-7 inputFilled"
+            }
             value={resumeContext.data.Ebirthday.month}
             onChange={(e) => {
               resumeContext.dispatch({
@@ -68,24 +61,28 @@ const BirthDayEnglish = () => {
               });
             }}
           />
-        </div>
-        <div className="input-group input-group-sm me-2">
           <span
-            className="input-group-text"
+            className="input-group-text col-5"
             style={{
               backgroundColor: "#11999e",
               height: "100%",
               color: "#fff",
-              fontSize: 12,
+              fontSize: 13,
               borderTopLeftRadius: 5,
               borderBottomLeftRadius: 5,
-              fontFamily:'roboto'
+              fontFamily: "roboto",
             }}
           >
-            Year
+            Month
           </span>
+        </div>
+        <div className="input-group input-group-sm me-2" dir="rtl">
           <input
-            className="form-control inputStyle"
+            className={
+              resumeContext.data.Ebirthday.year == ""
+                ? "col-8 inputStyle"
+                : "col-8 inputFilled"
+            }
             value={resumeContext.data.Ebirthday.year}
             onChange={(e) => {
               resumeContext.dispatch({
@@ -94,6 +91,20 @@ const BirthDayEnglish = () => {
               });
             }}
           />
+          <span
+            className="input-group-text col-4"
+            style={{
+              backgroundColor: "#11999e",
+              height: "100%",
+              color: "#fff",
+              fontSize: 12,
+              borderTopLeftRadius: 5,
+              borderBottomLeftRadius: 5,
+              fontFamily: "roboto",
+            }}
+          >
+            Year
+          </span>
         </div>
       </div>
     </>

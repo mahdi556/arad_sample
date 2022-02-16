@@ -512,7 +512,12 @@ body {
   align-items: center;
   animation: rotate-arrow-back 0.3s forwards;
 }
-
+.arrowEn {
+  margin-right: 0.5rem;
+  margin-left: auto;
+  align-items: center;
+  animation: rotate-arrow-back 0.3s forwards;
+}
 @keyframes rotate-arrow-back {
   0% {
     transform: rotate(180deg);
@@ -528,7 +533,12 @@ body {
   align-items: center;
   animation: rotate-arrow 0.5s forwards;
 }
-
+.drop-arrowEn {
+  margin-right: 0.5rem;
+  margin-left: auto;
+  align-items: center;
+  animation: rotate-arrow 0.5s forwards;
+}
 @keyframes rotate-arrow {
   0% {
     transform: rotate(0deg);
@@ -550,6 +560,20 @@ body {
   }
   100% {
     transform: translate(-10px, 35px);
+  }
+}
+.dropLabelEn {
+  font-size: 1rem;
+  transition: all 1s;
+  animation: labelEn 0.4s forwards;
+}
+
+@keyframes labelEn {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  100% {
+    transform: translate(15px, 35px);
   }
 }
 .close-drop {
@@ -589,6 +613,16 @@ body {
   100% {
     transform: translate(0px, 0px);
   }
+}
+.searchInput {
+  border-style: none;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  background-color: transparent;
+}
+.searchInput:focus{
+  outline: none;
+  
 }
 .cubeSwitch {
   text-align: center;
@@ -701,10 +735,31 @@ body {
   line-height: 2rem;
   font-size: 17px;
 }
+.inputFilled {
+  background-color: #ebebeb;
+  border: solid green 2px;
+  border-radius: 5px;
+  line-height: 1.4rem;
+  font-size: 16px;
+}
 
 .inputDanger,
 .inputStyle:focus {
   outline: none;
+  background-color: #fff;
+  border: solid #ebebeb 3px;
+}
+.inputFilled:focus {
+  outline: none;
+}
+.myform-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
 }
 .TagButton {
   display: inline-block;

@@ -11,70 +11,86 @@ const SalaryNeededEn = () => {
             style={{
               marginBottom: "0.5rem",
               fontSize: "1rem",
-              fontFamily:'roboto'
+              fontFamily: "roboto",
             }}
           >
             Amount of salary requested
           </label>
         </div>
-        <div className="d-flex col-12 justify-content-center align-items-center"
-        style={{
-          fontFamily:'roboto'
-        }}
+        <div
+          className="d-flex col-12 justify-content-center align-items-center"
+          style={{
+            fontFamily: "roboto",
+          }}
         >
           From
           <div className="   input-group input-group-sm mx-2" dir="rtl">
-          
-            <span
-              className="input-group-text order-1"
+           
+            <input
+              className={
+                resumeContext.data.birthday.year == ""
+                  ? "col-7 inputStyle"
+                  : "col-7 inputFilled"
+              }
+              onChange={(e) =>
+                resumeContext.dispatch({
+                  type: "salary-en-from",
+                  payload: e.target.value,
+                })
+              }
+              value={resumeContext.data.salary.en.from}
+              type="text"
+            />
+             <span
+              className="input-group-text order-1 col-5"
               style={{
                 backgroundColor: "#EBEBEB",
                 height: "100%",
                 color: "#000",
                 fontSize: 13,
-                fontFamily:'roboto',
+                fontFamily: "roboto",
                 border: "none",
-                lineHeight:'1.5rem'
+                lineHeight: "1.5rem",
               }}
-              onChange={(e) =>
-                resumeContext.dispatch({
-                  type: "salary-fa-from",
-                  payload: e.target.value,
-                })
-              }
-              type="text"
             >
               Tooman
             </span>
-            <input className="form-control inputStyle2 order-2" />
           </div>
           to
           <div className="   input-group input-group-sm  me-2" dir="rtl">
-          
+            
+            <input
+              className={
+                resumeContext.data.birthday.year == ""
+                  ? "col-7 inputStyle"
+                  : "col-7 inputFilled"
+              }
+              onChange={(e) =>
+                resumeContext.dispatch({
+                  type: "salary-en-to",
+                  payload: e.target.value,
+                })
+              }
+              value={resumeContext.data.salary.en.to}
+            />
             <span
-              className="input-group-text order-1"
+              className="input-group-text col-5 order-1"
               style={{
                 backgroundColor: "#EBEBEB",
                 height: "100%",
                 color: "#000",
                 fontSize: 13,
-                fontFamily:'roboto',
+                fontFamily: "roboto",
                 border: "none",
-                lineHeight:'1.5rem'
+                lineHeight: "1.5rem",
               }}
-              onChange={(e) =>
-                resumeContext.dispatch({
-                  type: "salary-fa-to",
-                  payload: e.target.value,
-                })
-              }
+             
             >
               Tooman
             </span>
-            <input className="form-control inputStyle2 order-2 " />
           </div>
         </div>
-       </div>
+      </div>
     </>
   );
 };

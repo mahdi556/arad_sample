@@ -5,11 +5,11 @@ const BirthDay = () => {
   return (
     <>
       <div className="col-12">
-        <label className="fs-6 "
+        <label
+          className="fs-6 "
           style={{
             marginBottom: "0.5rem",
             // fontWeight:'normal'
-            
           }}
         >
           تاریخ تولد
@@ -17,17 +17,21 @@ const BirthDay = () => {
       </div>
       <div className="col-12  d-flex">
         <div className="input-group input-group-sm me-2">
-          <input className="form-control inputStyle" 
-           value={resumeContext.data.birthday.day}
-           onChange={(e) => {
-            resumeContext.dispatch({
-               type: "birthday-d",
-               payload: e.target.value,
-             });
-           }}
+          <input className={
+              resumeContext.data.birthday.day == ""
+                ? "col-8 inputStyle"
+                : "col-8 inputFilled"
+            }
+            value={resumeContext.data.birthday.day}
+            onChange={(e) => {
+              resumeContext.dispatch({
+                type: "birthday-d",
+                payload: e.target.value,
+              });
+            }}
           />
           <span
-            className="input-group-text"
+            className="input-group-text col-4"
             style={{
               backgroundColor: "#11999e",
               height: "100%",
@@ -41,14 +45,19 @@ const BirthDay = () => {
           </span>
         </div>
         <div className="input-group input-group-sm mx-3 ">
-          <input className="form-control inputStyle"
-          value={resumeContext.data.birthday.month}
-          onChange={(e) => {
-            resumeContext.dispatch({
-              type: "birthday-m",
-              payload: e.target.value,
-            });
-          }}
+          <input
+            className={
+              resumeContext.data.birthday.month == ""
+                ? "col-8 inputStyle"
+                : "col-8 inputFilled"
+            }
+            value={resumeContext.data.birthday.month}
+            onChange={(e) => {
+              resumeContext.dispatch({
+                type: "birthday-m",
+                payload: e.target.value,
+              });
+            }}
           />
           <span
             className="input-group-text"
@@ -65,15 +74,19 @@ const BirthDay = () => {
           </span>
         </div>
         <div className="input-group input-group-sm ms-2">
-          <input className="form-control inputStyle" 
-          
-          value={resumeContext.data.birthday.year}
-          onChange={(e) => {
-            resumeContext.dispatch({
-              type: "birthday-y",
-              payload: e.target.value,
-            });
-          }}
+          <input
+           className={
+            resumeContext.data.birthday.year == ""
+              ? "col-8 inputStyle"
+              : "col-8 inputFilled"
+          }
+            value={resumeContext.data.birthday.year}
+            onChange={(e) => {
+              resumeContext.dispatch({
+                type: "birthday-y",
+                payload: e.target.value,
+              });
+            }}
           />
           <span
             className="input-group-text"
@@ -90,7 +103,6 @@ const BirthDay = () => {
           </span>
         </div>
       </div>
-
     </>
   );
 };

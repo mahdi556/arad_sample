@@ -11,9 +11,9 @@ const SalaryNeeded = () => {
             style={{
               marginBottom: "0.5rem",
               fontSize: "1rem",
-              fontWeight:'normal',
-              fontStyle:'normal'
-             }}
+              fontWeight: "normal",
+              fontStyle: "normal",
+            }}
           >
             میزان حقوق درخواستی
           </label>
@@ -21,19 +21,12 @@ const SalaryNeeded = () => {
         <div className="d-flex col-12 justify-content-center align-items-center">
           از
           <div className="   input-group input-group-sm mx-2">
-            <input className="form-control inputStyle2" />
-            <span
-              className="input-group-text"
-              style={{
-                backgroundColor: "#EBEBEB",
-                height: "100%",
-                color: "#000",
-                fontSize: 13,
-                borderTopLeftRadius: 5,
-                borderBottomLeftRadius: 5,
-                border: "none",
-                lineHeight: "1.5rem",
-              }}
+            <input
+              className={
+                resumeContext.data.birthday.year == ""
+                  ? "col-8 inputStyle"
+                  : "col-8 inputFilled"
+              }
               onChange={(e) =>
                 resumeContext.dispatch({
                   type: "salary-fa-from",
@@ -41,13 +34,8 @@ const SalaryNeeded = () => {
                 })
               }
               type="text"
-            >
-              تومان
-            </span>
-          </div>
-          تا
-          <div className="   input-group input-group-sm  ms-2">
-            <input className="form-control inputStyle2  " />
+              value={resumeContext.data.salary.fa.from}
+            />
             <span
               className="input-group-text"
               style={{
@@ -60,12 +48,39 @@ const SalaryNeeded = () => {
                 border: "none",
                 lineHeight: "1.5rem",
               }}
+            >
+              تومان
+            </span>
+          </div>
+          تا
+          <div className="   input-group input-group-sm  ms-2">
+            <input
+              className={
+                resumeContext.data.birthday.year == ""
+                  ? "col-8 inputStyle"
+                  : "col-8 inputFilled"
+              }
               onChange={(e) =>
                 resumeContext.dispatch({
                   type: "salary-fa-to",
                   payload: e.target.value,
                 })
               }
+              value={resumeContext.data.salary.fa.to}
+
+            />
+            <span
+              className="input-group-text"
+              style={{
+                backgroundColor: "#EBEBEB",
+                height: "100%",
+                color: "#000",
+                fontSize: 13,
+                borderTopLeftRadius: 5,
+                borderBottomLeftRadius: 5,
+                border: "none",
+                lineHeight: "1.5rem",
+              }}
             >
               تومان
             </span>

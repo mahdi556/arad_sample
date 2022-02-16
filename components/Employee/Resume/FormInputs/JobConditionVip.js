@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
- import JoBExperience from "./JobExperience";
+import JoBExperience from "./JobExperience";
 import PersonalData from "./PersonalData";
 import DegreeDoc from "./DegreeDoc";
 import VerifyData from "./VerifyData";
- import SampleEx from "./SampleEx";
+import SampleEx from "./SampleEx";
 import CharTest from "./CharTest";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import VerifyExperience from "./VerifyExperience";
@@ -27,9 +27,7 @@ const JobConditionVip = ({ step, handleStep }) => {
         <BreakLine />
         {step == 3 && <JoBExperience />}
 
-        {step > 3 && resumeContext.data.experiences.length > 0 && (
-          <VerifyExperience />
-        )}
+        {step > 3 && <VerifyExperience />}
 
         {step == 4 && (
           <div className="col-12">
