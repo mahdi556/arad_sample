@@ -112,7 +112,7 @@ const resumeReducer = (state, action) => {
         ...state,
         softExpertEn: action.payload.data,
       };
-      case "sampleEx":
+    case "sampleEx":
       return {
         ...state,
         sampleEx: action.payload.data,
@@ -147,6 +147,28 @@ const resumeReducer = (state, action) => {
         salary: {
           ...state.salary,
           en: { from: state.salary.en.from, to: action.payload },
+        },
+      };
+    case "progressBar-c":
+      return {
+        ...state,
+        progressBar: {
+          ...state.progressBar,
+          c: state.progressBar.c + 10,
+        },
+      };
+    case "progressBar-reset":
+      return {
+        ...state,
+        progressBar: {
+          a: 0,
+          b: 0,
+          c: 0,
+          d: 0,
+          e: 0,
+          f: 0,
+          g: 0,
+          h: 0,
         },
       };
   }

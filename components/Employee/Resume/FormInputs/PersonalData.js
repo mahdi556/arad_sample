@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import BirthDay from "./BirthDay";
 import BirthDayEnglish from "./BirthDayEnglish";
- import SelectOption from "./SelectOption";
+import SelectOption from "./SelectOption";
 import RadioButton from "../../FormInputs/RadioButton";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import SalaryNeededEn from "./SalaryNeededEn";
@@ -33,7 +33,10 @@ const PersonalData = () => {
     2: "Ebutton",
     3: "Ebutton",
   });
-
+  const handlePersonalProgress = (sec,item) => {
+    sec !== "" &&  resumecontext.data.progressBar.c.push(item);
+    resumecontext.dispatch({ type: "progressBar-c" });
+  };
   const SetButtClass = (i) => {
     buttonClass[1] = "Ebutton";
     buttonClass[2] = "Ebutton";
@@ -69,8 +72,7 @@ const PersonalData = () => {
   const EcityHandler = (id, name) => {
     resumecontext.dispatch({ type: "city", payload: { id: id, Ename: name } });
   };
-
-  return (
+   return (
     <>
       <div
         style={{
@@ -109,7 +111,7 @@ const PersonalData = () => {
                     type: "name",
                     payload: e.target.value,
                   });
-                }}
+                 }}
               />
             </div>
             <div className="col-5">
@@ -135,7 +137,7 @@ const PersonalData = () => {
                     type: "lastname",
                     payload: e.target.value,
                   });
-                }}
+                 }}
               />
             </div>
           </div>

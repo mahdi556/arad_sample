@@ -3,27 +3,20 @@ import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeC
 const ProgressBar = () => {
   const resumeContext = useContext(ResumeContext);
 
-  const [step, setStep] = useState(1);
-  const [progress, setProgress] = useState(0);
   useEffect(() => {
-    setStep(resumecontext.data.step);
-  }, []);
-      const handlePersonalData=()=>{
-        resumeContext.data.name !== '' &&
-        setProgress(progress + 10)
-        resumeContext.data.lastname !== '' &&
-        setProgress(progress + 10)
-        resumeContext.data.lastname !== '' &&
-        setProgress(progress + 10)
-      }
-   
+    // handlePersonalData();
+  }, [resumeContext.data.progressBar]);
+ 
+
   return (
     <>
       <div className="PContainer">
         <div className=" progressDownButton px-3 py-2">دانلود رزومه فارسی</div>
         <div className="d-flex align-items-center mb-3">
           <div className="set-size charts-container me-3">
-            <div className="pie-wrapper    progress-60">
+            <div
+              className={`pie-wrapper   progress-${resumeContext.data.progressBar.c}  `}
+            >
               <span className="label">1</span>
               <div className="pie">
                 <div className="left-side half-circle"></div>
@@ -111,7 +104,6 @@ const ProgressBar = () => {
         {/* <button className="btn btn-success me-2" onClick={()=>resumecontext.dispatch({type:'step',payload:step+1})} > + </button>
         <button className="btn btn-danger" onClick={()=>resumecontext.dispatch({type:'step',payload:step-1})}>  - </button> */}
       </div>
-         
     </>
   );
 };
