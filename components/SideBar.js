@@ -2,6 +2,8 @@ import ReactDOM from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { faUserShield } from "@fortawesome/free-solid-svg-icons";
+import SwitchButtion from "./Employee/FormInputs/SwitchButton";
+import Image from "next/image";
 
 const SideBar = () => {
   const [dropdown, setDropdown] = useState({ 1: styles.hide, 2: styles.hide });
@@ -40,7 +42,7 @@ const SideBar = () => {
           width: sideVisible.width,
           position: "relative",
           backgroundColor: "#fff",
-          marginBottom:'10rem'
+          marginBottom: "10rem",
         }}
       >
         <div
@@ -59,14 +61,8 @@ const SideBar = () => {
             <li className="sidebar-item   ">
               <div className="sidebar-radio ">
                 <span>ارسال آگهی های پیشنهادی</span>
-                <div className="toggle-button-cover">
-                  <div className="button-cover">
-                    <div className="button r" id="button-3">
-                      <input type="checkbox" className="checkbox" />
-                      <div className="knobs"></div>
-                      <div className="layer"></div>
-                    </div>
-                  </div>
+                <div className="ms-auto">
+                  <SwitchButtion />
                 </div>
               </div>
             </li>
@@ -153,72 +149,81 @@ const SideBar = () => {
             <li className="sidebar-item  ">
               <a className="sidebar-link" href="">
                 <span>شرکت های معتبر</span>
-                <label className="switch ms-auto">
-                  <input type="checkbox" />
-                  <span className="slider round"></span>
-                </label>
+                <div className="ms-auto">
+                  <SwitchButtion />
+                </div>
               </a>
             </li>
             <li className="sidebar-item  ">
               <a className="sidebar-link" href="">
                 <span>دورکاری</span>
-                <label className="switch ms-auto">
-                  <input type="checkbox" />
-                  <span className="slider round"></span>
-                </label>
+                <div className="ms-auto">
+                  <SwitchButtion />
+                </div>
               </a>
             </li>
             <li className="sidebar-item  ">
               <a className="sidebar-link" href="">
                 <span>بیمه</span>
-                <label className="switch ms-auto">
-                  <input type="checkbox" />
-                  <span className="slider round"></span>
-                </label>
+                <div className="ms-auto">
+                  <SwitchButtion />
+                </div>
               </a>
             </li>
             <li className="sidebar-item  ">
               <a className="sidebar-link" href="">
                 <span>آگهی های ویژه</span>
-                <img
-                  className="ps-1"
-                  src={require("../../assets/images/crown.png")}
-                  width="10%"
-                />
-                <label className="switch ms-auto">
-                  <input type="checkbox" />
-                  <span className="slider round"></span>
-                </label>
+                <div className="ms-2">
+                  <Image
+                    src="/assets/images/crown.png"
+                    width={18}
+                    height={18}
+                  />
+                </div>
+                <div className="ms-auto">
+                  <SwitchButtion />
+                </div>
               </a>
             </li>
           </ul>
           <div className=" row justify-content-center align-items-center pt-5 ">
             <div className=" d-flex flex-row justify-content-center align-items-center fs-11">
-              <FontAwesomeIcon
-                className="d-flex  p-1"
-                icon={faUserShield}
-                size="2x"
-                color="#000"
-              />
+              <div className="me-1">
+                <Image
+                  src="/assets/images/support1.png"
+                  width={18}
+                  height={18}
+                />
+              </div>
               <div className="d-flex">تماس با پشتیبانی 0000 000 0912</div>
             </div>
 
             <div
-              className="d-flex col-7 flex-row justify-content-center fs-11 mt-2 py-2"
+              className="d-flex col-7 flex-row justify-content-center  mt-2 py-2 px-3"
               style={{
-                backgroundColor: "#11999e",
-                borderRadius: 15,
+                backgroundColor: "#e92b59",
+                borderRadius: 20,
                 color: "#fff",
+                fontSize:15
               }}
             >
               دانلود اپلیکیشن
-              <i className="bi bi-download ps-5"></i>
+              <div className="ms-auto mt-1">
+                <Image
+                  src="/assets/images/download1.png"
+                  width={16}
+                  height={16}
+                />
+              </div>
             </div>
           </div>
         </div>
 
         <div className="d-flex align-items-center justify-content-center  sidebar-handle">
-          <i className="bi bi-chevron-right   " onClick={() => toggleSidebar()}></i>
+          <i
+            className="bi bi-chevron-right   "
+            onClick={() => toggleSidebar()}
+          ></i>
         </div>
       </div>
     </>

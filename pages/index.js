@@ -56,6 +56,30 @@ export default function Home() {
         >
           داشبورد کارجو
         </div>
+        <div  style={{
+          cursor:'pointer'
+        }} 
+        onClick={() => {
+          router.push({
+            pathname: '/search ',
+            
+        })
+        }} 
+        >
+          جستجو
+        </div>
+        <div  style={{
+          cursor:'pointer'
+        }} 
+        onClick={() => {
+          router.push({
+            pathname: '/home ',
+            
+        })
+        }} 
+        >
+          خانه
+        </div>
       </div>
       <Footer />
      

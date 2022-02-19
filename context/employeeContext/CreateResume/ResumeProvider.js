@@ -56,6 +56,7 @@ const initialData = {
   softExpert: [],
   softExpertEn: [],
   sampleEx: [],
+  adComment:"",
   progressBar:{
     'a':0,
     'b':0,

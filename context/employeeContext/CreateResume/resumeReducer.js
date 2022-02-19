@@ -154,9 +154,12 @@ const resumeReducer = (state, action) => {
         ...state,
         progressBar: {
           ...state.progressBar,
-          c: state.progressBar.c + 10,
+          c: state.progressBar.c + action.payload,
         },
       };
+       case "adComment":
+      return { ...state, adComment: action.payload };
+      
     case "progressBar-reset":
       return {
         ...state,

@@ -4,7 +4,6 @@ import PersonalData from "./PersonalData";
 import DegreeDoc from "./DegreeDoc";
 import VerifyData from "./VerifyData";
 import SampleEx from "./SampleEx";
-import CharTest from "./CharTest";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import VerifyExperience from "./VerifyExperience";
 import BreakLine from "./BreakLine";
@@ -49,8 +48,8 @@ const JobConditionVip = ({ step, handleStep }) => {
         {step > 6 && <VerifySoftExpert />}
         {step == 7 && <SampleEx />}
         {step > 7 && <VerifySampleEx />}
-        {step == 8 && <CharTest />}
-        {step == 9 && (
+        {/* {step == 8 && <CharTest />} */}
+        {step == 8 && (
           <div className="d-flex  justify-content-between">
             <div className="col-12">
               <label
@@ -62,14 +61,22 @@ const JobConditionVip = ({ step, handleStep }) => {
                 توضیحات آگهی
               </label>
               <textarea
-                className="col-12 mb-3 "
+                 className={
+                  resumeContext.data.adComment == ""
+                    ? "col-12 mb-3 ps-2 inputStyle"
+                    : "col-12 mb-3 ps-2 inputFilled"
+                }
                 style={{
-                  backgroundColor: "#EBEBEB",
-                  borderStyle: "none",
-                  borderRadius: 5,
-                  height: "10rem",
+                  height:'10rem'
                 }}
                 type="text"
+                value={resumeContext.data.adComment}
+                onChange={(e) => {
+                  resumeContext.dispatch({
+                    type: "adComment",
+                    payload: e.target.value,
+                  });
+                 }}
               />
             </div>
           </div>

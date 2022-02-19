@@ -1,31 +1,31 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
 
 const StepButton = ({ handleStep, step }) => {
   const resumeContext = useContext(ResumeContext);
-   const handleProgress = () => {
+  const handleProgress = () => {
     resumeContext.dispatch({ type: "progressBar-reset" });
     resumeContext.data.name !== "" &&
-      resumeContext.dispatch({ type: "progressBar-c" });
+      resumeContext.dispatch({ type: "progressBar-c" ,payload:20});
     resumeContext.data.lastname !== "" &&
-      resumeContext.dispatch({ type: "progressBar-c" });
-      resumeContext.data.birthday.day !== "" &&
-      resumeContext.dispatch({ type: "progressBar-c" });
-      resumeContext.data.province.id !== "" &&
-      resumeContext.dispatch({ type: "progressBar-c" });
-      resumeContext.data.city.id !== "" &&
-      resumeContext.dispatch({ type: "progressBar-c" });
-      resumeContext.data.salary.fa !== "" &&
-      resumeContext.dispatch({ type: "progressBar-c" });
-      resumeContext.data.jobCategory.id !== "" &&
-      resumeContext.dispatch({ type: "progressBar-c" });
+      resumeContext.dispatch({ type: "progressBar-c",payload:10 });
+    resumeContext.data.birthday.day !== "" &&
+      resumeContext.dispatch({ type: "progressBar-c",payload:10 });
+    resumeContext.data.province.id !== "" &&
+      resumeContext.dispatch({ type: "progressBar-c",payload:10 });
+    resumeContext.data.city.id !== "" &&
+      resumeContext.dispatch({ type: "progressBar-c",payload:10 });
+    resumeContext.data.salary.fa.from !== "" &&
+      resumeContext.dispatch({ type: "progressBar-c",payload:10 });
+    resumeContext.data.jobCategory.id !== "" &&
+      resumeContext.dispatch({ type: "progressBar-c" ,payload:10});
   };
   return (
     <div
       className="d-flex mt-5 justify-content-center"
       onClick={() => {
         handleStep(step + 1);
-        handleProgress()
+        handleProgress();
       }}
     >
       <div
