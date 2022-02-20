@@ -1070,7 +1070,7 @@ body {
 .shadow2 {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
-.shadow3{
+.shadow3 {
   box-shadow: 0px 11px 18px rgba(0, 0, 0, 0.1);
 }
 .adbox-label {
@@ -1174,12 +1174,11 @@ body {
   width: 40%;
   background-color: rgba(255, 255, 255, 0.38);
   background-image: url("../public/assets/images/Rectangle18.png");
-  background-position: center;  
-  background-repeat: no-repeat;  
-  background-size: cover;  
- border-radius: 20px; 
-
- }
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+}
 .home-top-sec3 {
   display: flex;
   align-items: center;
@@ -1190,8 +1189,8 @@ body {
   font-size: 1.5rem;
   text-align: center;
   background-image: url("../public/assets/images/Rectangle17.png");
-  
-  height: 100%; 
+
+  height: 100%;
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
@@ -1206,59 +1205,212 @@ body {
   font-size: 1.5rem;
   text-align: center;
   background-image: url("../public/assets/images/Rectangle19.png");
-  
-  height: 100%; 
+
+  height: 100%;
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
 }
-.home-top-sec4{
-position: relative;
-font-weight: bold;
+.home-top-sec4 {
+  position: relative;
+  font-weight: bold;
 }
-.home-top-sec4::before{
-  content:'';
+.home-top-sec4::before {
+  content: "";
   position: absolute;
-  top:-170%;
+  top: -170%;
   right: 50%;
-   height: 40px;
+  height: 40px;
   border: #212529 solid 0.1px;
 }
-.home-top-sec4::after{
-  content:'';
+.home-top-sec4::after {
+  content: "";
   position: absolute;
-  bottom:-170%;
+  bottom: -170%;
   right: 50%;
-   height: 40px;
+  height: 40px;
   border: #212529 solid 0.5px;
 }
-.searchBar{
+.searchBar {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 4rem;
-   background: linear-gradient(91.28deg, #11999E -15.97%, rgba(17, 153, 158, 0) 109.93%);
+  background: linear-gradient(
+    91.28deg,
+    #11999e -15.97%,
+    rgba(17, 153, 158, 0) 109.93%
+  );
   width: 100%;
   height: 181px;
   margin-bottom: 50px;
 }
-.pageNumber{
+.pageNumber {
   background-color: #fff;
   font-size: 16;
   border-radius: 50%;
-  padding: 4px 12px ;
+  padding: 4px 12px;
   margin-right: 10px;
 }
-.pageNumberDis{
+.pageNumberDis {
   background-color: white;
   border-radius: 50%;
   width: 7px;
   height: 7px;
   margin-right: 8px;
 }
-.nextPage{
+.nextPage {
   background-color: #11999e;
-  padding-right:10px ;
-  padding-left:10px ;
+  padding-right: 10px;
+  padding-left: 10px;
   border-radius: 30px;
+}
+.eShowCase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #c7e4e5;
+  width: 100%;
+  height: 100%;
+  margin-top: 5rem;
+}
+.eShowCase_sec1 {
+  background-color: white;
+  border-radius: 10px;
+  width: 80%;
+}
+.eShowCase_sec1 h2 {
+  margin-top: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  width: 100%;
+  padding-bottom: 10px;
+  text-align: center;
+  border-bottom: #7b829e solid 0.5px;
+}
+.eShowCase_sec1 h3 {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #3fb0ef;
+  width: 100%;
+  padding-bottom: 10px;
+  text-align: center;
+}
+.eShowCase_sec1 or {
+  color: #848484;
+  font-weight: 300;
+  font-size: 18px;
+  position: relative;
+}
+.eShowCase_sec1 .or::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 30px;
+  height: 1px;
+  border: #000 solid 2px;
+}
+.eShowCase_sec1 .upload {
+  color: #11999e;
+  background-color: #fff;
+  border-radius: 5px;
+  width: 70%;
+  font-size: 18px;
+  text-align: center;
+  border: #11999e solid 1px;
+  border-radius: 11px;
+}
+.eShowContainer {
+  width: 80%;
+  margin-top: 7rem;
+}
+.eShowContainer .mainSec {
+  border-radius: 30px;
+}
+.eShowContainer .rightsec {
+  background-color: white;
+  text-align: center;
+  cursor: pointer;
+  border-left: #000 solid 1px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.eShowContainer .middlesec {
+  background-color: #c7e4e5;
+  text-align: center;
+  cursor: pointer;
+  border-left: #000 solid 1px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #11999e;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.eShowContainer .leftsec {
+  background-color: white;
+  text-align: center;
+  cursor: pointer;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.jobAds {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.jobAds .rightsec1 {
+  background-color: white;
+  text-align: center;
+  cursor: pointer;
+  border-left: #000 solid 1px;
+  border-top-right-radius: 30px;
+  color: #11999e;
+  font-weight: bold;
+  font-size: 20px;
+  border-bottom: #11999e solid 4px;
+}
+
+.jobAds .middlesec1 {
+  background-color: white;
+  text-align: center;
+  cursor: pointer;
+  border-left: #000 solid 1px;
+  font-size: 20px;
+  color: #000;
+}
+.jobAds .leftsec1 {
+  background-color: white;
+  text-align: center;
+  cursor: pointer;
+  border-top-left-radius: 30px;
+}
+.eAdshow {
+  background-color: white;
+}
+.eAdshowSec1 {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.eAdshowSec2 {
+  font-size: 18px;
+}
+.txtSec1{
+  background-color: #EAEAEA;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 10px 3px;
+  margin-left: 5px;
+}
+.txtSec2{
+  background-color: #F2F2F2;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 10px 3px;
+  margin-left: 5px
 }

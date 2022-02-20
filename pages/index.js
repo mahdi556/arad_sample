@@ -95,6 +95,18 @@ export default function Home() {
         >
           لیست آگهی ها
         </div>
+        <div
+          style={{
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            router.push({
+              pathname: "/eShowcase ",
+            });
+          }}
+        >
+          ویترین کارفرما
+        </div>
       </div>
       <Footer />
     </>
