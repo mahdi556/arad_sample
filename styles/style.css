@@ -309,6 +309,7 @@ body {
   position: relative;
   z-index: 10;
   width: 100%;
+  margin-top: 20rem;
 }
 @media (max-width: 1200px) {
   .footer1-background {
@@ -1069,7 +1070,9 @@ body {
 .shadow2 {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
-
+.shadow3{
+  box-shadow: 0px 11px 18px rgba(0, 0, 0, 0.1);
+}
 .adbox-label {
   display: flex;
   background-color: #11999e;
@@ -1133,9 +1136,129 @@ body {
   background-color: #fff;
   border-radius: 10px;
   height: 180px;
-  /* min-width: 350px; */
   width: 100%;
-  max-width: 370px;
   position: relative;
+}
+.adbox:hover {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.homeColTitel {
+  width: 40%;
+  background-color: #c7e4e5;
+  color: #11999e;
+  font-weight: bold;
+  font-size: 30px;
+  padding: 20px 20px;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.home-top-section {
+  display: flex;
+  background-color: #10989e;
+  height: 80vh;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 15vh;
+  position: relative;
+}
+.home-top-sec2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  position: absolute;
+  bottom: -10%;
+  right: 10%;
+  height: 145px;
+  width: 40%;
+  background-color: rgba(255, 255, 255, 0.38);
+  background-image: url("../public/assets/images/Rectangle18.png");
+  background-position: center;  
+  background-repeat: no-repeat;  
+  background-size: cover;  
+ border-radius: 20px; 
+
+ }
+.home-top-sec3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: rgba(17, 153, 158, 0.15); */
+  width: 40%;
+  border-radius: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+  background-image: url("../public/assets/images/Rectangle17.png");
+  
+  height: 100%; 
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+.home-top-sec5 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(17, 153, 158, 0.15);
+  width: 40%;
+  border-radius: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+  background-image: url("../public/assets/images/Rectangle19.png");
+  
+  height: 100%; 
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+.home-top-sec4{
+position: relative;
+font-weight: bold;
+}
+.home-top-sec4::before{
+  content:'';
+  position: absolute;
+  top:-170%;
+  right: 50%;
+   height: 40px;
+  border: #212529 solid 0.1px;
+}
+.home-top-sec4::after{
+  content:'';
+  position: absolute;
+  bottom:-170%;
+  right: 50%;
+   height: 40px;
+  border: #212529 solid 0.5px;
+}
+.searchBar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+   background: linear-gradient(91.28deg, #11999E -15.97%, rgba(17, 153, 158, 0) 109.93%);
+  width: 100%;
+  height: 181px;
+  margin-bottom: 50px;
+}
+.pageNumber{
+  background-color: #fff;
+  font-size: 16;
+  border-radius: 50%;
+  padding: 4px 12px ;
+  margin-right: 10px;
+}
+.pageNumberDis{
+  background-color: white;
+  border-radius: 50%;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+}
+.nextPage{
+  background-color: #11999e;
+  padding-right:10px ;
+  padding-left:10px ;
+  border-radius: 30px;
 }

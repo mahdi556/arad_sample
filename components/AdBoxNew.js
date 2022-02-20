@@ -1,18 +1,19 @@
 import Image from "next/image";
-const AdBoxNew = ({width}) => {
+const AdBoxNew = ({ width }) => {
   return (
-    <div className="   "
-    style={{
-      width:width
-    }}
+    <div
+      className="   "
+      style={{
+        width: width,
+      }}
     >
       <div className="d-flex col-12 p-4 adbox">
-        <div className="d-flex col-8 flex-column  ">
+        <div className="d-flex col-8 pe-2 flex-column  ">
           <div className="">
             <div className="d-inline-flex">
               <h5
                 style={{
-                  fontSize: 18,
+                  fontSize: "1rem",
                   lineHeight: 1.5,
                 }}
               >
@@ -51,7 +52,7 @@ const AdBoxNew = ({width}) => {
           <div
             className="d-flex  justify-content-start"
             style={{
-              fontSize: 16,
+              fontSize: "0.9rem",
             }}
           >
             <div className="d-flex justify-content-center align-items-center me-2  ">
@@ -65,11 +66,11 @@ const AdBoxNew = ({width}) => {
           </div>
         </div>
         <div
-          className="d-flex flex-column col-4  justify-content-center align-items-center shadow2 p-0"
+          className="d-flex flex-column col-4  justify-content-center align-items-center shadow2    "
           style={{
-            fontSize: 14,
+            fontSize: '0.9rem',
             borderRadius: 10,
-            width: 110,
+            width: '37%',
           }}
         >
           <div className="adbox-label">
@@ -83,7 +84,7 @@ const AdBoxNew = ({width}) => {
             style={{
               backgroundColor: "rgb(17,153,158,0.09)",
               borderRadius: 10,
-              width: 113,
+              width: '100%',
               height: 100,
             }}
           >

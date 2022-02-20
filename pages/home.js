@@ -1,16 +1,14 @@
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-import TopBanner from "../components/Common/TopBanner";
 import HomeAds from "../components/Common/HomeAds";
+import HomeTopSection from "../components/Common/HomeTopSection";
 const Home = () => {
   return (
     <>
       <NavBar />
-      <TopBanner />
+      <HomeTopSection />
 
-      <div className="  col-12">
-        <HomeAds />
-      </div>
+      <HomeAds />
 
       <Footer />
     </>
