@@ -25,7 +25,7 @@ const NavBar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav align-items-center   me-auto mb-2 mb-lg-0 ">
-            <li className="navitems active">
+            <li className="navitems activeNav">
               صفحه نخست
               {/* <div
                 style={{

@@ -1,8 +1,7 @@
 import Image from "next/image";
- 
-import { useContext, useState } from "react";
+
 const RightMenu = () => {
-   return (
+  return (
     <>
       <div
         className=""
@@ -89,7 +88,7 @@ const RightMenu = () => {
               رزومه
             </h6>
           </div>
-          <div
+          {/* <div
             className="ps-3 ms-4 mt-3  "
             style={[
               {
@@ -97,14 +96,14 @@ const RightMenu = () => {
                 borderRightColor: "#000",
                 borderWidth: 2,
                 visibility: "hidden",
-              } 
+              },
             ]}
           >
             <h6 className="mt-2 py-2 ps-2 EsubItem ">تکمیل و دانلود رزومه</h6>
             <h6 className="mt-2 py-2 ps-2 EsubItem">
               پیگیری رزومه های ارسال شده
             </h6>
-          </div>
+          </div> */}
         </div>
         <div>
           <div className="d-flex ms-4 mt-4">

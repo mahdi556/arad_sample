@@ -107,6 +107,18 @@ export default function Home() {
         >
           ویترین کارفرما
         </div>
+        <div
+          style={{
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            router.push({
+              pathname: "/rShowcase ",
+            });
+          }}
+        >
+          ویترین کارجو
+        </div>
       </div>
       <Footer />
     </>

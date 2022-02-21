@@ -1,16 +1,22 @@
+import { useState } from "react";
+import ECProfile from "./ECProfile";
 import JobAds from "./JobAds";
 
 const EShowContent = () => {
+  const [tab, setTab] = useState(1);
   return (
     <>
-      <div className="eShowContainer mx-auto">
-        <div className="d-flex col-12 justify-content-center mainSec bg-white">
-             
-        <div className="col-4 py-2 rightsec">پروفایل سازمانی</div>
-        <div className="col-4 py-2 middlesec">فرصت های شغلی</div>
-        <div className="col-4 py-2 leftsec">پست ها</div>
+      <div className="eShowContainer mx-auto ">
+        <div className="d-flex col-12 justify-content-center mainSec bg-white ">
+          <div className="col-4 py-2 rightsec" onClick={() => setTab(1)}>
+            پروفایل سازمانی
+          </div>
+          <div className="col-4 py-2 middlesec" onClick={() => setTab(2)}>
+            فرصت های شغلی
+          </div>
+          <div className="col-4 py-2 leftsec">پست ها</div>
         </div>
-        <JobAds />
+        {tab == 1 ? <ECProfile /> : <JobAds />}
       </div>
     </>
   );
