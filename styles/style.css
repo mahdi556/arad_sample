@@ -1147,13 +1147,17 @@ body {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
-.adbox {
+#adbox {
   background-color: #fff;
   border-radius: 10px;
   /* height: 10em; */
   width: 100%;
   position: relative;
   align-items: center;
+  cursor: pointer;
+}
+#adbox:hover{
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .rAdbox {
   background-color: #fff;
@@ -1162,15 +1166,41 @@ body {
   width: 100%;
   position: relative;
 }
-.adbox:hover {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+#adbox:hover ~ #adbox-salary {
+  right: 0%;
+  visibility: visible;
+ 
+ 
+}
+#adbox-salary{
+  visibility: hidden;
+   position: absolute;
+  bottom: -3%;
+  right: 10%;
+  font-size: 13px;
+  width: 100%;
+  text-align: center;
+  transition: all 0.2s ease-out;
+}
+ 
+
+ 
+@media (max-width: 576px) {
+  .homeAd-mobile{
+   width: 98%;
+  }
+}
+@media (min-width: 577px) {
+  .homeAd-mobile{
+   width: 46%;
+  }
 }
 .homeColTitel {
   width: 40%;
   background-color: #c7e4e5;
   color: #11999e;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   padding: 20px 20px;
   border-radius: 20px;
   text-align: center;
@@ -1185,6 +1215,17 @@ body {
   margin-bottom: 15vh;
   position: relative;
 }
+.homeButton{
+  background-color: #11999e;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 26px;
+  font-weight: bold;
+  padding: 15px 40px;
+  margin-top: 40px;
+  text-align: center;
+  width: 40%;
+}
 .home-top-sec2 {
   display: flex;
   justify-content: space-between;
@@ -1193,7 +1234,7 @@ body {
   position: absolute;
   bottom: -10%;
   right: 10%;
-  height: 9rem;
+  height: 150px;
   width: 40%;
   background-color: rgba(255, 255, 255, 0.38);
   background-image: url("../public/assets/images/Rectangle18.png");

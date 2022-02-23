@@ -1,6 +1,7 @@
 import Image from "next/image";
 import RAdBoxes from "./RAdBoxes";
-import Chart from "react-apexcharts";
+import dynamic from "next/dynamic";
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import BreakeLine from "../../Employee/Resume/FormInputs/BreakLine";
 import AdBoxNew from "../../AdBoxNew";
 const width = "33%";

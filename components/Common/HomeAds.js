@@ -1,10 +1,16 @@
-import AdBox from "../AdBox";
-import Image from "next/image";
+ import Image from "next/image";
 import AdBoxNew from "../AdBoxNew";
 const HomeAds = () => {
   const width = "50%";
   return (
     <>
+    <div className="mx-auto" 
+    style={{
+
+      maxWidth:2300
+    }}
+    >
+
       <div
         className="d-flex p-2 justify-content-between bg-white ms-4 shadow3 mb-5"
         style={{
@@ -34,48 +40,68 @@ const HomeAds = () => {
           <Image src="/assets/images/Group9335.png" height={40} width={40} />
         </div>
       </div>
-      <div className="d-flex justify-content-center ">
-        <div className=" col-5">
+      <div
+        className="d-flex  justify-content-center mx-auto "
+        // style={{
+        //   maxWidth: 2300,
+        // }}
+      >
+        <div
+          className=" "
+          style={{
+            width: "46%",
+          }}
+        >
           <h1 className=" homeColTitel mx-auto ">افراد جویای کار</h1>
 
           <div
-            class="row  gx-3 gy-4   pe-5 pt-0 "
+            class="row  gx-3 gy-4   pe-4 pt-0 "
             style={{
               borderLeftStyle: "solid",
               borderLeftColor: "#000",
               borderLeftWidth: 0.5,
             }}
           >
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
           </div>
+          <h1 className=" homeButton mx-auto ">ادامه لیست</h1>
         </div>
-        <div className=" col-5">
-          <h1 className=" homeColTitel mx-auto ">آگهی های شغلی</h1>
-          <div class="row    gx-3 gy-4  ms-4 ps-1 ">
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
-            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+        <div
+          className=" "
+          style={{
+            width: "46%",
+          }}
+        >
+          <div className="col-12 d-flex justify-content-center">
+            <h1 className="d-inline-block homeColTitel mx-auto ">
+              آگهی های شغلی
+            </h1>
           </div>
+          <div class="row    gx-3 gy-4  ms-4 ps-1 ">
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+            <AdBoxNew width={" col-xl-12 col-xxl-6 "} />
+          </div>
+          <h1 className=" homeButton mx-auto ">ادامه لیست</h1>
         </div>
       </div>
+    </div>
     </>
   );
 };
