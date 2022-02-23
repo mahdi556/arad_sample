@@ -38,9 +38,7 @@ const Divx = ({ i, removeExpertt, texthandler, tex }) => {
         >
           حذف
         </div>
-        {/* <div onClick={(e) => console.log(document.getElementById(i).id)}>
-          {i}-{tex}
-        </div> */}
+         
       </div>
       <div className="d-inline col-6  offset-1">
         <div

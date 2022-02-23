@@ -2,10 +2,10 @@ import Image from "next/image";
 const AdBoxNew = ({ width }) => {
   return (
     <div
-      className="   "
-      style={{
-        width: width,
-      }}
+      className={ width }
+      // style={{
+      //   width: width,
+      // }}
     >
       <div className="d-flex col-12 p-4 adbox">
         <div className="d-flex col-8 pe-2 flex-column  ">
@@ -14,7 +14,7 @@ const AdBoxNew = ({ width }) => {
               <h5
                 style={{
                   fontSize: "1rem",
-                  lineHeight: 1.5,
+                  lineHeight: "2rem",
                 }}
               >
                 فروشنده حرفه ای فروشنده حرفه ای
@@ -50,7 +50,7 @@ const AdBoxNew = ({ width }) => {
           </div>
 
           <div
-            className="d-flex  justify-content-start"
+            className="d-flex  justify-content-start align-items-start"
             style={{
               fontSize: "0.9rem",
             }}
@@ -66,11 +66,9 @@ const AdBoxNew = ({ width }) => {
           </div>
         </div>
         <div
-          className="d-flex flex-column col-4  justify-content-center align-items-center shadow2    "
+          className="  col-4   "
           style={{
-            fontSize: '0.9rem',
-            borderRadius: 10,
-            width: '37%',
+            width: "37%",
           }}
         >
           <div className="adbox-label">
@@ -80,17 +78,25 @@ const AdBoxNew = ({ width }) => {
             </div>
           </div>
           <div
-            className="d-flex justify-content-center align-items-center "
+            className=" d-flex flex-column   justify-content-center align-items-center shadow2 "
             style={{
-              backgroundColor: "rgb(17,153,158,0.09)",
+              fontSize: "0.9rem",
               borderRadius: 10,
-              width: '100%',
-              height: 100,
             }}
           >
-            <Image src="/assets/images/adimage.png" width={74} height={74} />
+            <div
+              className="d-flex justify-content-center align-items-center "
+              style={{
+                backgroundColor: "rgb(17,153,158,0.09)",
+                borderRadius: 10,
+                width: "100%",
+                height: 90,
+              }}
+            >
+              <Image src="/assets/images/adimage.png" width={74} height={74} />
+            </div>
+            <h6 className="text-center">برقراری ارتباط</h6>
           </div>
-          <div>برقراری ارتباط</div>
         </div>
       </div>
     </div>

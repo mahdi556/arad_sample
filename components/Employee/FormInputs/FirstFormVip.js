@@ -19,7 +19,7 @@ const FirstFormVip = () => {
       setImageUrl(newImageUrl);
       resumeContext.dispatch({ type: "userImageFile", payload: image[0] });
       resumeContext.dispatch({ type: "userImage", payload: newImageUrl });
-      console.log(image[0]);
+     
     }
 
     if (videofile.length > 0) {

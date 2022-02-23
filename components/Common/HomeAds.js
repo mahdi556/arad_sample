@@ -8,7 +8,7 @@ const HomeAds = () => {
       <div
         className="d-flex p-2 justify-content-between bg-white ms-4 shadow3 mb-5"
         style={{
-          width:343,
+          width: 343,
           borderRadius: 15,
         }}
       >
@@ -20,11 +20,14 @@ const HomeAds = () => {
           }}
         >
           <h6>پشتیبان برای شما آگهی ثبت می کند</h6>
-          <h2 className="fw-bold"
-          style={{
-            fontFamily:'iransansdn'
-          }}
-          >091200000</h2>
+          <h2
+            className="fw-bold"
+            style={{
+              fontFamily: "iransansdn",
+            }}
+          >
+            091200000
+          </h2>
         </div>
         <div className="">
           <Image src="/assets/images/Group9338.png" height={40} width={40} />
@@ -36,42 +39,40 @@ const HomeAds = () => {
           <h1 className=" homeColTitel mx-auto ">افراد جویای کار</h1>
 
           <div
-            class="row  gx-3 gy-4   pe-3 pt-0 "
+            class="row  gx-3 gy-4   pe-5 pt-0 "
             style={{
               borderLeftStyle: "solid",
               borderLeftColor: "#000",
               borderLeftWidth: 0.5,
             }}
           >
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
           </div>
         </div>
         <div className=" col-5">
           <h1 className=" homeColTitel mx-auto ">آگهی های شغلی</h1>
-          <div class="row    gx-3 gy-4  ms-4 ps-3 ">
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
-            <AdBoxNew width={width} />
+          <div class="row    gx-3 gy-4  ms-4 ps-1 ">
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
+            <AdBoxNew width={" col-lg-12 col-xl-6 "} />
           </div>
         </div>
       </div>

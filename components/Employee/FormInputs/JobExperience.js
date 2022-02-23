@@ -353,7 +353,7 @@ const JoBExperience = () => {
       return data[index];
     }
   };
-  console.log(data);
+  
   return (
     <>
       <div className="d-flex align-items-center">

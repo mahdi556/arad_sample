@@ -1,5 +1,6 @@
 import Image from "next/image";
 const RAdBoxes = () => {
+  
   return (
     <div
       className=" mb-3  "
