@@ -119,6 +119,18 @@ export default function Home() {
         >
           ویترین کارجو
         </div>
+        <div
+          style={{
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            router.push({
+              pathname: "/sentResume ",
+            });
+          }}
+        >
+          رزومه های ارسال شده
+        </div>
       </div>
       <Footer />
     </>
