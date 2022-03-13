@@ -5,13 +5,15 @@ import HomeTopSection from "../components/Common/HomeTopSection";
 const Home = () => {
   return (
     <>
+ 
+   
       <NavBar />
       <HomeTopSection />
 
       <HomeAds />
 
       <Footer />
-    </>
+     </>
   );
 };
 
