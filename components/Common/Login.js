@@ -3,18 +3,19 @@ import axios from "../../axios";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { useContext, useState } from "react";
+import InputCode from "./InputCode";
 import UserContext from "../../context/employeeContext/User/UserContext";
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 650,
-  bgcolor: "#C7E4E5",
-  boxShadow: 24,
-  borderRadius: 5,
-  // p: 2,
-};
+// const style = {
+//   position: "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   width: 650,
+//   bgcolor: "#C7E4E5",
+//   boxShadow: 24,
+//   borderRadius: 5,
+//   // p: 2,
+// };
 const Login = () => {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
@@ -31,6 +32,8 @@ const Login = () => {
   const [cellphone, setCellphone] = useState("");
   const [otp, setOtp] = useState("");
   const [roll, setRoll] = useState("");
+  const [countdown, setCountdown] = useState("");
+  const [resend, setResend] = useState(false);
 
   const userContext = useContext(UserContext);
   const initialSingHandler = () => {
@@ -43,6 +46,7 @@ const Login = () => {
     })
       .then((response) => {
         setToken(response.data.login_token);
+        // startTimer();
         // const login_token = response.data.login_token;
         // navigation.navigate("Forget", {
         //   cellphone: cellphone,
@@ -70,18 +74,13 @@ const Login = () => {
           handleClose2();
           handleOpen3();
         }
-        // const login_token = response.data.login_token;
-        // navigation.navigate("Forget", {
-        //   cellphone: cellphone,
-        //   login_token: login_token,
-        // });
-      })
+       })
       .catch(function (error) {
         console.log(error);
       });
     // }
   };
-  const signUpHandler = () => {
+   const signUpHandler = () => {
     axios({
       url: "/firstSignUp",
       method: "post",
@@ -99,7 +98,7 @@ const Login = () => {
             id: response.data.id,
             firstName: response.data.firstName,
             lastName: response.data.lastName,
-            auth:true
+            auth: true,
           },
         });
         handleClose3();
@@ -109,10 +108,12 @@ const Login = () => {
       });
     // }
   };
-  console.log(userContext)
+   
+
+  
   return (
     <>
-      <div
+      {/* <div
         className="d-flex px-2 py-2 me-5 align-items-center "
         style={{
           borderRadius: 10,
@@ -135,7 +136,7 @@ const Login = () => {
             ورود/ثبت نام
           </>
         )}
-      </div>
+      </div> */}
 
       <Modal open={open1} onClose={handleClose1}>
         <Box sx={style} className="px-4 py-3">
@@ -231,8 +232,34 @@ const Login = () => {
                   marginTop: 50,
                 }}
               >
-                کد تایید به شماره {cellphone} ارسال شد.
+                کد تایید به شماره
+                <h3
+                  className="d-inline-flex"
+                  style={{
+                    fontSize: 25,
+                    color: "#11999e",
+                  }}
+                >
+                  &nbsp;
+                  {cellphone} &nbsp;
+                </h3>
+                ارسال شد.
               </div>
+              <h4
+                style={{
+                  fontSize: 19,
+                  color: "#11999e",
+                  textAlign: "center",
+                  cursor: "pointer",
+                  marginTop: 10,
+                }}
+                onClick={() => {
+                  handleClose2();
+                  handleOpen1();
+                }}
+              >
+                اصلاح شماره
+              </h4>
             </div>
             <div className="d-flex flex-column mt-5 mx-4">
               <label
@@ -245,17 +272,33 @@ const Login = () => {
               >
                 کد تایید
               </label>
-              <input
-                className="inputStyle"
-                // className={
-                //   resumecontext.data.name == ""
-                //     ? "col-12 mb-3 ps-2 inputStyle"
-                //     : "col-12 mb-3 ps-2 inputFilled"
-                // }
-                type="text"
-                // value={resumecontext.data.name}
-                onChange={(e) => setOtp(e.target.value)}
-              />
+
+              <div className="loginInput ">
+                <InputCode
+                  length={4}
+                  onComplete={(code) => {
+                    setOtp(code);
+                  }}
+                />
+              </div>
+              {resend ? (
+                <div
+                  className="text-end mt-2"
+                  style={{
+                    cursor: "pointer",
+                    color: "#ec4b72",
+                  }}
+                  onClick={() => {
+                    initialSingHandler();
+                    setResend(false);
+                    // startTimer();
+                  }}
+                >
+                  ارسال مجدد
+                </div>
+              ) : (
+                <div className="text-end mt-2">{countdown}</div>
+              )}
             </div>
             <div
               className="py-2 text-white   px-2 mx-auto"

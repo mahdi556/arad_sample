@@ -1831,3 +1831,54 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 }
 /* progressBAR BOOTSTRAP ----- End ------- */
+/* INPUT CODE >>>> START  */
+.code-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.code-inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.code-inputs input {
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  text-align: center;
+  height: 30px;
+  width: 120px;
+  /* border-radius: 10px; */
+  margin: 0 4px;
+  border-right: 2px solid rgba(0, 0, 0, 0.32);
+  font-size: 30px;
+}
+.code-inputs input:focus {
+  outline: none;
+}
+.code-inputs input:nth-child(4n) {
+  /* margin-right: 24px; */
+  border: none;
+  /* border-left: 2px solid #4f5b66; */
+}
+
+.loginInput{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ebebeb;
+  border-style: none;
+  border-radius: 10px;
+   
+  height: 55px;
+  width: 100%;
+}
+
+
+/* INPUT CODE >>>> FINISH  */
