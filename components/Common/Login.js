@@ -5,17 +5,17 @@ import Modal from "@mui/material/Modal";
 import { useContext, useState } from "react";
 import InputCode from "./InputCode";
 import UserContext from "../../context/employeeContext/User/UserContext";
-// const style = {
-//   position: "absolute",
-//   top: "50%",
-//   left: "50%",
-//   transform: "translate(-50%, -50%)",
-//   width: 650,
-//   bgcolor: "#C7E4E5",
-//   boxShadow: 24,
-//   borderRadius: 5,
-//   // p: 2,
-// };
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 650,
+  bgcolor: "#C7E4E5",
+  boxShadow: 24,
+  borderRadius: 5,
+  // p: 2,
+};
 const Login = () => {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
@@ -113,7 +113,7 @@ const Login = () => {
   
   return (
     <>
-      {/* <div
+      <div
         className="d-flex px-2 py-2 me-5 align-items-center "
         style={{
           borderRadius: 10,
@@ -126,8 +126,10 @@ const Login = () => {
         }}
         onClick={handleOpen1}
       >
-        {userContext.data.user.auth ? (
+        {userContext.data.user.auth
+         ? (
           `${userContext.data.user.firstName}  ${userContext.data.user.lastName}`
+          
         ) : (
           <>
             <div className="d-flex me-2  ">
@@ -135,8 +137,8 @@ const Login = () => {
             </div>
             ورود/ثبت نام
           </>
-        )}
-      </div> */}
+        )} 
+      </div>
 
       <Modal open={open1} onClose={handleClose1}>
         <Box sx={style} className="px-4 py-3">

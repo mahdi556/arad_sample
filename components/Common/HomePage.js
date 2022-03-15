@@ -1,4 +1,4 @@
-import UserProvider from "../../context/employeeContext/User/UserProvider";
+// import UserProvider from "../../context/employeeContext/User/UserProvider";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
 import HomeAds from "./HomeAds";
@@ -7,14 +7,14 @@ import HomeTopSection from "./HomeTopSection";
 const HomePage = () => {
   return (
     <>
-      <UserProvider>
+      {/* <UserProvider> */}
         <NavBar />
         <HomeTopSection />
 
         <HomeAds />
 
         <Footer />
-      </UserProvider>
+      {/* </UserProvider> */}
     </>
   );
 };

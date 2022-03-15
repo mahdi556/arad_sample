@@ -33,8 +33,8 @@ const SelectOption = ({ data, name, valueHandler,predata }) => {
     let filterList = [];
     setDatas(filterList);
     data.filter(function check(item) {
-      if (item.name.indexOf(text) != -1) {
-        filterList.push({ id: item.id, name: item.name });
+      if (item.fa.indexOf(text) != -1) {
+        filterList.push({ id: item.id, fa: item.fa });
       }
     });
   };
@@ -136,15 +136,15 @@ const SelectOption = ({ data, name, valueHandler,predata }) => {
                   className="  dropdown-item"
                   key={item.id}
                   onClick={() => {
-                    valueHandler(item.id, item.name);
-                    setPlaceholder(item.name);
+                    valueHandler(item.id, item.fa);
+                    setPlaceholder(item.fa);
                     setDropdown("close-drop");
                     setDropLabel("dropLabelBack");
                     setSearch(false);
                     delay(300).then(() => setDrop(false));
                   }}
                 >
-                  {item.name}
+                  {item.fa}
                 </div>
               ))}
             </div>

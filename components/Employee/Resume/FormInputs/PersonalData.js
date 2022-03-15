@@ -33,8 +33,8 @@ const PersonalData = () => {
     2: "Ebutton",
     3: "Ebutton",
   });
-  const handlePersonalProgress = (sec,item) => {
-    sec !== "" &&  resumecontext.data.progressBar.c.push(item);
+  const handlePersonalProgress = (sec, item) => {
+    sec !== "" && resumecontext.data.progressBar.c.push(item);
     resumecontext.dispatch({ type: "progressBar-c" });
   };
   const SetButtClass = (i) => {
@@ -72,7 +72,7 @@ const PersonalData = () => {
   const EcityHandler = (id, name) => {
     resumecontext.dispatch({ type: "city", payload: { id: id, Ename: name } });
   };
-   return (
+  return (
     <>
       <div
         style={{
@@ -111,7 +111,7 @@ const PersonalData = () => {
                     type: "name",
                     payload: e.target.value,
                   });
-                 }}
+                }}
               />
             </div>
             <div className="col-5">
@@ -137,7 +137,7 @@ const PersonalData = () => {
                     type: "lastname",
                     payload: e.target.value,
                   });
-                 }}
+                }}
               />
             </div>
           </div>
@@ -280,7 +280,6 @@ const PersonalData = () => {
             />
           </div>
           <div
-            className="col-12"
             className="col-12"
             style={{
               maxHeight: "6rem",

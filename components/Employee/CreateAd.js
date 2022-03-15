@@ -1,11 +1,13 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import ContactForm from "./FormInputs/Contact";
-import FirstForm from "./FormInputs/FirstForm";
-import JobCondition from "./FormInputs/JobCondition";
-import StepButton from "./FormInputs/StepButton";
-import VerticalProgress from "./FormInputs/VerticalProgress";
- 
+import NormalAdProvider from "../../context/employeeContext/CreateAd/NormalAd/NormalAdProvider";
+ import FirstForm from "./FormInputs/FirstForm";
+import StepButton from "./NormalAd/StepButton";
+import PersonalData from "./NormalAd/PersonalData";
+import VerticalProgress from "./NormalAd/VerticalProgress";
+import VerifyFirstForm from "./NormalAd/VerifyFirstForm";
+import VerifyPersonalData from "./NormalAd/VerifyPersonalData";
+import ContactForm from "./NormalAd/Contact";
  
 const CreateEmployeeAd = () => {
   const router = useRouter();
@@ -15,10 +17,11 @@ const CreateEmployeeAd = () => {
     setStep(sn);
     setP_height(ph);
   };
+  console.log(step, p_height);
   return (
     <>
-      
-         <div
+      <NormalAdProvider>
+        <div
           style={{
             width: "100%",
             backgroundColor: "#E5E5E5",
@@ -80,23 +83,38 @@ const CreateEmployeeAd = () => {
                   width: "83%",
                 }}
               >
-                <FirstForm />
+                {step == 1 && <FirstForm />}
 
                 {step < 2 && (
-                  <StepButton handleStep={handleStep} step={2} ph={"60%"} />
+                  <StepButton handleStep={handleStep} step={1} ph={"55%"} />
                 )}
 
-                {step >= 2 && (
-                  <JobCondition step={step} handleStep={handleStep} />
+                {step > 1 && (
+                  <>
+                    <VerifyFirstForm handleStep={handleStep} />
+                  </>
                 )}
 
-                {step == 3 && <ContactForm />}
+                {step == 2 && (
+                  <>
+                    <PersonalData />
+                    <StepButton handleStep={handleStep} step={2} ph={"95%"} />
+                   </>
+                )}
+
+                {step > 2 && (
+                  <>
+                    <VerifyPersonalData handleStep={handleStep} />
+                    <ContactForm />
+                  </>
+                )}
+
+                {/* {step == 3 && <ContactForm />} */}
               </div>
             </div>
           </div>
         </div>
-       
-       
+      </NormalAdProvider>
     </>
   );
 };

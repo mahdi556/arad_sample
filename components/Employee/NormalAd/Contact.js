@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import NormalAdContext from "../../../context/employeeContext/CreateAd/NormalAd/NormalAdContext";
-import SwitchButtion from "./SwitchButton";
+import SwitchButtion from "../FormInputs/SwitchButton";
 
 const ContactForm = () => {
   const normalAdContext = useContext(NormalAdContext);
@@ -41,6 +41,12 @@ const ContactForm = () => {
                 borderStyle: "none",
                 borderRadius: 5,
               }}
+              onChange={(e) =>
+                normalAdContext.dispatch({
+                  type: "cellphone",
+                  payload: e.target.value,
+                })
+              }
               type="text"
             />
           </div>
@@ -60,6 +66,12 @@ const ContactForm = () => {
                 borderStyle: "none",
                 borderRadius: 5,
               }}
+              onChange={(e) =>
+                normalAdContext.dispatch({
+                  type: "whatsapp",
+                  payload: e.target.value,
+                })
+              }
               type="text"
             />
           </div>
@@ -81,6 +93,12 @@ const ContactForm = () => {
                 borderStyle: "none",
                 borderRadius: 5,
               }}
+              onChange={(e) =>
+                normalAdContext.dispatch({
+                  type: "telegram",
+                  payload: e.target.value,
+                })
+              }
               type="text"
             />
           </div>
@@ -100,6 +118,12 @@ const ContactForm = () => {
                 borderStyle: "none",
                 borderRadius: 5,
               }}
+              onChange={(e) =>
+                normalAdContext.dispatch({
+                  type: "email",
+                  payload: e.target.value,
+                })
+              }
               type="text"
             />
           </div>
@@ -134,8 +158,7 @@ const ContactForm = () => {
           </div>
         </div>
       </div>
-      <div
-        className="d-flex mt-5 justify-content-center">
+      <div className="d-flex mt-5 justify-content-center">
         <div
           className="py-2 text-white"
           style={{

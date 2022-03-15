@@ -5,7 +5,7 @@ import userReducer from "./userReducer";
 const initialData = {
   user: {
     id: "",
-    firstName: "",
+    firstName: "hamid",
     lastName: "",
     auth: false,
   },
