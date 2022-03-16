@@ -27,11 +27,11 @@ const initialData = {
   salary: {
     fa: { from: "", to: "" },
   },
- cellphone:'',
- whatsapp:'',
- telegram:'',
- email:'', 
-  adComment: "",
+  cellphone: "",
+  whatsapp: "",
+  telegram: "",
+  email: "",
+  description: "",
 };
 
 const NormalAdProvider = (props) => {

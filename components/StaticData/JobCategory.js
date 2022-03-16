@@ -14,7 +14,6 @@ export const JobCats = [
     parentId: 1,
   },
   { id: 5, fa: "مربی آموزش رانندگی", en: "Driving instructor", parentId: 1 },
-  ,
   {
     id: 6,
     fa: "مربی باشگاه / مربی ورزشی",
@@ -99,7 +98,7 @@ export const JobCats = [
     en: "administrative and financial",
     parentId: null,
   },
-  ,
+  
   { id: 25, fa: "حسابدار", en: "Accountants", parentId: 24 },
   {
     id: 26,
@@ -204,7 +203,6 @@ export const JobCats = [
     parentId: 38,
   },
   { id: 48, fa: "خدمات", en: "Services", parentId: null },
-  ,
   { id: 49, fa: "کارگر", en: "manual worker", parentId: 48 },
   { id: 50, fa: "کارگر رستوران", en: "Restaurant worker", parentId: 49 },
   { id: 51, fa: "کارگر ساده", en: "worker", parentId: 49 },
@@ -382,9 +380,7 @@ export const JobCats = [
     en: "Hair color and mesh work",
     parentId: 104,
   },
-  { id: 118, fa: "تاتو کار", en: "", parentId: 104 },
-  { id: 119, fa: "", en: "Tattoo work", parentId: 104 },
-
+  { id: 118, fa: "تاتو کار", en: "Tattoo work", parentId: 104 },
   {
     id: 120,
     fa: "اپراتور / کارمند بازنشسته",
@@ -460,7 +456,6 @@ export const JobCats = [
     en: "Agriculture and Environment",
     parentId: null,
   },
-  ,
   {
     id: 144,
     fa: "مهندس کشاورزی / کارشناس کشاورزی",
@@ -482,7 +477,6 @@ export const JobCats = [
   { id: 147, fa: "دامپزشک", en: "Vet", parentId: 143 },
 
   { id: 148, fa: "فنی مهندسی", en: "Engineering", parentId: null },
-  ,
   {
     id: 149,
     fa: "مهندس عمران / نقشه کشی صنعتی",
@@ -490,10 +484,10 @@ export const JobCats = [
     parentId: 148,
   },
   { id: 150, fa: "مهندس مکانیک", en: "mechanical engineer", parentId: 148 },
-  { id: 151, fa: "مهندس برق‏", en: "Electrical Engineer", parentId: 148 },
+  { id: 151, fa: "مهندس برق", en: "Electrical Engineer", parentId: 148 },
   {
     id: 152,
-    fa: "مهندس صنایع‏ غذایی",
+    fa: "مهندس صنایع  غذایی",
     en: "Food Industry Engineer",
     parentId: 148,
   },
@@ -521,7 +515,7 @@ export const JobCats = [
     en: "Materials and Metallurgy Engineer",
     parentId: 148,
   },
-  { id: 157, fa: "مهندس نساجی‏", en: "Textile Engineer", parentId: 148 },
+  { id: 157, fa: "مهندس نساجی ", en: "Textile Engineer", parentId: 148 },
   { id: 158, fa: "مهندس پزشکی", en: "Medical Engineering", parentId: 148 },
   {
     id: 159,
@@ -530,14 +524,14 @@ export const JobCats = [
     parentId: 148,
   },
   { id: 160, fa: "مهندس رباتیک", en: "Robotics Engineer", parentId: 148 },
-  { id: 161, fa: "مهندس هوافضا‏", en: "Aerospace Engineer", parentId: 148 },
+  { id: 161, fa: "مهندس هوافضا ", en: "Aerospace Engineer", parentId: 148 },
   {
     id: 162,
-    fa: "مهندس اپتیک و لیزر‏",
+    fa: "مهندس اپتیک و لیزر ",
     en: "Optics and Laser Engineer",
     parentId: 148,
   },
-  { id: 163, fa: "مهندس انرژی‏", en: "Energy Engineer", parentId: 148 },
+  { id: 163, fa: "مهندس انرژی ", en: "Energy Engineer", parentId: 148 },
   { id: 164, fa: "تکنسین فنی", en: "technician", parentId: 148 },
   {
     id: 165,
@@ -558,7 +552,7 @@ export const JobCats = [
     en: "Information Technology",
     parentId: null,
   },
-  ,
+  
   { id: 168, fa: "برنامه نویس و دولوپر", en: "Developer", parentId: 167 },
   { id: 169, fa: "مهندس نرم افزار", en: "Software Engineer", parentId: 167 },
   { id: 170, fa: "طراح وب سایت", en: "Web designer", parentId: 167 },
@@ -660,7 +654,6 @@ export const JobCats = [
     en: "Medical / Health / Therapeutic",
     parentId: null,
   },
-  ,
   {
     id: 193,
     fa: "روانشناس / روانپزشک / مشاور",

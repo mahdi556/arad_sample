@@ -1,14 +1,15 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import NormalAdProvider from "../../context/employeeContext/CreateAd/NormalAd/NormalAdProvider";
- import FirstForm from "./FormInputs/FirstForm";
+import FirstForm from "./FormInputs/FirstForm";
 import StepButton from "./NormalAd/StepButton";
 import PersonalData from "./NormalAd/PersonalData";
 import VerticalProgress from "./NormalAd/VerticalProgress";
 import VerifyFirstForm from "./NormalAd/VerifyFirstForm";
 import VerifyPersonalData from "./NormalAd/VerifyPersonalData";
 import ContactForm from "./NormalAd/Contact";
- 
+ import SubmitEn from "./NormalAd/SubmitEn";
+
 const CreateEmployeeAd = () => {
   const router = useRouter();
   const [step, setStep] = useState(1);
@@ -17,8 +18,8 @@ const CreateEmployeeAd = () => {
     setStep(sn);
     setP_height(ph);
   };
-  console.log(step, p_height);
-  return (
+  
+   return (
     <>
       <NormalAdProvider>
         <div
@@ -99,17 +100,18 @@ const CreateEmployeeAd = () => {
                   <>
                     <PersonalData />
                     <StepButton handleStep={handleStep} step={2} ph={"95%"} />
-                   </>
+                  </>
                 )}
 
                 {step > 2 && (
                   <>
                     <VerifyPersonalData handleStep={handleStep} />
                     <ContactForm />
+                     <SubmitEn />
                   </>
                 )}
 
-                {/* {step == 3 && <ContactForm />} */}
+                
               </div>
             </div>
           </div>

@@ -54,6 +54,8 @@ const normalAdReducer = (state, action) => {
           fa: { from: state.salary.fa.from, to: action.payload },
         },
       };
+      case "description":
+      return { ...state, description: action.payload };
     case "cellphone":
       return { ...state, cellphone: action.payload };
     case "whatsapp":

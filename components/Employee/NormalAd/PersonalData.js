@@ -80,7 +80,7 @@ const PersonalData = () => {
         >
           اطلاعات شخصی
         </div>
-        <div className="d-flex justify-content-between col-12 px-4  ">
+        <div className="d-flex justify-content-between col-12 px-5  ">
           <div className="d-flex flex-wrap pe-4 col-12 ">
             <div className="d-flex col-12 justify-content-between">
               <div className="col-5 mb-3">
@@ -209,7 +209,7 @@ const PersonalData = () => {
           </div>
         </div>
 
-        <div className="col-12">
+        <div className="col-12 px-5">
           <div className="d-flex   pt-4 col-9 justify-content-between">
             <div className=" ">
               <RadioButton
@@ -236,6 +236,32 @@ const PersonalData = () => {
               />
             </div>
           </div>
+            <div className="col-12 mb-3 mt-5">
+                <label
+                  className="fs-6  "
+                  style={{
+                    marginBottom: "0.5rem",
+                    fontWeight: "normal",
+                  }}
+                >
+                  توضیحات آگهی
+                </label>
+                <textarea
+                  className={
+                    normalAdContext.data.title == ""
+                      ? "col-12 mb-3 ps-2 inputStyle"
+                      : "col-12 mb-3 ps-2 inputFilled"
+                  }
+                  type="text"
+                  value={normalAdContext.data.description}
+                  onChange={(e) => {
+                    normalAdContext.dispatch({
+                      type: "description",
+                      payload: e.target.value,
+                    });
+                  }}
+                />
+              </div>
         </div>
       </div>
     </>
