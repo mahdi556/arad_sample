@@ -1,8 +1,8 @@
 import ButtonTag from "../../components/Employee/FormInputs/ButtonTag";
-const Filters = () => {
+ const Filters = () => {
   return (
     <>
-      <div className="fiterBox">
+      <div className="fiterBox ">
         <div className="d-flex align-items-center">
           <ButtonTag data="دورکاری" />
           <ButtonTag data="اصفهان" />

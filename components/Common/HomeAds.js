@@ -1,5 +1,5 @@
  import Image from "next/image";
-import AdBoxNew from "../AdBoxNew";
+import AdBoxNew from "../Micapp/Common/MedicalBox";
 const HomeAds = () => {
   const width = "50%";
   return (

@@ -10,12 +10,7 @@ const NavBar = () => {
       <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-white navshadow">
         <div className="container-fluid">
           {/* <a className="navbar-brand" href="#"> */}
-          <Image
-            className="img-fluid me-3"
-            src="/assets/images/logo.png"
-            height="50%"
-            width="100%"
-          />
+           
 
           {/* </a> */}
           <button
@@ -41,12 +36,17 @@ const NavBar = () => {
                 }}
               ></div> */}
               </li>
-              <li className="navitems">لیست آگهی ها</li>
+              <li className="navitems"
+              onClick={() => {
+                          router.push({
+                            pathname: "/medicals"
+                          });
+                        }}
+              >    مراکز درمانی  </li>
 
-              <li className="navitems   ">آپلود و ساخت رزومه</li>
-              <li className="navitems">کار در منزل</li>
-              <li className="navitems">وبلاگ</li>
-              <li className="navitems">طرح کارورزی</li>
+              <li className="navitems   "> ثبت تخصص</li>
+              <li className="navitems">ثبت پزشک</li>
+              
               <li
                 className="px-3 py-1"
                 style={{
