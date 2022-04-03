@@ -4,6 +4,8 @@ import Ads from "../components/Common/Ads";
 import Filters from "../components/Common/Filters";
 import SideBar from "../components/SideBar";
 import TopBanner from "../components/Common/TopBanner";
+import CreateResumeBody from "../components/Employee/Resume/CreateResumeBody";
+import ResumeProvider from "../context/employeeContext/CreateResume/ResumeProvider";
 const Search = () => {
   return (
     <>
@@ -12,7 +14,6 @@ const Search = () => {
       <div
         className="mx-auto"
         style={{
-         
           backgroundColor: "#f2f5f6",
         }}
       >
@@ -20,10 +21,12 @@ const Search = () => {
           <div className="col-3">
             <SideBar />
           </div>
-          <div className="  col-8 ">
-            <Filters />
-            <Ads />
-          </div>
+          <ResumeProvider>
+            <div className="  col-8 ">
+              <Filters />
+              <CreateResumeBody />
+            </div>
+          </ResumeProvider>
         </div>
       </div>
       <Footer />

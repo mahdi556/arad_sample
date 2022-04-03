@@ -20,32 +20,15 @@ const CreateResumeBody = () => {
       <div
         className="mx-auto"
         style={{
-          width: "50%",
-          backgroundColor: "#f2f5f6",
+          width: "100%",
+          // backgroundColor: "#f2f5f6",
           paddingTop: "2rem",
           paddingBottom: 400,
         }}
       >
-        <div
-          style={{
-            width: "100%",
-          }}
-        >
-          <div
-            className="d-flex px-3 py-2  mb-5 align-items-center "
-            style={{ backgroundColor: "#D8EFEF", borderRadius: "1.5rem" }}
-          >
-            <h3
-              className="mx-auto"
-              style={{
-                fontSize: "1rem",
-                // fontWeight: "bold",
-                lineHeight: "1.4rem",
-              }}
-            >
-              با تکمیل رزومه 15 هزار تومان اعتبار هدیه بگیرید.{" "}
-            </h3>
-          </div>
+        
+          
+          
           <div className="d-flex justify-content-between  ">
             <div
               style={{
@@ -59,7 +42,7 @@ const CreateResumeBody = () => {
 
               <StepButton handleStep={handleStep} step={step} />
             </div>
-          </div>
+          
         </div>
       </div>
     </>

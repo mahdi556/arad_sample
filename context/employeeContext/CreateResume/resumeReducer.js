@@ -8,6 +8,13 @@ const resumeReducer = (state, action) => {
       return { ...state, userImageFile: action.payload };
     case "userVideo":
       return { ...state, userVideo: action.payload };
+    case "stepClick":
+      return { ...state, stepClick: action.payload };
+    case "fieldCheck":
+      return { ...state, fieldCheck: action.payload };
+
+    case "type":
+      return { ...state, type: action.payload };
     case "social-twitter":
       return {
         ...state,
@@ -28,6 +35,11 @@ const resumeReducer = (state, action) => {
         ...state,
         socials: { ...state.socials, dribble: action.payload },
       };
+    case "jobCategory":
+      return {
+        ...state,
+        jobCategory: { fa: action.payload.fa, id: action.payload.id },
+      };
     case "title":
       return { ...state, title: action.payload };
     case "name":
@@ -38,7 +50,11 @@ const resumeReducer = (state, action) => {
       return { ...state, Ename: action.payload };
     case "Elastname":
       return { ...state, Elastname: action.payload };
-
+    case "corporateType":
+      return {
+        ...state,
+        corporateType: action.payload,
+      };
     case "birthday-d":
       return { ...state, birthday: { ...state.birthday, day: action.payload } };
     case "birthday-m":
@@ -149,6 +165,7 @@ const resumeReducer = (state, action) => {
           en: { from: state.salary.en.from, to: action.payload },
         },
       };
+
     case "progressBar-c":
       return {
         ...state,
@@ -157,9 +174,9 @@ const resumeReducer = (state, action) => {
           c: state.progressBar.c + action.payload,
         },
       };
-       case "adComment":
-      return { ...state, adComment: action.payload };
-      
+
+    case "description":
+      return { ...state, description: action.payload };
     case "progressBar-reset":
       return {
         ...state,

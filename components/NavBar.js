@@ -2,6 +2,7 @@ import Image from "next/image";
 import UserProvider from "../context/employeeContext/User/UserProvider";
 import Login from "./Common/Login";
 import { useRouter } from "next/router";
+import AdminLogin from "./Common/AdminLogin";
 
 const NavBar = () => {
   const router = useRouter();
@@ -43,10 +44,10 @@ const NavBar = () => {
               </li>
               <li className="navitems">لیست آگهی ها</li>
 
-              <li className="navitems   ">آپلود و ساخت رزومه</li>
+              {/* <li className="navitems   ">آپلود و ساخت رزومه</li>
               <li className="navitems">کار در منزل</li>
               <li className="navitems">وبلاگ</li>
-              <li className="navitems">طرح کارورزی</li>
+              <li className="navitems">طرح کارورزی</li> */}
               <li
                 className="px-3 py-1"
                 style={{
@@ -64,12 +65,6 @@ const NavBar = () => {
               </li>
               <li
                 className="px-3 py-1"
-                style={{
-                  backgroundColor: "#EC4B72",
-                  borderRadius: 10,
-                  color: "#fff",
-                  cursor: "pointer",
-                }}
                 onClick={() => {
                   router.push({
                     pathname: "/employee/createAdPage",
@@ -79,19 +74,62 @@ const NavBar = () => {
               >
                 <h5
                   className="  fs-5 text-center lh-sm py-0 my-0"
-                  style={{ fontWeight: 700 }}
+                  style={{ fontWeight: 700, cursor: "pointer" }}
                 >
                   ثبت آگهی کارجو
                 </h5>
-                {/* <h6
-                  className="py-1 my-0"
-                  style={{ fontSize: 10, textAlign: "center" }}
+              </li>
+              <li
+                className="px-3 py-1"
+                onClick={() => {
+                  router.push({
+                    pathname: "/employee/createAdPage",
+                    query: { type: "vip" },
+                  });
+                }}
+              >
+                <h5
+                  className="  fs-5 text-center lh-sm py-0 my-0"
+                  style={{ fontWeight: 700, cursor: "pointer" }}
                 >
-                  کارفرما/جویای کار
-                </h6> */}
+                  ثبت آگهی کارجو ویژه
+                </h5>
+              </li>
+              <li
+                className="px-3 py-1"
+                onClick={() => {
+                  router.push({
+                    pathname: "/employer/createAdPage",
+                    query: { type: "normal" },
+                  });
+                }}
+              >
+                <h5
+                  className="  fs-5 text-center lh-sm py-0 my-0"
+                  style={{ fontWeight: 700, cursor: "pointer" }}
+                >
+                  ثبت آگهی کارفرما
+                </h5>
+              </li>
+              <li
+                className="px-3 py-1"
+                onClick={() => {
+                  router.push({
+                    pathname: "/employer/createAdPage",
+                    query: { type: "vip" },
+                  });
+                }}
+              >
+                <h5
+                  className="  fs-5 text-center lh-sm py-0 my-0"
+                  style={{ fontWeight: 700, cursor: "pointer" }}
+                >
+                  ثبت آگهی کارفرما ویژه
+                </h5>
               </li>
             </ul>
             <Login />
+            <AdminLogin />
           </div>
         </div>
       </nav>

@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import NormalAdContext from "../../../context/employeeContext/CreateAd/NormalAd/NormalAdContext";
-import SwitchButtion from "./SwitchButton";
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import SubmitRn from "../VipAd/FormInputs/SubmitRn";
+ import SwitchButtion from "./SwitchButton";
 
 const ContactForm = () => {
-  const normalAdContext = useContext(NormalAdContext);
+  const resumeContext = useContext(ResumeContext);
   return (
     <>
       <div
@@ -134,22 +135,8 @@ const ContactForm = () => {
           </div>
         </div>
       </div>
-      <div
-        className="d-flex mt-5 justify-content-center">
-        <div
-          className="py-2 text-white"
-          style={{
-            width: "35%",
-            fontSize: "1.5rem",
-            backgroundColor: "#E92B59",
-            textAlign: "center",
-            borderRadius: 8,
-            cursor: "pointer",
-          }}
-        >
-          ثبت و پرداخت آگهی
-        </div>
-      </div>
+      <SubmitRn />
+      
     </>
   );
 };

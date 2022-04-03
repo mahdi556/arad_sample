@@ -8,7 +8,7 @@ import VerticalProgress from "./NormalAd/VerticalProgress";
 import VerifyFirstForm from "./NormalAd/VerifyFirstForm";
 import VerifyPersonalData from "./NormalAd/VerifyPersonalData";
 import ContactForm from "./NormalAd/Contact";
- import SubmitEn from "./NormalAd/SubmitEn";
+import SubmitEn from "./NormalAd/SubmitEn";
 
 const CreateEmployeeAd = () => {
   const router = useRouter();
@@ -18,8 +18,8 @@ const CreateEmployeeAd = () => {
     setStep(sn);
     setP_height(ph);
   };
-  
-   return (
+
+  return (
     <>
       <NormalAdProvider>
         <div
@@ -37,7 +37,7 @@ const CreateEmployeeAd = () => {
               marginLeft: "25%",
             }}
           >
-            <div
+            {/* <div
               className="d-flex px-3 py-3  mb-5 align-items-center "
               style={{ backgroundColor: "#D8EFEF", borderRadius: "0.5rem" }}
             >
@@ -69,7 +69,7 @@ const CreateEmployeeAd = () => {
               >
                 ثبت آگهی ویژه
               </h3>
-            </div>
+            </div> */}
 
             <div className="d-flex justify-content-between  ">
               <div
@@ -84,6 +84,22 @@ const CreateEmployeeAd = () => {
                   width: "83%",
                 }}
               >
+                <div
+                  className="d-flex px-3 py-3  mb-5 align-items-center  "
+                  style={{ backgroundColor: "#fff", borderRadius: "0.7rem" }}
+                >
+                  <h3
+                    className=" mx-auto"
+                    style={{
+                      fontSize: "1rem",
+                      fontWeight: "bold",
+                      lineHeight: "1.4rem",
+                    }}
+                  >
+                    آگهی معمولی (فارسی)
+                  </h3>
+                </div>
+
                 {step == 1 && <FirstForm />}
 
                 {step < 2 && (
@@ -107,11 +123,9 @@ const CreateEmployeeAd = () => {
                   <>
                     <VerifyPersonalData handleStep={handleStep} />
                     <ContactForm />
-                     <SubmitEn />
+                    <SubmitEn />
                   </>
                 )}
-
-                
               </div>
             </div>
           </div>

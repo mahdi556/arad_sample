@@ -12,11 +12,17 @@ const initialData = {
     youtube: "",
     dribble: "",
   },
+  companyId:'',
+  fieldCheck:false,
+  stepClick:false,
+  type:'',
   step: 1,
-  name: "",
+  title:'',
+  companyName: "",
   lastname: "",
   Ename: "",
   Elastname: "",
+  corporateType: 1,
   birthday: {
     day: "",
     month: "",
@@ -42,12 +48,23 @@ const initialData = {
   },
   jobCategory: {
     id: "",
+    fa:'',
     name: "",
     Ename: "",
   },
   salary: {
     fa: { from: "", to: "" },
     en: { from: "", to: "" },
+  },
+  workHour: {
+    fa: {from: "",to: "" },
+  },
+  corporateTime: {
+    id: "",
+    fa: "",
+  },
+  ageRange: {
+    fa: {from: "",to: "" },
   },
   experiences: [],
   degree: [],
@@ -57,6 +74,7 @@ const initialData = {
   softExpertEn: [],
   sampleEx: [],
   adComment:"",
+  description: "",
   progressBar:{
     'a':0,
     'b':0,

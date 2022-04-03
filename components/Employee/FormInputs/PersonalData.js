@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import VipContext from "../../../context/employeeContext/CreateAd/VipContext";
+import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
 import BirthDay from "./BirthDay";
 import RadioButton from "./RadioButton";
 import SalaryNeeded from "./SalaryNeeded";
@@ -19,7 +19,7 @@ const cities = [
 ];
 
 const PersonalData = () => {
-  const vipContext = useContext(VipContext);
+  const normalAdContext = useContext(NormalAdContext);
 
   const catHandler = (id, name) => {
     setCat({ id: id, name: name });
@@ -38,21 +38,21 @@ const PersonalData = () => {
     setButtonClass({ ...buttonClass, [i]: "Ebutton_clicked " });
   };
   const sexHandler = (sex) => {
-    vipContext.dispatch({ type: "sex", payload: sex });
+    normalAdContext.dispatch({ type: "sex", payload: sex });
   };
   const marriedHandler = (mar) => {
-    vipContext.dispatch({ type: "married", payload: mar });
+    normalAdContext.dispatch({ type: "married", payload: mar });
   };
   const insuranceHandler = (ins) => {
-    vipContext.dispatch({ type: "insurrance", payload: ins });
+    normalAdContext.dispatch({ type: "insurrance", payload: ins });
   };
 
   const provinceHandler = (id, name) => {
-    vipContext.dispatch({ type: "province", payload: { id: id, name: name } });
+    normalAdContext.dispatch({ type: "province", payload: { id: id, name: name } });
   };
 
   const cityHandler = (id, name) => {
-    vipContext.dispatch({ type: "city", payload: { id: id, name: name } });
+    normalAdContext.dispatch({ type: "city", payload: { id: id, name: name } });
   };
 
   return (
@@ -84,9 +84,9 @@ const PersonalData = () => {
               borderRadius: 5,
             }}
             type="text"
-            value={vipContext.data.title}
+            value={normalAdContext.data.title}
             onChange={(e) => {
-              vipContext.dispatch({ type: "title", payload: e.target.value });
+              normalAdContext.dispatch({ type: "title", payload: e.target.value });
             }}
           />
         </div>
@@ -131,9 +131,9 @@ const PersonalData = () => {
               borderRadius: 5,
             }}
             type="text"
-            value={vipContext.data.name}
+            value={normalAdContext.data.name}
             onChange={(e) => {
-              vipContext.dispatch({ type: "name", payload: e.target.value });
+              normalAdContext.dispatch({ type: "name", payload: e.target.value });
             }}
           />
         </div>
@@ -154,9 +154,9 @@ const PersonalData = () => {
               borderRadius: 5,
             }}
             type="text"
-            value={vipContext.data.lastname}
+            value={normalAdContext.data.lastname}
             onChange={(e) => {
-              vipContext.dispatch({
+              normalAdContext.dispatch({
                 type: "lastname",
                 payload: e.target.value,
               });
@@ -174,7 +174,7 @@ const PersonalData = () => {
             title={"جنسیت"}
             choices={{ 1: "مرد", 2: "زن" }}
             valueHandler={sexHandler}
-            predata={vipContext.data.sex}
+            predata={normalAdContext.data.sex}
           />
         </div>
         <div className=" ">
@@ -182,7 +182,7 @@ const PersonalData = () => {
             title={"وضعیت تاهل"}
             choices={{ 1: "مجرد", 2: "متاهل" }}
             valueHandler={marriedHandler}
-            predata={vipContext.data.married}
+            predata={normalAdContext.data.married}
           />
         </div>
       </div>
@@ -210,7 +210,7 @@ const PersonalData = () => {
           data={cities}
           name="استان"
           valueHandler={provinceHandler}
-          predata={vipContext.data.province.name}
+          predata={normalAdContext.data.province.name}
         />
       </div>
       <div
@@ -224,7 +224,7 @@ const PersonalData = () => {
           data={cities}
           name="منطقه"
           valueHandler={cityHandler}
-          predata={vipContext.data.city.name}
+          predata={normalAdContext.data.city.name}
         />
       </div>
 
@@ -247,7 +247,7 @@ const PersonalData = () => {
           title={"تقاضای بیمه"}
           choices={{ 1: "دارم", 2: "ندارم" }}
           valueHandler={insuranceHandler}
-          predata={vipContext.data.insurrance}
+          predata={normalAdContext.data.insurrance}
         />
       </div>
     </>

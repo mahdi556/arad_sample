@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { useContext } from "react";
-import VipContext from "../../../context/employeeContext/CreateAd/VipContext";
+ import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
 
 const VerifyData = ({ handleStep }) => {
-  const vipContext = useContext(VipContext);
+  const normalAdContext = useContext(NormalAdContext);
    return (
     <>
       <div
@@ -37,42 +37,42 @@ const VerifyData = ({ handleStep }) => {
       </div>
       <div className="d-flex col-6 justify-content-start align-items-center mb-4 ">
         <h5 className="col-6">نام:</h5>
-        <h6 className="col-6">{vipContext.data.name}</h6>
+        <h6 className="col-6">{normalAdContext.data.name}</h6>
       </div>
       <div className="d-flex col-6 justify-content-start align-items-center mb-4 ">
         <h5 className="col-6">نام خانوادگی:</h5>
-        <h6 className="col-6">{vipContext.data.lastname}</h6>
+        <h6 className="col-6">{normalAdContext.data.lastname}</h6>
       </div>
       <div className="d-flex col-6 justify-content-start align-items-center mb-4">
         <h5 className="col-6">تاریخ تولد:</h5>
         <h6 className="col-6">
-          {vipContext.data.birthday.year}/{vipContext.data.birthday.month}/
-          {vipContext.data.birthday.day}
+          {normalAdContext.data.birthday.year}/{normalAdContext.data.birthday.month}/
+          {normalAdContext.data.birthday.day}
         </h6>
       </div>
       <div className="d-flex col-6 justify-content-start align-items-center mb-4">
         <h5 className="col-6">جنسیت:</h5>
-        <h6 className="col-6">{vipContext.data.sex == 1 ? "مرد" : "زن"}</h6>
+        <h6 className="col-6">{normalAdContext.data.sex == 1 ? "مرد" : "زن"}</h6>
       </div>
       <div className="d-flex col-6 justify-content-start align-items-center mb-4">
         <h5 className="col-6">وضعیت تاهل:</h5>
         <h6 className="col-6">
-          {vipContext.data.married == 1 ? "مجرد" : "متاهل"}
+          {normalAdContext.data.married == 1 ? "مجرد" : "متاهل"}
         </h6>
       </div>
       <div className="d-flex col-6 justify-content-start align-items-center mb-4">
         <h5 className="col-6">تقاضای بیمه:</h5>
         <h6 className="col-6">
-          {vipContext.data.insurrance == 1 ? "دارم" : "ندارم"}
+          {normalAdContext.data.insurrance == 1 ? "دارم" : "ندارم"}
         </h6>
       </div>
       <div className="d-flex col-6 justify-content-start align-items-center mb-4">
         <h5 className="col-6">استان:</h5>
-        <h6 className="col-6">{vipContext.data.province.name}</h6>
+        <h6 className="col-6">{normalAdContext.data.province.name}</h6>
       </div>{" "}
       <div className="d-flex col-6 justify-content-start align-items-center mb-4">
         <h5 className="col-6">منطقه:</h5>
-        <h6 className="col-6">{vipContext.data.city.name}</h6>
+        <h6 className="col-6">{normalAdContext.data.city.name}</h6>
       </div>
     </>
   );

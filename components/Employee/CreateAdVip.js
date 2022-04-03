@@ -1,27 +1,32 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
-import ContactForm from "./FormInputs/Contact";
-import FirstFormVip from "./FormInputs/FirstFormVip";
-import JobConditionVip from "./FormInputs/JobConditionVip";
-import StepButton from "./FormInputs/StepButton";
-import VerticalProgress from "./FormInputs/VerticalProgress";
-import VipProvider from "../../context/employeeContext/CreateAd/VipProvider";
-const CreateEmployerAdVip = () => {
+import VerticalProgress from "./NormalAd/VerticalProgress";
+import ResumeProvider from "../../context/employeeContext/CreateResume/ResumeProvider";
+import CreateResumeBody from "./VipAd/CreateResumeBody";
+
+const CreateEmployeeAd = () => {
+  const router = useRouter();
   const [step, setStep] = useState(1);
   const [p_height, setP_height] = useState("10%");
-  const handleStep = (sn, ph) => {
+  const handleStep = (sn) => {
     setStep(sn);
-    setP_height(ph);
+    sn==1 ? setP_height('10%') : 
+    sn==2 ? setP_height('25%') : 
+    sn==3 ? setP_height('35%') : 
+    sn==4 ? setP_height('45%') : 
+    sn==5 ? setP_height('55%') : 
+    sn==6 ? setP_height('65%') : 
+    sn==7 ? setP_height('80%') : 
+     setP_height('97%') ;
+   
   };
+
   return (
     <>
-      <VipProvider>
-        {/* <ResumeProvider> */}
-
         <div
           style={{
             width: "100%",
             backgroundColor: "#E5E5E5",
-            // marginTop:'6rem',
             paddingTop: "9rem",
             paddingBottom: 400,
           }}
@@ -33,33 +38,8 @@ const CreateEmployerAdVip = () => {
               marginLeft: "25%",
             }}
           >
-            <div
-              className="d-flex px-3 py-3  mb-5 align-items-center "
-              style={{ backgroundColor: "#D8EFEF", borderRadius: "0.5rem" }}
-            >
-              <h3
-                className="me-auto"
-                style={{
-                  fontSize: "0.8rem",
-                  fontWeight: "bold",
-                  lineHeight: "1.4rem",
-                }}
-              >
-                جهت استخدام به عنوان فرد متخصص در سمت های مدیریتی در شرکت های
-                بزرگ و ارائه سطح زبان،آگهی به زبان انگلیسی درج کنید{" "}
-              </h3>
-              <h3
-                style={{
-                  fontSize: "1.4rem",
-                  fontWeight: "bold",
-                  color: "#EC4B72",
-                  lineHeight: "0.9rem",
-                  cursor: "pointer",
-                }}
-              >
-                ثبت آگهی انگلیسی
-              </h3>
-            </div>
+            
+
             <div className="d-flex justify-content-between  ">
               <div
                 style={{
@@ -73,27 +53,13 @@ const CreateEmployerAdVip = () => {
                   width: "83%",
                 }}
               >
-                <FirstFormVip />
-                {step < 2 && (
-                  <StepButton handleStep={handleStep} step={2} ph={"30%"} />
-                )}
-
-                {step >= 2 && (
-                  <JobConditionVip step={step} handleStep={handleStep} />
-                )}
-                {step == 4 && (
-                  <StepButton handleStep={handleStep} step={5} ph={"98%"} />
-                )}
-
-                {step > 4 && <ContactForm />}
+                <CreateResumeBody handleStep2={handleStep}/>
               </div>
             </div>
           </div>
         </div>
-        {/* </ResumeProvider> */}
-      </VipProvider>
     </>
   );
 };
 
-export default CreateEmployerAdVip;
+export default CreateEmployeeAd;
