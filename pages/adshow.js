@@ -1,0 +1,1417 @@
+import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
+import Image from "next/image";
+import axios from "../axios";
+import { useRouter } from "next/router";
+import BreakLine from "../components/Employee/Resume/FormInputs/BreakLine";
+import { useEffect, useState } from "react";
+import { borderRadius } from "@mui/system";
+const Adshow = () => {
+  const router = useRouter();
+  const [data, setData] = useState({});
+  useEffect(() => {
+    axios({
+      url: "/getAd",
+      method: "post",
+      data: {
+        ad_id: router.query.ad,
+      },
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+  return (
+    <>
+      <NavBar />
+      <div className="d-flex col-12 mt-5">
+        <div className="col-8">
+          <div
+            className="d-flex flex-column col-11 mt-5 px-5 mx-auto"
+            style={{
+              backgroundColor: "#fff",
+              borderRadius: 30,
+            }}
+          >
+            <div className="d-flex align-items-center mt-5 ">
+              <div>
+                <img
+                  src="/assets/images/Eavatar.png"
+                  style={{
+                    width: 100,
+                    height: 100,
+                    borderRadius: "50%",
+                  }}
+                />
+              </div>
+
+              <div className="d-flex flex-column justify-content-center  ms-4">
+                <h4 className="fw-bold mb-4">{data.title}</h4>
+                <h6 className="fw-bold ">امیر مهدی ناطقی</h6>
+              </div>
+              <div className="d-flex flex-column ms-auto">
+                <h5 className="fw-bold mb-4">ویدیو معرفی</h5>
+                <div>
+                  <Image
+                    src="/assets/images/video-sample.png"
+                    height={160}
+                    width={230}
+                  />
+                </div>
+              </div>
+            </div>
+            <BreakLine />
+            <div className="d-flex justify-content-between mt-4">
+              <div className="d-flex flex-column  col-4 ">
+                <div className="d-flex mb-2 ">
+                  <h6 className="col-5 txtSec1 px-2"> دسته بندی حرفه</h6>
+                  <h6 className="col-7 txtSec2 px-2">
+                    {" "}
+                    از 2000000 تا 300000000
+                  </h6>
+                </div>
+                <div className="d-flex mb-2 ">
+                  <h6 className="col-5 txtSec1 px-2"> وضعیت سربازی</h6>
+                  <h6 className="col-7 txtSec2 px-2">
+                    {" "}
+                    از 2000000 تا 300000000
+                  </h6>
+                </div>
+                <div className="d-flex mb-2">
+                  <h6 className="col-5 txtSec1 px-2"> تقاضای بیمه</h6>
+                  <h6 className="col-7 txtSec2 px-2">
+                    {" "}
+                    از 2000000 تا 300000000
+                  </h6>
+                </div>
+                <div className="d-flex mb-2">
+                  <h6 className="col-5 txtSec1 px-2"> وضعیت تاهل</h6>
+                  <h6 className="col-7 txtSec2 px-2">
+                    {" "}
+                    از 2000000 تا 300000000
+                  </h6>
+                </div>
+                <div className="d-flex mb-2">
+                  <h6 className="col-5 txtSec1 px-2"> تاریخ تولد</h6>
+                  <h6 className="col-7 txtSec2 px-2">
+                    {" "}
+                    از 2000000 تا 300000000
+                  </h6>
+                </div>
+              </div>
+              <div className="d-flex flex-column  col-4 ">
+                <div className="d-flex mb-2 ">
+                  <h6 className="col-5 txtSec1 px-2"> میزان حقوق دریافتی</h6>
+                  <h6 className="col-7 txtSec2 px-2">
+                    {" "}
+                    از 2000000 تا 300000000
+                  </h6>
+                </div>
+                <div className="d-flex mb-2 ">
+                  <h6 className="col-5 txtSec1 px-2"> استان</h6>
+                  <h6 className="col-7 txtSec2 px-2">
+                    {" "}
+                    از 2000000 تا 300000000
+                  </h6>
+                </div>
+                <div className="d-flex mb-2">
+                  <h6 className="col-5 txtSec1 px-2"> شهر</h6>
+                  <h6 className="col-7 txtSec2 px-2">
+                    {" "}
+                    از 2000000 تا 300000000
+                  </h6>
+                </div>
+                <div className="d-flex mb-2">
+                  <h6 className="col-5 txtSec1 px-2"> جنسیت</h6>
+                  <h6 className="col-7 txtSec2 px-2">
+                    {" "}
+                    از 2000000 تا 300000000
+                  </h6>
+                </div>
+                <div className="d-flex mb-2">
+                  <h6 className="col-5 txtSec1 px-2"> نوع همکاری</h6>
+                  <h6 className="col-7 txtSec2 px-2">
+                    {" "}
+                    از 2000000 تا 300000000
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <BreakLine />
+            <div className="d-flex flex-column me-auto mb-4 col-12">
+              <h5 className=" d-flex fw-bold mb-4">سوابق کاری</h5>
+              <div className=" row g-2  mb-4 flex-wrap ">
+                <div className="col-4 px-2">
+                  <div
+                    className="    "
+                    style={{
+                      backgroundColor: "#fff",
+                      borderRadius: 20,
+                      boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                    }}
+                  >
+                    <div
+                      className="d-flex col-12 px-4 py-2 justify-content-between align-items-center"
+                      style={{
+                        backgroundColor: "#11999e",
+                        borderTopLeftRadius: 20,
+                        borderTopRightRadius: 20,
+                      }}
+                    >
+                      <h5
+                        className="text-center text-white"
+                        style={{
+                          fontSize: 16,
+                        }}
+                      >
+                        نام سازمان:{" "}
+                      </h5>
+                      <h6
+                        className="text-center text-white fw-light"
+                        style={{
+                          fontSize: 18,
+                        }}
+                      >
+                        شرکت کارگزاری آگاه{" "}
+                      </h6>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        سمت
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        میزان سابقه
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        دلیل ترک
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-4 px-2">
+                  <div
+                    className="    "
+                    style={{
+                      backgroundColor: "#fff",
+                      borderRadius: 20,
+                      boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                    }}
+                  >
+                    <div
+                      className="d-flex col-12 px-4 py-2 justify-content-between align-items-center"
+                      style={{
+                        backgroundColor: "#11999e",
+                        borderTopLeftRadius: 20,
+                        borderTopRightRadius: 20,
+                      }}
+                    >
+                      <h5
+                        className="text-center text-white"
+                        style={{
+                          fontSize: 16,
+                        }}
+                      >
+                        نام سازمان:{" "}
+                      </h5>
+                      <h6
+                        className="text-center text-white fw-light"
+                        style={{
+                          fontSize: 18,
+                        }}
+                      >
+                        شرکت کارگزاری آگاه{" "}
+                      </h6>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        سمت
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        میزان سابقه
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        دلیل ترک
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-4 px-2">
+                  <div
+                    className="    "
+                    style={{
+                      backgroundColor: "#fff",
+                      borderRadius: 20,
+                      boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                    }}
+                  >
+                    <div
+                      className="d-flex col-12 px-4 py-2 justify-content-between align-items-center"
+                      style={{
+                        backgroundColor: "#11999e",
+                        borderTopLeftRadius: 20,
+                        borderTopRightRadius: 20,
+                      }}
+                    >
+                      <h5
+                        className="text-center text-white"
+                        style={{
+                          fontSize: 16,
+                        }}
+                      >
+                        نام سازمان:{" "}
+                      </h5>
+                      <h6
+                        className="text-center text-white fw-light"
+                        style={{
+                          fontSize: 18,
+                        }}
+                      >
+                        شرکت کارگزاری آگاه{" "}
+                      </h6>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        سمت
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        میزان سابقه
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        دلیل ترک
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-4 px-2">
+                  <div
+                    className="    "
+                    style={{
+                      backgroundColor: "#fff",
+                      borderRadius: 20,
+                      boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                    }}
+                  >
+                    <div
+                      className="d-flex col-12 px-4 py-2 justify-content-between align-items-center"
+                      style={{
+                        backgroundColor: "#11999e",
+                        borderTopLeftRadius: 20,
+                        borderTopRightRadius: 20,
+                      }}
+                    >
+                      <h5
+                        className="text-center text-white"
+                        style={{
+                          fontSize: 16,
+                        }}
+                      >
+                        نام سازمان:{" "}
+                      </h5>
+                      <h6
+                        className="text-center text-white fw-light"
+                        style={{
+                          fontSize: 18,
+                        }}
+                      >
+                        شرکت کارگزاری آگاه{" "}
+                      </h6>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        سمت
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        میزان سابقه
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        دلیل ترک
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-4 px-2">
+                  <div
+                    className="    "
+                    style={{
+                      backgroundColor: "#fff",
+                      borderRadius: 20,
+                      boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                    }}
+                  >
+                    <div
+                      className="d-flex col-12 px-4 py-2 justify-content-between align-items-center"
+                      style={{
+                        backgroundColor: "#11999e",
+                        borderTopLeftRadius: 20,
+                        borderTopRightRadius: 20,
+                      }}
+                    >
+                      <h5
+                        className="text-center text-white"
+                        style={{
+                          fontSize: 16,
+                        }}
+                      >
+                        نام سازمان:{" "}
+                      </h5>
+                      <h6
+                        className="text-center text-white fw-light"
+                        style={{
+                          fontSize: 18,
+                        }}
+                      >
+                        شرکت کارگزاری آگاه{" "}
+                      </h6>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        سمت
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        میزان سابقه
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        دلیل ترک
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <BreakLine />
+            </div>
+            <div className="d-flex flex-column me-auto mb-4 col-12">
+              <h5 className=" d-flex fw-bold mb-4">سوابق تحصیلی</h5>
+              <div className=" row g-2  mb-4 flex-wrap ">
+                <div className="col-4 px-2">
+                  <div
+                    className="    "
+                    style={{
+                      backgroundColor: "#fff",
+                      borderRadius: 20,
+                      boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                    }}
+                  >
+                    <div
+                      className="d-flex col-12 px-4 py-2 justify-content-between align-items-center"
+                      style={{
+                        backgroundColor: "#11999e",
+                        borderTopLeftRadius: 20,
+                        borderTopRightRadius: 20,
+                      }}
+                    >
+                      <h5
+                        className="text-center text-white"
+                        style={{
+                          fontSize: 16,
+                        }}
+                      >
+                        نام سازمان:{" "}
+                      </h5>
+                      <h6
+                        className="text-center text-white fw-light"
+                        style={{
+                          fontSize: 18,
+                        }}
+                      >
+                        شرکت کارگزاری آگاه{" "}
+                      </h6>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        سمت
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        میزان سابقه
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        دلیل ترک
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-4 px-2">
+                  <div
+                    className="    "
+                    style={{
+                      backgroundColor: "#fff",
+                      borderRadius: 20,
+                      boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                    }}
+                  >
+                    <div
+                      className="d-flex col-12 px-4 py-2 justify-content-between align-items-center"
+                      style={{
+                        backgroundColor: "#11999e",
+                        borderTopLeftRadius: 20,
+                        borderTopRightRadius: 20,
+                      }}
+                    >
+                      <h5
+                        className="text-center text-white"
+                        style={{
+                          fontSize: 16,
+                        }}
+                      >
+                        نام سازمان:{" "}
+                      </h5>
+                      <h6
+                        className="text-center text-white fw-light"
+                        style={{
+                          fontSize: 18,
+                        }}
+                      >
+                        شرکت کارگزاری آگاه{" "}
+                      </h6>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        سمت
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        میزان سابقه
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        دلیل ترک
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-4 px-2">
+                  <div
+                    className="    "
+                    style={{
+                      backgroundColor: "#fff",
+                      borderRadius: 20,
+                      boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                    }}
+                  >
+                    <div
+                      className="d-flex col-12 px-4 py-2 justify-content-between align-items-center"
+                      style={{
+                        backgroundColor: "#11999e",
+                        borderTopLeftRadius: 20,
+                        borderTopRightRadius: 20,
+                      }}
+                    >
+                      <h5
+                        className="text-center text-white"
+                        style={{
+                          fontSize: 16,
+                        }}
+                      >
+                        نام سازمان:{" "}
+                      </h5>
+                      <h6
+                        className="text-center text-white fw-light"
+                        style={{
+                          fontSize: 18,
+                        }}
+                      >
+                        شرکت کارگزاری آگاه{" "}
+                      </h6>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        سمت
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        میزان سابقه
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        دلیل ترک
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-4 px-2">
+                  <div
+                    className="    "
+                    style={{
+                      backgroundColor: "#fff",
+                      borderRadius: 20,
+                      boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                    }}
+                  >
+                    <div
+                      className="d-flex col-12 px-4 py-2 justify-content-between align-items-center"
+                      style={{
+                        backgroundColor: "#11999e",
+                        borderTopLeftRadius: 20,
+                        borderTopRightRadius: 20,
+                      }}
+                    >
+                      <h5
+                        className="text-center text-white"
+                        style={{
+                          fontSize: 16,
+                        }}
+                      >
+                        نام سازمان:{" "}
+                      </h5>
+                      <h6
+                        className="text-center text-white fw-light"
+                        style={{
+                          fontSize: 18,
+                        }}
+                      >
+                        شرکت کارگزاری آگاه{" "}
+                      </h6>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        سمت
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        میزان سابقه
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        دلیل ترک
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-4 px-2">
+                  <div
+                    className="    "
+                    style={{
+                      backgroundColor: "#fff",
+                      borderRadius: 20,
+                      boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                    }}
+                  >
+                    <div
+                      className="d-flex col-12 px-4 py-2 justify-content-between align-items-center"
+                      style={{
+                        backgroundColor: "#11999e",
+                        borderTopLeftRadius: 20,
+                        borderTopRightRadius: 20,
+                      }}
+                    >
+                      <h5
+                        className="text-center text-white"
+                        style={{
+                          fontSize: 16,
+                        }}
+                      >
+                        نام سازمان:{" "}
+                      </h5>
+                      <h6
+                        className="text-center text-white fw-light"
+                        style={{
+                          fontSize: 18,
+                        }}
+                      >
+                        شرکت کارگزاری آگاه{" "}
+                      </h6>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        سمت
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        میزان سابقه
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                    <div className="d-flex px-3 pt-2 mb-2">
+                      <h3
+                        className="me-auto"
+                        style={{
+                          fontSize: 20,
+                        }}
+                      >
+                        دلیل ترک
+                      </h3>
+                      <h3
+                        className="fw-light"
+                        style={{
+                          fontSize: 18,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        مدیر فروش
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <BreakLine />
+            </div>
+            <div className="mb-4">
+              <h5 className="mt-2 mb-5 fs-5 text-start fw-bold w-75">
+                مهارت های زبان
+              </h5>
+              <div className="row row-cols-4  ">
+                <div className="col  px-3">
+                  <div className="   eAdshowSec3  ">
+                    اکسل
+                    <div className="d-flex col-12 justify-content-between px-2">
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}></div>
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {" "}
+                      </div>
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {" "}
+                        خوب
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col  px-3">
+                  <div className="   eAdshowSec3  ">
+                    اکسل
+                    <div className="d-flex col-12 justify-content-between px-2">
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}></div>
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {" "}
+                      </div>
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {" "}
+                        خوب
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col  px-3">
+                  <div className="   eAdshowSec3  ">
+                    اکسل
+                    <div className="d-flex col-12 justify-content-between px-2">
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}></div>
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {" "}
+                      </div>
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {" "}
+                        خوب
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col  px-3">
+                  <div className="   eAdshowSec3  ">
+                    اکسل
+                    <div className="d-flex col-12 justify-content-between px-2">
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}></div>
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {" "}
+                      </div>
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {" "}
+                        خوب
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <BreakLine />
+            <div className="mb-4">
+              <h5 className="mt-2 mb-5 fs-5 text-start fw-bold w-75">
+                مهارت های زبان
+              </h5>
+              <div className="row row-cols-4  ">
+                <div className="col  px-3">
+                  <div className="   eAdshowSec3  ">
+                    اکسل
+                    <div className="d-flex col-12 justify-content-between px-2">
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}></div>
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {" "}
+                      </div>
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {" "}
+                        خوب
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col  px-3">
+                  <div className="   eAdshowSec3  ">
+                    اکسل
+                    <div className="d-flex col-12 justify-content-between px-2">
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}></div>
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {" "}
+                      </div>
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {" "}
+                        خوب
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col  px-3">
+                  <div className="   eAdshowSec3  ">
+                    اکسل
+                    <div className="d-flex col-12 justify-content-between px-2">
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}></div>
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {" "}
+                      </div>
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {" "}
+                        خوب
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col  px-3">
+                  <div className="   eAdshowSec3  ">
+                    اکسل
+                    <div className="d-flex col-12 justify-content-between px-2">
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}></div>
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {" "}
+                      </div>
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {" "}
+                        خوب
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <BreakLine />
+            <h5 className="mt-2 mb-5 fs-5 text-start fw-bold w-75">
+              نمونه کارها
+            </h5>
+            <div className=" row g-2  mb-4 flex-wrap ">
+              <div className="col-4 px-2">
+                <div
+                  className=" d-flex flex-column align-items-center justify-content-center py-2   "
+                  style={{
+                    backgroundColor: "#fff",
+                    borderRadius: 20,
+                    boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                  }}
+                >
+                  <Image
+                    src="/assets/images/sample-work.png"
+                    height={200}
+                    width={300}
+                  />
+                  <h5 className="mt-2 mb-1 fs-6 text-start fw-bold w-75">
+                    طراح ui/ux
+                  </h5>
+                  <h5 className="mt-1 mb-1 fs-6 text-end fw-light text-primary w-75">
+                    https://www.figma.com/file/
+                  </h5>
+                  <p className="px-3 fs-9">
+                    لورم ایپسوملورم ایپسوملورم ایپسوملورم ایپسوملورم ایپسوملورم
+                    ایپسوملورم ایپسوملورم ایپسوم
+                  </p>
+                </div>
+              </div>
+              <div className="col-4 px-2">
+                <div
+                  className=" d-flex flex-column align-items-center justify-content-center py-2   "
+                  style={{
+                    backgroundColor: "#fff",
+                    borderRadius: 20,
+                    boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                  }}
+                >
+                  <Image
+                    src="/assets/images/sample-work.png"
+                    height={200}
+                    width={300}
+                  />
+                  <h5 className="mt-2 mb-1 fs-6 text-start fw-bold w-75">
+                    طراح ui/ux
+                  </h5>
+                  <h5 className="mt-1 mb-1 fs-6 text-end fw-light text-primary w-75">
+                    https://www.figma.com/file/
+                  </h5>
+                  <p className="px-3 fs-9">
+                    لورم ایپسوملورم ایپسوملورم ایپسوملورم ایپسوملورم ایپسوملورم
+                    ایپسوملورم ایپسوملورم ایپسوم
+                  </p>
+                </div>
+              </div>
+              <div className="col-4 px-2">
+                <div
+                  className=" d-flex flex-column align-items-center justify-content-center py-2   "
+                  style={{
+                    backgroundColor: "#fff",
+                    borderRadius: 20,
+                    boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                  }}
+                >
+                  <Image
+                    src="/assets/images/sample-work.png"
+                    height={200}
+                    width={300}
+                  />
+                  <h5 className="mt-2 mb-1 fs-6 text-start fw-bold w-75">
+                    طراح ui/ux
+                  </h5>
+                  <h5 className="mt-1 mb-1 fs-6 text-end fw-light text-primary w-75">
+                    https://www.figma.com/file/
+                  </h5>
+                  <p className="px-3 fs-9">
+                    لورم ایپسوملورم ایپسوملورم ایپسوملورم ایپسوملورم ایپسوملورم
+                    ایپسوملورم ایپسوملورم ایپسوم
+                  </p>
+                </div>
+              </div>
+              <div className="col-4 px-2">
+                <div
+                  className="    "
+                  style={{
+                    backgroundColor: "#fff",
+                    borderRadius: 20,
+                    boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                  }}
+                ></div>
+              </div>
+            </div>
+            <BreakLine />
+            <h5 className="mt-2 mb-3 fs-5 text-start fw-bold w-75">
+              نوضیحات تکمیلی
+            </h5>
+            <p className="px-1 fs-9 mb-5">
+              لورم ایپسوملورم ایپسوملورم ایپسوملورم ایپسوملورم ایپسوملورم
+              ایپسوملورم ایپسوملورم ایپسوم
+            </p>
+          </div>
+        </div>
+        <div className="col-3 ">
+          <div
+            className="d-flex flex-column col-10 mt-5 mx-auto py-2 px-2 align-items-center "
+            style={{
+              backgroundColor: "#fff",
+              borderRadius: 30,
+            }}
+          >
+            <div
+              className="py-2 my-2 text-white d-flex align-items-center justify-content-center"
+              style={{
+                width: "80%",
+                fontSize: "1rem",
+                backgroundColor: "#E92B59",
+                textAlign: "center",
+                borderRadius: 10,
+                cursor: "pointer",
+              }}
+            >
+              <div className="me-2 mt-1">
+                <Image src="/assets/images/call.svg" width={23} height={23} />
+              </div>
+              اطلاعات تماس
+            </div>
+            <div
+              className="py-2 my-2 text-white d-flex align-items-center justify-content-center"
+              style={{
+                width: "80%",
+                fontSize: " 1rem",
+                backgroundColor: "#E92B59",
+                textAlign: "center",
+                borderRadius: 10,
+                cursor: "pointer",
+              }}
+            >
+              <div className="me-2 mt-1">
+                <Image
+                  src="/assets/images/interview.svg"
+                  width={20}
+                  height={20}
+                />
+              </div>
+              درخواست مصاحبه آنلاین
+            </div>
+            <div
+              className="py-2 my-2 text-white d-flex align-items-center justify-content-center"
+              style={{
+                width: "80%",
+                fontSize: "1rem",
+                backgroundColor: "#E92B59",
+                textAlign: "center",
+                borderRadius: 10,
+                cursor: "pointer",
+              }}
+            >
+              <div className="me-2 mt-1">
+                <Image
+                  src="/assets/images/chat-arad.svg"
+                  width={23}
+                  height={23}
+                />
+              </div>
+              چت آراد
+            </div>
+            <div
+              className="py-2 mt-2   text-white d-flex align-items-center justify-content-center"
+              style={{
+                width: "80%",
+                fontSize: "1rem",
+                backgroundColor: "#E92B59",
+                textAlign: "center",
+                borderRadius: 10,
+                cursor: "pointer",
+              }}
+            >
+              <div className="me-2 mt-1 ">
+                <Image
+                  src="/assets/images/network.svg"
+                  width={23}
+                  height={23}
+                />
+              </div>
+              شبکه های اجتماعی
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+};
+
+export default Adshow;

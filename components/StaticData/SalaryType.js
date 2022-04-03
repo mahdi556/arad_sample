@@ -19,3 +19,5 @@ export const sex = [
   { id: 3, fa: "مهم نیست", en: "" },
    
 ];
+
+export const beseUrl='http://192.168.1.102'

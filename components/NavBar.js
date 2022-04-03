@@ -11,7 +11,6 @@ const NavBar = () => {
       <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-white navshadow">
         <div className="container-fluid">
           {/* <a className="navbar-brand" href="#"> */}
-           
 
           {/* </a> */}
           <button
@@ -37,15 +36,7 @@ const NavBar = () => {
                 }}
               ></div> */}
               </li>
-              <li className="navitems"
-              onClick={() => {
-                          router.push({
-                            pathname: "/medicals"
-                          });
-                        }}
-              >    مراکز درمانی  </li>
 
-              
               <li
                 className="px-3 py-1"
                 style={{
