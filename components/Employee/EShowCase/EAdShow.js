@@ -1,5 +1,5 @@
 import Image from "next/image";
-import AdBoxNew from "../../AdBoxNew";
+import AdBoxNewEmployer from "../../Common/AdBoxNewEmployer";
 import BreakLine from "../Resume/FormInputs/BreakLine";
 
 const EAdShow = () => {
@@ -235,12 +235,12 @@ const EAdShow = () => {
       </div>
       <h5 className="mt-5 mb-5 fs-4 text-start fw-bold w-75">آگهی های مرتبط</h5>
       <div class="row gx-5 gy-4   ">
-        <AdBoxNew width={width} />
-        <AdBoxNew width={width} />
-        <AdBoxNew width={width} />
-        <AdBoxNew width={width} />
-        <AdBoxNew width={width} />
-        <AdBoxNew width={width} />
+        <AdBoxNewEmployer width={width} />
+        <AdBoxNewEmployer width={width} />
+        <AdBoxNewEmployer width={width} />
+        <AdBoxNewEmployer width={width} />
+        <AdBoxNewEmployer width={width} />
+        <AdBoxNewEmployer width={width} />
       </div>
     </>
   );

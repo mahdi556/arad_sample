@@ -3,8 +3,8 @@ import RAdBoxes from "./RAdBoxes";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import BreakeLine from "../../Employee/Resume/FormInputs/BreakLine";
-import AdBoxNew from "../../AdBoxNew";
-const width = "33%";
+import AdBoxNewEmployer from "../../Common/AdBoxNewEmployer";
+ const width = "33%";
 const RShowMain = () => {
   const data = {
     options: {
@@ -194,12 +194,13 @@ const RShowMain = () => {
           آگهی های پیشنهادی
         </h3>
         <div class="row    gx-5 gy-4  mx-4 px-5 ">
-          <AdBoxNew width={" col-lg-6 col-xl-4 "} />
-          <AdBoxNew width={" col-lg-6 col-xl-4 "} />
-          <AdBoxNew width={" col-lg-6 col-xl-4 "} />
-          <AdBoxNew width={" col-lg-6 col-xl-4 "} />
-          <AdBoxNew width={" col-lg-6 col-xl-4 "} />
-          <AdBoxNew width={" col-lg-6 col-xl-4 "} />
+          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
+          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
+          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
+          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
+          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
+          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
+         
           
         </div>
         <div className="d-flex">

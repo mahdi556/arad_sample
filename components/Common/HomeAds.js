@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import axios from "../../axios";
-import AdBoxNewEmployer from './AdBoxNewEmployer';
-import AdBoxNewEmployee from './AdBoxNewEmployee';
- import { Cities } from "../StaticData/City";
+import AdBoxNewEmployer from "./AdBoxNewEmployer";
+import AdBoxNewEmployee from "./AdBoxNewEmployee";
+import { Cities } from "../StaticData/City";
 const HomeAds = () => {
   const [eads, setEads] = useState({});
   const [rads, setRads] = useState({});
@@ -20,7 +20,6 @@ const HomeAds = () => {
       .catch(function (error) {
         console.log(error);
       });
-      
   }, []);
 
   const width = "50%";
@@ -106,7 +105,7 @@ const HomeAds = () => {
               </h1>
             </div>
             <div class="row    gx-3 gy-4  ms-4 ps-1 ">
-            {rads.length &&
+              {rads.length &&
                 rads.map((item, key) => (
                   <AdBoxNewEmployer
                     width={" col-xl-12 col-xxl-6 "}

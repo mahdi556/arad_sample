@@ -747,13 +747,13 @@ body {
   line-height: 1.4rem;
   font-size: 16px;
 }
-.input-chat{
-  background-color:#e4e4e4;
-  border-radius:10px;
-  font-size:16px;
-  border:none;
+.input-chat {
+  background-color: #e4e4e4;
+  border-radius: 10px;
+  font-size: 16px;
+  border: none;
 }
-.input-chat:focus{
+.input-chat:focus {
   outline: none;
 }
 .inputDanger,
@@ -1167,8 +1167,8 @@ body {
   align-items: center;
   cursor: pointer;
 }
-#adbox:hover{
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+#adbox:hover {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .rAdbox {
   background-color: #fff;
@@ -1180,12 +1180,10 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 #adbox:hover ~ #adbox-salary {
   right: 0%;
   visibility: visible;
- 
- 
 }
-#adbox-salary{
+#adbox-salary {
   visibility: hidden;
-   position: absolute;
+  position: absolute;
   bottom: -3%;
   right: 10%;
   font-size: 13px;
@@ -1193,17 +1191,15 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-align: center;
   transition: all 0.2s ease-out;
 }
- 
 
- 
 @media (max-width: 576px) {
-  .homeAd-mobile{
-   width: 98%;
+  .homeAd-mobile {
+    width: 98%;
   }
 }
 @media (min-width: 577px) {
-  .homeAd-mobile{
-   width: 46%;
+  .homeAd-mobile {
+    width: 46%;
   }
 }
 .homeColTitel {
@@ -1226,7 +1222,7 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 15vh;
   position: relative;
 }
-.homeButton{
+.homeButton {
   background-color: #11999e;
   border-radius: 20px;
   color: #fff;
@@ -1849,7 +1845,7 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   align-items: center;
   justify-content: center;
 }
- 
+
 .code-inputs {
   display: flex;
   justify-content: center;
@@ -1879,17 +1875,76 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   /* border-left: 2px solid #4f5b66; */
 }
 
-.loginInput{
+.loginInput {
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #ebebeb;
   border-style: none;
   border-radius: 10px;
-   
+
   height: 55px;
   width: 100%;
 }
 
-
 /* INPUT CODE >>>> FINISH  */
+
+.trapezium {
+  width: 150px;
+  height: 0;
+  border-top: 30px solid #7c0f0f;
+  border-right: 40px solid transparent;
+  border-left: 40px solid transparent;
+}
+.adType-price {
+  background-color: #11999e;
+  border-radius: 40%;
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: -30px;
+  text-align: center;
+}
+.adType-parent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../public/assets/images/rectangle.svg");
+  height: 232px;
+  width: 366px;
+  background-size: cover;
+  cursor: pointer;
+}
+.adType-parent-white {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../public/assets/images/rectangle-1.svg");
+  height: 232px;
+  width: 366px;
+  background-size: cover;
+  cursor: pointer;
+}
+.adType-txt1 {
+  font-weight: bold;
+}
+.adType-txt2 {
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.6);
+}
+.adType-txt3 {
+  color: rgba(0, 0, 0, 0.6);
+}
+.adType-down {
+  position: absolute;
+  background-color: #ec4b72;
+  border-radius: 40px;
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+  bottom: -5%;
+  font-size: 17px;
+  /* margin-bottom: -30px; */
+  text-align: center;
+  padding: 5px 20px;
+}

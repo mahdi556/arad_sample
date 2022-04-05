@@ -12,8 +12,8 @@ const AdBoxNewEmployer = ({ width, data }) => {
       }}
       onClick={() => {
         router.push({
-          pathname: "/medical",
-          query: { id: id },
+          pathname: "/eShowcase",
+          query: { ad: data.id },
         });
       }}
     >
