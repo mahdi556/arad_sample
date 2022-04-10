@@ -2,8 +2,9 @@ import Image from "next/image";
 import AdBoxNewEmployer from "../../Common/AdBoxNewEmployer";
 import BreakLine from "../Resume/FormInputs/BreakLine";
 
-const EAdShow = () => {
+const EAdShow = ({ data }) => {
   const width = "33%";
+  console.log(data);
   return (
     <>
       <div className="d-flex flex-column px-4 eAdshow">
@@ -11,11 +12,19 @@ const EAdShow = () => {
           <div className="d-flex flex-column mt-4">
             <h1 className="eAdshowSec1">
               {" "}
-              کارشناس ارشد شبکه های اجتماعی{" "}
-              <h5 className="d-inline-flex">(دورکاری)</h5>
+              {data.title}{" "}
+              <h5 className="d-inline-flex">
+                {data.personal && data.personal.corporate_type == 1
+                  ? "حضوری"
+                  : data.personal && data.personal.corporate_type == 2
+                  ? "دورکاری"
+                  : data.personal && data.personal.corporate_type == 3
+                  ? "(حضوری و دورکاری)"
+                  : null}
+              </h5>
             </h1>
             <h4 className="eAdshowSec2">
-              دسته دیجیتال مارکتینگ{" "}
+              دسته {data.jobCategory && data.jobCategory[0].fa_name}
               <h6 className="d-inline-flex fw-light">3روز پیش</h6>
             </h4>
           </div>
@@ -33,15 +42,35 @@ const EAdShow = () => {
           <div className="d-flex col-12">
             <div className="d-flex col-4">
               <h6 className="col-5 txtSec1"> میزان حقوق دریافتی</h6>
-              <h6 className="col-7 txtSec2"> از 2000000 تا 300000000</h6>
+              <h6 className="col-7 txtSec2">
+                {" "}
+                از {data.personal && data.personal.fa_salary_from} تاتومان
+                {data.personal && data.personal.fa_salary_to}تومان
+              </h6>
             </div>
             <div className="d-flex col-4 ms-4">
               <h6 className="col-5 txtSec1">بیمه</h6>
-              <h6 className="col-7 txtSec2">دارد</h6>
+              <h6 className="col-7 txtSec2">
+                {" "}
+                {data.personal && data.personal.insurrance == 1
+                  ? "دارد"
+                  : data.personal && data.personal.insurrance == 0
+                  ? "ندارد"
+                  : null}{" "}
+              </h6>
             </div>
             <div className="d-flex col-3 ms-4 ">
               <h6 className="col-5 txtSec1">نوع همکاری</h6>
-              <h6 className="col-7 txtSec2">کارآموزی</h6>
+              <h6 className="col-7 txtSec2">
+                {" "}
+                {data.personal && data.personal.corporate_type == 1
+                  ? "حضوری"
+                  : data.personal && data.personal.corporate_type == 2
+                  ? "دورکاری"
+                  : data.personal && data.personal.corporate_type == 3
+                  ? "(حضوری و دورکاری)"
+                  : null}
+              </h6>
             </div>
           </div>
           <div className="d-flex col-12">
@@ -65,66 +94,38 @@ const EAdShow = () => {
             مهارت های نرم افزاری
           </h5>
           <div className="row row-cols-4  ">
-            <div className="col px-3 mb-4">
-              <div className="   eAdshowSec3  ">
-                اکسل
-                <div className="d-flex col-12 justify-content-between px-2">
-                  <div className={`eAdshowSec4 col-4 mt-2 me-1 pb-1`}>
-                    مقدماتی
+            {data.softExperts &&
+              data.softExperts.map((item, key) => (
+                <div className="col  px-3">
+                  <div className="   eAdshowSec3  ">
+                    {item.fa_name}
+                    <div className="d-flex col-12 justify-content-between px-2">
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {item.level == 1 && "مقدماتی"}
+                      </div>
+                      <div
+                        className={
+                          item.level == 2 || item.level == 3
+                            ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                            : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                        }
+                        // {`eAdshowSec6 col-4 mt-2 me-1 pb-1`}
+                      >
+                        {item.level == 2 && "متوسط"}
+                      </div>
+                      <div
+                        className={
+                          item.level == 3
+                            ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                            : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                        }
+                      >
+                        {item.level == 3 && "پیشرفته"}
+                      </div>
+                    </div>
                   </div>
-                  <div className={`eAdshowSec5 col-4 mt-2 me-1 pb-1`}> </div>
-                  <div className={`eAdshowSec5 col-4 mt-2 me-1 pb-1`}> </div>
                 </div>
-              </div>
-            </div>
-            <div className="col  px-3">
-              <div className="   eAdshowSec3  ">
-                اکسل
-                <div className="d-flex col-12 justify-content-between px-2">
-                  <div className={`eAdshowSec4 col-4 mt-2 me-1 pb-1`}>
-                    مقدماتی
-                  </div>
-                  <div className={`eAdshowSec5 col-4 mt-2 me-1 pb-1`}> </div>
-                  <div className={`eAdshowSec5 col-4 mt-2 me-1 pb-1`}> </div>
-                </div>
-              </div>
-            </div>
-            <div className="col  px-3">
-              <div className="   eAdshowSec3  ">
-                اکسل
-                <div className="d-flex col-12 justify-content-between px-2">
-                  <div className={`eAdshowSec4 col-4 mt-2 me-1 pb-1`}>
-                    مقدماتی
-                  </div>
-                  <div className={`eAdshowSec5 col-4 mt-2 me-1 pb-1`}> </div>
-                  <div className={`eAdshowSec5 col-4 mt-2 me-1 pb-1`}> </div>
-                </div>
-              </div>
-            </div>
-            <div className="col  px-3">
-              <div className="   eAdshowSec3  ">
-                اکسل
-                <div className="d-flex col-12 justify-content-between px-2">
-                  <div className={`eAdshowSec4 col-4 mt-2 me-1 pb-1`}>
-                    مقدماتی
-                  </div>
-                  <div className={`eAdshowSec5 col-4 mt-2 me-1 pb-1`}> </div>
-                  <div className={`eAdshowSec5 col-4 mt-2 me-1 pb-1`}> </div>
-                </div>
-              </div>
-            </div>
-            <div className="col  px-3">
-              <div className="   eAdshowSec3  ">
-                اکسل
-                <div className="d-flex col-12 justify-content-between px-2">
-                  <div className={`eAdshowSec4 col-4 mt-2 me-1 pb-1`}>
-                    مقدماتی
-                  </div>
-                  <div className={`eAdshowSec5 col-4 mt-2 me-1 pb-1`}> </div>
-                  <div className={`eAdshowSec5 col-4 mt-2 me-1 pb-1`}> </div>
-                </div>
-              </div>
-            </div>
+              ))}
           </div>
         </div>
         <BreakLine />
@@ -133,46 +134,38 @@ const EAdShow = () => {
             مهارت های زبان
           </h5>
           <div className="row row-cols-4  ">
-            <div className="col  px-3">
-              <div className="   eAdshowSec3  ">
-                اکسل
-                <div className="d-flex col-12 justify-content-between px-2">
-                  <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}></div>
-                  <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}> </div>
-                  <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}> خوب</div>
+            {data.langExperts &&
+              data.langExperts.map((item, key) => (
+                <div className="col  px-3">
+                  <div className="   eAdshowSec3  ">
+                    {item.fa_name}
+                    <div className="d-flex col-12 justify-content-between px-2">
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {item.level == 1 && "مقدماتی"}
+                      </div>
+                      <div
+                        className={
+                          item.level == 2 || item.level == 3
+                            ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                            : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                        }
+                        // {`eAdshowSec6 col-4 mt-2 me-1 pb-1`}
+                      >
+                        {item.level == 2 && "متوسط"}
+                      </div>
+                      <div
+                        className={
+                          item.level == 3
+                            ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                            : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                        }
+                      >
+                        {item.level == 3 && "پیشرفته"}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="col  px-3">
-              <div className="   eAdshowSec3  ">
-                اکسل
-                <div className="d-flex col-12 justify-content-between px-2">
-                  <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}></div>
-                  <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}> </div>
-                  <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}> خوب</div>
-                </div>
-              </div>
-            </div>
-            <div className="col  px-3">
-              <div className="   eAdshowSec3  ">
-                اکسل
-                <div className="d-flex col-12 justify-content-between px-2">
-                  <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}></div>
-                  <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}> </div>
-                  <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}> خوب</div>
-                </div>
-              </div>
-            </div>
-            <div className="col  px-3">
-              <div className="   eAdshowSec3  ">
-                اکسل
-                <div className="d-flex col-12 justify-content-between px-2">
-                  <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}></div>
-                  <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}> </div>
-                  <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}> خوب</div>
-                </div>
-              </div>
-            </div>
+              ))}
           </div>
         </div>
         <BreakLine />
@@ -183,47 +176,7 @@ const EAdShow = () => {
             lineHeight: 2,
           }}
         >
-          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-          استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
-          ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
-          کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
-          در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
-          طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
-          الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این
-          صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و
-          شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای
-          اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده
-          قرار گیرد.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
-          با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
-          ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
-          کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
-          در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
-          طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
-          الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این
-          صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و
-          شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای
-          اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده
-          قرار گیرد.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
-          با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
-          ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
-          کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
-          در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
-          طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
-          الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این
-          صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و
-          شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای
-          اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده
-          قرار گیرد.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
-          با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
-          ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
-          کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
-          در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
-          طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
-          الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این
-          صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و
-          شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای
-          اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده
-          قرار گیرد.
+          {data.personal && data.personal.description}
         </p>
         <h5 className="  my-5 fs-4 text-start fw-bold w-75">تسهیلات و مزایا</h5>
         <div className="d-flex flex-wrap mb-3">

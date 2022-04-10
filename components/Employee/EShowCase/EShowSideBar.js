@@ -1,10 +1,17 @@
 import Image from "next/image";
- const EShowSideBar = () => {
+const EShowSideBar = ({ data }) => {
   return (
     <>
       <div className="eShowCase">
         <div>
-          <Image src="/assets/images/shatelLogo.png" width={136} height={136} />
+          {/* <Image src="/assets/images/shatelLogo.png" width={136} height={136} /> */}
+          <img
+            // loader={myLoader}
+            src={data.image}
+            height={100}
+            width={100}
+            style={{ borderRadius: "50%" }}
+          />
         </div>
         <h2
           className="mt-2"
@@ -13,7 +20,7 @@ import Image from "next/image";
             lineHeight: 1.5,
           }}
         >
-          آژانس دیجیتال مارکتینگ راتین
+          {data.personal && data.personal.company_name}{" "}
           <h4
             className=" d-inline-flex ms-2"
             style={{
@@ -48,19 +55,31 @@ import Image from "next/image";
         </div>
         <div className="d-flex flex-column jusify-content-end align-items-end">
           <div className="d-flex align-items-center mb-2">
-            <h6 className="me-2 mt-1">09120000000</h6>
+            <h6 className="me-2 mt-1">
+              {" "}
+              {data.personal && data.personal.cellphone}
+            </h6>
             <Image src="/assets/images/phone.png" width={24} height={24} />
           </div>
           <div className="d-flex align-items-center mb-2">
-            <h6 className="me-2 mt-1">09120000000</h6>
+            <h6 className="me-2 mt-1">
+              {" "}
+              {data.personal && data.personal.whatsapp}
+            </h6>
             <Image src="/assets/images/whatsapp.png" width={24} height={24} />
           </div>
           <div className="d-flex align-items-center mb-2">
-            <h6 className="me-2 mt-1">sadsadasd@gmail.com</h6>
+            <h6 className="me-2 mt-1">
+              {" "}
+              {data.personal && data.personal.email}
+            </h6>
             <Image src="/assets/images/gmail.png" width={24} height={24} />
           </div>
           <div className="d-flex align-items-center mb-2">
-            <h6 className="me-2 mt-1">asdasdasdsa</h6>
+            <h6 className="me-2 mt-1">
+              {" "}
+              {data.personal && data.personal.telegram}
+            </h6>
             <Image src="/assets/images/telegram.png" width={24} height={24} />
           </div>
         </div>

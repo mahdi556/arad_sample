@@ -8,7 +8,7 @@ const SubmitRn = () => {
     normalAdContext.dispatch({type:'type',payload:'rv'})
    },[])
   const sendData = () => {
-    
+     console.log(normalAdContext.data)
     const formData = new FormData();
 
      

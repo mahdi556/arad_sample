@@ -13,7 +13,6 @@ const HomeAds = () => {
       method: "get",
     })
       .then((response) => {
-        console.log(response);
         setEads(response.data.data.eads);
         setRads(response.data.data.rads);
       })
