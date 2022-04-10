@@ -4,20 +4,20 @@ import normalAdReducer from "./normalAdReducer";
 
 const initialData = {
   userImage: "",
-  type:'',
+  type: "",
   userImageFile: {},
   userVideo: "",
-  name:'',
-  companyId:'',
-  companyName:'',  
-  fieldCheck:false,
-  stepClick:false,
+  name: "",
+  companyId: "",
+  companyName: "",
+  fieldCheck: false,
+  stepClick: false,
   socials: {
     twitter: "",
     instagram: "",
     youtube: "",
     dribble: "",
-  },  
+  },
   birthday: {
     day: "",
     month: "",
@@ -45,10 +45,10 @@ const initialData = {
     fa: "",
   },
   workHour: {
-    fa: {from: "",to: "" },
+    fa: { from: "", to: "" },
   },
   ageRange: {
-    fa: {from: "",to: "" },
+    fa: { from: "", to: "" },
   },
   salaryType: {
     id: "",
@@ -71,8 +71,6 @@ const initialData = {
   experiences: [],
   degree: [],
   sampleEx: [],
-
-
 };
 
 const NormalAdProvider = (props) => {

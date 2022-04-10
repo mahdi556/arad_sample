@@ -1402,8 +1402,7 @@ body {
   border-radius: 30px;
 }
 .eShowContainer .rightsec {
-  background-color: white;
-  text-align: center;
+   text-align: center;
   cursor: pointer;
   border-left: #000 solid 1px;
   border-top-right-radius: 30px;
@@ -1411,14 +1410,10 @@ body {
 }
 
 .eShowContainer .middlesec {
-  background-color: #c7e4e5;
   text-align: center;
   cursor: pointer;
   border-left: #000 solid 1px;
   font-size: 20px;
-  font-weight: bold;
-  color: #11999e;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .eShowContainer .leftsec {
   background-color: white;
@@ -1439,10 +1434,21 @@ body {
   cursor: pointer;
   border-left: #000 solid 1px;
   border-top-right-radius: 30px;
+  font-size: 20px;
+}
+.jobAds-selected-top{
+  background-color: #c7e4e5;
+   color: #11999e;
+  font-weight: bold;
+  border-bottom: #11999e solid 4px;
+  
+}
+.jobAds-selected{
+  
   color: #11999e;
   font-weight: bold;
-  font-size: 20px;
   border-bottom: #11999e solid 4px;
+  
 }
 
 .jobAds .middlesec1 {
@@ -1457,6 +1463,7 @@ body {
   text-align: center;
   cursor: pointer;
   border-top-left-radius: 30px;
+  font-size: 20px;
 }
 .eAdshow {
   background-color: white;
@@ -1501,6 +1508,12 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+}
+.eAdshowSec8 {
+  border-bottom: solid 3px;
+  font-size: 13px;
+  color: #D0D0D0;
+  text-align: center;
 }
 .txtSec1 {
   background-color: #eaeaea;

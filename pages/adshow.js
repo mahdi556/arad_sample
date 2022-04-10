@@ -365,10 +365,23 @@ const Adshow = () => {
                           <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
                             {item.level == 1 && "مقدماتی"}
                           </div>
-                          <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                          <div
+                            className={
+                              item.level == 2 || item.level == 3
+                                ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                                : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                            }
+                            // {`eAdshowSec6 col-4 mt-2 me-1 pb-1`}
+                          >
                             {item.level == 2 && "متوسط"}
                           </div>
-                          <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                          <div
+                            className={
+                              item.level == 3
+                                ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                                : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                            }
+                          >
                             {item.level == 3 && "پیشرفته"}
                           </div>
                         </div>
@@ -392,10 +405,23 @@ const Adshow = () => {
                           <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
                             {item.level == 1 && "مقدماتی"}
                           </div>
-                          <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                          <div
+                            className={
+                              item.level == 2 || item.level == 3
+                                ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                                : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                            }
+                            // {`eAdshowSec6 col-4 mt-2 me-1 pb-1`}
+                          >
                             {item.level == 2 && "متوسط"}
                           </div>
-                          <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                          <div
+                            className={
+                              item.level == 3
+                                ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                                : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                            }
+                          >
                             {item.level == 3 && "پیشرفته"}
                           </div>
                         </div>
@@ -502,7 +528,9 @@ const Adshow = () => {
             <h5 className="mt-2 mb-3 fs-5 text-start fw-bold w-75">
               نوضیحات تکمیلی
             </h5>
-            <p className="px-1 fs-9 mb-5">{data.personal && data.personal.description}</p>
+            <p className="px-1 fs-9 mb-5">
+              {data.personal && data.personal.description}
+            </p>
           </div>
         </div>
         <div className="col-3 ">
