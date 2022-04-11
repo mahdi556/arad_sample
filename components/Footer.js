@@ -6,7 +6,7 @@ const Footer = () => {
         src="/assets/images/wave1.png"
         sizes="cover"
         width="100%"
-        height="95%"
+        // height="95%"
         style={{
           position: "absolute",
           bottom: 0,

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ECProfile from "./ECProfile";
+import RCProfile from "./RCProfile";
 import JobAds from "./JobAds";
 
 const EShowContent = ({ data }) => {
@@ -16,7 +16,7 @@ const EShowContent = ({ data }) => {
             }
             onClick={() => setTab(1)}
           >
-            پروفایل سازمانی
+            وضعیت درخواست های همکاری از طرف شما
           </div>
           <div
             className={
@@ -26,11 +26,11 @@ const EShowContent = ({ data }) => {
             }
             onClick={() => setTab(2)}
           >
-            فرصت های شغلی
+            شغل های پیشنهادی
           </div>
-          <div className="col-4 py-2 leftsec">پست ها</div>
+          <div className="col-4 py-2 leftsec">شغل های ذخیره شده</div>
         </div>
-        {tab == 1 ? <ECProfile /> : <JobAds data={data} />}
+        {tab == 1 ? <RCProfile /> : <JobAds   />}
       </div>
     </>
   );

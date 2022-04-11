@@ -84,7 +84,24 @@ body {
   font-style: normal;
   font-weight: 400;
   background-color: #f2f5f6;
+  
 }
+/* html,
+body,
+body > div:first-child,
+div#__next,
+div#__next > div {
+  height: 100%;
+} */
+
+#__next {
+  height: 100%;
+  /* overflow: auto; */
+  
+  /* display: flex;
+  flex-direction: column; */
+}
+
 .gx-6 {
   --bs-gutter-x: 7rem;
 }
@@ -194,7 +211,9 @@ body {
 .vh-50 {
   height: 50vh !important;
 }
-
+.mt-6{
+  margin-top: 4.5rem;
+}
 .arad-red {
   color: #ec4b72;
 }
@@ -309,7 +328,7 @@ body {
   position: relative;
   z-index: 10;
   width: 100%;
-  margin-top: 20rem;
+  margin-top: 40rem;
 }
 @media (max-width: 1200px) {
   .footer1-background {

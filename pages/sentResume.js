@@ -18,8 +18,7 @@ const SentResume = () => {
       >
         <RightMenu />
 
-        {/* <RShowContent /> */}
-      </div>
+       </div>
       <Footer />
     </>
   );

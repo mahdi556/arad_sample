@@ -1,8 +1,8 @@
 import Image from "next/image";
 import AdBoxNewEmployer from "../../Common/AdBoxNewEmployer";
-import BreakLine from "../Resume/FormInputs/BreakLine";
+import BreakLine from "../../Employee/Resume/FormInputs/BreakLine"
 
-const EAdShow = ({ data }) => {
+const RAdShow = ({ data }) => {
   const width = "33%";
   console.log(data);
   return (
@@ -198,4 +198,4 @@ const EAdShow = ({ data }) => {
     </>
   );
 };
-export default EAdShow;
+export default RAdShow;

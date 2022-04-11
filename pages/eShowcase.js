@@ -1,10 +1,10 @@
-import EShowContent from "../components/Employee/EShowCase/EShowContent";
-import EShowSideBar from "../components/Employee/EShowCase/EShowSideBar";
+import RShowContent from "../components/Employer/RShowCase/RShowContent";
+import RShowSideBar from "../components/Employer/RShowCase/RShowSideBar";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import axios from '../axios';
+import axios from "../axios";
 
 const EShowCase = () => {
   const router = useRouter();
@@ -17,7 +17,6 @@ const EShowCase = () => {
       method: "post",
       data: {
         ad_id: router.query.ad,
-
       },
     })
       .then((response) => {
@@ -41,10 +40,10 @@ const EShowCase = () => {
       >
         <div className="d-flex col-12">
           <div className="col-3">
-            <EShowSideBar  data={data} />
+            <RShowSideBar data={data} />
           </div>
           <div className="  col-9 ">
-            <EShowContent data={data} />
+            <RShowContent data={data} />
           </div>
         </div>
       </div>

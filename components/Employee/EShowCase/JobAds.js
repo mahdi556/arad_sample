@@ -1,48 +1,99 @@
 import { useEffect, useState } from "react";
-import EAdShow from "./EAdShow";
+import EAdShow from "./RAdShow";
 import JobAsList from "./JobAsList";
-
-const JobAds = ({ data }) => {
+import Image from "next/image";
+import style from "./styles/eshow.module.css";
+const JobAds = () => {
   const [tab, setTab] = useState(3);
-  useEffect(()=>{
-    setTab(3)
-  },[data])
+  // useEffect(()=>{
+  //   setTab(3)
+  // },[data])
   return (
     <>
       <div className="d-flex col-12 mt-5 justify-content-center jobAds bg-white mb-5">
         <div
           className={
             tab == 1
-              ? "col-4 py-2 rightsec1 jobAds-selected"
-              : "col-4 py-2 rightsec1 "
+              ? "col-3 py-2 rightsec1 jobAds-selected"
+              : "col-3 py-2 rightsec1 "
           }
           onClick={() => setTab(1)}
         >
-          همه فرصت های شغلی
+          درانتظار
         </div>
-        <div className={
+        <div
+          className={
             tab == 2
-              ? "col-4 py-2 middlesec1 jobAds-selected"
-              : "col-4 py-2 middlesec1 "
-          } onClick={() => setTab(1)}>
-          فرصت های شغلی فعال
+              ? "col-3 py-2 middlesec1 jobAds-selected"
+              : "col-3 py-2 middlesec1 "
+          }
+          onClick={() => setTab(2)}
+        >
+          رد شده
         </div>
-        <div className={
+        <div
+          className={
             tab == 3
-              ? "col-4 py-2 leftsec1 jobAds-selected"
-              : "col-4 py-2 leftsec1 "
-          } onClick={() => setTab(3)}>
-          {data.title}
+              ? "col-3 py-2 middlesec1 jobAds-selected"
+              : "col-3 py-2 middlesec1 "
+          }
+          onClick={() => setTab(3)}
+        >
+          تائید شده
+        </div>
+        <div
+          className={
+            tab == 4
+              ? "col-3 py-2 leftsec1 jobAds-selected"
+              : "col-3 py-2 leftsec1 "
+          }
+          onClick={() => setTab(4)}
+        >
+          نمایش همه
         </div>
       </div>
-
-      {tab == 1 ? (
-        <JobAsList  id={data.user.id} />
-      ) : tab == 2 ? (
-        <EAdShow />
-      ) : (
-        <EAdShow data={data} />
-      )}
+      <div className="col-12 d-flex bg-white   py-4">
+        <div className="col-6  d-flex align-items-center px-3">
+          <div
+            className=" d-flex flex-column   justify-content-center align-items-center shadow2 col-3 "
+            style={{
+              fontSize: 15,
+              borderRadius: 10,
+            }}
+          >
+            <div
+              className="d-flex justify-content-center align-items-center "
+              style={{
+                backgroundColor: "rgb(17,153,158,0.09)",
+                borderRadius: 10,
+                width: "100%",
+                height: 90,
+              }}
+            >
+              <Image src="/assets/images/adimage.png" width={74} height={74} />
+            </div>
+            <h6
+              className="text-center my-auto py-2 "
+              style={{
+                fontSize: 14,
+              }}
+            >
+              برقراری ارتباط
+            </h6>
+          </div>
+          <div className="d-flex flex-column px-3">
+            <h4>فروشنده حرفه ای فروشنده حرفه ای</h4>
+            <div className="d-flex align-items-center">
+              <h5>آزانس دیجیتال راتین </h5>
+              <h6 className="ms-2">اصفهان</h6>
+            </div>
+          </div>
+        </div>
+        <div className="d-flex col-5 ms-auto  ">
+            <h6 className="col-6 ms-auto ">کارفرما برای تاریخ 1/4/1740 درخواست مصاحبه کرده است</h6>
+          <div className={style.verify_circle}>تائید</div>
+        </div>
+      </div>
     </>
   );
 };

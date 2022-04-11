@@ -1,5 +1,5 @@
 import Image from "next/image";
-const EShowSideBar = ({ data }) => {
+const RShowSideBar = ({ data }) => {
   return (
     <>
       <div className="eShowCase">
@@ -139,4 +139,4 @@ const EShowSideBar = ({ data }) => {
     </>
   );
 };
-export default EShowSideBar;
+export default RShowSideBar;

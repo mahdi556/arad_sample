@@ -1,7 +1,7 @@
-import BreakLine from "../Resume/FormInputs/BreakLine";
+import BreakLine from "../../Employee/Resume/FormInputs/BreakLine"
 import ESlideShow from "./ESlideShow";
 
-const ECProfile = () => {
+const RCProfile = () => {
   return (
     <>
       <div className="d-flex col-12 mt-5">
@@ -95,4 +95,4 @@ const ECProfile = () => {
   );
 };
 
-export default ECProfile;
+export default RCProfile;

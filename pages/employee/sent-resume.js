@@ -4,19 +4,16 @@ import Resume from "../../components/Employee/Resume";
 import RightMenu from "../../components/Employee/RightMenu/RightMenu";
 import Layout from "../../components/Layouts/layout";
 import Head from "next/head";
-import Link from "next/link";
-import CreateEmployeeAd from "../../components/Employee/CreateAd";
-import RShowMain from "../../components/Employer/RShowCase/RShowMain";
-const Dashboard = () => {
+import EShowContent from "../../components/Employee/EShowCase/EShowContent";
+  const Dashboard = () => {
   return (
     <>
       <Layout>
         <Head>
-          <title>First Post</title>
+          <title>رزومه های ارسال شده</title>
         </Head>
- 
-        <RShowMain />
-      </Layout>
+        <EShowContent />
+        </Layout>
     </>
   );
 };

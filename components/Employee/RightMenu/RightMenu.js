@@ -1,15 +1,24 @@
 import Image from "next/image";
-
+import { useEffect, useState } from "react";
+ import { useRouter } from 'next/router'
 const RightMenu = () => {
+ 
+  const router= useRouter()
   return (
     <>
       <div
-        className=""
+        className="pt-3"
         style={{
           width: "20%",
           backgroundColor: "#fff",
           borderTopLeftRadius: 25,
-          marginBottom: 200,
+          // marginBottom: 200,
+          // height: "100%",
+          zIndex: 10,
+          //  overflow: 'hidden',
+          position: "absolute",
+          top: "5%",
+          right: 0,
         }}
       >
         <div className="d-flex ps-5 pt-4 align-items-center">
@@ -88,22 +97,23 @@ const RightMenu = () => {
               رزومه
             </h6>
           </div>
-          {/* <div
+          <div
             className="ps-3 ms-4 mt-3  "
-            style={[
-              {
+            style={{
                 borderRightStyle: "solid",
                 borderRightColor: "#000",
                 borderWidth: 2,
-                visibility: "hidden",
-              },
-            ]}
+                // visibility: "hidden",
+              }}
           >
-            <h6 className="mt-2 py-2 ps-2 EsubItem ">تکمیل و دانلود رزومه</h6>
-            <h6 className="mt-2 py-2 ps-2 EsubItem">
+            <h6 className="mt-2 py-2 ps-2 EsubItem ">تکمیل و دانلود رزومه</h6> 
+             <h6 className="mt-2 py-2 ps-2 EsubItem"  
+             onClick={()=>router.push('/employee/sent-resume')}
+             >
               پیگیری رزومه های ارسال شده
             </h6>
-          </div> */}
+          </div>
+
         </div>
         <div>
           <div className="d-flex ms-4 mt-4">
@@ -184,6 +194,7 @@ const RightMenu = () => {
             سفارشات و بسته ها
           </h6>
         </div>
+
         <div className="d-flex ms-4 mt-4">
           <div>
             <Image src="/assets/images/etest.png" width={20} height={20} />
