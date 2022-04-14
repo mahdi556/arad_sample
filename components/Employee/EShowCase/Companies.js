@@ -1,9 +1,8 @@
 import { useState } from "react";
-import RCProfile from "./RCProfile";
-import MySentResume from "./MySentResume";
-import SuggestAds from "./SuggestAds";
-import SavedAds from "./SavedAds";
-const EShowContent = ({ data }) => {
+ import ActiveCompanies from "./ActiveCompanies";
+import FollowCompanies from "./FollowCompanies";
+import VipAds from "./VipAds";
+ const Companies = ({ data }) => {
   const [tab, setTab] = useState(1);
   return (
     <>
@@ -17,7 +16,7 @@ const EShowContent = ({ data }) => {
             }
             onClick={() => setTab(1)}
           >
-            وضعیت درخواست های همکاری از طرف شما
+            شرکت های معتبر
           </div>
           <div
             className={
@@ -27,7 +26,7 @@ const EShowContent = ({ data }) => {
             }
             onClick={() => setTab(2)}
           >
-            شغل های پیشنهادی
+            شرکت های دنبال شونده
           </div>
           <div
             className={
@@ -37,12 +36,18 @@ const EShowContent = ({ data }) => {
             }
             onClick={() => setTab(3)}
           >
-            شغل های ذخیره شده
+            آگهی های ویژه
           </div>
         </div>
-        {tab == 1 ? <MySentResume /> : tab == 1 ? <SuggestAds /> : <SavedAds />}
+        {tab == 1 ? (
+          <ActiveCompanies />
+        ) : tab == 2 ? (
+          <FollowCompanies />
+        ) : (
+          <VipAds />
+        )}
       </div>
     </>
   );
 };
-export default EShowContent;
+export default Companies;

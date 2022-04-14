@@ -2,7 +2,7 @@ import Image from "next/image";
 import axios from "../../axios";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import InputCode from "./InputCode";
 import UserContext from "../../context/employeeContext/User/UserContext";
 const style = {
@@ -34,8 +34,15 @@ const Login = () => {
   const [roll, setRoll] = useState("");
   const [countdown, setCountdown] = useState("");
   const [resend, setResend] = useState(false);
-
   const userContext = useContext(UserContext);
+  useEffect(() => {
+    userContext.data.user.signUp && handleOpen1();
+    userContext.dispatch({ type: "signUp", payload: false });
+  }, [userContext.data.user.signUp]);
+
+  const handleSignIn = () => {
+    !userContext.data.user.auth && handleOpen1();
+  };
   const initialSingHandler = () => {
     axios({
       url: "/register",
@@ -69,24 +76,37 @@ const Login = () => {
       },
     })
       .then((response) => {
-        console.log(response);
         if (response.status == 200) {
           handleClose2();
-          handleOpen3();
+          if (response.data.new == 1) {
+            handleOpen3();
+          } else {
+            userContext.dispatch({
+              type: "user",
+              payload: {
+                id: response.data.id,
+                firstName: response.data.firstName,
+                lastName: response.data.lastName,
+                auth: true,
+                role: response.data.role,
+              },
+            });
+          }
         }
-       })
+      })
       .catch(function (error) {
         console.log(error);
       });
     // }
   };
-   const signUpHandler = () => {
+  const signUpHandler = () => {
     axios({
       url: "/firstSignUp",
       method: "post",
       data: {
         firstName: firstName,
         lastName: lastName,
+        role: roll,
         login_token: token,
       },
     })
@@ -99,6 +119,7 @@ const Login = () => {
             firstName: response.data.firstName,
             lastName: response.data.lastName,
             auth: true,
+            role: response.data.role,
           },
         });
         handleClose3();
@@ -108,10 +129,7 @@ const Login = () => {
       });
     // }
   };
-   
-
-  
-  return (
+   return (
     <>
       <div
         className="d-flex px-2 py-2 me-5 align-items-center "
@@ -124,12 +142,11 @@ const Login = () => {
           color: "#fff",
           cursor: "pointer",
         }}
-        onClick={handleOpen1}
+        // onClick={handleOpen1}
+        onClick={() => handleSignIn()}
       >
-        {userContext.data.user.auth
-         ? (
+        {userContext.data.user.auth ? (
           `${userContext.data.user.firstName}  ${userContext.data.user.lastName}`
-          
         ) : (
           <>
             <div className="d-flex me-2  ">
@@ -137,7 +154,7 @@ const Login = () => {
             </div>
             ورود/ثبت نام
           </>
-        )} 
+        )}
       </div>
 
       <Modal open={open1} onClose={handleClose1}>

@@ -40,7 +40,9 @@ const SelectOption = ({ data, name, valueHandler,predata }) => {
   };
 
   return (
-    <div className="d-flex  py-4 "  ref={dropRef}>
+    <div className="d-flex  py-4 " 
+    //  ref={dropRef}
+     >
       <div className="col-12 ">
         <label
           className={dropLabel}

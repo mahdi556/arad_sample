@@ -45,16 +45,17 @@ const AdBoxNewEmployee = ({ width, data }) => {
           <h6
             className="mb-3"
             style={{
-              fontSize: 16,
-              lineHeight: "0.2rem",
+              fontSize: '0.9rem',
+              lineHeight: "0.3rem",
             }}
           >
             {data && data.jobCategory[0].fa_name}
             <div
-              className=" d-inline-flex fw-light ms-2"
+              className=" d-inline-flex fw-light ms-2 mt-3"
               style={{
                 color: "#a8a8a8",
                 fontSize: 14,
+                lineHeight: "0.8rem",
               }}
             >
               {data && data.personal.city_fa}

@@ -47,7 +47,15 @@ const PersonalData = () => {
     setButtonClass({ ...buttonClass, [i]: "Ebutton_clicked " });
   };
   const sexHandler = (sex) => {
-    resumeContext.dispatch({ type: "sex", payload: sex });
+    sex == 1
+      ? normalAdContext.dispatch({
+          type: "sex",
+          payload: { id: sex, fa: "مرد" },
+        })
+      : normalAdContext.dispatch({
+          type: "sex",
+          payload: { id: sex, fa: "زن" },
+        });
   };
   const marriedHandler = (mar) => {
     resumeContext.dispatch({ type: "married", payload: mar });
@@ -229,7 +237,7 @@ const PersonalData = () => {
                     title={"جنسیت"}
                     choices={{ 1: "مرد", 2: "زن" }}
                     valueHandler={sexHandler}
-                    predata={resumeContext.data.sex}
+                    predata={resumeContext.data.sex.id}
                   />
                 </div>
                 <div className=" ">

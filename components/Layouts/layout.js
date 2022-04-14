@@ -2,15 +2,16 @@ import CreateEmployeeAd from "../Employee/CreateAd";
 import RightMenu from "../Employee/RightMenu/RightMenu";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
-import styles from "./layout.module.css";
 export default function Layout({ children }) {
   return (
     <>
       <NavBar />
       <div
-        style={{
-          // minHeight: 1000,
-        }}
+        style={
+          {
+            // minHeight: 1000,
+          }
+        }
       >
         <div className="d-flex mt-5  ">
           <style global jsx>{`

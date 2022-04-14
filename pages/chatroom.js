@@ -31,7 +31,7 @@ const ChatRoom = () => {
           backgroundColor: "#f2f5f6",
         }}
       >
-        <RightMenu />
+        {/* <RightMenu /> */}
         <div
           className="d-flex mx-auto mt-5"
           style={{

@@ -1,35 +1,19 @@
 import { useContext, useEffect } from "react";
 import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
 import axios from "../../../axios";
+import Swal from "sweetalert2";
+import { useRouter } from "next/router";
+
 const SubmitRn = () => {
+  const router = useRouter();
+
   const normalAdContext = useContext(NormalAdContext);
-  useEffect(()=>{
-    normalAdContext.dispatch({type:'type',payload:'rn'})
-   },[])
+  useEffect(() => {
+    normalAdContext.dispatch({ type: "type", payload: "rn" });
+  }, []);
   const sendData = () => {
-    
     const formData = new FormData();
 
-    //  formData.append("title", normalAdContext.data.title);
-    //  formData.append("corporateType", normalAdContext.data.corporateType);
-    //  formData.append("sex", normalAdContext.data.sex);
-    //  formData.append("married", normalAdContext.data.married);
-    //  formData.append("insurrance", normalAdContext.data.insurrance);
-    //  formData.append("province", normalAdContext.data.province);
-    //  formData.append("city", normalAdContext.data.city);
-    //  formData.append("jobCategory", normalAdContext.data.salary);
-    //  formData.append("salary", normalAdContext.data.salary);
-    //  formData.append("cellphone", normalAdContext.data.cellphone);
-    //  formData.append("whatsapp", normalAdContext.data.whatsapp);
-    //  formData.append("telegram", normalAdContext.data.telegram);
-    //  formData.append("email", normalAdContext.data.email);
-    //  formData.append("description", normalAdContext.data.description);
-
-    // formData.append("userId", 81);
-   
-    // for (var key of formData.entries()) {
-    //   console.log(key[0] + ", " + key[1]);
-    // }
     axios({
       url: "/submiten",
       method: "post",
@@ -39,13 +23,13 @@ const SubmitRn = () => {
       },
     })
       .then((response) => {
-         formData.append("image", normalAdContext.data.userImageFile);
-        formData.append("type",  "normalEn");
+        formData.append("image", normalAdContext.data.userImaageFile);
+        formData.append("type", "normalEn");
         formData.append("ad_id", response.data.ad_id);
         axios({
           url: "/storeMedia",
           method: "post",
-          data:formData,
+          data: formData,
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${JSON.parse(
@@ -55,6 +39,16 @@ const SubmitRn = () => {
         })
           .then((response) => {
             console.log(response);
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "آگهی با موفقیت ثبت گردید.",
+              showConfirmButton: true,
+              // timer:3500
+            });
+            router.push({
+              pathname: "/",
+            });
           })
           .catch(function (error) {
             console.log(error);

@@ -4,7 +4,10 @@ import axios from "../../axios";
 import AdBoxNewEmployer from "./AdBoxNewEmployer";
 import AdBoxNewEmployee from "./AdBoxNewEmployee";
 import { Cities } from "../StaticData/City";
+import { useRouter } from "next/router";
+
 const HomeAds = () => {
+  const router = useRouter();
   const [eads, setEads] = useState({});
   const [rads, setRads] = useState({});
   useEffect(() => {
@@ -90,7 +93,17 @@ const HomeAds = () => {
                   />
                 ))}
             </div>
-            <h1 className=" homeButton mx-auto ">ادامه لیست</h1>
+            <h1
+              className=" homeButton mx-auto "
+              onClick={() =>
+                router.push({
+                  pathname: "/eadslist",
+                  query: { type: "employee" },
+                })
+              }
+            >
+              ادامه لیست
+            </h1>
           </div>
           <div
             className=" "
@@ -113,7 +126,17 @@ const HomeAds = () => {
                   />
                 ))}
             </div>
-            <h1 className=" homeButton mx-auto ">ادامه لیست</h1>
+            <h1
+              className=" homeButton mx-auto "
+              onClick={() =>
+                router.push({
+                  pathname: "/eadslist",
+                  query: { type: "employee" },
+                })
+              }
+            >
+              ادامه لیست
+            </h1>
           </div>
         </div>
       </div>

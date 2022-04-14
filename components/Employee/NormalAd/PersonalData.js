@@ -36,7 +36,15 @@ const PersonalData = () => {
     setButtonClass({ ...buttonClass, [i]: "Ebutton_clicked " });
   };
   const sexHandler = (sex) => {
-    normalAdContext.dispatch({ type: "sex", payload: sex });
+    sex == 1
+      ? normalAdContext.dispatch({
+          type: "sex",
+          payload: { id: sex, fa: "مرد" },
+        })
+      : normalAdContext.dispatch({
+          type: "sex",
+          payload: { id: sex, fa: "زن" },
+        });
   };
   const marriedHandler = (mar) => {
     normalAdContext.dispatch({ type: "married", payload: mar });
@@ -216,7 +224,7 @@ const PersonalData = () => {
                 title={"جنسیت"}
                 choices={{ 1: "مرد", 2: "زن" }}
                 valueHandler={sexHandler}
-                predata={normalAdContext.data.sex}
+                predata={normalAdContext.data.sex.id}
               />
             </div>
             <div className=" ">
@@ -236,32 +244,32 @@ const PersonalData = () => {
               />
             </div>
           </div>
-            <div className="col-12 mb-3 mt-5">
-                <label
-                  className="fs-6  "
-                  style={{
-                    marginBottom: "0.5rem",
-                    fontWeight: "normal",
-                  }}
-                >
-                  توضیحات آگهی
-                </label>
-                <textarea
-                  className={
-                    normalAdContext.data.title == ""
-                      ? "col-12 mb-3 ps-2 inputStyle"
-                      : "col-12 mb-3 ps-2 inputFilled"
-                  }
-                  type="text"
-                  value={normalAdContext.data.description}
-                  onChange={(e) => {
-                    normalAdContext.dispatch({
-                      type: "description",
-                      payload: e.target.value,
-                    });
-                  }}
-                />
-              </div>
+          <div className="col-12 mb-3 mt-5">
+            <label
+              className="fs-6  "
+              style={{
+                marginBottom: "0.5rem",
+                fontWeight: "normal",
+              }}
+            >
+              توضیحات آگهی
+            </label>
+            <textarea
+              className={
+                normalAdContext.data.title == ""
+                  ? "col-12 mb-3 ps-2 inputStyle"
+                  : "col-12 mb-3 ps-2 inputFilled"
+              }
+              type="text"
+              value={normalAdContext.data.description}
+              onChange={(e) => {
+                normalAdContext.dispatch({
+                  type: "description",
+                  payload: e.target.value,
+                });
+              }}
+            />
+          </div>
         </div>
       </div>
     </>

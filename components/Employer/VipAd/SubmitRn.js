@@ -1,17 +1,20 @@
 import { useContext, useEffect } from "react";
 import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import axios from "../../../axios";
-const SubmitRn = () => {
-  const normalAdContext = useContext(NormalAdContext);
-  useEffect(()=>{
-    normalAdContext.dispatch({type:'type',payload:'rv'})
-   },[])
-  const sendData = () => {
-     console.log(normalAdContext.data)
-    const formData = new FormData();
+import { useRouter } from "next/router";
 
-     
+const SubmitRn = () => {
+  const router = useRouter();
+
+  const normalAdContext = useContext(NormalAdContext);
+  useEffect(() => {
+    normalAdContext.dispatch({ type: "type", payload: "rv" });
+  }, []);
+  const sendData = () => {
+    console.log(normalAdContext.data);
+    const formData = new FormData();
+      
     axios({
       url: "/submiten",
       method: "post",
@@ -21,13 +24,13 @@ const SubmitRn = () => {
       },
     })
       .then((response) => {
-          formData.append("image", normalAdContext.data.userImageFile);
-        formData.append("type",  "normalEn");
+        formData.append("image", normalAdContext.data.userImageFile);
+        formData.append("type", "normalEn");
         formData.append("ad_id", response.data.ad_id);
         axios({
           url: "/storeMedia",
           method: "post",
-          data:formData,
+          data: formData,
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${JSON.parse(
@@ -36,15 +39,16 @@ const SubmitRn = () => {
           },
         })
           .then((response) => {
-             Swal.fire({
-              position:'center',
-              icon:'success',
-              title: 'آگهی با موفقیت ثبت شد',
-              showConfirmButton:true,
-              // timer:3500
-            })     
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "آگهی با موفقیت ثبت شد",
+              showConfirmButton: true,
+            });  router.push({
+              pathname: "/",
+            });
           })
-           .catch(function (error) {
+          .catch(function (error) {
             console.log(error);
           });
       })

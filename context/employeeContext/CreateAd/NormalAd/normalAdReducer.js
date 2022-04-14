@@ -8,12 +8,17 @@ const normalAdReducer = (state, action) => {
       return { ...state, userImageFile: action.payload };
     case "userVideo":
       return { ...state, userVideo: action.payload };
+    case "type":
+      return { ...state, type: action.payload };
 
     case "title":
       return { ...state, title: action.payload };
 
     case "sex":
-      return { ...state, sex: action.payload };
+      return {
+        ...state,
+        sex: { fa: action.payload.fa, id: action.payload.id },
+      };
     case "married":
       return { ...state, married: action.payload };
     case "insurrance":
@@ -54,7 +59,7 @@ const normalAdReducer = (state, action) => {
           fa: { from: state.salary.fa.from, to: action.payload },
         },
       };
-      case "description":
+    case "description":
       return { ...state, description: action.payload };
     case "cellphone":
       return { ...state, cellphone: action.payload };

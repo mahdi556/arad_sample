@@ -43,6 +43,12 @@ const ContactForm = () => {
                 borderRadius: 5,
               }}
               type="text"
+              onChange={(e) =>
+                resumeContext.dispatch({
+                  type: "cellphone",
+                  payload: e.target.value,
+                })
+              }
             />
           </div>
           <div className="col-5">
@@ -62,6 +68,12 @@ const ContactForm = () => {
                 borderRadius: 5,
               }}
               type="text"
+              onChange={(e) =>
+                resumeContext.dispatch({
+                  type: "whatsapp",
+                  payload: e.target.value,
+                })
+              }
             />
           </div>
         </div>
@@ -83,6 +95,12 @@ const ContactForm = () => {
                 borderRadius: 5,
               }}
               type="text"
+              onChange={(e) =>
+                resumeContext.dispatch({
+                  type: "telegram",
+                  payload: e.target.value,
+                })
+              }
             />
           </div>
           <div className="col-5">
@@ -102,6 +120,12 @@ const ContactForm = () => {
                 borderRadius: 5,
               }}
               type="text"
+              onChange={(e) =>
+                resumeContext.dispatch({
+                  type: "email",
+                  payload: e.target.value,
+                })
+              }
             />
           </div>
         </div>

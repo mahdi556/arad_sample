@@ -83,7 +83,10 @@ const resumeReducer = (state, action) => {
         Ebirthday: { ...state.Ebirthday, year: action.payload },
       };
     case "sex":
-      return { ...state, sex: action.payload };
+      return {
+        ...state,
+        sex: { fa: action.payload.fa, id: action.payload.id },
+      };
     case "married":
       return { ...state, married: action.payload };
     case "insurrance":
@@ -174,7 +177,14 @@ const resumeReducer = (state, action) => {
           c: state.progressBar.c + action.payload,
         },
       };
-
+    case "cellphone":
+      return { ...state, cellphone: action.payload };
+    case "whatsapp":
+      return { ...state, whatsapp: action.payload };
+    case "telegram":
+      return { ...state, telegram: action.payload };
+    case "email":
+      return { ...state, email: action.payload };
     case "description":
       return { ...state, description: action.payload };
     case "progressBar-reset":

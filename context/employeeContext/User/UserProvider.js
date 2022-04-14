@@ -5,9 +5,11 @@ import userReducer from "./userReducer";
 const initialData = {
   user: {
     id: "",
-    firstName: "hamid",
+    firstName: "",
     lastName: "",
     auth: false,
+    role:[],
+    signUp:false
   },
 };
 

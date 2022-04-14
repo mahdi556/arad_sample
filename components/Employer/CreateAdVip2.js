@@ -46,7 +46,7 @@ const CreateEmployerAdVip = () => {
       setP_height(p_height2);
     }
   }, [normalAdContext.data.fieldCheck]);
-   return (
+  return (
     <>
       {/* <NormalAdProvider> */}
       <div
@@ -64,8 +64,6 @@ const CreateEmployerAdVip = () => {
             marginLeft: "25%",
           }}
         >
-           
-
           <div className="d-flex justify-content-between  ">
             <div
               style={{
@@ -80,21 +78,20 @@ const CreateEmployerAdVip = () => {
               }}
             >
               <div
-              className="d-flex px-3 py-3  mb-5 align-items-center  "
-              style={{ backgroundColor: "#fff", borderRadius: "0.7rem" }}
-            >
-              <h3
-                className=" mx-auto"
-                style={{
-                  fontSize: "1rem",
-                  fontWeight: "bold",
-                  lineHeight: "1.4rem",
-                }}
+                className="d-flex px-3 py-3  mb-5 align-items-center  "
+                style={{ backgroundColor: "#fff", borderRadius: "0.7rem" }}
               >
-                آگهی ویژه (فارسی)
-               </h3>
-               
-            </div>
+                <h3
+                  className=" mx-auto"
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: "bold",
+                    lineHeight: "1.4rem",
+                  }}
+                >
+                  آگهی ویژه (فارسی)
+                </h3>
+              </div>
               {step == 1 && <FirstForm />}
 
               {step < 2 && (

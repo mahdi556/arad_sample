@@ -20,10 +20,10 @@ const AdBoxNewEmployer = ({ width, data }) => {
       <div className="d-flex col-12 p-4 adbox" id="adbox">
         <div className="d-flex col-8 pe-2 flex-column  ">
           <div
-            className="  mb-1"
+            className="  mb-4"
             style={{
               fontSize: 18,
-              lineHeight: "1.7rem",
+              // lineHeight: "1.7r/em",
               fontWeight: 400,
             }}
           >
@@ -45,16 +45,17 @@ const AdBoxNewEmployer = ({ width, data }) => {
           <h6
             className="mb-3"
             style={{
-              fontSize: 16,
-              lineHeight: "0.2rem",
+              fontSize: '0.9rem',
+              lineHeight: "0.3rem",
             }}
           >
             {data && data.jobCategory[0].fa_name}
             <div
-              className=" d-inline-flex fw-light ms-2"
+              className=" d-inline-flex fw-light ms-2 mt-2"
               style={{
                 color: "#a8a8a8",
                 fontSize: 14,
+                lineHeight: "0.8rem",
               }}
             >
               {data && data.personal.city_fa}

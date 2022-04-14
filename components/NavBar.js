@@ -3,11 +3,14 @@ import UserProvider from "../context/employeeContext/User/UserProvider";
 import Login from "./Common/Login";
 import { useRouter } from "next/router";
 import AdminLogin from "./Common/AdminLogin";
-
+import UserContext from "../context/employeeContext/User/UserContext";
+import { useContext } from "react";
+ import NewAd from "./Common/NewAd";
 const NavBar = () => {
+  const userContext = useContext(UserContext);
   const router = useRouter();
   return (
-    <UserProvider>
+    // <UserProvider>
       <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-white navshadow">
         <div className="container-fluid">
           {/* <a className="navbar-brand" href="#"> */}
@@ -26,7 +29,12 @@ const NavBar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav align-items-center   me-auto mb-2 mb-lg-0 ">
-              <li className="navitems activeNav">
+              <li className="navitems "
+               onClick={() => {
+                router.push({
+                  pathname: "/",
+                });
+              }}>
                 صفحه نخست
                 {/* <div
                 style={{
@@ -38,22 +46,7 @@ const NavBar = () => {
               </li>
 
               <li
-                className="px-3 py-1"
-                style={{
-                  backgroundColor: "#EC4B72",
-                  borderRadius: 10,
-                  color: "#fff",
-                }}
-              >
-                <h5
-                  className="  fs-5 text-center lh-sm py-0 my-0"
-                  style={{ fontWeight: 700, cursor: "pointer" }}
-                >
-                  آگـــهی بزن
-                </h5>
-              </li>
-              <li
-                className="px-3 py-1"
+                className="navitems"
                 onClick={() => {
                   router.push({
                     pathname: "/employee/createAdPage",
@@ -65,26 +58,66 @@ const NavBar = () => {
                   className="  fs-5 text-center lh-sm py-0 my-0"
                   style={{ fontWeight: 700, cursor: "pointer" }}
                 >
-                  ثبت آگهی کارجو
+                  لیست آگهی ها
                 </h5>
               </li>
               <li
-                className="px-3 py-1"
-                onClick={() => {
-                  router.push({
-                    pathname: "/employee/createAdPage",
-                    query: { type: "vip" },
-                  });
-                }}
+                className="navitems"
+                
               >
                 <h5
                   className="  fs-5 text-center lh-sm py-0 my-0"
                   style={{ fontWeight: 700, cursor: "pointer" }}
                 >
-                  ثبت آگهی کارجو ویژه
+                  کارجویان
                 </h5>
               </li>
               <li
+                className="navitems"
+                 
+              >
+                <h5
+                  className="  fs-5 text-center lh-sm py-0 my-0"
+                  style={{ fontWeight: 700, cursor: "pointer" }}
+                >
+                  کارفرمایان
+                </h5>
+              </li>
+              <li
+                className="navitems"
+                
+              >
+                <h5
+                  className="  fs-5 text-center lh-sm py-0 my-0"
+                  style={{ fontWeight: 700, cursor: "pointer" }}
+                >
+                  کار در منزل
+                </h5>
+              </li>
+              <li
+                className="navitems"
+                
+              >
+                <h5
+                  className="  fs-5 text-center lh-sm py-0 my-0"
+                  style={{ fontWeight: 700, cursor: "pointer" }}
+                >
+                  دانستنی های استخدامی
+                </h5>
+              </li>
+              <li
+                className="navitems"
+                
+              >
+                <h5
+                  className="  fs-5 text-center lh-sm py-0 my-0"
+                  style={{ fontWeight: 700, cursor: "pointer" }}
+                >
+                  دانلود اپلیکیشن
+                </h5>
+              </li>
+              <NewAd />
+              {/* <li
                 className="px-3 py-1"
                 onClick={() => {
                   router.push({
@@ -99,8 +132,8 @@ const NavBar = () => {
                 >
                   ثبت آگهی کارفرما
                 </h5>
-              </li>
-              <li
+              </li> */}
+              {/* <li
                 className="px-3 py-1"
                 onClick={() => {
                   router.push({
@@ -115,15 +148,14 @@ const NavBar = () => {
                 >
                   ثبت آگهی کارفرما ویژه
                 </h5>
-              </li>
+              </li> */}
             </ul>
             <Login />
             <AdminLogin />
           </div>
         </div>
       </nav>
-    </UserProvider>
-  );
+   );
 };
 
 export default NavBar;

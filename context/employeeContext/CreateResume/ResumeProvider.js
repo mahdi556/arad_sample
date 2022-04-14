@@ -12,12 +12,12 @@ const initialData = {
     youtube: "",
     dribble: "",
   },
-  companyId:'',
-  fieldCheck:false,
-  stepClick:false,
-  type:'',
+  companyId: "",
+  fieldCheck: false,
+  stepClick: false,
+  type: "",
   step: 1,
-  title:'',
+  title: "",
   companyName: "",
   lastname: "",
   Ename: "",
@@ -33,7 +33,10 @@ const initialData = {
     month: "",
     year: "",
   },
-  sex: 1,
+  sex: {
+    id: "",
+    fa: "",
+  },
   married: 1,
   insurrance: 1,
   province: {
@@ -48,7 +51,7 @@ const initialData = {
   },
   jobCategory: {
     id: "",
-    fa:'',
+    fa: "",
     name: "",
     Ename: "",
   },
@@ -57,14 +60,14 @@ const initialData = {
     en: { from: "", to: "" },
   },
   workHour: {
-    fa: {from: "",to: "" },
+    fa: { from: "", to: "" },
   },
   corporateTime: {
     id: "",
     fa: "",
   },
   ageRange: {
-    fa: {from: "",to: "" },
+    fa: { from: "", to: "" },
   },
   experiences: [],
   degree: [],
@@ -73,18 +76,18 @@ const initialData = {
   softExpert: [],
   softExpertEn: [],
   sampleEx: [],
-  adComment:"",
+  adComment: "",
   description: "",
-  progressBar:{
-    'a':0,
-    'b':0,
-    'c':0,
-    'd':0,
-    'e':0,
-    'f':0,
-    'g':0,
-    'h':0,
-  }
+  progressBar: {
+    a: 0,
+    b: 0,
+    c: 0,
+    d: 0,
+    e: 0,
+    f: 0,
+    g: 0,
+    h: 0,
+  },
 };
 
 const ResumeProvider = (props) => {
