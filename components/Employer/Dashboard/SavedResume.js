@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import AdBoxShowCase from "./AdBoxShowCase";
 import axios from "../../../axios";
 
-const SuggestAds = () => {
+const SavedResume = () => {
   const [rads, setRads] = useState({});
-  console.log('response')
+  console.log("response");
   useEffect(() => {
     axios({
       url: "/getEmployerAds",
@@ -14,7 +14,7 @@ const SuggestAds = () => {
       },
     })
       .then((response) => {
-         setRads(response.data.data.rads);
+        setRads(response.data.data.rads);
       })
       .catch(function (error) {
         console.log(error);
@@ -22,8 +22,8 @@ const SuggestAds = () => {
   }, []);
   return (
     <>
-       <div className="mt-5"> 
-         {rads.length &&
+      <div className="mt-5">
+        {rads.length &&
           rads.map((item, key) => (
             <AdBoxShowCase
               width={" col-xl-12 col-xxl-12 "}
@@ -35,4 +35,4 @@ const SuggestAds = () => {
     </>
   );
 };
-export default SuggestAds;
+export default SavedResume;

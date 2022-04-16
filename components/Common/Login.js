@@ -5,6 +5,7 @@ import Modal from "@mui/material/Modal";
 import { useContext, useEffect, useState } from "react";
 import InputCode from "./InputCode";
 import UserContext from "../../context/employeeContext/User/UserContext";
+import { useRouter } from "next/router";
 const style = {
   position: "absolute",
   top: "50%",
@@ -17,6 +18,7 @@ const style = {
   // p: 2,
 };
 const Login = () => {
+  const router = useRouter();
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
@@ -54,7 +56,7 @@ const Login = () => {
       .then((response) => {
         setToken(response.data.login_token);
         // startTimer();
-        // const login_token = response.data.login_token;
+        const login_token = response.data.login_token;
         // navigation.navigate("Forget", {
         //   cellphone: cellphone,
         //   login_token: login_token,
@@ -91,6 +93,11 @@ const Login = () => {
                 role: response.data.role,
               },
             });
+            response.data.role == "employee"
+              ? router.push("/employee")
+              : response.data.role == "employer"
+              ? router.push("/employer")
+              : null;
           }
         }
       })
@@ -123,13 +130,18 @@ const Login = () => {
           },
         });
         handleClose3();
+        response.data.role == "employee"
+          ? router.push("/employee")
+          : response.data.role == "employer"
+          ? router.push("/employer")
+          : null;
       })
       .catch(function (error) {
         console.log(error);
       });
     // }
   };
-   return (
+  return (
     <>
       <div
         className="d-flex px-2 py-2 me-5 align-items-center "

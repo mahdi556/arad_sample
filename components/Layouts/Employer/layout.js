@@ -1,7 +1,6 @@
-import CreateEmployeeAd from "../Employee/CreateAd";
-import RightMenu from "../Employee/RightMenu/RightMenu";
-import Footer from "../Footer";
-import NavBar from "../NavBar";
+ import RightMenu from "../../Employer/Dashboard/RightMenu/RightMenu";
+import Footer from "../../Footer";
+import NavBar from "../../NavBar";
 export default function Layout({ children }) {
   return (
     <>

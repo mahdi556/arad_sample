@@ -1,5 +1,5 @@
- import Layout from "../../components/Layouts/layout";
-import Head from "next/head";
+ import Layout from '../../components/Layouts/Employee/layout'
+ import Head from "next/head";
 import Companies from "../../components/Employee/EShowCase/Companies";
 const Dashboard = () => {
   return (

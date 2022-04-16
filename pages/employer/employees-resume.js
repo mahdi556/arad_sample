@@ -1,15 +1,14 @@
 import Layout from "../../components/Layouts/Employee/layout";
 import Head from "next/head";
-import RShowMain from "../../components/Employee/EShowCase/RShowMain";
+import Resumes from "../../components/Employer/Dashboard/Resumes";
 const Dashboard = () => {
   return (
     <>
       <Layout>
         <Head>
-          <title>First Post</title>
+          <title>رزومه های ارسال شده</title>
         </Head>
-
-        <RShowMain />
+        <Resumes />
       </Layout>
     </>
   );

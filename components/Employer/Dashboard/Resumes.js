@@ -1,8 +1,8 @@
 import { useState } from "react";
-import MySentResume from "./MySentResume";
-import SuggestAds from "./SuggestAds";
-import SavedAds from "./SavedAds";
-const EShowContent = ({ data }) => {
+import EmployeeBank from "./EmployeeBank";
+import RecievedResume from "./RecievedResume";
+import SavedResume from "./SavedResume";
+const Resumes = ({ data }) => {
   const [tab, setTab] = useState(1);
   return (
     <>
@@ -16,7 +16,7 @@ const EShowContent = ({ data }) => {
             }
             onClick={() => setTab(1)}
           >
-            وضعیت درخواست های همکاری از طرف شما
+            رزومه های دریافت شده
           </div>
           <div
             className={
@@ -26,7 +26,7 @@ const EShowContent = ({ data }) => {
             }
             onClick={() => setTab(2)}
           >
-            شغل های پیشنهادی
+            بانک افراد جویای کار
           </div>
           <div
             className={
@@ -36,12 +36,18 @@ const EShowContent = ({ data }) => {
             }
             onClick={() => setTab(3)}
           >
-            شغل های ذخیره شده
+            پوشه رزومه های ذخیره شده
           </div>
         </div>
-        {tab == 1 ? <MySentResume /> : tab == 2 ? <SuggestAds /> : <SavedAds />}
+        {tab == 1 ? (
+          <RecievedResume />
+        ) : tab == 2 ? (
+          <EmployeeBank />
+        ) : (
+          <SavedResume />
+        )}
       </div>
     </>
   );
 };
-export default EShowContent;
+export default Resumes;

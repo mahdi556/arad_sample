@@ -2,9 +2,10 @@ import Image from "next/image";
 import RAdBoxes from "./RAdBoxes";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+import style from "./styles/rshow.module.css";
 import BreakeLine from "../../Employee/Resume/FormInputs/BreakLine";
 import AdBoxNewEmployer from "../../Common/AdBoxNewEmployer";
- const width = "33%";
+const width = "33%";
 const RShowMain = () => {
   const data = {
     options: {
@@ -69,37 +70,26 @@ const RShowMain = () => {
   return (
     <>
       <div
-        // style={{
-        //   width: "100%",
-        // }}
+      // style={{
+      //   width: "100%",
+      // }}
       >
         <div className="rShowCase-sec1  ">
           <div className="d-flex justify-content-between col-12 rShowCase-sec2">
-            <div className="d-flex rShowCase-sec3 col-3   ">
-              <h4>
-                تکمیل رزومه <h6 className="mt-2"> + سابقه کاری </h6>
-              </h4>
-              <div class="progress blue mt-1">
-                {" "}
-                <span class="progress-left">
-                  {" "}
-                  <span class="progress-bar"></span>{" "}
-                </span>{" "}
-                <span class="progress-right">
-                  {" "}
-                  <span class="progress-bar"></span>{" "}
-                </span>
-                <div class="progress-value">90%</div>
-              </div>
+            <div
+              className={`${style.rShowCase_sec3}  d-flex col-3 align-items-center px-3   `}
+            >
+              <h5 className="col-8">وارد کردن شناسه ملی یا روزنامه</h5>
+              <div className={`${style.verify_circle} col-4  `}>تائید</div>
             </div>
             <div className="d-flex rShowCase-sec3  col-3">
-              <h4 className="rShowCase-sec4">ارتقا به کارجو متخصص</h4>
+              <h4 className="rShowCase-sec4">تکمیل پروفایل سازمانی</h4>
               <div>
-                <Image src="/assets/images/cup.png" height={60} width={60} />
+                <Image src="/assets/images/add.svg" height={60} width={60} />
               </div>
             </div>
             <div className="d-flex rShowCase-sec3  col-3">
-              <h4 className="rShowCase-sec4">ثبت آگهی</h4>
+              <h4 className="rShowCase-sec4">ثبت آگهی ویژه</h4>
               <div>
                 <Image
                   src="/assets/images/speaker.png"
@@ -112,7 +102,9 @@ const RShowMain = () => {
         </div>
         <div className="col-12 align-items-start d-flex my-5 pt-5 ps-5">
           <div className="col-4  ">
-            <h5 className="mt-2 mb-5 text-start fw-bold w-75 ">آگهی های ثبت شده</h5>
+            <h5 className="mt-2 mb-5 text-start fw-bold w-75 ">
+              آگهی های ثبت شده
+            </h5>
             <div className="col-12 ps-5 rShowCase-sec5 " dir="ltr">
               <RAdBoxes />
               <RAdBoxes />
@@ -187,25 +179,6 @@ const RShowMain = () => {
               <div className=" me-4 rShowCase-sec7">مشاهده آگهی</div>
               <div className="rShowCase-sec7 red-color">بستن آگهی</div>
             </div>
-          </div>
-        </div>
-        <BreakeLine />
-        <h3 className="my-5 ms-5 text-start fw-bold w-75 ">
-          آگهی های پیشنهادی
-        </h3>
-        <div class="row    gx-5 gy-4  mx-4 px-5 ">
-          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
-          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
-          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
-          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
-          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
-          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
-         
-          
-        </div>
-        <div className="d-flex">
-          <div className="d-inline-flex align-items-center  py-2 px-3  mx-auto rShowCase-sec6">
-            لیست کامل
           </div>
         </div>
       </div>

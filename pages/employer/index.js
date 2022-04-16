@@ -1,7 +1,7 @@
-import Layout from "../../components/Layouts/Employee/layout";
+import Layout from "../../components/Layouts/Employer/layout";
 import Head from "next/head";
-import RShowMain from "../../components/Employee/EShowCase/RShowMain";
-const Dashboard = () => {
+import RShowMain from "../../components/Employer/Dashboard/RShowMain";
+ const Dashboard = () => {
   return (
     <>
       <Layout>
