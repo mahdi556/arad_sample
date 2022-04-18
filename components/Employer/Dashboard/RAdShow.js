@@ -1,10 +1,10 @@
 import Image from "next/image";
 import AdBoxNewEmployer from "../../Common/AdBoxNewEmployer";
-import BreakLine from "../../Employee/Resume/FormInputs/BreakLine"
+import BreakLine from "../../Employee/Resume/FormInputs/BreakLine";
 
 const RAdShow = ({ data }) => {
   const width = "33%";
-  console.log(data);
+
   return (
     <>
       <div className="d-flex flex-column px-4 eAdshow">

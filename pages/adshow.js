@@ -5,7 +5,6 @@ import axios from "../axios";
 import { useRouter } from "next/router";
 import BreakLine from "../components/Employee/Resume/FormInputs/BreakLine";
 import { useEffect, useState } from "react";
-
 const Adshow = () => {
   const router = useRouter();
   const [data, setData] = useState({});
@@ -29,6 +28,7 @@ const Adshow = () => {
   const myLoader = ({ src, width, quality }) => {
     return data.image;
   };
+ 
   return (
     <>
       <NavBar />
@@ -110,7 +110,7 @@ const Adshow = () => {
                       : null}
                   </h6>
                 </div>
-                <div className="d-flex mb-2">
+                 <div className="d-flex mb-2">
                   <h6 className="col-5 txtSec1 px-2"> تاریخ تولد</h6>
                   <h6 className="col-7 txtSec2 px-2">
                     {data.personal && data.personal.fa_birth_y}/
@@ -119,6 +119,7 @@ const Adshow = () => {
                   </h6>
                 </div>
               </div>
+
               <div className="d-flex flex-column  col-4 ">
                 <div className="d-flex mb-2 ">
                   <h6 className="col-5 txtSec1 px-2"> میزان حقوق دریافتی</h6>

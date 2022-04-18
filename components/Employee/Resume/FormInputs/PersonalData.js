@@ -7,26 +7,15 @@ import ResumeContext from "../../../../context/employeeContext/CreateResume/Resu
 import SalaryNeededEn from "./SalaryNeededEn";
 import SalaryNeeded from "./SalaryNeeded";
 import SelectOptionEn from "./SelectOptionEn";
-
-const cities = [
-  { id: 1, name: "اصفهان" },
-  { id: 2, name: "تهران" },
-  { id: 3, name: "شیراز" },
-  { id: 4, name: "تبریز" },
-  { id: 5, name: "قم" },
-  { id: 6, name: "ملایر" },
-  { id: 7, name: "زنجان" },
-  { id: 8, name: "بادرود" },
-  { id: 9, name: "تویسرکان" },
-  { id: 10, name: "امیدیه" },
-];
+import { Province } from "../../../StaticData/City";
+import { Cities } from "../../../StaticData/City";
+import { JobCats } from "../../../StaticData/JobCategory";
 
 const PersonalData = () => {
   const resumecontext = useContext(ResumeContext);
 
-  const catHandler = (id, name) => {
-    setCat({ id: id, name: name });
-  };
+  let proId = resumecontext.data.province.id;
+  const citi = Cities.filter((item, key) => item.provinceId == proId);
 
   const [buttonClass, setButtonClass] = useState({
     1: "Ebutton_clicked",
@@ -43,15 +32,36 @@ const PersonalData = () => {
     buttonClass[3] = "Ebutton";
     setButtonClass({ ...buttonClass, [i]: "Ebutton_clicked " });
   };
-  const sexHandler = (sex) => {
-    resumecontext.dispatch({ type: "sex", payload: sex });
-  };
   const marriedHandler = (mar) => {
     resumecontext.dispatch({ type: "married", payload: mar });
   };
   const insuranceHandler = (ins) => {
     resumecontext.dispatch({ type: "insurrance", payload: ins });
   };
+  const sexHandler = (sex) => {
+    sex == 1
+      ? resumecontext.dispatch({
+          type: "sex",
+          payload: { id: sex, fa: "مرد" },
+        })
+      : resumecontext.dispatch({
+          type: "sex",
+          payload: { id: sex, fa: "زن" },
+        });
+  };
+
+  const catHandler = (id, fa) => {
+    resumecontext.dispatch({
+      type: "jobCategory",
+      payload: { id: id, fa: fa },
+    });
+  };
+  // const EcatHandler = (id, en) => {
+  //   resumecontext.dispatch({
+  //     type: "jobCategory",
+  //     payload: { id: id },
+  //   });
+  // };
 
   const provinceHandler = (id, name) => {
     resumecontext.dispatch({
@@ -153,9 +163,10 @@ const PersonalData = () => {
             }}
           >
             <SelectOption
-              data={cities}
+              data={JobCats}
               name="دسته بندی شغلی"
               valueHandler={catHandler}
+              predata={resumecontext.data.jobCategory.fa}
             />
           </div>
 
@@ -167,26 +178,28 @@ const PersonalData = () => {
             }}
           >
             <SelectOption
-              data={cities}
+              data={Province}
               name="استان"
               valueHandler={provinceHandler}
-              predata={resumecontext.data.province.name}
+              predata={resumecontext.data.province.fa}
             />
           </div>
-          <div
-            className="col-12"
-            style={{
-              maxHeight: "6rem",
-              zIndex: 13,
-            }}
-          >
-            <SelectOption
-              data={cities}
-              name="منطقه"
-              valueHandler={cityHandler}
-              predata={resumecontext.data.city.name}
-            />
-          </div>
+          {proId !== "" && (
+            <div
+              className="col-12"
+              style={{
+                maxHeight: "6rem",
+                zIndex: 13,
+              }}
+            >
+              <SelectOption
+                data={citi}
+                name="منطقه"
+                valueHandler={cityHandler}
+                predata={resumecontext.data.city.fa}
+              />
+            </div>
+          )}
 
           <SalaryNeeded />
         </div>
@@ -258,14 +271,39 @@ const PersonalData = () => {
               zIndex: 15,
             }}
           >
-            <SelectOptionEn
-              data={cities}
+            {/* <SelectOptionEn
+              data={JobCats}
               name="Job category"
               valueHandler={catHandler}
+              // predata={ JobCats[resumecontext.data.jobCategory.id].en}
+            /> */}
+            <label
+              className="fs-6 mt-3 "
+              style={{
+                marginBottom: "0.5rem",
+                fontFamily: "roboto",
+                fontWeight: 400,
+              }}
+            >
+              Job category
+            </label>
+            <input
+              className={
+                resumecontext.data.jobCategory.fa == ""
+                  ? "col-12 mb-3 ps-2 inputStyle"
+                  : "col-12 mb-3 ps-2 inputFilled"
+              }
+              type="text"
+              disabled
+              value={
+                resumecontext.data.jobCategory.id != ""
+                  ? JobCats[resumecontext.data.jobCategory.id - 1].en
+                  : ""
+              }
             />
           </div>
 
-          <div
+          {/* <div
             className="col-12"
             style={{
               maxHeight: "6rem",
@@ -273,27 +311,92 @@ const PersonalData = () => {
             }}
           >
             <SelectOptionEn
-              data={cities}
+              data={Province}
               name="State"
-              valueHandler={EprovinceHandler}
-              predata={resumecontext.data.province.Ename}
+              valueHandler={provinceHandler}
+              predata={resumecontext.data.province.en}
             />
-          </div>
+          </div> */}
           <div
             className="col-12"
             style={{
               maxHeight: "6rem",
-              zIndex: 13,
+              zIndex: 15,
             }}
           >
-            <SelectOptionEn
-              data={cities}
-              name="Region"
-              valueHandler={EcityHandler}
-              predata={resumecontext.data.city.Ename}
+            <label
+              className="fs-6 mt-3 "
+              style={{
+                marginBottom: "0.5rem",
+                fontFamily: "roboto",
+                fontWeight: 400,
+              }}
+            >
+              State
+            </label>
+            <input
+              className={
+                resumecontext.data.province.fa == ""
+                  ? "col-12 mb-3 ps-2 inputStyle"
+                  : "col-12 mb-3 ps-2 inputFilled"
+              }
+              type="text"
+              disabled
+              value={
+                resumecontext.data.province.id != ""
+                  ? Province[resumecontext.data.province.id - 1].en
+                  : ""
+              }
             />
           </div>
-
+          {proId !== "" && (
+            // <div
+            //   className="col-12"
+            //   style={{
+            //     maxHeight: "6rem",
+            //     zIndex: 13,
+            //   }}
+            // >
+            //   <SelectOptionEn
+            //     data={citi}
+            //     name="Region"
+            //     valueHandler={cityHandler}
+            //     predata={resumecontext.data.city.en}
+            //   />
+            // </div>
+            <div
+              className="col-12"
+              style={{
+                maxHeight: "6rem",
+                zIndex: 15,
+              }}
+            >
+              <label
+                className="fs-6 mt-3 "
+                style={{
+                  marginBottom: "0.5rem",
+                  fontFamily: "roboto",
+                  fontWeight: 400,
+                }}
+              >
+                Region
+              </label>
+              <input
+                className={
+                  resumecontext.data.city.fa == ""
+                    ? "col-12 mb-3 ps-2 inputStyle"
+                    : "col-12 mb-3 ps-2 inputFilled"
+                }
+                type="text"
+                disabled
+                value={
+                  resumecontext.data.city.id != ""
+                    ? Cities[resumecontext.data.city.id - 1].en
+                    : ""
+                }
+              />
+            </div>
+          )}
           <SalaryNeededEn />
         </div>
       </div>
@@ -305,7 +408,7 @@ const PersonalData = () => {
               title={"جنسیت"}
               choices={{ 1: "مرد", 2: "زن" }}
               valueHandler={sexHandler}
-              predata={resumecontext.data.sex}
+              predata={resumecontext.data.sex.id}
             />
           </div>
           <div className=" ">
@@ -313,7 +416,7 @@ const PersonalData = () => {
               title={"وضعیت تاهل"}
               choices={{ 1: "مجرد", 2: "متاهل" }}
               valueHandler={marriedHandler}
-              predata={resumecontext.data.married}
+              predata={resumecontext.data.married.id}
             />
           </div>
           <div className=" ">
@@ -321,7 +424,7 @@ const PersonalData = () => {
               title={"تقاضای بیمه"}
               choices={{ 1: "دارم", 2: "ندارم" }}
               valueHandler={insuranceHandler}
-              predata={resumecontext.data.insurrance}
+              predata={resumecontext.data.insurrance.id}
             />
           </div>
         </div>

@@ -1,6 +1,10 @@
 import Image from "next/image";
 import { useContext } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import { Province } from "../../../StaticData/City";
+import { Cities } from "../../../StaticData/City";
+import { JobCats } from "../../../StaticData/JobCategory";
+
 const VerifyData = ({ handleStep }) => {
   const resumeContext = useContext(ResumeContext);
   return (
@@ -79,7 +83,7 @@ const VerifyData = ({ handleStep }) => {
         <div className="d-flex col-6 justify-content-start align-items-center mb-4">
           <h5 className="col-6 fs-6 fw-light">جنسیت:</h5>
           <h6 className="col-6  fs-6  ">
-            {resumeContext.data.sex == 1 ? "مرد" : "زن"}
+            {resumeContext.data.sex.id == 1 ? "مرد" : "زن"}
           </h6>
         </div>
         <div
@@ -88,13 +92,13 @@ const VerifyData = ({ handleStep }) => {
         >
           <h5 className="col-6 fs-6 fw-light">sex:</h5>
           <h6 className="col-6  fs-6  ">
-            {resumeContext.data.sex == 1 ? "Male" : "Female"}
+            {resumeContext.data.sex.id == 1 ? "Male" : "Female"}
           </h6>
         </div>
         <div className="d-flex col-6 justify-content-start align-items-center mb-4">
           <h5 className="col-6 fs-6 fw-light">وضعیت تاهل:</h5>
           <h6 className="col-6  fs-6  ">
-            {resumeContext.data.married == 1 ? "مجرد" : "متاهل"}
+            {resumeContext.data.married.id == 1 ? "مجرد" : "متاهل"}
           </h6>
         </div>
         <div
@@ -103,7 +107,22 @@ const VerifyData = ({ handleStep }) => {
         >
           <h5 className="col-6 fs-6 fw-light">Married:</h5>
           <h6 className="col-6  fs-6  ">
-            {resumeContext.data.married == 1 ? "Single" : "Married"}
+            {resumeContext.data.married.id == 1 ? "Single" : "Married"}
+          </h6>
+        </div>
+        <div className="d-flex col-6 justify-content-start align-items-center mb-4">
+          <h5 className="col-6 fs-6 fw-light">دسته شغلی:</h5>
+          <h6 className="col-6  fs-6  ">{resumeContext.data.jobCategory.fa}</h6>
+        </div>
+        <div
+          className="d-flex col-6 justify-content-start align-items-center mb-4"
+          dir="ltr"
+        >
+          <h5 className="col-6 fs-6 fw-light">Job Category</h5>
+          <h6 className="col-6  fs-6  ">
+            {resumeContext.data.jobCategory.id != ""
+              ? JobCats[resumeContext.data.jobCategory.id - 1].en
+              : ""}
           </h6>
         </div>
         <div className="d-flex col-6 justify-content-start align-items-center mb-4">
@@ -130,7 +149,11 @@ const VerifyData = ({ handleStep }) => {
           dir="ltr"
         >
           <h5 className="col-6 fs-6 fw-light">state:</h5>
-          <h6 className="col-6 fs-6  ">{resumeContext.data.province.Ename}</h6>
+          <h6 className="col-6 fs-6  ">
+            {resumeContext.data.province.id != ""
+              ? Province[resumeContext.data.province.id - 1].en
+              : ""}
+          </h6>
         </div>{" "}
         <div className="d-flex col-6 justify-content-start align-items-center mb-4">
           <h5 className="col-6 fs-6 fw-light">منطقه:</h5>
@@ -141,8 +164,10 @@ const VerifyData = ({ handleStep }) => {
           dir="ltr"
         >
           <h5 className="col-6 fs-6">city:</h5>
-          <h6 className="col-6 fs-6 fw-bold">
-            {resumeContext.data.city.Ename}
+          <h6 className="col-6 fs-6  ">
+            {resumeContext.data.city.id != ""
+              ? Cities[resumeContext.data.city.id - 1].en
+              : ""}
           </h6>
         </div>
         <div className="d-flex col-6 justify-content-start align-items-center mb-4">
@@ -160,8 +185,8 @@ const VerifyData = ({ handleStep }) => {
           <h5 className="col-6 fs-6 fw-light">Amount of salary requested :</h5>
           <h6 className="col-6 fs-6  ">
             {" "}
-            from {resumeContext.data.salary.en.from} to{" "}
-            {resumeContext.data.salary.en.to}
+            from {resumeContext.data.salary.en.from} Tooman to{" "}
+            {resumeContext.data.salary.en.to} Tooman
           </h6>
         </div>
       </div>

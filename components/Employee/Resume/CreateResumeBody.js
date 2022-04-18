@@ -18,9 +18,9 @@ const CreateResumeBody = () => {
   return (
     <>
       <div
-        className="mx-auto"
+        className="mx-auto mt-5"
         style={{
-          width: "100%",
+          width: "80%",
           // backgroundColor: "#f2f5f6",
           paddingTop: "2rem",
           paddingBottom: 400,

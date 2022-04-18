@@ -106,7 +106,9 @@ const RightMenu = () => {
                 // visibility: "hidden",
               }}
           >
-            <h6 className="mt-2 py-2 ps-2 EsubItem ">تکمیل و دانلود رزومه</h6> 
+            <h6 className="mt-2 py-2 ps-2 EsubItem "
+              onClick={()=>router.push('/employee/create-resume')}
+            >تکمیل و دانلود رزومه</h6> 
              <h6 className="mt-2 py-2 ps-2 EsubItem"  
              onClick={()=>router.push('/employee/sent-resume')}
              >

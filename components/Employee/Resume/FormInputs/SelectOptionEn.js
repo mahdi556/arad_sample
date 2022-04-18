@@ -136,15 +136,15 @@ const SelectOptionEn = ({ data, name, valueHandler,predata }) => {
                   className="  dropdown-item"
                   key={item.id}
                   onClick={() => {
-                    valueHandler(item.id, item.name);
-                    setPlaceholder(item.name);
+                    valueHandler(item.id, item.en);
+                    setPlaceholder(item.en);
                     setDropdown("close-drop");
                     setDropLabel("dropLabelBack");
                     setSearch(false);
                     delay(300).then(() => setDrop(false));
                   }}
                 >
-                  {item.name}
+                  {item.en}
                 </div>
               ))}
             </div>

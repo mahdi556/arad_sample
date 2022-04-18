@@ -37,23 +37,23 @@ const initialData = {
     id: "",
     fa: "",
   },
+
   married: 1,
   insurrance: 1,
   province: {
     id: "",
-    name: "",
-    Ename: "",
+    fa: "",
+    en: "",
   },
   city: {
     id: "",
-    name: "",
-    Ename: "",
+    fa: "",
+    en: "",
   },
   jobCategory: {
     id: "",
     fa: "",
-    name: "",
-    Ename: "",
+    en: "",
   },
   salary: {
     fa: { from: "", to: "" },
