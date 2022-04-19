@@ -4,6 +4,7 @@ import ResumeContext from "../../../../context/employeeContext/CreateResume/Resu
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
 import ButtonTag from "../../FormInputs/ButtonTag";
 import LangExpertEn from "./LangExpertEn";
+import { Langsfa } from "../../../StaticData/SalaryType";
 
 const LangExpert = () => {
   const [dropdown, setDropdown] = useState("dropdown-close");
@@ -27,7 +28,7 @@ const LangExpert = () => {
       payload: { data: expert },
     });
 
-    setDatas(data);
+    setDatas(Langsfa);
     document.addEventListener("click", handleClickOutside, false);
     return () => {
       document.removeEventListener("click", handleClickOutside, false);
@@ -74,7 +75,7 @@ const LangExpert = () => {
   const dropfilter = (text) => {
     let filterList = [];
     setDatas(filterList);
-    data.filter(function check(item) {
+    Langsfa.filter(function check(item) {
       if (item.name.indexOf(text) != -1) {
         filterList.push({ id: item.id, name: item.name });
       }

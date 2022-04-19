@@ -4,7 +4,7 @@ import ResumeContext from "../../../../context/employeeContext/CreateResume/Resu
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
 import ButtonTag from "../../FormInputs/ButtonTag";
 import SoftExpertEn from "./SoftExpertEn";
-
+import { Softs } from "../../../StaticData/SalaryType";
 const SoftExpert = () => {
   const [dropdown, setDropdown] = useState("dropdown-close");
   const [drop, setDrop] = useState(false);
@@ -27,7 +27,7 @@ const SoftExpert = () => {
       payload: { data: expert },
     });
 
-    setDatas(data);
+    setDatas(Softs);
     document.addEventListener("click", handleClickOutside, false);
     return () => {
       document.removeEventListener("click", handleClickOutside, false);
@@ -59,24 +59,12 @@ const SoftExpert = () => {
 
     setButtonX({ ...ButtonX, [j]: true });
   };
-  const data = [
-    { id: 1, name: "اصفهان" },
-    { id: 2, name: "تهران" },
-    { id: 3, name: "شیراز" },
-    { id: 4, name: "تبریز" },
-    { id: 5, name: "قم" },
-    { id: 6, name: "ملایر" },
-    { id: 7, name: "زنجان" },
-    { id: 8, name: "بادرود" },
-    { id: 9, name: "تویسرکان" },
-    { id: 10, name: "امیدیه" },
-  ];
-  const dropfilter = (text) => {
+   const dropfilter = (text) => {
     let filterList = [];
     setDatas(filterList);
-    data.filter(function check(item) {
-      if (item.name.indexOf(text) != -1) {
-        filterList.push({ id: item.id, name: item.name });
+    Softs.filter(function check(item) {
+      if (item.fa.indexOf(text) != -1) {
+        filterList.push({ id: item.id, fa: item.fa });
       }
     });
     if (filterList.length == 0) {
@@ -210,12 +198,12 @@ const SoftExpert = () => {
                           className="  dropdown-item"
                           key={item.id}
                           onClick={() => {
-                            setText(item.name);
+                            setText(item.fa);
                             setDropdown("close-drop");
                             setDrop(false);
                           }}
                         >
-                          {item.name}
+                          {item.fa}
                         </div>
                       ))}
                     </div>

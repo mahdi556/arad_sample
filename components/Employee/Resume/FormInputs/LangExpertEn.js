@@ -3,6 +3,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
 import ButtonTag from "../../FormInputs/ButtonTag";
+import { Langsen } from "../../../StaticData/SalaryType";
 
 const LangExpertEn = ({ name }) => {
   const [dropdown, setDropdown] = useState("dropdown-close");
@@ -25,7 +26,7 @@ const LangExpertEn = ({ name }) => {
       payload: { data: expert },
     });
 
-    setDatas(data);
+    setDatas(Langsen);
     document.addEventListener("click", handleClickOutside, false);
     return () => {
       document.removeEventListener("click", handleClickOutside, false);
@@ -52,22 +53,11 @@ const LangExpertEn = ({ name }) => {
 
     setButtonX({ ...ButtonX, [j]: true });
   };
-  const data = [
-    { id: 1, name: "اصفهان" },
-    { id: 2, name: "تهران" },
-    { id: 3, name: "شیراز" },
-    { id: 4, name: "تبریز" },
-    { id: 5, name: "قم" },
-    { id: 6, name: "ملایر" },
-    { id: 7, name: "زنجان" },
-    { id: 8, name: "بادرود" },
-    { id: 9, name: "تویسرکان" },
-    { id: 10, name: "امیدیه" },
-  ];
+  
   const dropfilter = (text) => {
     let filterList = [];
     setDatas(filterList);
-    data.filter(function check(item) {
+    Langsen.filter(function check(item) {
       if (item.name.indexOf(text) != -1) {
         filterList.push({ id: item.id, name: item.name });
       }

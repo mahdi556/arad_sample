@@ -3,7 +3,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
 import ButtonTag from "../../FormInputs/ButtonTag";
-
+import { Softs } from "../../../StaticData/SalaryType";
 const SoftExpertEn = () => {
   const [dropdown, setDropdown] = useState("dropdown-close");
   const [drop, setDrop] = useState(false);
@@ -25,7 +25,7 @@ const SoftExpertEn = () => {
       payload: { data: expert },
     });
 
-    setDatas(data);
+    setDatas(Softs);
     document.addEventListener("click", handleClickOutside, false);
     return () => {
       document.removeEventListener("click", handleClickOutside, false);
@@ -52,24 +52,13 @@ const SoftExpertEn = () => {
 
     setButtonX({ ...ButtonX, [j]: true });
   };
-  const data = [
-    { id: 1, name: "اصفهان" },
-    { id: 2, name: "تهران" },
-    { id: 3, name: "شیراز" },
-    { id: 4, name: "تبریز" },
-    { id: 5, name: "قم" },
-    { id: 6, name: "ملایر" },
-    { id: 7, name: "زنجان" },
-    { id: 8, name: "بادرود" },
-    { id: 9, name: "تویسرکان" },
-    { id: 10, name: "امیدیه" },
-  ];
+  
   const dropfilter = (text) => {
     let filterList = [];
     setDatas(filterList);
-    data.filter(function check(item) {
-      if (item.name.indexOf(text) != -1) {
-        filterList.push({ id: item.id, name: item.name });
+    Softs.filter(function check(item) {
+      if (item.en.indexOf(text) != -1) {
+        filterList.push({ id: item.id, name: item.en });
       }
     });
     if (filterList.length == 0) {
@@ -118,7 +107,7 @@ const SoftExpertEn = () => {
         <div className="d-flex   justify-content-between flex-wrap align-items-start expert ">
           <div className="d-inline col-12 ">
             <input
-              placeholder="Tye a software"
+              placeholder="Type a software"
               className={`col-12 ${input}`}
               type="text"
               value={text}
