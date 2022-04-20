@@ -10,9 +10,9 @@ const SubmitRn = () => {
     resumeContext.dispatch({ type: "type", payload: "re" });
   }, []);
   const sendData = () => {
-    const formData = new FormData();
+     const formData = new FormData();
     axios({
-      url: "/submiten",
+      url: "/submitre",
       method: "post",
       data: resumeContext,
       headers: {

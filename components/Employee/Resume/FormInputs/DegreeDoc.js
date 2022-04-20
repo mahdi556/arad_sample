@@ -266,7 +266,6 @@ const Divx = ({ i, data, dataHandler }) => {
                 borderRadius: 5,
               }}
               type="text"
-              type="text"
               onChange={(e) => {
                 setLocalData({ ...localData, Endegree: e.target.value });
                 datahandler({ ...localData, Endegree: e.target.value });
@@ -552,6 +551,7 @@ const DegreeDoc = () => {
                 active: false,
                 Entitle: "",
                 degree: "",
+                Endegree: "",
                 Endate: { d: "", m: "", y: "" },
                 Enactive: false,
               });
@@ -585,6 +585,7 @@ const DegreeDoc = () => {
               degree: "",
               Endate: { d: "", m: "", y: "" },
               Enactive: false,
+              Endegree: "",
             });
             setI(data.length + 1);
             setHasEx(true);

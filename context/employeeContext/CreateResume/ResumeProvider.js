@@ -1,7 +1,6 @@
 import { useReducer } from "react";
 import ResumeContext from "./ResumeContext";
 import resumeReducer from "./resumeReducer";
-
 const initialData = {
   userImage: "",
   userImageFile: {},
@@ -19,7 +18,7 @@ const initialData = {
   step: 1,
   title: "",
   entitle: "",
-  name:'',
+  name: "",
   companyName: "",
   lastname: "",
   Ename: "",
@@ -94,7 +93,6 @@ const initialData = {
   whatsapp: "",
   telegram: "",
   email: "",
-
 };
 
 const ResumeProvider = (props) => {
