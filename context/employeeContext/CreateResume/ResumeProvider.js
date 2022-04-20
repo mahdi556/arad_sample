@@ -18,6 +18,8 @@ const initialData = {
   type: "",
   step: 1,
   title: "",
+  entitle: "",
+  name:'',
   companyName: "",
   lastname: "",
   Ename: "",
@@ -88,6 +90,11 @@ const initialData = {
     g: 0,
     h: 0,
   },
+  cellphone: "",
+  whatsapp: "",
+  telegram: "",
+  email: "",
+
 };
 
 const ResumeProvider = (props) => {

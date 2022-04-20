@@ -62,7 +62,7 @@ const JobConditionVip = ({ step, handleStep }) => {
               </label>
               <textarea
                  className={
-                  resumeContext.data.adComment == ""
+                  resumeContext.data.description == ""
                     ? "col-12 mb-3 ps-2 inputStyle"
                     : "col-12 mb-3 ps-2 inputFilled"
                 }
@@ -70,10 +70,10 @@ const JobConditionVip = ({ step, handleStep }) => {
                   height:'10rem'
                 }}
                 type="text"
-                value={resumeContext.data.adComment}
+                value={resumeContext.data.description}
                 onChange={(e) => {
                   resumeContext.dispatch({
-                    type: "adComment",
+                    type: "description",
                     payload: e.target.value,
                   });
                  }}

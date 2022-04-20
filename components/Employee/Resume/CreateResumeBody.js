@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import ContactForm from "../FormInputs/Contact";
+import ContactForm from "./FormInputs/Contact";
 import JobConditionVip from "./FormInputs/JobConditionVip";
-import StepButton from "../FormInputs/StepButton";
-import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import StepButton from "./FormInputs/StepButton";
+ import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
 import VerifyFirstForm from "./FormInputs/VerifyFirstForm";
 import FirstFormVip from "./FormInputs/FirstFormVip";
 const CreateResumeBody = () => {

@@ -61,6 +61,17 @@ const VerifyData = ({ handleStep }) => {
           <h5 className="col-6 fs-6 fw-light">lastname:</h5>
           <h6 className="col-6  fs-6   ">{resumeContext.data.Elastname}</h6>
         </div>
+        <div className="d-flex col-6 justify-content-start align-items-center mb-4 ">
+          <h5 className="col-6 fs-6 fw-light">عنوان شغلی:</h5>
+          <h6 className="col-6  fs-6  ">{resumeContext.data.title}</h6>
+        </div>
+        <div
+          className="d-flex col-6 justify-content-start align-items-center mb-4 "
+          dir="ltr"
+        >
+          <h5 className="col-6 fs-6 fw-light">title:</h5>
+          <h6 className="col-6  fs-6   ">{resumeContext.data.entitle}</h6>
+        </div>
         <div className="d-flex col-6 justify-content-start align-items-center mb-4">
           <h5 className="col-6 fs-6 fw-light">تاریخ تولد:</h5>
           <h6 className="col-6  fs-6  ">

@@ -151,6 +151,32 @@ const PersonalData = () => {
               />
             </div>
           </div>
+          <div className="col-12 mb-3">
+              <label
+                className="fs-6  "
+                style={{
+                  marginBottom: "0.5rem",
+                  fontWeight: "normal",
+                }}
+              >
+                عنوان
+              </label>
+              <input
+                className={
+                  resumecontext.data.title == ""
+                    ? "col-12 mb-3 ps-2 inputStyle"
+                    : "col-12 mb-3 ps-2 inputFilled"
+                }
+                type="text"
+                value={resumecontext.data.title}
+                onChange={(e) => {
+                  resumecontext.dispatch({
+                    type: "title",
+                    payload: e.target.value,
+                  });
+                }}
+              />
+            </div>
           <div className="col-12">
             <BirthDay />
           </div>
@@ -260,6 +286,32 @@ const PersonalData = () => {
               />
             </div>
           </div>
+          <div className="col-12 mb-3">
+              <label
+                className="fs-6  "
+                style={{
+                  marginBottom: "0.5rem",
+                  fontWeight: "normal",
+                }}
+              >
+                Title
+              </label>
+              <input
+                className={
+                  resumecontext.data.entitle == ""
+                    ? "col-12 mb-3 ps-2 inputStyle"
+                    : "col-12 mb-3 ps-2 inputFilled"
+                }
+                type="text"
+                value={resumecontext.data.entitle}
+                onChange={(e) => {
+                  resumecontext.dispatch({
+                    type: "entitle",
+                    payload: e.target.value,
+                  });
+                }}
+              />
+            </div>
           <div className="d-flex flex-column   col-12 justify-content-between">
             <BirthDayEnglish />
           </div>

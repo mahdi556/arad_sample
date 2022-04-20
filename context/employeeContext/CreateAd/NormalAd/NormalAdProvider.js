@@ -61,10 +61,6 @@ const initialData = {
   salary: {
     fa: { from: "", to: "" },
   },
-  cellphone: "",
-  whatsapp: "",
-  telegram: "",
-  email: "",
   description: "",
   langExpert: [],
   softExpert: [],

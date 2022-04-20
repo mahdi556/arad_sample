@@ -5,19 +5,7 @@ import RadioButton from "./RadioButton";
 import SalaryNeeded from "./SalaryNeeded";
 import SelectOption from "./SelectOption";
 
-const cities = [
-  { id: 1, name: "اصفهان" },
-  { id: 2, name: "تهران" },
-  { id: 3, name: "شیراز" },
-  { id: 4, name: "تبریز" },
-  { id: 5, name: "قم" },
-  { id: 6, name: "ملایر" },
-  { id: 7, name: "زنجان" },
-  { id: 8, name: "بادرود" },
-  { id: 9, name: "تویسرکان" },
-  { id: 10, name: "امیدیه" },
-];
-
+ 
 const PersonalData = () => {
   const normalAdContext = useContext(NormalAdContext);
 

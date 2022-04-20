@@ -42,6 +42,8 @@ const resumeReducer = (state, action) => {
       };
     case "title":
       return { ...state, title: action.payload };
+    case "entitle":
+      return { ...state, entitle: action.payload };
     case "name":
       return { ...state, name: action.payload };
     case "lastname":
