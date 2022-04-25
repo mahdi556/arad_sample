@@ -1,4 +1,4 @@
-import Layout from "../../components/Layouts/Employee/layout";
+import Layout from "../../components/Layouts/Employer/layout";
 import Head from "next/head";
 
 import OrgProfile from "../../components/Employer/Dashboard/OrgProfile";

@@ -44,6 +44,13 @@ const Login = () => {
 
   const handleSignIn = () => {
     !userContext.data.user.auth && handleOpen1();
+    userContext.data.user.auth && userContext.data.user.role[0] == "employer"
+      ? router.push({
+          pathname: "/employer",
+        })
+      : router.push({
+          pathname: "/employee",
+        });
   };
   const initialSingHandler = () => {
     axios({
@@ -93,6 +100,16 @@ const Login = () => {
                 role: response.data.role,
               },
             });
+            window.localStorage.setItem(
+              "user",
+              JSON.stringify({
+                id: response.data.id,
+                firstName: response.data.firstName,
+                lastName: response.data.lastName,
+                auth: true,
+                role: response.data.role,
+              })
+            );
             response.data.role == "employee"
               ? router.push("/employee")
               : response.data.role == "employer"
@@ -129,6 +146,16 @@ const Login = () => {
             role: response.data.role,
           },
         });
+        window.localStorage.setItem(
+          "user",
+          JSON.stringify({
+            id: response.data.id,
+            firstName: response.data.firstName,
+            lastName: response.data.lastName,
+            auth: true,
+            role: response.data.role,
+          })
+        );
         handleClose3();
         response.data.role == "employee"
           ? router.push("/employee")

@@ -1,5 +1,5 @@
 import Image from "next/image";
-const RAdBoxes = () => {
+const RAdBoxes = ({data}) => {
   
   return (
     <div

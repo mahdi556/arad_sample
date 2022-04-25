@@ -1,4 +1,4 @@
-import Layout from "../../components/Layouts/Employee/layout";
+import Layout from "../../components/Layouts/Employer/layout";
 import Head from "next/head";
 import Resumes from "../../components/Employer/Dashboard/Resumes";
 const Dashboard = () => {

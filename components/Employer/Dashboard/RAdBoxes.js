@@ -1,6 +1,5 @@
 import Image from "next/image";
-const RAdBoxes = () => {
-  
+const RAdBoxes = ({ data }) => {
   return (
     <div
       className=" mb-3  "
@@ -11,7 +10,7 @@ const RAdBoxes = () => {
     >
       <div className="d-flex col-12 p-4 rAdbox">
         <div className="d-flex col-8 pe-2 flex-column  ">
-        <div className="adbox-rightLabel">
+          <div className="adbox-rightLabel">
             لغو شده
             <div className="d-flex justify-content-center align-items-center mx-auto ">
               <Image src="/assets/images/doorkari.png" width={17} height={17} />
@@ -25,16 +24,18 @@ const RAdBoxes = () => {
                   lineHeight: 1.5,
                 }}
               >
-                فروشنده حرفه ای فروشنده حرفه ای
-                <h5
-                  className=" d-inline-flex ms-2"
-                  style={{
-                    color: "#11999e",
-                    fontSize: 14,
-                  }}
-                >
-                  (متخصص)
-                </h5>
+                {data.title}
+                {data && data.type == "ev" && (
+                  <h5
+                    className=" d-inline-flex ms-2"
+                    style={{
+                      color: "#11999e",
+                      fontSize: 14,
+                    }}
+                  >
+                    (متخصص)
+                  </h5>
+                )}
               </h5>
             </div>
           </div>
@@ -44,7 +45,7 @@ const RAdBoxes = () => {
                 fontSize: 16,
               }}
             >
-              اسنپ
+              {data.personal && data.personal.city_fa}
               <h5
                 className=" d-inline-flex ms-2"
                 style={{
@@ -52,7 +53,7 @@ const RAdBoxes = () => {
                   fontSize: 14,
                 }}
               >
-                اصفهان
+                
               </h5>
             </h6>
           </div>

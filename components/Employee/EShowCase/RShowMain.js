@@ -1,11 +1,17 @@
 import Image from "next/image";
+import { useContext, useEffect, useState } from "react";
+import axios from "../../../axios";
 import RAdBoxes from "./RAdBoxes";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import BreakeLine from "../../Employee/Resume/FormInputs/BreakLine";
 import AdBoxNewEmployer from "../../Common/AdBoxNewEmployer";
- const width = "33%";
+import UserContext from "../../../context/employeeContext/User/UserContext";
+const width = "33%";
 const RShowMain = () => {
+  const userContext = useContext(UserContext);
+  const [reged, setReged] = useState([]);
+
   const data = {
     options: {
       colors: ["#11999e"],
@@ -66,13 +72,26 @@ const RShowMain = () => {
       },
     ],
   };
+  useEffect(() => {
+    userContext.data.user.id !== "" &&
+      axios({
+        url: "/getmyEmployeeAds",
+        method: "post",
+        data: {
+          user_id: userContext.data.user.id,
+        },
+      })
+        .then((response) => {
+          setReged(response.data.data.rads);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+  }, [userContext.data.user.id]);
+
   return (
     <>
-      <div
-        // style={{
-        //   width: "100%",
-        // }}
-      >
+      <div>
         <div className="rShowCase-sec1  ">
           <div className="d-flex justify-content-between col-12 rShowCase-sec2">
             <div className="d-flex rShowCase-sec3 col-3   ">
@@ -112,14 +131,14 @@ const RShowMain = () => {
         </div>
         <div className="col-12 align-items-start d-flex my-5 pt-5 ps-5">
           <div className="col-4  ">
-            <h5 className="mt-2 mb-5 text-start fw-bold w-75 ">آگهی های ثبت شده</h5>
+            <h5 className="mt-2 mb-5 text-start fw-bold w-75 ">
+              آگهی های ثبت شده
+            </h5>
             <div className="col-12 ps-5 rShowCase-sec5 " dir="ltr">
-              <RAdBoxes />
-              <RAdBoxes />
-              <RAdBoxes />
-              <RAdBoxes />
-              <RAdBoxes />
-              <RAdBoxes />
+              {reged.length > 0 &&
+                reged.map((item, key) => (
+                  <RAdBoxes key={item.id} data={item} />
+                ))}
             </div>
             <div className="d-flex align-items-center py-2 col-5 mx-auto rShowCase-sec6">
               <div className="d-inline-flex me-3  ">
@@ -200,8 +219,6 @@ const RShowMain = () => {
           <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
           <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
           <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
-         
-          
         </div>
         <div className="d-flex">
           <div className="d-inline-flex align-items-center  py-2 px-3  mx-auto rShowCase-sec6">

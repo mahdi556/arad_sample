@@ -94,7 +94,12 @@ const RightMenu = () => {
             <h6 className="mt-2 py-2 ps-2 EsubItem ">لیست آگهی های ثبت شده</h6>
             <h6
               className="mt-2 py-2 ps-2 EsubItem"
-              onClick={() => router.push("/employee/sent-resume")}
+              onClick={() =>
+                router.push({
+                  pathname: "/employer/createAdPage",
+                  query: { type: "normal" },
+                })
+              }
             >
               ثبت آگهی جدید
             </h6>
@@ -124,7 +129,16 @@ const RightMenu = () => {
             // visibility: "hidden",
           }}
         >
-          <h6 className="mt-2 py-2 ps-2 EsubItem ">بانک کارجویان</h6>
+          <h6
+            className="mt-2 py-2 ps-2 EsubItem "
+            onClick={() =>
+              router.push({
+                pathname: "/employer/employees-resume",
+              })
+            }
+          >
+            بانک کارجویان
+          </h6>
           <h6
             className="mt-2 py-2 ps-2 EsubItem"
             onClick={() => router.push("/employer/employees-resume")}
@@ -133,7 +147,7 @@ const RightMenu = () => {
           </h6>
           <h6
             className="mt-2 py-2 ps-2 EsubItem"
-            onClick={() => router.push("/employee/sent-resume")}
+            onClick={() => router.push("/employer/employees-resume")}
           >
             رزومه های دریافتی
           </h6>
@@ -199,9 +213,18 @@ const RightMenu = () => {
               borderWidth: 2,
             }}
           >
-            <h6 className="mt-2 py-2 ps-2 EsubItem">پروفایل سازمانی</h6>
-            <h6 className="mt-2 py-2 ps-2 EsubItem">دسترسی کاربران</h6>
-            <h6 className="mt-2 py-2 ps-2 EsubItem">تنظیمات حساب</h6>
+            <h6
+              className="mt-2 py-2 ps-2 EsubItem"
+              onClick={() => router.push("/employer/org-profile")}
+            >
+              پروفایل سازمانی
+            </h6>
+            <h6 className="mt-2 py-2 ps-2 EsubItem"
+             onClick={() => router.push("/employer/org-profile")}
+            >دسترسی کاربران</h6>
+            <h6 className="mt-2 py-2 ps-2 EsubItem"
+             onClick={() => router.push("/employer/setting")}
+            >تنظیمات حساب</h6>
           </div>
         </div>
       </div>
