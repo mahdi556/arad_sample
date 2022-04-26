@@ -1,5 +1,3 @@
-import RightMenu from "../components/Employee/RightMenu/RightMenu";
-import RShowMain from "../components/Employer/RShowCase/RShowMain";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import Image from "next/image";

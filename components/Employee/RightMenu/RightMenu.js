@@ -1,9 +1,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
- import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 const RightMenu = () => {
- 
-  const router= useRouter()
+  const router = useRouter();
   return (
     <>
       <div
@@ -100,22 +99,25 @@ const RightMenu = () => {
           <div
             className="ps-3 ms-4 mt-3  "
             style={{
-                borderRightStyle: "solid",
-                borderRightColor: "#000",
-                borderWidth: 2,
-                // visibility: "hidden",
-              }}
+              borderRightStyle: "solid",
+              borderRightColor: "#000",
+              borderWidth: 2,
+              // visibility: "hidden",
+            }}
           >
-            <h6 className="mt-2 py-2 ps-2 EsubItem "
-              onClick={()=>router.push('/employee/create-resume')}
-            >تکمیل و دانلود رزومه</h6> 
-             <h6 className="mt-2 py-2 ps-2 EsubItem"  
-             onClick={()=>router.push('/employee/sent-resume')}
-             >
+            <h6
+              className="mt-2 py-2 ps-2 EsubItem "
+              onClick={() => router.push("/employee/create-resume")}
+            >
+              تکمیل و دانلود رزومه
+            </h6>
+            <h6
+              className="mt-2 py-2 ps-2 EsubItem"
+              onClick={() => router.push("/employee/sent-resume")}
+            >
               پیگیری رزومه های ارسال شده
             </h6>
           </div>
-
         </div>
         <div>
           <div className="d-flex ms-4 mt-4">
@@ -141,9 +143,24 @@ const RightMenu = () => {
               borderWidth: 2,
             }}
           >
-            <h6 className="mt-2 py-2 ps-2 EsubItem">فرصت های شغلی پیشنهادی</h6>
-            <h6 className="mt-2 py-2 ps-2 EsubItem">شغل های ذخیره شده</h6>
-            <h6 className="mt-2 py-2 ps-2 EsubItem">آگهی های ویژه</h6>
+            <h6
+              className="mt-2 py-2 ps-2 EsubItem"
+              onClick={() => router.push("/employee/companies")}
+            >
+              فرصت های شغلی پیشنهادی
+            </h6>
+            <h6
+              className="mt-2 py-2 ps-2 EsubItem"
+              onClick={() => router.push("/employee/companies")}
+            >
+              شغل های ذخیره شده
+            </h6>
+            <h6
+              className="mt-2 py-2 ps-2 EsubItem"
+              onClick={() => router.push("/employee/companies")}
+            >
+              آگهی های ویژه
+            </h6>
           </div>
         </div>
 
@@ -175,13 +192,28 @@ const RightMenu = () => {
               borderWidth: 2,
             }}
           >
-            <h6 className="mt-2 py-2 ps-2 EsubItem">فرصت های شغلی پیشنهادی</h6>
-            <h6 className="mt-2 py-2 ps-2 EsubItem">شغل های ذخیره شده</h6>
-            <h6 className="mt-2 py-2 ps-2 EsubItem">آگهی های ویژه</h6>
+            <h6
+              className="mt-2 py-2 ps-2 EsubItem"
+              onClick={() => router.push("/employee/companies")}
+            >
+              شرکتهای معتبر
+            </h6>
+            <h6
+              className="mt-2 py-2 ps-2 EsubItem"
+              onClick={() => router.push("/employee/companies")}
+            >
+              شرکت های دنبال شونده
+            </h6>
+            <h6
+              className="mt-2 py-2 ps-2 EsubItem"
+              onClick={() => router.push("/employee/companies")}
+            >
+              شغل های پیشنهادی
+            </h6>
           </div>
         </div>
 
-        <div className="d-flex ms-4 mt-4">
+        {/* <div className="d-flex ms-4 mt-4">
           <div>
             <Image src="/assets/images/eorders.png" width={20} height={20} />
           </div>
@@ -195,7 +227,7 @@ const RightMenu = () => {
           >
             سفارشات و بسته ها
           </h6>
-        </div>
+        </div> */}
 
         <div className="d-flex ms-4 mt-4">
           <div>

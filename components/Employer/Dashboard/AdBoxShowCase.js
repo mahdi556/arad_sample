@@ -61,7 +61,7 @@ const AdBoxShowCase = ({ width, data }) => {
                 fontSize: 14,
               }}
             >
-              {data && data.personal.city_fa}
+              {data.personal && data.personal.city_fa}
             </div>
           </h6>
 
@@ -91,7 +91,7 @@ const AdBoxShowCase = ({ width, data }) => {
                 شرکت معتبر
               </>
             )}
-            {data && data.personal.insurrance == "1" && (
+            {data.personal && data.personal.insurrance == "1" && (
               <>
                 <svg
                   className="mx-2"
@@ -121,7 +121,7 @@ const AdBoxShowCase = ({ width, data }) => {
             width: "15%",
           }}
         >
-          {data && data.personal.corporate_type == 2 && (
+          {data.personal && data.personal.corporate_type == 2 && (
             <div className="adbox-label">
               دورکاری
               <svg

@@ -30,7 +30,7 @@ import VipAds from "./VipAds";
           </div>
           <div
             className={
-              tab == 2
+              tab == 3
                 ? "col-4 py-2 leftsec jobAds-selected-top"
                 : "col-4 py-2 leftsec "
             }

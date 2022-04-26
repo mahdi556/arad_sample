@@ -5,19 +5,18 @@ import axios from "../../../axios";
 import SearchBar from "../../Employee/EShowCase/SearchBar";
 import Image from "next/image";
 const EmployeeBank = () => {
-  const [rads, setRads] = useState({});
+  const [eads, setRads] = useState({});
   const [tab, setTab] = useState(1);
-  console.log("response");
   useEffect(() => {
     axios({
-      url: "/getEmployerAds",
+      url: "/getmyEmployeeAds",
       method: "post",
       data: {
         user_id: 81,
       },
     })
       .then((response) => {
-        setRads(response.data.data.rads);
+        setRads(response.data.data.eads);
       })
       .catch(function (error) {
         console.log(error);
@@ -64,22 +63,28 @@ const EmployeeBank = () => {
               آگهی ها{" "}
             </div>
           </div>
-          {tab == 1 && rads.length
-            ? rads.map((item, key) => (
-                <AdBoxShowCase
-                  width={" col-xl-12 col-xxl-12 "}
-                  data={item}
-                  key={item.id}
-                />
-              ))
-            :tab == 2 && rads.length
-            ? rads.map((item, key) => (
-                <AdBoxShowCase
-                  width={" col-xl-12 col-xxl-12 "}
-                  data={item}
-                  key={item.id}
-                />
-              ))
+          {tab == 1 && eads.length
+            ? eads.map(
+                (item, key) =>
+                  item.type == "re" && (
+                    <AdBoxShowCase
+                      width={" col-xl-12 col-xxl-12 "}
+                      data={item}
+                      key={item.id}
+                    />
+                  )
+              )
+            : tab == 2 && eads.length
+            ? eads.map(
+                (item, key) =>
+                  item.type != "re" && (
+                    <AdBoxShowCase
+                      width={" col-xl-12 col-xxl-12 "}
+                      data={item}
+                      key={item.id}
+                    />
+                  )
+              )
             : null}
         </div>
       </div>

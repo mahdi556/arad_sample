@@ -1,12 +1,39 @@
 import Image from "next/image";
 import AdBoxNewEmployer from "../../Common/AdBoxNewEmployer";
-import BreakLine from "../../Employee/Resume/FormInputs/BreakLine"
-
+import BreakLine from "../../Employee/Resume/FormInputs/BreakLine";
+import UserContext from "../../../context/employeeContext/User/UserContext";
+import Lottie from "lottie-react";
+import { ToastContainer, toast } from "react-toastify";
+import saveLottie from "../../../components/Lottie-json/save-lottie.json";
+import { useRef, useState,useContext } from "react";
+import axios from '../../../axios'
 const RAdShow = ({ data }) => {
+  const lottieRef = useRef();
+  const [play, settPlay] = useState(false);
   const width = "33%";
-  console.log(data);
+  const userContext = useContext(UserContext);
+  const handleLottie = () => {
+    axios({
+      url: "/storesavead",
+      method: "post",
+      data: {
+        user_id: userContext.data.user.id,
+        ad_id: data.id,
+      },
+    })
+      .then((response) => {
+         console.log(response)
+         toast.success( response.data.message, {
+           position: toast.POSITION.TOP_CENTER,
+         });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
   return (
     <>
+      <ToastContainer />
       <div className="d-flex flex-column px-4 eAdshow">
         <div className="d-flex justify-content-between">
           <div className="d-flex flex-column mt-4">
@@ -29,8 +56,24 @@ const RAdShow = ({ data }) => {
             </h4>
           </div>
           <div className="d-flex pt-4">
-            <div className="me-3">
+            <div
+              className="me-3"
+              onClick={() => handleLottie()}
+              style={{
+                cursor: "pointer",
+              }}
+            >
               <Image src="/assets/images/save.png" height={32} width={32} />
+
+              {/* <Lottie
+                animationData={saveLottie}
+                loop={false}
+                autoPlay={false}
+                style={{
+                  height: 50,
+                }}
+                lottieRef={lottieRef}
+              /> */}
             </div>
             <div>
               <Image src="/assets/images/share.png" height={32} width={32} />

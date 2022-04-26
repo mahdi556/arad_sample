@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import axios from "../../../axios";
 import RAdBoxes from "./RAdBoxes";
+import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import BreakeLine from "../../Employee/Resume/FormInputs/BreakLine";
@@ -11,6 +12,9 @@ const width = "33%";
 const RShowMain = () => {
   const userContext = useContext(UserContext);
   const [reged, setReged] = useState([]);
+  const [rads, setRads] = useState({});
+
+  const router = useRouter();
 
   const data = {
     options: {
@@ -83,6 +87,7 @@ const RShowMain = () => {
       })
         .then((response) => {
           setReged(response.data.data.rads);
+          setRads(response.data.data.rads);
         })
         .catch(function (error) {
           console.log(error);
@@ -94,7 +99,18 @@ const RShowMain = () => {
       <div>
         <div className="rShowCase-sec1  ">
           <div className="d-flex justify-content-between col-12 rShowCase-sec2">
-            <div className="d-flex rShowCase-sec3 col-3   ">
+            <div
+              className="d-flex rShowCase-sec3 col-3   "
+              onClick={() =>
+                router.push({
+                  pathname: "/employee/create-resume",
+                  query: { type: "vip" },
+                })
+              }
+              style={{
+                cursor: "pointer",
+              }}
+            >
               <h4>
                 تکمیل رزومه <h6 className="mt-2"> + سابقه کاری </h6>
               </h4>
@@ -111,13 +127,29 @@ const RShowMain = () => {
                 <div class="progress-value">90%</div>
               </div>
             </div>
-            <div className="d-flex rShowCase-sec3  col-3">
+            <div
+              className="d-flex rShowCase-sec3  col-3"
+              style={{
+                cursor: "pointer",
+              }}
+            >
               <h4 className="rShowCase-sec4">ارتقا به کارجو متخصص</h4>
               <div>
                 <Image src="/assets/images/cup.png" height={60} width={60} />
               </div>
             </div>
-            <div className="d-flex rShowCase-sec3  col-3">
+            <div
+              className="d-flex rShowCase-sec3  col-3"
+              onClick={() =>
+                router.push({
+                  pathname: "/employee/createAdPage",
+                  query: { type: "vip" },
+                })
+              }
+              style={{
+                cursor: "pointer",
+              }}
+            >
               <h4 className="rShowCase-sec4">ثبت آگهی</h4>
               <div>
                 <Image
@@ -135,12 +167,21 @@ const RShowMain = () => {
               آگهی های ثبت شده
             </h5>
             <div className="col-12 ps-5 rShowCase-sec5 " dir="ltr">
-              {reged.length > 0 &&
+              {reged &&
+                reged.length > 0 &&
                 reged.map((item, key) => (
                   <RAdBoxes key={item.id} data={item} />
                 ))}
             </div>
-            <div className="d-flex align-items-center py-2 col-5 mx-auto rShowCase-sec6">
+            <div
+              className="d-flex align-items-center py-2 col-5 mx-auto rShowCase-sec6"
+              onClick={() =>
+                router.push({
+                  pathname: "/employee/createAdPage",
+                  query: { type: "normal" },
+                })
+              }
+            >
               <div className="d-inline-flex me-3  ">
                 <Image
                   src="/assets/images/addButton.png"
@@ -213,12 +254,14 @@ const RShowMain = () => {
           آگهی های پیشنهادی
         </h3>
         <div class="row    gx-5 gy-4  mx-4 px-5 ">
-          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
-          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
-          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
-          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
-          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
-          <AdBoxNewEmployer width={" col-lg-6 col-xl-4 "} />
+          {rads.length &&
+            rads.map((item, key) => (
+              <AdBoxNewEmployer
+                width={" col-xl-6 col-xxl-4 "}
+                data={item}
+                key={item.id}
+              />
+            ))}
         </div>
         <div className="d-flex">
           <div className="d-inline-flex align-items-center  py-2 px-3  mx-auto rShowCase-sec6">

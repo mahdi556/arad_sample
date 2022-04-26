@@ -1,5 +1,4 @@
 import RightMenu from "../components/Employee/RightMenu/RightMenu";
-import RShowMain from "../components/Employer/RShowCase/RShowMain";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import Image from "next/image";
@@ -8,16 +7,16 @@ import { Province } from "../components/StaticData/City";
 import { Cities } from "../components/StaticData/City";
 import { useState } from "react";
 const Checkout = () => {
-  const [city,setCity]= useState('');
-  const [province,setProvince]= useState('');
+  const [city, setCity] = useState("");
+  const [province, setProvince] = useState("");
   let proId = province;
   const citi = Cities.filter((item, key) => item.provinceId == proId);
   const provinceHandler = (id, fa) => {
-   setProvince(id)
+    setProvince(id);
   };
 
   const cityHandler = (id, fa) => {
-  setCity(id)
+    setCity(id);
   };
   return (
     <>
@@ -210,35 +209,35 @@ const Checkout = () => {
                 />
               </div>
               {proId !== "" && (
-              <div
-                className="col-3 px-1"
-                style={{
-                  maxHeight: "6rem",
-                  zIndex: 9,
-                }}
-              >
-                <SelectOption
-                  data={Province}
-                  name="شهر"
-                  valueHandler={provinceHandler}
-                  // predata={normalAdContext.data.province.fa}
-                />
-              </div>
-               )}
-               
+                <div
+                  className="col-3 px-1"
+                  style={{
+                    maxHeight: "6rem",
+                    zIndex: 9,
+                  }}
+                >
+                  <SelectOption
+                    data={Province}
+                    name="شهر"
+                    valueHandler={provinceHandler}
+                    // predata={normalAdContext.data.province.fa}
+                  />
+                </div>
+              )}
+
               <div className="d-flex flex-column col-6 px-1 mb-3 mt-4">
-              <label
-                className="  "
-                style={{
-                  marginBottom: "0.5rem",
-                  fontWeight: "normal",
-                  fontSize: 20,
-                }}
-              >
-                کد پستی
-              </label>
-              <input className="inputStyle " type="text" />
-            </div>
+                <label
+                  className="  "
+                  style={{
+                    marginBottom: "0.5rem",
+                    fontWeight: "normal",
+                    fontSize: 20,
+                  }}
+                >
+                  کد پستی
+                </label>
+                <input className="inputStyle " type="text" />
+              </div>
             </div>
             <div className="d-flex flex-column col-12 mb-3 mt-4">
               <label

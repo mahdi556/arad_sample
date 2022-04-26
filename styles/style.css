@@ -1435,7 +1435,7 @@ div#__next > div {
   font-size: 20px;
 }
 .eShowContainer .leftsec {
-  background-color: white;
+  /* background-color: white; */
   text-align: center;
   cursor: pointer;
   border-top-left-radius: 30px;

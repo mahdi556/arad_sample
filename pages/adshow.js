@@ -3,11 +3,14 @@ import NavBar from "../components/NavBar";
 import Image from "next/image";
 import axios from "../axios";
 import { useRouter } from "next/router";
+import { ToastContainer, toast } from "react-toastify";
 import BreakLine from "../components/Employee/Resume/FormInputs/BreakLine";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import UserContext from "../context/employeeContext/User/UserContext";
 const Adshow = () => {
   const router = useRouter();
   const [data, setData] = useState({});
+  const userContext = useContext(UserContext);
   useEffect(() => {
     axios({
       url: "/getAd",
@@ -28,19 +31,76 @@ const Adshow = () => {
   const myLoader = ({ src, width, quality }) => {
     return data.image;
   };
- 
+  const handleLottie = () => {
+    axios({
+      url: "/storesavead",
+      method: "post",
+      data: {
+        user_id: userContext.data.user.id,
+        ad_id: data.id,
+      },
+    })
+      .then((response) => {
+        console.log(response);
+        toast.success(response.data.message, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   return (
     <>
+      <ToastContainer />
       <NavBar />
       <div className="d-flex col-12 mt-5">
         <div className="col-8">
           <div
-            className="d-flex flex-column col-11 mt-5 px-5 mx-auto"
+            className="d-flex flex-column col-11 mt-5 px-5 mx-auto position-relative"
             style={{
               backgroundColor: "#fff",
               borderRadius: 30,
             }}
           >
+            <div
+              className="d-flex pe-4  ps-3 pt-2 align-items-center"
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                backgroundColor: "#11999e",
+
+                borderTopLeftRadius: 30,
+                borderBottomRightRadius: 30,
+              }}
+            >
+              <div
+                className="me-3"
+                style={{
+                  cursor: "pointer",
+                }}
+              >
+                <Image
+                  src="/assets/images/shareWhite.svg"
+                  height={32}
+                  width={32}
+                />
+              </div>
+              <div
+                style={{
+                  cursor: "pointer",
+                }}
+                onClick={() => handleLottie()}
+              >
+                <Image
+                  src="/assets/images/saveWhite.svg"
+                  height={32}
+                  width={32}
+                />
+              </div>
+            </div>
             <div className="d-flex align-items-center mt-5 ">
               <div>
                 {data && (
@@ -110,7 +170,7 @@ const Adshow = () => {
                       : null}
                   </h6>
                 </div>
-                 <div className="d-flex mb-2">
+                <div className="d-flex mb-2">
                   <h6 className="col-5 txtSec1 px-2"> تاریخ تولد</h6>
                   <h6 className="col-7 txtSec2 px-2">
                     {data.personal && data.personal.fa_birth_y}/

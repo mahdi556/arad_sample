@@ -38,13 +38,16 @@ const VipAds = ({ id }) => {
       </div>
       <div class="row   mt-3 gx-3 gy-4   ps-1 ">
         {rads.length &&
-          rads.map((item, key) => (
-            <AdBoxNewEmployer
-              width={" col-xl-6 col-xxl-4 "}
-              data={item}
-              key={item.id}
-            />
-          ))}
+          rads.map(
+            (item, key) =>
+              item.type == "rv" && (
+                <AdBoxNewEmployer
+                  width={" col-xl-6 col-xxl-4 "}
+                  data={item}
+                  key={item.id}
+                />
+              )
+          )}
       </div>
     </>
   );
