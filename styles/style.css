@@ -78,12 +78,39 @@
     /* IE6-8 */ url("../public/assets/fonts/ttf/robotoregular.ttf")
       format("truetype");
 }
+@font-face {
+  font-family: iranMedium;
+  font-style: normal;
+  font-weight: normal;
+  src: url("../public/assets/fonts/ttf/iransansmedium.ttf") format("truetype");
+}
+@font-face {
+  font-family: iranBold;
+  font-style: normal;
+  font-weight: normal;
+  src: url("../public/assets/fonts/ttf/iransansbold.ttf") format("truetype");
+}
+@font-face {
+  font-family: iranBLack;
+  font-style: normal;
+  font-weight: normal;
+  src: url("../public/assets/fonts/ttf/iransansblack.ttf") format("truetype");
+}
+@font-face {
+  font-family: iranUltraLight;
+  font-style: normal;
+  font-weight: normal;
+  src: url("../public/assets/fonts/ttf/iransansultralight.ttf")
+    format("truetype");
+}
+
 
 body {
   font-family: iransansdn;
   font-style: normal;
   font-weight: 400;
   background-color: #f2f5f6;
+  overflow-x: hidden;
 }
 /* html,
 body,
@@ -1308,17 +1335,17 @@ div#__next > div {
 .home-top-sec4::before {
   content: "";
   position: absolute;
-  top: -170%;
+  top: -120%;
   right: 50%;
-  height: 40px;
+  height: 30px;
   border: #212529 solid 0.1px;
 }
 .home-top-sec4::after {
   content: "";
   position: absolute;
-  bottom: -170%;
+  bottom: -120%;
   right: 50%;
-  height: 40px;
+  height: 30px;
   border: #212529 solid 0.5px;
 }
 .searchBar {

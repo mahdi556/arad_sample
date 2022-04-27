@@ -41,6 +41,19 @@ const NavBar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav align-items-center   me-auto mb-2 mb-lg-0 ">
+
+          <li
+              className="navitems ps-2 "
+              onClick={() => {
+                router.push({
+                  pathname: "/",
+                });
+              }}
+            >
+              <img
+                 src="/assets/images/logo2.png" width={100} height={50}    
+         />
+            </li>
             <li
               className="navitems "
               onClick={() => {
@@ -49,14 +62,12 @@ const NavBar = () => {
                 });
               }}
             >
-              صفحه نخست
-              {/* <div
-                style={{
-                  width: "50%",
-                  borderBottomStyle: "solid",
-                  borderColor: "#11999e",
-                }}
-              ></div> */}
+              <h5
+                className="  fs-5 text-center lh-sm py-0 my-0"
+                style={{ fontFamily: "iranBold", cursor: "pointer" }}
+              >
+                صفحه نخست
+              </h5>
             </li>
 
             <li
@@ -70,7 +81,7 @@ const NavBar = () => {
             >
               <h5
                 className="  fs-5 text-center lh-sm py-0 my-0"
-                style={{ fontWeight: 700, cursor: "pointer" }}
+                style={{ fontFamily: "iranBold", cursor: "pointer" }}
               >
                 لیست آگهی ها
               </h5>
@@ -78,7 +89,7 @@ const NavBar = () => {
             <li className="navitems">
               <h5
                 className="  fs-5 text-center lh-sm py-0 my-0"
-                style={{ fontWeight: 700, cursor: "pointer" }}
+                style={{ fontFamily: "iranBold", cursor: "pointer" }}
               >
                 کارجویان
               </h5>
@@ -86,7 +97,7 @@ const NavBar = () => {
             <li className="navitems">
               <h5
                 className="  fs-5 text-center lh-sm py-0 my-0"
-                style={{ fontWeight: 700, cursor: "pointer" }}
+                style={{ fontFamily: "iranBold", cursor: "pointer" }}
               >
                 کارفرمایان
               </h5>
@@ -94,7 +105,7 @@ const NavBar = () => {
             <li className="navitems">
               <h5
                 className="  fs-5 text-center lh-sm py-0 my-0"
-                style={{ fontWeight: 700, cursor: "pointer" }}
+                style={{ fontFamily: "iranBold", cursor: "pointer" }}
               >
                 کار در منزل
               </h5>
@@ -102,7 +113,7 @@ const NavBar = () => {
             <li className="navitems">
               <h5
                 className="  fs-5 text-center lh-sm py-0 my-0"
-                style={{ fontWeight: 700, cursor: "pointer" }}
+                style={{ fontFamily: "iranBold", cursor: "pointer" }}
               >
                 دانستنی های استخدامی
               </h5>
@@ -110,7 +121,7 @@ const NavBar = () => {
             <li className="navitems">
               <h5
                 className="  fs-5 text-center lh-sm py-0 my-0"
-                style={{ fontWeight: 700, cursor: "pointer" }}
+                style={{ fontFamily: "iranBold", cursor: "pointer" }}
               >
                 دانلود اپلیکیشن
               </h5>
