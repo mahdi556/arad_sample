@@ -3,7 +3,7 @@ import AdBoxShowCase from "./AdBoxShowCase";
 import style from "./styles/rshow.module.css";
 import axios from "../../../axios";
 import SearchBar from "../../Employee/EShowCase/SearchBar";
-import Image from "next/image";
+  
 const EmployeeBank = () => {
   const [eads, setRads] = useState({});
   const [tab, setTab] = useState(1);
@@ -32,10 +32,10 @@ const EmployeeBank = () => {
           <div
             className={`${style.filterButton} d-flex align-items-center col-2 mx-2 px-2`}
           >
-            <Image src="/assets/images/arrow-down.svg" height={20} width={20} />
+            <img src="/assets/images/arrow-down.svg" height={20} width={20} />
             <h5 className="ms-auto me-1 pt-2">فیلترها</h5>
             <div className="pt-2">
-              <Image src="/assets/images/f_icon.svg" height={20} width={20} />
+              <img src="/assets/images/f_icon.svg" height={20} width={20} />
             </div>
           </div>
         </div>

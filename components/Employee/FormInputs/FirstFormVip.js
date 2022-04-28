@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import { useContext, useEffect, useState } from "react";
 import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
 
@@ -195,7 +195,7 @@ const FirstFormVip = () => {
           شبکه های اجتماعی من
           <div className="row col-12 offset-1 mt-4 mb-2">
             <div className="row mb-3">
-              <Image src="/assets/images/twitterx.png" width={35} height={10} />
+              <img src="/assets/images/twitterx.png" width={35} height={10} />
               <input
                 dir="ltr"
                 className="col-9 ms-2 inputStyle"
@@ -214,7 +214,7 @@ const FirstFormVip = () => {
               />
             </div>
             <div className="row mb-3">
-              <Image src="/assets/images/webx.png" width={35} height={25} />
+              <img src="/assets/images/webx.png" width={35} height={25} />
               <input
                 dir="ltr"
                 className="col-9 ms-2 inputStyle"
@@ -231,7 +231,7 @@ const FirstFormVip = () => {
               />
             </div>
             <div className="row mb-3">
-              <Image src="/assets/images/instax.png" width={35} height={25} />
+              <img src="/assets/images/instax.png" width={35} height={25} />
               <input
                 dir="ltr"
                 className="col-9 ms-2 inputStyle "
@@ -248,7 +248,7 @@ const FirstFormVip = () => {
               />
             </div>
             <div className="row mb-3">
-              <Image src="/assets/images/youtubex.png" width={35} height={25} />
+              <img src="/assets/images/youtubex.png" width={35} height={25} />
               <input
                 dir="ltr"
                 className="col-9 ms-2 inputStyle"

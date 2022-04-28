@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 
 const TopBanner = () => {
   return (
@@ -42,7 +42,7 @@ const TopBanner = () => {
             <h6 className="fs-11 text-dark ps-3 ">اصفهان</h6>
           </div>
           <div class="d-flex col-1 intro3  justify-content-center align-items-center   my-3 ">
-            <Image src="/assets/images/magnifire2.png" height={34} width={34} />
+            <img src="/assets/images/magnifire2.png" height={34} width={34} />
           </div>
         </div>
       </div>

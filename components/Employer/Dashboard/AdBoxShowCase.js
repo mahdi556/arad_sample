@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import { useRouter } from "next/router";
 import style from './styles/rshow.module.css'
 const AdBoxShowCase = ({ width, data }) => {
@@ -16,7 +16,7 @@ const AdBoxShowCase = ({ width, data }) => {
     >
       <div className="d-flex col-12 py-4 ps-5  " id="adbox">
         <div className={`${style.activeCompany_sec6}    `}>
-          <Image
+          <img
             src="/assets/images/active_label.svg"
             height={100}
             width={100}
@@ -156,7 +156,7 @@ const AdBoxShowCase = ({ width, data }) => {
               height: 100,
             }}
           >
-            {data && <Image src={data.image} width={74} height={74} />}
+            {data && <img src={data.image} width={74} height={74} />}
           </div>
           <div>برقراری ارتباط</div>
         </div>

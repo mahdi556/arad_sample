@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import { useRouter } from "next/router";
 
 const AdBoxNewEmployee = ({ width, data }) => {
@@ -138,7 +138,7 @@ const AdBoxNewEmployee = ({ width, data }) => {
                 height: 90,
               }}
             >
-              {data && <Image src={data.image} width={74} height={74} />}
+              {data && <img src={data.image} width={74} height={74} />}
             </div>
             <h6
               className="text-center my-auto py-2 "

@@ -1,6 +1,6 @@
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
-import Image from "next/image";
+  
 import SelectOption from "../components/Employee/Resume/FormInputs/SelectOption";
 import { Province } from "../components/StaticData/City";
 import { Cities } from "../components/StaticData/City";
@@ -209,7 +209,7 @@ const ChatRoom = () => {
                 fontSize: 16,
               }}
             >
-              <Image
+              <img
                 src="/assets/images/magnifire.svg"
                 height="18%"
                 width="18%"
@@ -258,7 +258,7 @@ const ChatRoom = () => {
               </h5>
             </div>
             <div className="col-9 mx-auto">
-              <Image
+              <img
                 src="/assets/images/line-chat.svg"
                 height={10}
                 width={400}
@@ -302,7 +302,7 @@ const ChatRoom = () => {
               </h5>
             </div>
             <div className="col-9 mx-auto">
-              <Image
+              <img
                 src="/assets/images/line-chat.svg"
                 height={10}
                 width={400}
@@ -346,7 +346,7 @@ const ChatRoom = () => {
               </h5>
             </div>
             <div className="col-9 mx-auto">
-              <Image
+              <img
                 src="/assets/images/line-chat.svg"
                 height={10}
                 width={400}
@@ -390,7 +390,7 @@ const ChatRoom = () => {
               </h5>
             </div>
             <div className="col-9 mx-auto">
-              <Image
+              <img
                 src="/assets/images/line-chat.svg"
                 height={10}
                 width={400}
@@ -434,7 +434,7 @@ const ChatRoom = () => {
               </h5>
             </div>
             <div className="col-9 mx-auto">
-              <Image
+              <img
                 src="/assets/images/line-chat.svg"
                 height={10}
                 width={400}
@@ -478,7 +478,7 @@ const ChatRoom = () => {
               </h5>
             </div>
             <div className="col-9 mx-auto">
-              <Image
+              <img
                 src="/assets/images/line-chat.svg"
                 height={10}
                 width={400}

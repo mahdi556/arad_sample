@@ -1,5 +1,6 @@
 const Footer = () => {
   return (
+    
     <div className="footer1-background   ">
       <img
         className="d-none d-lg-block"

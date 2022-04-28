@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import AdBoxNewEmployer from "../../Common/AdBoxNewEmployer";
 import BreakLine from "../../Employee/Resume/FormInputs/BreakLine";
 import UserContext from "../../../context/employeeContext/User/UserContext";
@@ -63,7 +63,7 @@ const RAdShow = ({ data }) => {
                 cursor: "pointer",
               }}
             >
-              <Image src="/assets/images/save.png" height={32} width={32} />
+              <img src="/assets/images/save.png" height={32} width={32} />
 
               {/* <Lottie
                 animationData={saveLottie}
@@ -76,7 +76,7 @@ const RAdShow = ({ data }) => {
               /> */}
             </div>
             <div>
-              <Image src="/assets/images/share.png" height={32} width={32} />
+              <img src="/assets/images/share.png" height={32} width={32} />
             </div>
           </div>
         </div>

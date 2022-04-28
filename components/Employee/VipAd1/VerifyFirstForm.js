@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import { useContext, useEffect, useState } from "react";
  import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
 const VerifyFirstForm = ({handleStep}) => {
@@ -49,7 +49,7 @@ const VerifyFirstForm = ({handleStep}) => {
                   handleStep(1, "30%");
                 }}
               >
-                <Image
+                <img
                   src="/assets/images/editForm.png"
                   width={20}
                   height={20}
@@ -91,7 +91,7 @@ const VerifyFirstForm = ({handleStep}) => {
             <div className="row col-12 offset-1 mt-4 mb-2">
               <div className="d-flex mb-3">
                 {/* <div > */}
-                <Image
+                <img
                   src="/assets/images/twitterx.png"
                   width={30}
                   height={30}
@@ -104,21 +104,21 @@ const VerifyFirstForm = ({handleStep}) => {
               </div>
 
               <div className="d-flex mb-3">
-                <Image src="/assets/images/webx.png" width={30} height={30} />
+                <img src="/assets/images/webx.png" width={30} height={30} />
                 <h6 className="ms-4  text-center w-100" dir="ltr">
                   {normalAdContext.data.socials.dribble}
                 </h6>
               </div>
 
               <div className="d-flex mb-3">
-                <Image src="/assets/images/instax.png" width={30} height={30} />
+                <img src="/assets/images/instax.png" width={30} height={30} />
                 <h6 className="ms-4 text-center w-100">
                   {normalAdContext.data.socials.instagram}
                 </h6>
               </div>
 
               <div className="d-flex mb-3">
-                <Image
+                <img
                   src="/assets/images/youtubex.png"
                   width={30}
                   height={30}

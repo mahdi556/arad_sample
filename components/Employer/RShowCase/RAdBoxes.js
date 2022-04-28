@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 const RAdBoxes = () => {
   
   return (
@@ -14,7 +14,7 @@ const RAdBoxes = () => {
         <div className="adbox-rightLabel">
             لغو شده
             <div className="d-flex justify-content-center align-items-center mx-auto ">
-              <Image src="/assets/images/doorkari.png" width={17} height={17} />
+              <img src="/assets/images/doorkari.png" width={17} height={17} />
             </div>
           </div>
           <div className="">
@@ -68,7 +68,7 @@ const RAdBoxes = () => {
           <div className="adbox-label">
             دورکاری
             <div className="d-flex justify-content-center align-items-center mx-auto ">
-              <Image src="/assets/images/doorkari.png" width={17} height={17} />
+              <img src="/assets/images/doorkari.png" width={17} height={17} />
             </div>
           </div>
         </div>

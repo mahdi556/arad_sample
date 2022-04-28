@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import { useContext, useEffect, useRef, useState } from "react";
 import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
 import ButtonAdd from "../../Employer/FormInputs/ButtonAdd";
@@ -139,7 +139,7 @@ const SoftExpert = () => {
           >
             مهارت نرم افزاری ندارم
           </h6>
-          <Image
+          <img
             className=""
             src={
               hasEx

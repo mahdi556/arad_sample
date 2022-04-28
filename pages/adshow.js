@@ -1,6 +1,6 @@
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
-import Image from "next/image";
+  
 import axios from "../axios";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
@@ -28,9 +28,9 @@ const Adshow = () => {
         console.log(error);
       });
   }, [router.query.ad]);
-  const myLoader = ({ src, width, quality }) => {
-    return data.image;
-  };
+  // const myLoader = ({ src, width, quality }) => {
+  //   return data.image;
+  // };
   const handleLottie = () => {
     axios({
       url: "/storesavead",
@@ -82,7 +82,7 @@ const Adshow = () => {
                   cursor: "pointer",
                 }}
               >
-                <Image
+                <img
                   src="/assets/images/shareWhite.svg"
                   height={32}
                   width={32}
@@ -94,7 +94,7 @@ const Adshow = () => {
                 }}
                 onClick={() => handleLottie()}
               >
-                <Image
+                <img
                   src="/assets/images/saveWhite.svg"
                   height={32}
                   width={32}
@@ -105,8 +105,7 @@ const Adshow = () => {
               <div>
                 {data && (
                   <img
-                    // loader={myLoader}
-                    src={data.image}
+                     src={data.image}
                     height={100}
                     width={100}
                     style={{ borderRadius: "50%" }}
@@ -126,7 +125,7 @@ const Adshow = () => {
                     overflow: "hidden",
                   }}
                 >
-                  <Image
+                  <img
                     src={"/assets/images/video-sample.png"}
                     height={160}
                     width={230}
@@ -505,7 +504,7 @@ const Adshow = () => {
                     boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
                   }}
                 >
-                  <Image
+                  <img
                     src="/assets/images/sample-work.png"
                     height={200}
                     width={300}
@@ -531,7 +530,7 @@ const Adshow = () => {
                     boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
                   }}
                 >
-                  <Image
+                  <img
                     src="/assets/images/sample-work.png"
                     height={200}
                     width={300}
@@ -557,7 +556,7 @@ const Adshow = () => {
                     boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
                   }}
                 >
-                  <Image
+                  <img
                     src="/assets/images/sample-work.png"
                     height={200}
                     width={300}
@@ -614,7 +613,7 @@ const Adshow = () => {
               }}
             >
               <div className="me-2 mt-1">
-                <Image src="/assets/images/call.svg" width={23} height={23} />
+                <img src="/assets/images/call.svg" width={23} height={23} />
               </div>
               اطلاعات تماس
             </div>
@@ -630,7 +629,7 @@ const Adshow = () => {
               }}
             >
               <div className="me-2 mt-1">
-                <Image
+                <img
                   src="/assets/images/interview.svg"
                   width={20}
                   height={20}
@@ -650,7 +649,7 @@ const Adshow = () => {
               }}
             >
               <div className="me-2 mt-1">
-                <Image
+                <img
                   src="/assets/images/chat-arad.svg"
                   width={23}
                   height={23}
@@ -670,7 +669,7 @@ const Adshow = () => {
               }}
             >
               <div className="me-2 mt-1 ">
-                <Image
+                <img
                   src="/assets/images/network.svg"
                   width={23}
                   height={23}

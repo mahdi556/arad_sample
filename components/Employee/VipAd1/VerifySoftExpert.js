@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import { useContext } from "react";
 import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
 import BreakLine from "../Resume/FormInputs/BreakLine";
@@ -27,7 +27,7 @@ const VerifySoftExpert = () => {
             normalAdContext.dispatch({ type: "step", payload: 5 });
           }}
         >
-          <Image
+          <img
             src="/assets/images/editForm.png"
             width={20}
             height={20}

@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import { useContext, useEffect, useRef, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";

@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import style from "./HomeStyles/home.module.css";
 
 const HomeTopSection = () => {
@@ -14,7 +14,7 @@ const HomeTopSection = () => {
             <h2 className={`${style.sec17} mx-auto mt-5 ps-5  `}>
               رفع این نیاز جامعه با چیتیت
             </h2>
-            {/* <Image src="/assets/images/homeTop.png" height="400vh" width={700} /> */}
+            {/* <img src="/assets/images/homeTop.png" height="400vh" width={700} /> */}
           </div>
         </div>
         <div className="col-6 d-flex   align-items-start justify-content-start mx-auto ">
@@ -26,7 +26,7 @@ const HomeTopSection = () => {
           </div>
 
           <h4 className="home-top-sec4 mx-2">یا</h4>
-          <div className={`  ${style.sec20} py-3 px-4 `}>
+          <div className={`  ${style.sec18_1} py-3 px-4 `}>
             میخوای استخدام کنی؟
           </div>
         </div>

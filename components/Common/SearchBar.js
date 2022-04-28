@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 
 const SearchBar = () => {
   return (
@@ -21,7 +21,7 @@ const SearchBar = () => {
             {/* <h6 className="fs-11 text-dark ps-3 ">اصفهان</h6> */}
           </div>
           <div className="d-flex  px-2 intro3  justify-content-center align-items-center   my-3 ">
-            <Image src="/assets/images/magnifire2.png" height={18} width={18} />
+            <img src="/assets/images/magnifire2.png" height={18} width={18} />
           </div>
         </div>
       </div>

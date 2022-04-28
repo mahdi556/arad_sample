@@ -94,16 +94,15 @@
   font-family: iranBLack;
   font-style: normal;
   font-weight: normal;
-  src: url("../public/assets/fonts/ttf/iransansblack.ttf") format("truetype");
-}
-@font-face {
+  src: url("../public/assets/fonts/ttf/iransansblack3.ttf") format("truetype");
+} 
+  @font-face {
   font-family: iranUltraLight;
   font-style: normal;
   font-weight: normal;
   src: url("../public/assets/fonts/ttf/iransansultralight.ttf")
     format("truetype");
-}
-
+} 
 
 body {
   font-family: iransansdn;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Image from "next/image";
+  
 const PersonalSetting = () => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -27,7 +27,7 @@ const PersonalSetting = () => {
         >
           اطلاعات شخصی
           <div className="ms-3">
-            <Image src="/assets/images/edit_red.svg" height={25} width={25} />
+            <img src="/assets/images/edit_red.svg" height={25} width={25} />
           </div>
         </div>
         <div className="d-flex flex-wrap pe-4 col-12   ">
@@ -145,7 +145,7 @@ const PersonalSetting = () => {
         >
           رمز عبور
           <div className="ms-3">
-            <Image src="/assets/images/edit_red.svg" height={25} width={25} />
+            <img src="/assets/images/edit_red.svg" height={25} width={25} />
           </div>
         </div>
         <div className="d-flex flex-wrap pe-4 col-12   ">

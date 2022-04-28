@@ -1,5 +1,5 @@
 import ButtonAdd from "../../Employer/FormInputs/ButtonAdd";
-import Image from "next/image";
+  
 import { useState } from "react";
 
 const Divx = ({ i, data, dataHandler }) => {
@@ -238,7 +238,7 @@ const SampleEx = () => {
           >
             نمونه کار ندارم
           </h6>
-          <Image
+          <img
             className=""
             src={
               hasEx

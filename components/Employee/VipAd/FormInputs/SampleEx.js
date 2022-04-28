@@ -1,5 +1,5 @@
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
-import Image from "next/image";
+  
 import { useContext, useEffect, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 
@@ -242,7 +242,7 @@ const SampleEx = () => {
           >
             نمونه کار ندارم
           </h6>
-          <Image
+          <img
             className=""
             src={
               hasEx

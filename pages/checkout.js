@@ -1,7 +1,7 @@
 import RightMenu from "../components/Employee/RightMenu/RightMenu";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
-import Image from "next/image";
+  
 import SelectOption from "../components/Employee/Resume/FormInputs/SelectOption";
 import { Province } from "../components/StaticData/City";
 import { Cities } from "../components/StaticData/City";
@@ -56,7 +56,7 @@ const Checkout = () => {
                   left: "-2%",
                 }}
               >
-                <Image
+                <img
                   src="/assets/images/delete-box.svg"
                   height="60%"
                   width="50%"
@@ -73,7 +73,7 @@ const Checkout = () => {
               </div>
               <div className=" d-flex col-12 mt-4" style={{}}>
                 <div className="me-2" style={{}}>
-                  <Image
+                  <img
                     src="/assets/images/check-black.svg"
                     height="20%"
                     width="20%"

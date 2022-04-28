@@ -1,10 +1,11 @@
-import Image from "next/image";
+  
 import { useEffect, useState } from "react";
 import style from "./HomeStyles/home.module.css";
 import axios from "../../axios";
 import AdBoxNewEmployer from "./AdBoxNewEmployer";
 import AdBoxNewEmployee from "./AdBoxNewEmployee";
 import { useRouter } from "next/router";
+import NavBarItem from "./NavBarItem";
 
 const HomeAds = () => {
   const router = useRouter();
@@ -36,7 +37,7 @@ const HomeAds = () => {
         <div
           className="d-flex  justify-content-center mx-auto "
           // style={{
-          //   maxWidth: 2300,
+            //   maxWidth: 2300,
           // }}
         >
           <div
@@ -58,11 +59,11 @@ const HomeAds = () => {
               {eads.length &&
                 eads.map((item, key) => (
                   <AdBoxNewEmployee
-                    width={" col-xl-12 col-xxl-6 "}
-                    data={item}
-                    key={item.id}
+                  width={" col-xl-12 col-xxl-6 "}
+                  data={item}
+                  key={item.id}
                   />
-                ))}
+                  ))}
             </div>
             <h1
               className=" homeButton mx-auto "
@@ -148,7 +149,7 @@ const HomeAds = () => {
           </div>
           <div className="d-flex flex-column col-4">
             <div className={`${style.sec1_image}    `}>
-              <Image
+                <img
                 src="/assets/images/home_image2.svg"
                 height={500}
                 width={500}
@@ -214,9 +215,9 @@ const HomeAds = () => {
             </div>
           </div>
           <div className="col-5">
-            <Image
-              src="/assets/images/home_image3.svg"
-              height={500}
+              <img
+              src="/assets/images/home_image3.png"
+              height={400}
               width={500}
             />
           </div>
@@ -225,10 +226,10 @@ const HomeAds = () => {
           <div className="col-12 d-flex flex-column flex-wrap  align-items-center position-relative ">
             <h3 className={`  ${style.sec9}   `}>مصــــاحبه آنــلاین</h3>
             <div className="col-12 d-flex flex-wrap" style={{}}>
-              <Image
-                src="/assets/images/home_image4.svg"
+                <img className="mx-auto"
+                src="/assets/images/home_image4.png"
                 height={500}
-                width={1500}
+                width={800}
               />
             </div>
             <div
@@ -250,7 +251,7 @@ const HomeAds = () => {
                   </h6>
                 </div>
                 <div className={`  ${style.sec6} px-3 py-3  `}>
-                  <Image
+                    <img
                     src="/assets/images/home_image5.svg"
                     height={50}
                     width={50}
@@ -269,7 +270,7 @@ const HomeAds = () => {
                   </h6>
                 </div>
                 <div className={`  ${style.sec6} px-3 py-3  `}>
-                  <Image
+                    <img
                     src="/assets/images/home_image5.svg"
                     height={50}
                     width={50}
@@ -288,16 +289,17 @@ const HomeAds = () => {
                   </h6>
                 </div>
                 <div className={`  ${style.sec6} px-3 py-3  `}>
-                  <Image
+                    <img
                     src="/assets/images/home_image5.svg"
                     height={50}
                     width={50}
                   />
+              
                 </div>
               </div>
             </div>
             <div
-              className="d-flex flex-column col-4 position-absolute"
+              className="d-flex flex-column col-4 position-absolute ps-4"
               style={{
                 top: "20%",
                 left: 0,
@@ -305,7 +307,7 @@ const HomeAds = () => {
             >
               <div className="d-flex align-items-center justify-content-between col-10 mb-5">
                 <div className={`  ${style.sec6} px-3 py-3 me-4 `}>
-                  <Image
+                    <img
                     src="/assets/images/home_image5.svg"
                     height={50}
                     width={50}
@@ -324,7 +326,7 @@ const HomeAds = () => {
               </div>
               <div className="d-flex align-items-center justify-content-between col-10 mb-5">
                 <div className={`  ${style.sec6} px-3 py-3 me-4 `}>
-                  <Image
+                    <img
                     src="/assets/images/home_image5.svg"
                     height={50}
                     width={50}
@@ -343,7 +345,7 @@ const HomeAds = () => {
               </div>
               <div className="d-flex align-items-center justify-content-between col-10 mb-5">
                 <div className={`  ${style.sec6} px-3 py-3 me-4 `}>
-                  <Image
+                    <img
                     src="/assets/images/home_image5.svg"
                     height={50}
                     width={50}
@@ -375,28 +377,28 @@ const HomeAds = () => {
               زمانی به آگهی های کارجویان و کارفرمایان دسترسی داشته باشید و از
               آنها در اولین فرصت با خبر شوید
             </h5>
-            <div className="d-flex col-12">
+            <div className="d-flex col-12 mt-5">
               <div className="me-3">
-                <Image
-                  src="/assets/images/home_image9.svg"
-                  height={50}
+                  <img
+                  src="/assets/images/home_image9.png"
+                  height={30}
                   width={100}
                 />
               </div>
               <div>
-                <Image
-                  src="/assets/images/home_image10.svg"
-                  height={50}
+                  <img
+                  src="/assets/images/home_image10.png"
+                  height={30}
                   width={100}
                 />
               </div>
             </div>
           </div>
           <div className="d-flex col-6 ms-auto justify-content-end">
-            <Image
-              src="/assets/images/home_image6.svg"
+              <img
+              src="/assets/images/home_image6.png"
               height={300}
-              width={800}
+              width={600}
             />
           </div>
         </div>
@@ -413,7 +415,7 @@ const HomeAds = () => {
               به کار مورد علاقه خود مشغول شوید.
             </h6>
             <div className="col-12">
-              <Image src="/assets/images/Line433.svg" height={50} width={500} />
+                <img src="/assets/images/Line433.svg" height={50} width={500} />
             </div>
             <h3 className={`  ${style.sec14}  mt-3 `}>از کجا شروع کنم؟</h3>
             <h6 className={`  ${style.sec15}  col-8   mt-2`}>
@@ -425,7 +427,7 @@ const HomeAds = () => {
               به کار مورد علاقه خود مشغول شوید.
             </h6>
             <div className="col-12">
-              <Image src="/assets/images/Line433.svg" height={50} width={500} />
+                <img src="/assets/images/Line433.svg" height={50} width={500} />
             </div>
             <h3 className={`  ${style.sec14}  mt-3 `}>
               بعد از ثبت نام چگونه از درخواست های مطرح شده مطلع شوم؟
@@ -440,9 +442,9 @@ const HomeAds = () => {
             </h6>
           </div>
           <div className="col-4">
-            <Image
-              src="/assets/images/home_image11.svg"
-              height={1000}
+              <img
+              src="/assets/images/home_image11.png"
+              height={500}
               width={600}
             />
           </div>

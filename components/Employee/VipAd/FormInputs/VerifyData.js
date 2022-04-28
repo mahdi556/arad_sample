@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import { useContext } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 const VerifyData = ({ handleStep }) => {
@@ -26,7 +26,7 @@ const VerifyData = ({ handleStep }) => {
             resumeContext.dispatch({ type: "step", payload: 2 });
           }}
         >
-          <Image
+          <img
             src="/assets/images/editForm.png"
             width={20}
             height={20}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import EAdShow from "./RAdShow";
 import JobAsList from "./JobAsList";
-import Image from "next/image";
+  
 import style from "./styles/eshow.module.css";
 import BreakLine from "../Resume/FormInputs/BreakLine";
 const MySentResume = () => {
@@ -77,7 +77,7 @@ const MySentResume = () => {
                   height: 90,
                 }}
               >
-                <Image
+                <img
                   src="/assets/images/adimage.png"
                   width={74}
                   height={74}
@@ -108,7 +108,7 @@ const MySentResume = () => {
               <div className="d-flex">
                 <div className={`${style.canselText} d-flex  `}>
                   رد کردن
-                  <Image
+                  <img
                     src="/assets/images/cansel.svg"
                     height={20}
                     width={20}
@@ -116,7 +116,7 @@ const MySentResume = () => {
                 </div>
                 <div className={`${style.acceptText} d-flex mx-2 `}>
                   تایید کردن
-                  <Image
+                  <img
                     src="/assets/images/accept.svg"
                     height={20}
                     width={20}
@@ -148,7 +148,7 @@ const MySentResume = () => {
                   height: 90,
                 }}
               >
-                <Image
+                <img
                   src="/assets/images/adimage.png"
                   width={74}
                   height={74}
@@ -196,7 +196,7 @@ const MySentResume = () => {
                   height: 90,
                 }}
               >
-                <Image
+                <img
                   src="/assets/images/adimage.png"
                   width={74}
                   height={74}

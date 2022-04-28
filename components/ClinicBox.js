@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import { useRouter } from "next/router";
 
 const ClinicBox = ({ width, name, id }) => {
@@ -144,7 +144,7 @@ const ClinicBox = ({ width, name, id }) => {
                 height: 90,
               }}
             >
-              <Image src="/assets/images/adimage.png" width={74} height={74} />
+              <img src="/assets/images/adimage.png" width={74} height={74} />
             </div>
             <h6
               className="text-center my-auto py-2 "

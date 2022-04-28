@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import RAdBoxes from "./RAdBoxes";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
@@ -119,7 +119,7 @@ const RShowMain = () => {
             >
               <h4 className="rShowCase-sec4">تکمیل پروفایل سازمانی</h4>
               <div>
-                <Image src="/assets/images/add.svg" height={60} width={60} />
+                <img src="/assets/images/add.svg" height={60} width={60} />
               </div>
             </div>
             <div
@@ -136,7 +136,7 @@ const RShowMain = () => {
             >
               <h4 className="rShowCase-sec4">ثبت آگهی ویژه</h4>
               <div>
-                <Image
+                <img
                   src="/assets/images/speaker.png"
                   height={60}
                   width={60}
@@ -166,7 +166,7 @@ const RShowMain = () => {
               }
             >
               <div className="d-inline-flex me-3  ">
-                <Image
+                <img
                   src="/assets/images/addButton.png"
                   height={18}
                   width={18}
@@ -199,7 +199,7 @@ const RShowMain = () => {
                 }}
               >
                 <div className="d-inline-flex me-2 ">
-                  <Image
+                  <img
                     src="/assets/images/arrow-right-black.png"
                     height={10}
                     width={10}
@@ -218,7 +218,7 @@ const RShowMain = () => {
               >
                 هفته قبل
                 <div className="d-inline-flex ms-2 ">
-                  <Image
+                  <img
                     src="/assets/images/arrow-left-black.png"
                     height={10}
                     width={10}

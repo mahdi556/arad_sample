@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { faUserShield } from "@fortawesome/free-solid-svg-icons";
 import SwitchButtion from "./Employee/FormInputs/SwitchButton";
-import Image from "next/image";
+  
 
 const SideBar = () => {
   const [dropdown, setDropdown] = useState({ 1: styles.hide, 2: styles.hide });
@@ -174,7 +174,7 @@ const SideBar = () => {
               <a className="sidebar-link" href="">
                 <span>آگهی های ویژه</span>
                 <div className="ms-2">
-                  <Image
+                  <img
                     src="/assets/images/crown.png"
                     width={18}
                     height={18}
@@ -189,7 +189,7 @@ const SideBar = () => {
           <div className=" row justify-content-center align-items-center pt-5 ">
             <div className=" d-flex flex-row justify-content-center align-items-center fs-11">
               <div className="me-1">
-                <Image
+                <img
                   src="/assets/images/support1.png"
                   width={18}
                   height={18}
@@ -209,7 +209,7 @@ const SideBar = () => {
             >
               دانلود اپلیکیشن
               <div className="ms-auto mt-1">
-                <Image
+                <img
                   src="/assets/images/download1.png"
                   width={16}
                   height={16}

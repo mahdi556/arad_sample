@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import { useContext, useEffect, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import FieldError from "../../../Common/FieldError";
@@ -216,7 +216,7 @@ const FirstFormVip = () => {
                   height: 40,
                 }}
               >
-                <Image
+                <img
                   src="/assets/images/twitterx.png"
                   width={35}
                   height={30}
@@ -258,7 +258,7 @@ const FirstFormVip = () => {
                   height: 40,
                 }}
               >
-                <Image src="/assets/images/webx.png" width={33} height={30} />
+                <img src="/assets/images/webx.png" width={33} height={30} />
               </div>
 
               <input
@@ -292,7 +292,7 @@ const FirstFormVip = () => {
                   height: 40,
                 }}
               >
-                <Image src="/assets/images/instax.png" width={32} height={30} />
+                <img src="/assets/images/instax.png" width={32} height={30} />
               </div>
               <input
                 dir="ltr"
@@ -325,7 +325,7 @@ const FirstFormVip = () => {
                   height: 40,
                 }}
               >
-                <Image
+                <img
                   src="/assets/images/youtubex.png"
                   width={30}
                   height={25}

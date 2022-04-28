@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import axios from "../../axios";
 import axios2 from "axios";
 import Box from "@mui/material/Box";
@@ -77,7 +77,7 @@ const AdminLogin = () => {
         ) : (
           <>
             <div className="d-flex me-2  ">
-              <Image src="/assets/images/login.svg" height={22} width={24} />
+              <img src="/assets/images/login.svg" height={22} width={24} />
             </div>
             ورود پشتیبان
           </>

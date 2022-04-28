@@ -1,5 +1,5 @@
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
-import Image from "next/image";
+  
 import { useContext, useEffect, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import BreakLine from "./BreakLine";
@@ -275,7 +275,7 @@ const Divx = ({ i, data, dataHandler }) => {
                 مشغول به کار هستم
               </h6>
 
-              <Image
+              <img
                 className=""
                 src={
                   localData.active
@@ -543,7 +543,7 @@ const Divx = ({ i, data, dataHandler }) => {
                 I am Working
               </h6>
               <div>
-                <Image
+                <img
                   className=""
                   src={
                     localData.Enactive
@@ -663,7 +663,7 @@ const JoBExperience = () => {
           >
             سابقه کاری ندارم
           </h6>
-          <Image
+          <img
             className=""
             src={
               hasEx

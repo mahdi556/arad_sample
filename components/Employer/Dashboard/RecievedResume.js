@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import EAdShow from "./RAdShow";
 import JobAsList from "./JobAsList";
-import Image from "next/image";
+  
 import style from "./styles/rshow.module.css";
 import BreakLine from "../../Employee/Resume/FormInputs/BreakLine";
 const RecievedResume = () => {
@@ -77,7 +77,7 @@ const RecievedResume = () => {
                   height: 90,
                 }}
               >
-                <Image
+                <img
                   src="/assets/images/adimage.png"
                   width={74}
                   height={74}
@@ -141,7 +141,7 @@ const RecievedResume = () => {
                   height: 90,
                 }}
               >
-                <Image
+                <img
                   src="/assets/images/adimage.png"
                   width={74}
                   height={74}
@@ -202,7 +202,7 @@ const RecievedResume = () => {
                   height: 90,
                 }}
               >
-                <Image
+                <img
                   src="/assets/images/adimage.png"
                   width={74}
                   height={74}

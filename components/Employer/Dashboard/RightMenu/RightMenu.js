@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 const RightMenu = () => {
@@ -21,7 +21,7 @@ const RightMenu = () => {
         }}
       >
         <div className="d-flex flex-column ps-5 pt-4 align-items-center">
-          <Image src="/assets/images/Eavatar.png" width={50} height={50} />
+          <img src="/assets/images/Eavatar.png" width={50} height={50} />
           <h4
             className="ms-3 mt-2"
             style={{
@@ -33,7 +33,7 @@ const RightMenu = () => {
         </div>
         <div className="d-flex ms-4 mt-5 py-2 px-2 EsubItem">
           <div>
-            <Image src="/assets/images/edashboard.png" width={20} height={20} />
+            <img src="/assets/images/edashboard.png" width={20} height={20} />
           </div>
 
           <h6
@@ -48,7 +48,7 @@ const RightMenu = () => {
         </div>
         <div className="d-flex ms-4 mt-4">
           <div>
-            <Image
+            <img
               src="/assets/images/einterviews.png"
               width={20}
               height={20}
@@ -69,7 +69,7 @@ const RightMenu = () => {
         <div>
           <div className="d-flex ms-4 mt-4" onClick={() => toggle(2)}>
             <div>
-              <Image src="/assets/images/eresume.png" width={20} height={20} />
+              <img src="/assets/images/eresume.png" width={20} height={20} />
             </div>
 
             <h6
@@ -107,7 +107,7 @@ const RightMenu = () => {
         </div>
         <div className="d-flex ms-4 mt-4" onClick={() => toggle(2)}>
           <div>
-            <Image src="/assets/images/eresume.png" width={20} height={20} />
+            <img src="/assets/images/eresume.png" width={20} height={20} />
           </div>
 
           <h6
@@ -156,7 +156,7 @@ const RightMenu = () => {
         <div>
           <div className="d-flex ms-4 mt-4">
             <div>
-              <Image src="/assets/images/ejobs.png" width={20} height={20} />
+              <img src="/assets/images/ejobs.png" width={20} height={20} />
             </div>
 
             <h6
@@ -188,7 +188,7 @@ const RightMenu = () => {
         <div>
           <div className="d-flex ms-4 mt-4">
             <div>
-              <Image
+              <img
                 src="/assets/images/ecompanies.png"
                 width={20}
                 height={20}

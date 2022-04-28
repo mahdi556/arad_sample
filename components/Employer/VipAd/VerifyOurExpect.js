@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import { useContext } from "react";
 import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
 const VerifyOurExpect = ({ handleStep }) => {
@@ -27,7 +27,7 @@ const VerifyOurExpect = ({ handleStep }) => {
               handleStep(3, "45%");
             }}
           >
-            <Image
+            <img
               src="/assets/images/editForm.png"
               width={20}
               height={20}

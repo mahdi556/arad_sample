@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "../../../axios";
 import style from "./styles/eshow.module.css";
-import Image from "next/image";
+  
 import SearchBar from "./SearchBar";
 const FollowCompanies = ({ id }) => {
   const [rads, setRads] = useState({});
@@ -14,7 +14,7 @@ const FollowCompanies = ({ id }) => {
         <div className=" col-xl-4 col-xxl-3">
           <div className={`${style.activeCompany} d-flex flex-column  col-11 `}>
             <div className={`${style.activeCompany_sec6}    `}>
-              <Image
+              <img
                 src="/assets/images/active_label.svg"
                 height={129}
                 width={129}
@@ -24,7 +24,7 @@ const FollowCompanies = ({ id }) => {
               <div className={`${style.activeCompany_sec7_1}    `}></div>
             </div>
             <div className={`${style.activeCompany_sec1}  mx-auto mt-4   `}>
-              <Image
+              <img
                 src="/assets/images/companyLogo.png"
                 height={129}
                 width={129}

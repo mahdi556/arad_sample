@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import AdBoxNewEmployer from "../../Common/AdBoxNewEmployer";
 import BreakLine from "../../Employee/Resume/FormInputs/BreakLine";
 
@@ -30,10 +30,10 @@ const RAdShow = ({ data }) => {
           </div>
           <div className="d-flex pt-4">
             <div className="me-3">
-              <Image src="/assets/images/save.png" height={32} width={32} />
+              <img src="/assets/images/save.png" height={32} width={32} />
             </div>
             <div>
-              <Image src="/assets/images/share.png" height={32} width={32} />
+              <img src="/assets/images/share.png" height={32} width={32} />
             </div>
           </div>
         </div>

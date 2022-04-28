@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
-import Image from "next/image";
+  
 import FieldError from "../../Common/FieldError";
 const FirstForm = () => {
   const normalAdContext = useContext(NormalAdContext);
@@ -52,7 +52,7 @@ const FirstForm = () => {
           borderRadius: 50,
         }}
       >
-        <Image src="/assets/images/enheader.png" height={150} width={819} />
+        <img src="/assets/images/enheader.png" height={150} width={819} />
       </div>
       <div className="d-flex align-items-start pt-1">
         <div className="d-flex col-3 flex-column   pe-2">

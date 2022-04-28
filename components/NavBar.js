@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import UserProvider from "../context/employeeContext/User/UserProvider";
 import Login from "./Common/Login";
 import { useRouter } from "next/router";
@@ -6,6 +6,7 @@ import AdminLogin from "./Common/AdminLogin";
 import UserContext from "../context/employeeContext/User/UserContext";
 import { useContext, useEffect, useState } from "react";
 import NewAd from "./Common/NewAd";
+import NavBarItem from "./Common/NavBarItem";
 const NavBar = () => {
   const userContext = useContext(UserContext);
   const [user, setUser] = useState({});
@@ -23,8 +24,16 @@ const NavBar = () => {
   }, [user]);
   return (
     // <UserProvider>
-    <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-white navshadow">
-      <div className="container-fluid">
+
+    <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-white navshadow "
+    style={{
+      overflow:'visible'
+    }}
+    >
+      <div className="container-fluid"
+        style={{
+          overflow:'visible'
+        }}>
         {/* <a className="navbar-brand" href="#"> */}
 
         {/* </a> */}
@@ -41,7 +50,7 @@ const NavBar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav align-items-center   me-auto mb-2 mb-lg-0 ">
-
+             
           <li
               className="navitems ps-2 "
               onClick={() => {
@@ -85,6 +94,7 @@ const NavBar = () => {
               >
                 لیست آگهی ها
               </h5>
+            {/* <NavBarItem /> */}
             </li>
             <li className="navitems">
               <h5
@@ -129,7 +139,7 @@ const NavBar = () => {
             <NewAd />
           </ul>
           <Login />
-          {/* <AdminLogin /> */}
+           {/* <AdminLogin /> */}
         </div>
       </div>
     </nav>

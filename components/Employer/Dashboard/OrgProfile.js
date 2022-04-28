@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import Image from "next/image";
+  
 import style from "./styles/rshow.module.css";
 const OrgProfile = () => {
   const [image, setImage] = useState([]);

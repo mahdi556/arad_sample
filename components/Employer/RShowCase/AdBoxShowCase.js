@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import { useRouter } from "next/router";
 
 const AdBoxShowCase = ({ width, data }) => {
@@ -149,7 +149,7 @@ const AdBoxShowCase = ({ width, data }) => {
               height: 100,
             }}
           >
-          {data && <Image src={data.image} width={74} height={74} />}
+          {data && <img src={data.image} width={74} height={74} />}
           </div>
           <div>برقراری ارتباط</div>
         </div>

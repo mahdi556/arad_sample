@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
-import Image from "next/image";
+  
 const FirstForm = () => {
   const normalAdContext = useContext(NormalAdContext);
   const [image, setImage] = useState([]);
@@ -39,7 +39,7 @@ const FirstForm = () => {
         borderRadius:50
       }}
       >
-        <Image 
+        <img 
         src='/assets/images/enheader.png'
         height={184}
         width={819}

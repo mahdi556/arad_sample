@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 
 const ESlideShow = () => {
     var slideIndex = 1;
@@ -35,19 +35,19 @@ const ESlideShow = () => {
         {/* <!-- Full-width images with number and caption text --> */}
         <div class="mySlides fade">
           <div class="numbertext">1 / 3</div>
-          <Image src="/assets/images/slide1.jpg" height={580} width={345} />
+          <img src="/assets/images/slide1.jpg" height={580} width={345} />
           <div class="text">Caption Text</div>
         </div>
 
         <div class="mySlides fade">
           <div class="numbertext">2 / 3</div>
-          <Image src="/assets/images/slide2.jpg" height={580} width={345} />
+          <img src="/assets/images/slide2.jpg" height={580} width={345} />
           <div class="text">Caption Two</div>
         </div>
 
         <div class="mySlides fade">
           <div class="numbertext">3 / 3</div>
-          <Image src="/assets/images/slide3.png" height={580} width={345} />
+          <img src="/assets/images/slide3.png" height={580} width={345} />
           <div class="text">Caption Three</div>
         </div>
 

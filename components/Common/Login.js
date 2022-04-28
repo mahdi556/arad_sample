@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import axios from "../../axios";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -189,7 +189,7 @@ const Login = () => {
         ) : (
           <>
             <div className="d-flex me-2  ">
-              <Image src="/assets/images/login.svg" height={22} width={24} />
+              <img src="/assets/images/login.svg" height={22} width={24} />
             </div>
             ورود/ثبت نام
           </>
@@ -452,7 +452,7 @@ const Login = () => {
                   کارفرما هستم
                 </h3>
                 <div className="d-flex ms-2   ">
-                  <Image
+                  <img
                     src={
                       roll == "employer"
                         ? "/assets/images/radio-selected.svg"
@@ -484,7 +484,7 @@ const Login = () => {
                   کارجو هستم
                 </h3>
                 <div className="d-flex ms-2  ">
-                  <Image
+                  <img
                     src={
                       roll == "employee"
                         ? "/assets/images/radio-selected.svg"

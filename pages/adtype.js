@@ -1,6 +1,6 @@
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-import Image from "next/image";
+  
 import { useContext } from "react";
 import UserContext from "../context/employeeContext/User/UserContext";
 import { useRouter } from "next/router";
@@ -98,7 +98,7 @@ const AdType = () => {
             height: 550,
           }}
         >
-          <Image src="/assets/images/play.svg" height={80} width={80} />
+          <img src="/assets/images/play.svg" height={80} width={80} />
         </div>
       </div>
       <Footer />

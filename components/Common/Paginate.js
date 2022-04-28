@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 
 const Paginate = () => {
   return (
@@ -6,7 +6,7 @@ const Paginate = () => {
       <div className="d-flex justify-content-center align-items-center mt-5">
         <div className="d-flex align-items-center nextPage">
           <div className="mt-1">
-            <Image
+            <img
               src="/assets/images/arrow-right.png"
               height={15}
               width={20}
@@ -28,7 +28,7 @@ const Paginate = () => {
         <div className="d-flex align-items-center ms-2 nextPage">
           <h6 className="text-white me-2 mt-1 ">صفحه قبل</h6>
           <div className="mt-1">
-            <Image
+            <img
               src="/assets/images/arrow-left.png"
               height={15}
               width={20}

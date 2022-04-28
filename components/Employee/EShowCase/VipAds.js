@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "../../../axios";
 import style from "./styles/eshow.module.css";
-import Image from "next/image";
+  
 import AdBoxNewEmployer from "../../Common/AdBoxNewEmployer";
 import SearchBar from "./SearchBar";
 const VipAds = ({ id }) => {
@@ -29,10 +29,10 @@ const VipAds = ({ id }) => {
         <div
           className={`${style.filterButton} d-flex align-items-center col-2 mx-2 px-2`}
         >
-          <Image src="/assets/images/arrow-down.svg" height={20} width={20} />
+          <img src="/assets/images/arrow-down.svg" height={20} width={20} />
           <h5 className="ms-auto me-1 pt-2">فیلترها</h5>
           <div className="pt-2">
-            <Image src="/assets/images/f_icon.svg" height={20} width={20} />
+            <img src="/assets/images/f_icon.svg" height={20} width={20} />
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import Image from "next/image";
+  
 import Box from "@mui/material/Box";
 import axios from "../../axios";
 import Modal from "@mui/material/Modal";
