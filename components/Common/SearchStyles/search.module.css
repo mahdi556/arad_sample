@@ -1,0 +1,8 @@
+.sec1 {
+  background-color: #c7e4e5;
+  height: 100%;
+  border: none;
+}
+.sec1:focus{
+  outline: none;
+}

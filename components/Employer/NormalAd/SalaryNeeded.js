@@ -1,6 +1,6 @@
 import { useContext } from "react";
- import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
-
+import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
+import { numberToWords } from "@persian-tools/persian-tools";
 const SalaryNeeded = () => {
   const normalAdContext = useContext(NormalAdContext);
   return (
@@ -51,6 +51,13 @@ const SalaryNeeded = () => {
             >
               تومان
             </span>
+            <div
+              style={{
+                fontSize: 13,
+              }}
+            >
+              {numberToWords(normalAdContext.data.salary.fa.from)} تومان
+            </div>
           </div>
           تا
           <div className="   input-group input-group-sm  ms-2">
@@ -67,7 +74,6 @@ const SalaryNeeded = () => {
                 })
               }
               value={normalAdContext.data.salary.fa.to}
-
             />
             <span
               className="input-group-text"
@@ -84,6 +90,13 @@ const SalaryNeeded = () => {
             >
               تومان
             </span>
+            <div
+              style={{
+                fontSize: 13,
+              }}
+            >
+              {numberToWords(normalAdContext.data.salary.fa.to)} تومان
+            </div>
           </div>
         </div>
       </div>
