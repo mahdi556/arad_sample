@@ -1,4 +1,3 @@
-  
 import { useRouter } from "next/router";
 
 const AdBoxShowCase = ({ width, data }) => {
@@ -10,12 +9,12 @@ const AdBoxShowCase = ({ width, data }) => {
       onClick={() => {
         router.push({
           pathname: "/eShowcase",
-          query: { ad: data.id  },
+          query: { ad: data.id },
         });
       }}
     >
       <div className="d-flex col-12 p-4  " id="adbox">
-      <div className="d-flex col-10 pe-2 flex-column  ">
+        <div className="d-flex col-10 pe-2 flex-column  ">
           <div
             className="  mb-4"
             style={{
@@ -46,7 +45,7 @@ const AdBoxShowCase = ({ width, data }) => {
               lineHeight: "0.2rem",
             }}
           >
-            {data && data.jobCategory[0].fa_name}
+            {data.jobCategory && data.jobCategory[0].fa_name}
             <div
               className=" d-inline-flex fw-light ms-2"
               style={{
@@ -114,7 +113,7 @@ const AdBoxShowCase = ({ width, data }) => {
             width: "15%",
           }}
         >
-         {data && data.personal.corporate_type == 2 && (
+          {data && data.personal.corporate_type == 2 && (
             <div className="adbox-label">
               دورکاری
               <svg
@@ -149,7 +148,7 @@ const AdBoxShowCase = ({ width, data }) => {
               height: 100,
             }}
           >
-          {data && <img src={data.image} width={74} height={74} />}
+            {data && <img src={data.image} width={74} height={74} />}
           </div>
           <div>برقراری ارتباط</div>
         </div>

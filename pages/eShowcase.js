@@ -43,7 +43,7 @@ const EShowCase = () => {
             <RShowSideBar data={data} />
           </div>
           <div className="  col-9 ">
-            <RShowContent data={data} />
+            {/* <RShowContent data={data} /> */}
           </div>
         </div>
       </div>

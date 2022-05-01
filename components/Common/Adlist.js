@@ -7,12 +7,15 @@ import { useRouter } from "next/router";
 import NavBarItem from "./NavBarItem";
 import Filters from "./Filters";
 import SideBar from "../SideBar";
-import Pagination from "react-js-pagination";
+import Paginate from "./Paginate";
 
 const Adlist = () => {
   const router = useRouter();
   const [eads, setEads] = useState({});
   const [activePage, setActivePage] = useState({});
+  const [totalPage, setTotalPage] = useState(null);
+  const [currentPage, setCurrentPage] = useState(null);
+  // const [activePage, setActivePage] = useState({});
 
   useEffect(() => {
     axios({
@@ -22,12 +25,13 @@ const Adlist = () => {
       .then((response) => {
         console.log(response);
         setEads(response.data.data.eads);
+        setTotalPage(response.data.data.meta.last_page);
+        setCurrentPage(response.data.data.meta.current_page);
       })
       .catch(function (error) {
         console.log(error);
       });
   }, []);
-
   const handlePageChange = (number) => {
     setActivePage(number);
   };
@@ -64,13 +68,7 @@ const Adlist = () => {
           </div>
         </div>
         <div>
-          <Pagination
-            activePage={activePage}
-            itemsCountPerPage={10}
-            totalItemsCount={450}
-            pageRangeDisplayed={5}
-            onChange={handlePageChange()}
-          />
+          <Paginate totalPage={totalPage} currentPage={currentPage} />
         </div>
       </div>
     </>

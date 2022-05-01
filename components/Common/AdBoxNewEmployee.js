@@ -49,7 +49,7 @@ const AdBoxNewEmployee = ({ width, data }) => {
               lineHeight: "0.3rem",
             }}
           >
-            {data && data.jobCategory[0].fa_name}
+            {data.jobCategory && data.jobCategory[0].fa_name}
             <div
               className=" d-inline-flex fw-light ms-2 mt-3"
               style={{
@@ -58,7 +58,7 @@ const AdBoxNewEmployee = ({ width, data }) => {
                 lineHeight: "0.8rem",
               }}
             >
-              {data && data.personal.city_fa}
+              {data.jobCategory && data.personal.city_fa}
             </div>
           </h6>
 
@@ -68,7 +68,7 @@ const AdBoxNewEmployee = ({ width, data }) => {
               fontSize: 15,
             }}
           >
-            {data && data.experiences.length && (
+            {data.experiences && data.experiences.length && (
               <>
                 <svg
                   className="me-2"
