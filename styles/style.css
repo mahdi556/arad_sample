@@ -460,7 +460,8 @@ div#__next > div {
   background-color: #d9d9d9;
   color: #000;
   padding: 0.2rem;
-  border-radius: 0.2rem;
+  /* border-radius: 0.2rem; */
+  border:solid 1px #ccc;
   width: 33%;
   text-align: center;
   font-size: 0.7rem;
@@ -525,10 +526,10 @@ div#__next > div {
   width: 100%;
   background-color: #ebebeb;
   border-style: none;
-  border-radius: 5;
+  border-radius: 5px;
   align-items: center;
   cursor: pointer;
-  height: 1.7rem;
+  height: 35px;
 }
 
 .dropdown-open {
@@ -772,10 +773,10 @@ div#__next > div {
   background-color: #ebebeb;
   border-style: none;
   border-radius: 5px;
-  height: 2rem;
+  height: 35px;
   line-height: 1.7rem;
   font-size: 18px;
-}
+ }
 .inputDanger {
   background-color: #ebebeb;
   border-style: solid;
@@ -791,6 +792,7 @@ div#__next > div {
   border-radius: 5px;
   line-height: 1.4rem;
   font-size: 16px;
+  height: 35px;
 }
 .input-chat {
   background-color: #e4e4e4;
@@ -879,7 +881,8 @@ div#__next > div {
   border-bottom-color: #939393;
   border-top-color: #939393;
   margin-left: 15px;
-  height: 2rem;
+  height: 35px;
+  width: 75px;
   cursor: pointer;
 }
 .ButtonXChecked {
@@ -887,7 +890,8 @@ div#__next > div {
   background-color: #91c7c9;
   border-radius: 6px;
   padding: 5px 10px;
-  height: 2rem;
+  height: 35px;
+  width: 75px;
   border-style: solid;
   border-width: 1px;
   border-bottom-color: #11999e;
@@ -1957,13 +1961,25 @@ div#__next > div {
 }
 .adType-price {
   background-color: #11999e;
-  border-radius: 40%;
-  font-size: 20px;
+  border-radius:100px;
+  font-family: iranBlack;
+  font-size: 23px;
   color: #fff;
   font-weight: bold;
   margin-bottom: -30px;
   text-align: center;
+  width: 120px;
+  height: 40px;
 }
+.adType-price2 {
+  background-color: #11999e;
+  border-radius:100px;
+  color: #fff;
+   margin-bottom: -30px;
+   width: 120px;
+  height: 40px;
+}
+
 .adType-parent {
   display: flex;
   flex-direction: column;
@@ -1985,25 +2001,42 @@ div#__next > div {
   cursor: pointer;
 }
 .adType-txt1 {
-  font-weight: bold;
+font-family: iranBold;
 }
 .adType-txt2 {
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.6);
-}
-.adType-txt3 {
-  color: rgba(0, 0, 0, 0.6);
+   color: rgba(0, 0, 0, 0.6);
+   font-family: iranBold;
+  }
+  .adType-txt3 {
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 300;
 }
 .adType-down {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   background-color: #ec4b72;
   border-radius: 40px;
-  font-size: 20px;
-  color: #fff;
-  font-weight: bold;
   bottom: -5%;
-  font-size: 17px;
-  /* margin-bottom: -30px; */
-  text-align: center;
-  padding: 5px 20px;
+ }
+.adType-txt4 {
+color: #fff;
+font-weight: 700;
+font-size: 19px;
 }
+.adType-txt5 {
+   font-weight: 300;
+   color: #fff;
+   font-size: 16px;
+}
+.adType-txt6 {
+  color: #fff;
+  font-family: iranBlack;
+  font-size: 24px;
+  }
+  .adType-txt7 {
+     font-weight: 300;
+     color: #fff;
+     font-size: 16px;
+  }

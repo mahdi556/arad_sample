@@ -1,6 +1,6 @@
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
-  
+
 import axios from "../axios";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
@@ -105,7 +105,7 @@ const Adshow = () => {
               <div>
                 {data && (
                   <img
-                     src={data.image}
+                    src={data.image}
                     height={100}
                     width={100}
                     style={{ borderRadius: "50%" }}
@@ -121,15 +121,24 @@ const Adshow = () => {
                 <h5 className="fw-bold mb-4">ویدیو معرفی</h5>
                 <div
                   style={{
-                    borderRadius: 300,
+                    borderRadius: 20,
                     overflow: "hidden",
                   }}
                 >
-                  <img
+                  {/* <img
                     src={"/assets/images/video-sample.png"}
                     height={160}
                     width={230}
-                  />
+                  /> */}
+                  <video width="267" height="144"   src={data.video}
+                  poster='/assets/images/video-sample.png'
+                  onClick={({target: video}) => video.paused ? video.play() : video.pause()}
+                  style={{
+                    cursor:'pointer'
+                  }}
+                  >
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
               </div>
             </div>
@@ -669,11 +678,7 @@ const Adshow = () => {
               }}
             >
               <div className="me-2 mt-1 ">
-                <img
-                  src="/assets/images/network.svg"
-                  width={23}
-                  height={23}
-                />
+                <img src="/assets/images/network.svg" width={23} height={23} />
               </div>
               شبکه های اجتماعی
             </div>

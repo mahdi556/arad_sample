@@ -120,7 +120,7 @@ const NavBar = () => {
                 کار در منزل
               </h5>
             </li>
-            <li className="navitems">
+            {/* <li className="navitems">
               <h5
                 className="  fs-5 text-center lh-sm py-0 my-0"
                 style={{ fontFamily: "iranBold", cursor: "pointer" }}
@@ -135,7 +135,7 @@ const NavBar = () => {
               >
                 دانلود اپلیکیشن
               </h5>
-            </li>
+            </li> */}
             <NewAd />
           </ul>
           <Login />

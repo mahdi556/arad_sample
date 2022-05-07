@@ -25,29 +25,29 @@ const JobConditionVip = ({ step, handleStep }) => {
 
         {step >= 3 && <VerifyData />}
         <BreakLine />
-        {step == 3 && <JoBExperience />}
+        {step == 3 && <JoBExperience handleStep={handleStep} />}
 
         {step > 3 && <VerifyExperience />}
 
         {step == 4 && (
           <div className="col-12">
-            <DegreeDoc />
+            <DegreeDoc  handleStep={handleStep} />
           </div>
         )}
         {step > 4 && <VerifyDegree />}
         {step == 5 && (
           <div className="mt-5">
-            <LangExpert />
+            <LangExpert handleStep={handleStep} />
           </div>
         )}
         {step > 5 && <VerifyLangExpert />}
         {step == 6 && (
           <div className="mt-5">
-            <SoftExpert />
+            <SoftExpert handleStep={handleStep} />
           </div>
         )}
         {step > 6 && <VerifySoftExpert />}
-        {step == 7 && <SampleEx />}
+        {step == 7 && <SampleEx  handleStep={handleStep}/>}
         {step > 7 && <VerifySampleEx />}
         {step == 8 && <Description />}
         {step > 8 && <VerifyDescription />}

@@ -1,10 +1,9 @@
-  
 import { useContext, useEffect, useRef, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
 import ButtonTag from "../../../Employer/FormInputs/ButtonTag";
 
-const SoftExpert = () => {
+const SoftExpert = ({handleStep}) => {
   const [dropdown, setDropdown] = useState("dropdown-close");
   const [drop, setDrop] = useState(false);
 
@@ -16,7 +15,7 @@ const SoftExpert = () => {
   const [ev, setEv] = useState("none");
   const [input, setInput] = useState("inputStyle");
   const [datas, setDatas] = useState(null);
-  const [hasEx, setHasEx] = useState(false);
+  const [hasEx, setHasEx] = useState(true);
   const resumeContext = useContext(ResumeContext);
 
   const dropRef = useRef(null);
@@ -114,10 +113,14 @@ const SoftExpert = () => {
     setExpert([...expert]);
     setText(null);
   };
+  const handleHasEx = () => {
+    hasEx && handleStep(7);
+    setHasEx(!hasEx);
+  };
 
   return (
     <>
-      <div className="d-flex mt-5 mb-2">
+      <div className="d-flex px-5 mb-2">
         <div
           style={{
             fontWeight: "bold",
@@ -132,7 +135,7 @@ const SoftExpert = () => {
           className="d-flex align-items-center  "
           style={{ cursor: "pointer" }}
           onClick={() => {
-            setHasEx(!hasEx);
+            handleHasEx();
             setExpert([]);
             // setData([]);
           }}
@@ -167,12 +170,12 @@ const SoftExpert = () => {
               setHasEx(true);
             }}
           >
-            <ButtonAdd data={"افزودن"} />
+            <ButtonAdd data={"ارائه کردن مهارت"} />
           </div>
         )}
       </div>
       {hasEx && (
-        <div className="d-flex col-12 ">
+        <div className="d-flex col-12 px-5 ">
           <div className="col-12">
             <label
               style={{
@@ -183,7 +186,7 @@ const SoftExpert = () => {
               نام مهارت
             </label>
 
-            <div className="d-flex   justify-content-between flex-wrap   expert ">
+            <div className="d-flex   justify-content-between align-items-start flex-wrap   expert ">
               <div className="d-flex col-12 align-items-center justify-content-between">
                 <div className="d-inline col-5 ">
                   <input
@@ -228,7 +231,7 @@ const SoftExpert = () => {
                     </div>
                   )}
                 </div>
-                <div className="d-flex justify-content-start   mt-3">
+                <div className="d-flex justify-content-start    ">
                   <div
                     className={ButtonX[1] ? "ButtonXChecked" : "ButtonX"}
                     onClick={() => {

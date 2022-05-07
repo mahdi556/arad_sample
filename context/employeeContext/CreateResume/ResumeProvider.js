@@ -24,6 +24,7 @@ const initialData = {
   Ename: "",
   Elastname: "",
   corporateType: 1,
+  military:false,
   birthday: {
     day: "",
     month: "",
@@ -60,6 +61,7 @@ const initialData = {
     fa: { from: "", to: "" },
     en: { from: "", to: "" },
   },
+  salaryAgree:false,
   workHour: {
     fa: { from: "", to: "" },
   },
@@ -93,6 +95,7 @@ const initialData = {
   whatsapp: "",
   telegram: "",
   email: "",
+  military:false
 };
 
 const ResumeProvider = (props) => {

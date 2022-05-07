@@ -1,12 +1,13 @@
-  
 import { useContext } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import { numberToWords } from "@persian-tools/persian-tools";
+
 const VerifyData = ({ handleStep }) => {
   const resumeContext = useContext(ResumeContext);
   return (
     <>
       <div
-        className="col-12"
+        className="col-12 px-5"
         style={{
           display: "flex",
           fontWeight: "bold",
@@ -34,7 +35,7 @@ const VerifyData = ({ handleStep }) => {
           />
         </div>
       </div>
-      <div className="d-flex col-12 flex-wrap px-4">
+      <div className="d-flex col-12 flex-wrap px-5">
         <div className="d-flex col-6 justify-content-start align-items-center mb-4 ">
           <h5 className="col-6 fs-6 fw-light">عنوان:</h5>
           <h6 className="col-6 fs-6  ">{resumeContext.data.title}</h6>
@@ -81,18 +82,33 @@ const VerifyData = ({ handleStep }) => {
         </div>
         <div className="d-flex col-6 justify-content-start align-items-center mb-4">
           <h5 className="col-6 fs-6 fw-light">استان:</h5>
-          <h6 className="col-6 fs-6  ">{resumeContext.data.province.name}</h6>
+          <h6 className="col-6 fs-6  ">{resumeContext.data.province.fa}</h6>
         </div>{" "}
         <div className="d-flex col-6 justify-content-start align-items-center mb-4">
           <h5 className="col-6 fs-6 fw-light">شهر:</h5>
-          <h6 className="col-6 fs-6  ">{resumeContext.data.city.name}</h6>
+          <h6 className="col-6 fs-6  ">{resumeContext.data.city.fa}</h6>
         </div>
-        <div className="d-flex col-6 justify-content-start align-items-center mb-4">
-          <h5 className="col-6 fs-6 fw-light ">حقوق درخواستی :</h5>
-          <h6 className="col-6 fs-6  ">
-            {" "}
-            از {resumeContext.data.salary.fa.from} تا{" "}
-            {resumeContext.data.salary.fa.to}
+        <div className="d-flex col-6 justify-content-start align-items-start mb-4">
+          <h5 className="col-4 fs-6 fw-light ">حقوق درخواستی :</h5>
+          <h6 className="col-8 fs-6  ">
+            {resumeContext.data.salaryAgree ? (
+              "توافقی"
+            ) : (
+              <>
+                <h6>
+                  از {resumeContext.data.salary.fa.from} تومان تا{" "}
+                  {resumeContext.data.salary.fa.to} تومان  {" "}
+                </h6>
+                <h6 
+                style={{
+                  fontSize:14
+                }}
+                >
+                 از {numberToWords(resumeContext.data.salary.fa.to)} تومان تا{" "}
+                  {numberToWords(resumeContext.data.salary.fa.to)} تومان
+                </h6>
+              </>
+            )}
           </h6>
         </div>
       </div>

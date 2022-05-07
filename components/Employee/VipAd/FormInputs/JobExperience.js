@@ -1,5 +1,5 @@
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
-  
+import style from "./FormStyles/form.module.css";
 import { useContext, useEffect, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import BreakLine from "./BreakLine";
@@ -25,7 +25,7 @@ const Divx = ({ i, data, dataHandler }) => {
 
   return (
     <>
-      <div className="col-10 px-5">
+      <div className="col-12 px-5">
         <div className="col-12" id={i}>
           <label
             style={{
@@ -41,6 +41,9 @@ const Divx = ({ i, data, dataHandler }) => {
                 ? "col-12 mb-3 ps-2 inputStyle"
                 : "col-12 mb-3 ps-2 inputFilled"
             }
+            style={{
+              width: 771,
+            }}
             type="text"
             onChange={(e) => {
               setLocalData({ ...localData, title: e.target.value });
@@ -68,6 +71,9 @@ const Divx = ({ i, data, dataHandler }) => {
                 ? "col-12 mb-3 ps-2 inputStyle"
                 : "col-12 mb-3 ps-2 inputFilled"
             }
+            style={{
+              width: 771,
+            }}
             type="text"
             onChange={(e) => {
               setLocalData({ ...localData, name: e.target.value });
@@ -91,6 +97,9 @@ const Divx = ({ i, data, dataHandler }) => {
                 ? "col-12 mb-3 ps-2 inputStyle"
                 : "col-12 mb-3 ps-2 inputFilled"
             }
+            style={{
+              width: 771,
+            }}
             type="text"
             onChange={(e) => {
               setLocalData({ ...localData, reason: e.target.value });
@@ -100,7 +109,7 @@ const Divx = ({ i, data, dataHandler }) => {
           />
         </div>
         <div className="d-flex flex-column pt-4 col-12  ">
-          <div className="col-12 mb-2">
+          <div className="col-5 mb-2">
             <label
               style={{
                 marginBottom: "0.5rem",
@@ -110,8 +119,8 @@ const Divx = ({ i, data, dataHandler }) => {
               میزان سابقه
             </label>
           </div>
-          <div className="d-flex justify-content-between flex-wrap col-6 ">
-            <div className="d-flex col-12 justify-content-center align-items-center mb-3">
+          <div className="d-flex justify-content-between flex-wrap col-12 ">
+            <div className="d-flex col-4 justify-content-center align-items-center mb-3">
               شروع
               <div className="   input-group input-group-sm mx-2">
                 <input
@@ -186,7 +195,7 @@ const Divx = ({ i, data, dataHandler }) => {
               </div>
             </div>
 
-            <div className="d-flex col-12 justify-content-center align-items-center mb-3">
+            <div className="d-flex col-4 justify-content-center align-items-center mb-3">
               پایان
               <div className="   input-group input-group-sm mx-2">
                 <input
@@ -260,14 +269,14 @@ const Divx = ({ i, data, dataHandler }) => {
             </div>
 
             <div
-              className="d-flex align-items-center"
+              className="d-flex align-items-center col-3"
               onClick={() => {
                 setLocalData({ ...localData, active: !localData.active });
                 datahandler({ ...localData, active: !localData.active });
               }}
             >
               <h6
-                className="me-2"
+                className="me-2 pt-1"
                 style={
                   localData.active
                     ? {
@@ -300,10 +309,10 @@ const Divx = ({ i, data, dataHandler }) => {
   );
 };
 
-const JoBExperience = () => {
+const JoBExperience = ({ handleStep }) => {
   const resumeContext = useContext(ResumeContext);
   const [expert, setExpert] = useState([]);
-  const [hasEx, setHasEx] = useState(false);
+  const [hasEx, setHasEx] = useState(true);
   const [data, setData] = useState([]);
   const [display, setDisplay] = useState("none");
 
@@ -379,13 +388,16 @@ const JoBExperience = () => {
       return data[index];
     }
   };
+  const handleHasEx = () => {
+    hasEx && handleStep(4);
+    setHasEx(!hasEx);
+  };
   return (
     <>
       <div className="d-flex align-items-center px-5">
         <div
+          className={`${style.title}  `}
           style={{
-            fontWeight: "bold",
-            fontSize: "1.2rem",
             marginBottom: "1rem",
             marginLeft: "auto",
           }}
@@ -396,13 +408,14 @@ const JoBExperience = () => {
           className="d-flex align-items-center  "
           style={{ cursor: "pointer" }}
           onClick={() => {
-            setHasEx(!hasEx);
+            // setHasEx(!hasEx);
             setExpert([]);
             setData([]);
+            handleHasEx();
           }}
         >
           <h6
-            className="me-2"
+            className="me-2 mt-1"
             style={
               hasEx
                 ? {

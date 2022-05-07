@@ -1,5 +1,5 @@
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
-  
+
 import { useContext, useEffect, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 
@@ -18,8 +18,8 @@ const Divx = ({ i, data, dataHandler }) => {
   const datahandler = dataHandler;
   return (
     <>
-      <div className="d-flex col-12 px-3 mt-3 " id={i}>
-        <div className="col-8 pe-3">
+      <div className="d-flex col-12 px-5 mt-3 " id={i}>
+        <div className="col-12 pe-3">
           <div className="col-12  mt-2">
             <label
               style={{
@@ -35,6 +35,9 @@ const Divx = ({ i, data, dataHandler }) => {
                   ? "col-12 mb-3 ps-2 inputStyle"
                   : "col-12 mb-3 ps-2 inputFilled"
               }
+              style={{
+                width: 771,
+              }}
               type="text"
               onChange={(e) => {
                 setLocalData({ ...localData, title: e.target.value });
@@ -59,6 +62,9 @@ const Divx = ({ i, data, dataHandler }) => {
                   : "col-12 mb-3 ps-2 inputFilled"
               }
               type="text"
+              style={{
+                width: 771,
+              }}
               onChange={(e) => {
                 setLocalData({ ...localData, degree: e.target.value });
                 datahandler({ ...localData, degree: e.target.value });
@@ -78,8 +84,8 @@ const Divx = ({ i, data, dataHandler }) => {
                 سال فارغ التحصیلی
               </label>
             </div>
-            <div className="d-flex justify-content-between flex-wrap col-10 ">
-              <div className="d-flex col-12 justify-content-center align-items-center mb-3">
+            <div className="d-flex justify-content-between align-items-start flex-wrap col-12 ">
+              <div className="d-flex col-8 justify-content-center align-items-start mb-3">
                 <div className="   input-group input-group-sm mx-2">
                   <input
                     className={
@@ -188,50 +194,47 @@ const Divx = ({ i, data, dataHandler }) => {
                   </span>
                 </div>
               </div>
-            </div>
-
-            <div
-              className="d-flex align-items-center mt-2"
-              onClick={() => {
-                setLocalData({ ...localData, active: !localData.active });
-                datahandler({ ...localData, active: !localData.active });
-              }}
-            >
-              <h6
-                className="me-2"
-                style={
-                  localData.active
-                    ? {
-                        color: "#e92b59",
-                        fontSize: 16,
-                      }
-                    : { color: "#11999e", fontSize: 16 }
-                }
+              <div   className="d-flex align-items-center mt-2"
+                onClick={() => {
+                  setLocalData({ ...localData, active: !localData.active });
+                  datahandler({ ...localData, active: !localData.active });
+                }}
               >
-                مشغول به تحصیل هستم
-              </h6>
+                <h6
+                  className="me-2 pt-1"
+                  style={
+                    localData.active
+                      ? {
+                          color: "#e92b59",
+                          fontSize: 16,
+                        }
+                      : { color: "#11999e", fontSize: 16 }
+                  }
+                >
+                  مشغول به تحصیل هستم
+                </h6>
 
-              <img
-                className=""
-                src={
-                  localData.active
-                    ? "/assets/images/checked.png"
-                    : "/assets/images/checkbox.png"
-                }
-                height={17}
-                width={17}
-              />
+                <img
+                  className=""
+                  src={
+                    localData.active
+                      ? "/assets/images/checked.png"
+                      : "/assets/images/checkbox.png"
+                  }
+                  height={17}
+                  width={17}
+                />
+              </div>
             </div>
           </div>
         </div>
-     
       </div>
     </>
   );
 };
 
-const DegreeDoc = () => {
-  const [hasEx, setHasEx] = useState(false);
+const DegreeDoc = ({ handleStep }) => {
+  const [hasEx, setHasEx] = useState(true);
   const [data, setData] = useState([]);
   const resumeContext = useContext(ResumeContext);
   const regData = () => {
@@ -293,9 +296,14 @@ const DegreeDoc = () => {
       return data[index];
     }
   };
+  const handleHasEx = () => {
+    hasEx && handleStep(5);
+    setHasEx(!hasEx);
+  };
+
   return (
     <>
-      <div className="d-flex align-items-center px-3">
+      <div className="d-flex align-items-center px-5">
         <div
           style={{
             fontWeight: "bold",
@@ -310,8 +318,7 @@ const DegreeDoc = () => {
           className="d-flex align-items-center  "
           style={{ cursor: "pointer" }}
           onClick={() => {
-            setHasEx(!hasEx);
-
+            handleHasEx();
             setData([]);
           }}
         >
@@ -372,7 +379,7 @@ const DegreeDoc = () => {
         </>
       ))}
       {data.length > 0 && (
-        <div
+        <div className="px-5"
           onClick={() => {
             dataHandler({
               id: data.length + 1,

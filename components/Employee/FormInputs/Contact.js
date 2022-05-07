@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
 import SubmitRn from "../VipAd/FormInputs/SubmitRn";
- import SwitchButtion from "./SwitchButton";
+import SwitchButtion from "./SwitchButton";
 
 const ContactForm = () => {
   const resumeContext = useContext(ResumeContext);
@@ -26,7 +26,7 @@ const ContactForm = () => {
           اطلاعات تماس
         </div>
         <div className="d-flex  justify-content-between">
-          <div className="col-5">
+          <div className="col-6">
             <label
               style={{
                 marginBottom: "0.5rem",
@@ -36,12 +36,11 @@ const ContactForm = () => {
               شماره موبایل
             </label>
             <input
-              className="col-12 mb-3 "
-              style={{
-                backgroundColor: "#fff",
-                borderStyle: "none",
-                borderRadius: 5,
-              }}
+              className={
+                resumeContext.data.cellphone == ""
+                  ? "col-11   ps-2 inputStyle"
+                  : "col-11  ps-2 inputFilled"
+              }
               type="text"
               onChange={(e) =>
                 resumeContext.dispatch({
@@ -51,7 +50,7 @@ const ContactForm = () => {
               }
             />
           </div>
-          <div className="col-5">
+          <div className="col-6">
             <label
               style={{
                 marginBottom: "0.5rem",
@@ -61,12 +60,11 @@ const ContactForm = () => {
               شماره واتساپ
             </label>
             <input
-              className="col-12 mb-3 "
-              style={{
-                backgroundColor: "#fff",
-                borderStyle: "none",
-                borderRadius: 5,
-              }}
+              className={
+                resumeContext.data.whatsapp == ""
+                  ? "col-11   ps-2 inputStyle"
+                  : "col-11  ps-2 inputFilled"
+              }
               type="text"
               onChange={(e) =>
                 resumeContext.dispatch({
@@ -77,8 +75,8 @@ const ContactForm = () => {
             />
           </div>
         </div>
-        <div className="d-flex  justify-content-between">
-          <div className="col-5">
+        <div className="d-flex  justify-content-between mt-4">
+          <div className="col-6">
             <label
               style={{
                 marginBottom: "0.5rem",
@@ -88,12 +86,11 @@ const ContactForm = () => {
               تلگرام
             </label>
             <input
-              className="col-12 mb-3 "
-              style={{
-                backgroundColor: "#fff",
-                borderStyle: "none",
-                borderRadius: 5,
-              }}
+              className={
+                resumeContext.data.telegram == ""
+                  ? "col-11   ps-2 inputStyle"
+                  : "col-11  ps-2 inputFilled"
+              }
               type="text"
               onChange={(e) =>
                 resumeContext.dispatch({
@@ -103,7 +100,7 @@ const ContactForm = () => {
               }
             />
           </div>
-          <div className="col-5">
+          <div className="col-6">
             <label
               style={{
                 marginBottom: "0.5rem",
@@ -113,12 +110,11 @@ const ContactForm = () => {
               ایمیل
             </label>
             <input
-              className="col-12 mb-3 "
-              style={{
-                backgroundColor: "#fff",
-                borderStyle: "none",
-                borderRadius: 5,
-              }}
+              className={
+                resumeContext.data.email == ""
+                  ? "col-11   ps-2 inputStyle"
+                  : "col-11  ps-2 inputFilled"
+              }
               type="text"
               onChange={(e) =>
                 resumeContext.dispatch({
@@ -160,7 +156,6 @@ const ContactForm = () => {
         </div>
       </div>
       <SubmitRn />
-      
     </>
   );
 };

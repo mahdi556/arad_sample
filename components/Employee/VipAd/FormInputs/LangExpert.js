@@ -1,10 +1,11 @@
   
+import { width } from "@mui/system";
 import { useContext, useEffect, useRef, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
 import ButtonTag from "../../../Employer/FormInputs/ButtonTag";
 
-const LangExpert = () => {
+const LangExpert = ({handleStep}) => {
   const [dropdown, setDropdown] = useState("dropdown-close");
   const [drop, setDrop] = useState(false);
 
@@ -16,7 +17,7 @@ const LangExpert = () => {
   const [ev, setEv] = useState("none");
   const [input, setInput] = useState("inputStyle");
   const [datas, setDatas] = useState(null);
-  const [hasEx, setHasEx] = useState(false);
+  const [hasEx, setHasEx] = useState(true);
   const resumeContext = useContext(ResumeContext);
 
   const dropRef = useRef(null);
@@ -55,6 +56,10 @@ const LangExpert = () => {
       setDropdown("close-drop");
       setDrop(false);
     }
+  };
+  const handleHasEx = () => {
+    hasEx && handleStep(6);
+    setHasEx(!hasEx);
   };
 
   const handleClass = (j) => {
@@ -117,7 +122,7 @@ const LangExpert = () => {
 
   return (
     <>
-      <div className="d-flex mt-5 mb-2">
+      <div className="d-flex  mb-2 px-5">
         <div
           style={{
             fontWeight: "bold",
@@ -132,7 +137,7 @@ const LangExpert = () => {
           className="d-flex align-items-center  "
           style={{ cursor: "pointer" }}
           onClick={() => {
-            setHasEx(!hasEx);
+            handleHasEx();
             setExpert([]);
             // setData([]);
           }}
@@ -167,12 +172,12 @@ const LangExpert = () => {
               setHasEx(true);
             }}
           >
-            <ButtonAdd data={"افزودن"} />
+            <ButtonAdd data={"ارائه کردن مهارت"} />
           </div>
         )}
       </div>
       {hasEx && (
-        <div className="d-flex col-12 align-items-center ">
+        <div className="d-flex col-12 align-items-center px-5 ">
           <div className="col-12 ">
             <label
               style={{
@@ -189,6 +194,9 @@ const LangExpert = () => {
                   <input
                     placeholder="یک زبان وارد کنید"
                     className={`col-12 ${input}`}
+                    style={{
+                      width:357,
+                     }}
                     type="text"
                     value={text}
                     onChange={(e) => {
@@ -228,7 +236,7 @@ const LangExpert = () => {
                     </div>
                   )}
                 </div>
-                <div className="d-flex justify-content-start   mt-3">
+                <div className="d-flex justify-content-start   ">
                   <div
                     className={ButtonX[1] ? "ButtonXChecked " : "ButtonX"}
                     onClick={() => {

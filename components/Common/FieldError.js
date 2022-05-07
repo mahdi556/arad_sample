@@ -4,8 +4,9 @@ const FieldError = ({ data,display }) => {
       <div className=""
         style={{
           fontSize: 14,
-          color: "red",
+          color: "#EC4B72",
           display: display,
+          fontWeight:300,
         }}
       >
         تکمیل این فیلد الزامی می باشد

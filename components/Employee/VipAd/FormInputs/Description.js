@@ -34,16 +34,7 @@ const Description = () => {
         </div>
 
         <div className="col-12 mb-2 mt-2">
-          {/* <label
-            className="fs-6  "
-            style={{
-              marginBottom: "0.5rem",
-              fontWeight: "normal",
-            }}
-          >
-            
-          </label> */}
-          <textarea
+           <textarea
             className={
               resumeContext.data.title == ""
                 ? "col-12 mb-3 ps-2 inputStyle"

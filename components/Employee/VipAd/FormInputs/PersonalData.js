@@ -8,6 +8,8 @@ import { Cities } from "../../../StaticData/City";
 import { JobCats } from "../../../StaticData/JobCategory";
 import FieldError from "../../../Common/FieldError";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import style from "./FormStyles/form.module.css";
+
 const PersonalData = () => {
   const resumeContext = useContext(ResumeContext);
   const [display, setDisplay] = useState("none");
@@ -18,7 +20,7 @@ const PersonalData = () => {
         resumeContext.data.jobCategory.fa !== "" &&
         resumeContext.data.province.fa !== "" &&
         resumeContext.data.birthday.month !== "" &&
-        resumeContext.data.salary.fa.to !== ""
+        (resumeContext.data.salary.fa.to !== "" || resumeContext.data.salaryAgree )
       ) {
         resumeContext.dispatch({ type: "fieldCheck", payload: true });
       } else {
@@ -48,11 +50,11 @@ const PersonalData = () => {
   };
   const sexHandler = (sex) => {
     sex == 1
-      ? normalAdContext.dispatch({
+      ? resumeContext.dispatch({
           type: "sex",
           payload: { id: sex, fa: "مرد" },
         })
-      : normalAdContext.dispatch({
+      : resumeContext.dispatch({
           type: "sex",
           payload: { id: sex, fa: "زن" },
         });
@@ -83,9 +85,8 @@ const PersonalData = () => {
   return (
     <>
       <div
+        className={`${style.title} px-5 `}
         style={{
-          fontWeight: "bold",
-          fontSize: "1.2rem",
           marginBottom: "1rem",
           width: "100%",
           paddingRight: "1rem",
@@ -93,10 +94,10 @@ const PersonalData = () => {
       >
         اطلاعات شخصی
       </div>
-      <div className="d-flex justify-content-between col-12 px-4 ">
+      <div className="d-flex justify-content-between col-12 px-5 ">
         <div className="d-flex flex-wrap pe-4 col-12 ">
           <div className="d-flex col-12 justify-content-between">
-            <div className="col-5 mb-3">
+            <div className="col-5">
               <label
                 className="fs-6  "
                 style={{
@@ -109,9 +110,12 @@ const PersonalData = () => {
               <input
                 className={
                   resumeContext.data.title == ""
-                    ? "col-12 mb-3 ps-2 inputStyle"
-                    : "col-12 mb-3 ps-2 inputFilled"
+                    ? "col-12   ps-2 inputStyle"
+                    : "col-12  ps-2 inputFilled"
                 }
+                style={{
+                  width: 354,
+                }}
                 type="text"
                 value={resumeContext.data.title}
                 onChange={(e) => {
@@ -174,7 +178,7 @@ const PersonalData = () => {
           </div>
 
           <div
-            className="col-12"
+            className="col-12 pt-4"
             style={{
               maxHeight: "6rem",
               zIndex: 15,
@@ -191,39 +195,44 @@ const PersonalData = () => {
             data={resumeContext.data.jobCategory.fa}
             display={display}
           />
-          <div
-            className="col-12"
-            style={{
-              maxHeight: "6rem",
-              zIndex: 14,
-            }}
-          >
-            <SelectOption
-              data={Province}
-              name="استان"
-              valueHandler={provinceHandler}
-              predata={resumeContext.data.province.fa}
-            />
-          </div>
-          <FieldError data={resumeContext.data.province.fa} display={display} />
-          {proId !== "" && (
+          <div className="d-flex col-12 justify-content-between">
             <div
-              className="col-12"
+              className={proId === "" ? "col-12 pt-4" : "col-5 pt-4"}
               style={{
                 maxHeight: "6rem",
-                zIndex: 13,
+                zIndex: 14,
               }}
             >
               <SelectOption
-                data={citi}
-                name="شهر"
-                valueHandler={cityHandler}
-                predata={resumeContext.data.city.fa}
+                data={Province}
+                name="استان"
+                valueHandler={provinceHandler}
+                predata={resumeContext.data.province.fa}
+              />
+              <FieldError
+                data={resumeContext.data.province.fa}
+                display={display}
               />
             </div>
-          )}
+            {proId !== "" && (
+              <div
+                className="col-5 pt-4"
+                style={{
+                  maxHeight: "6rem",
+                  zIndex: 13,
+                }}
+              >
+                <SelectOption
+                  data={citi}
+                  name="شهر"
+                  valueHandler={cityHandler}
+                  predata={resumeContext.data.city.fa}
+                />
+              </div>
+            )}
+          </div>
           <div className="d-flex  col-12  align-items-end  justify-content-between">
-            <div className="col-6 ">
+            <div className="col-6 pt-4">
               <BirthDay />
               <FieldError
                 data={resumeContext.data.birthday.month}
@@ -248,22 +257,49 @@ const PersonalData = () => {
                     predata={resumeContext.data.married}
                   />
                 </div>
-                <div className=" ">
-                  <RadioButton
-                    title={"تقاضای بیمه"}
-                    choices={{ 1: "دارم", 2: "ندارم" }}
-                    valueHandler={insuranceHandler}
-                    predata={resumeContext.data.insurrance}
-                  />
-                </div>
               </div>
             </div>
           </div>
-
-          <SalaryNeeded />
-          <FieldError
-            data={resumeContext.data.salary.fa.to}
-            display={display}
+          <div className="pt-4 col-12">
+            <SalaryNeeded />
+            <div className="mt-4">
+              {!resumeContext.data.salaryAgree && (
+                <FieldError
+                  data={resumeContext.data.salary.fa.to}
+                  display={display}
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="d-flex align-items-center justify-content-between px-5 mt-5">
+        <div>
+          <RadioButton
+            title={"تقاضای بیمه"}
+            choices={{ 1: "دارم", 2: "ندارم" }}
+            valueHandler={insuranceHandler}
+            predata={resumeContext.data.insurrance}
+          />
+        </div>
+        <div
+          className="d-flex align-items-center"
+          onClick={() =>
+            resumeContext.dispatch({
+              type: "military",
+              payload: !resumeContext.data.military,
+            })
+          }
+        >
+          <h3 className={`${style.txt3} pe-3 pt-1`}>
+            سربازی را به اتمام رسانده یا معاف هستم
+          </h3>
+          <img
+            src={
+              resumeContext.data.military
+                ? "/assets/images/checked.png"
+                : "/assets/images/checkbox_black.svg"
+            }
           />
         </div>
       </div>

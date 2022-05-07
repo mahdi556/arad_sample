@@ -23,10 +23,12 @@ const BirthDay = () => {
                 : "col-8 inputFilled"
             }
             value={resumeContext.data.birthday.day}
+            pattern="[0-9]*"
+            maxlength="2"
             onChange={(e) => {
               resumeContext.dispatch({
                 type: "birthday-d",
-                payload: e.target.value,
+                payload: e.target.validity.valid ? e.target.value : '',
               });
             }}
           />
@@ -43,10 +45,12 @@ const BirthDay = () => {
                 : "col-8 inputFilled"
             }
             value={resumeContext.data.birthday.month}
+            pattern="[0-9]*"
+            maxlength="2"
             onChange={(e) => {
               resumeContext.dispatch({
                 type: "birthday-m",
-                payload: e.target.value,
+                payload: e.target.validity.valid ? e.target.value : '',
               });
             }}
           />
@@ -63,12 +67,14 @@ const BirthDay = () => {
               : "col-8 inputFilled"
           }
             value={resumeContext.data.birthday.year}
+            pattern="[0-9]*"
             onChange={(e) => {
               resumeContext.dispatch({
                 type: "birthday-y",
-                payload: e.target.value,
+                payload:  e.target.validity.valid ? e.target.value : '',
               });
             }}
+            maxlength="4"
           />
           <span
             className="input-group-text col-4 spanInputGroup">

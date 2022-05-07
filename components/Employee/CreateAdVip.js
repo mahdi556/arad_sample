@@ -26,7 +26,7 @@ const CreateEmployeeAd = () => {
         <div
           style={{
             width: "100%",
-            backgroundColor: "#E5E5E5",
+            backgroundColor: "#f2f5f6",
             paddingTop: "9rem",
             paddingBottom: 400,
           }}

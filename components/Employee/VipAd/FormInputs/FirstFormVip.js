@@ -1,10 +1,9 @@
-  
 import { useContext, useEffect, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import FieldError from "../../../Common/FieldError";
-
+import style from "./FormStyles/form.module.css";
 const FirstFormVip = () => {
-   const [image, setImage] = useState([]);
+  const [image, setImage] = useState([]);
   const [imageUrl, setImageUrl] = useState([]);
   const [videofile, setVideofile] = useState([]);
   const [videoUrl, setVideoUrl] = useState([]);
@@ -23,8 +22,9 @@ const FirstFormVip = () => {
       const newVideoUrl = [];
       newVideoUrl.push(URL.createObjectURL(videofile[0]));
       setVideoUrl(newVideoUrl);
+      resumeContext.dispatch({ type: "userVideoFile", payload: videofile[0] });
       resumeContext.dispatch({ type: "userVideo", payload: newVideoUrl });
-    }
+     }
   }, [image, videofile]);
   useEffect(() => {
     if (resumeContext.data.stepClick) {
@@ -48,14 +48,8 @@ const FirstFormVip = () => {
       }}
     >
       <div className="d-flex   align-items-start  pt-1">
-        <div
-          className="d-flex col-6  flex-column   pe-2"
-          style={{
-            fontWeight: "bold",
-            fontSize: 17,
-          }}
-        >
-          معرفی من
+        <div className={`   d-flex col-6  flex-column   pe-2  `}>
+          <h3 className={`${style.title}  `}>معرفی من</h3>
           {image.length > 0 ? (
             <>
               <div
@@ -121,7 +115,7 @@ const FirstFormVip = () => {
                 width="20%"
               />
 
-              <h5>آپلود عکس</h5>
+              <h5 className={`${style.txt1}  `}>آپلود عکس</h5>
             </label>
           )}
           {videofile.length > 0 ? (
@@ -189,26 +183,29 @@ const FirstFormVip = () => {
             </label>
           )}
           <div
-            className="row col-12  mt-2"
+            className="d-flex col-12  mt-2"
             style={{
               color: "#11999E",
               fontSize: 14,
               fontWeight: 300,
             }}
           >
+            <h3 className={`${style.txt2} me-2 `}>*</h3>
             با آپلود ویدیو شانس استخدام شدن خود را چندین برابر کنید.(70% درصد
             کارفرماها تقاضای رزومه ویدیویی دارند)
           </div>
         </div>
-        <div className="  col-5 offset-1  pt-2 fw-bold ">
-          <h6 className="fw-bold"> شبکه های اجتماعی من</h6>
+        <div className={` col-5 offset-1  pt-2   `}>
+          <h6 className={`${style.title}  `}> شبکه های اجتماعی من</h6>
 
           <div className="row col-12  mt-4 mb-2">
             <div
               className="d-flex col-12 align-items-start   justify-content-end "
-              style={{
-                marginBottom: 1,
-              }}
+              style={
+                {
+                  // marginBottom: 1,
+                }
+              }
             >
               <div
                 style={{
@@ -216,36 +213,34 @@ const FirstFormVip = () => {
                   height: 40,
                 }}
               >
-                <img
-                  src="/assets/images/twitterx.png"
-                  width={35}
-                  height={30}
+                <img src="/assets/images/twitterx.png" width={35} height={30} />
+              </div>
+              <div className="d-flex flex-column col-10 mb-2">
+                <input
+                  dir="ltr"
+                  className="   inputStyle mb-1"
+                  style={
+                    resumeContext.data.socials.twitter == ""
+                      ? { fontSize: 11 }
+                      : { fontSize: 18 }
+                  }
+                  placeholder=" وارد کردن لینک پروفایل توییتر"
+                  type="text"
+                  onChange={(e) =>
+                    resumeContext.dispatch({
+                      type: "social-twitter",
+                      payload: e.target.value,
+                    })
+                  }
+                  value={resumeContext.data.socials.twitter}
+                />
+
+                <FieldError
+                  data={resumeContext.data.socials.twitter}
+                  display={display}
                 />
               </div>
-
-              <input
-                dir="ltr"
-                className="col-10   inputStyle"
-                style={
-                  resumeContext.data.socials.twitter == ""
-                    ? { fontSize: 11 }
-                    : { fontSize: 18 }
-                }
-                placeholder=" وارد کردن لینک پروفایل توییتر"
-                type="text"
-                onChange={(e) =>
-                  resumeContext.dispatch({
-                    type: "social-twitter",
-                    payload: e.target.value,
-                  })
-                }
-                value={resumeContext.data.socials.twitter}
-              />
             </div>
-            <FieldError
-              data={resumeContext.data.socials.twitter}
-              display={display}
-            />
             <div
               className="d-flex col-12  align-items-start justify-content-end"
               style={{
@@ -260,25 +255,30 @@ const FirstFormVip = () => {
               >
                 <img src="/assets/images/webx.png" width={33} height={30} />
               </div>
-
-              <input
-                dir="ltr"
-                className="col-10   inputStyle"
-                style={
-                  resumeContext.data.socials.dribble == ""
-                    ? { fontSize: 13 }
-                    : { fontSize: 18 }
-                }
-                placeholder=" وارد کردن لینک پروفایل دریبل"
-                type="text"
-                onChange={(e) =>
-                  resumeContext.dispatch({
-                    type: "social-dribble",
-                    payload: e.target.value,
-                  })
-                }
-                value={resumeContext.data.socials.dribble}
-              />
+              <div className="d-flex flex-column col-10 mb-2">
+                <input
+                  dir="ltr"
+                  className=" mb-1  inputStyle"
+                  style={
+                    resumeContext.data.socials.dribble == ""
+                      ? { fontSize: 13 }
+                      : { fontSize: 18 }
+                  }
+                  placeholder=" وارد کردن لینک پروفایل دریبل"
+                  type="text"
+                  onChange={(e) =>
+                    resumeContext.dispatch({
+                      type: "social-dribble",
+                      payload: e.target.value,
+                    })
+                  }
+                  value={resumeContext.data.socials.dribble}
+                />
+                <FieldError
+                  data={resumeContext.data.socials.dribble}
+                  display={display}
+                />
+              </div>
             </div>
             <div
               className="d-flex col-12 align-items-start justify-content-end"
@@ -294,9 +294,10 @@ const FirstFormVip = () => {
               >
                 <img src="/assets/images/instax.png" width={32} height={30} />
               </div>
-              <input
+              <div className="d-flex flex-column col-10 mb-2">
+               <input
                 dir="ltr"
-                className="col-10   inputStyle "
+                className=" mb-1   inputStyle "
                 style={
                   resumeContext.data.socials.instagram == ""
                     ? { fontSize: 11 }
@@ -312,6 +313,11 @@ const FirstFormVip = () => {
                 }
                 value={resumeContext.data.socials.instagram}
               />
+               <FieldError
+                  data={resumeContext.data.socials.instagram}
+                  display={display}
+                />
+              </div>
             </div>
             <div
               className="d-flex col-12 align-items-start justify-content-end "
@@ -325,15 +331,12 @@ const FirstFormVip = () => {
                   height: 40,
                 }}
               >
-                <img
-                  src="/assets/images/youtubex.png"
-                  width={30}
-                  height={25}
-                />
+                <img src="/assets/images/youtubex.png" width={30} height={25} />
               </div>
+              <div className="d-flex flex-column col-10 mb-2">
               <input
                 dir="ltr"
-                className="col-10  inputStyle"
+                className=" inputStyle mb-1"
                 style={
                   resumeContext.data.socials.youtube == ""
                     ? { fontSize: 11 }
@@ -349,6 +352,11 @@ const FirstFormVip = () => {
                 }
                 value={resumeContext.data.socials.youtube}
               />
+              <FieldError
+                  data={resumeContext.data.socials.youtube}
+                  display={display}
+                />
+              </div>
             </div>
             <div
               className="d-flex align-items-center justify-content-start "

@@ -52,15 +52,15 @@ const CreateResumeBody = ({ handleStep2 }) => {
             }}
           >
             <div
-              className="d-flex px-3 py-3  mb-5 align-items-center  "
+              className="d-flex px-3 pt-2 pb-1  mb-5 align-items-center  "
               style={{ backgroundColor: "#fff", borderRadius: "0.7rem" }}
             >
               <h3
                 className=" mx-auto"
                 style={{
-                  fontSize: "1rem",
-                  fontWeight: "bold",
-                  lineHeight: "1.4rem",
+                  fontFamily:'iranBlack',
+                  fontSize: 20,
+                  lineHeight: '31px',
                 }}
               >
                 آگهی ویژه (فارسی)
@@ -69,7 +69,7 @@ const CreateResumeBody = ({ handleStep2 }) => {
             </div>
             {step == 1 && <FirstFormVip />}
             {step > 1 && <VerifyFirstForm />}
-            {step >= 2 && <JobConditionVip step={step} />}
+            {step >= 2 && <JobConditionVip step={step} handleStep={handleStep} />}
             {step == 9 && <ContactForm />}
             {step < 9 && <StepButton handleStep={handleStep} step={step} />}
           </div>

@@ -94,6 +94,7 @@ const resumeReducer = (state, action) => {
         whatsapp: "",
         telegram: "",
         email: "",
+        military: false,
       };
     case "step":
       return { ...state, step: action.payload };
@@ -103,6 +104,8 @@ const resumeReducer = (state, action) => {
       return { ...state, userImageFile: action.payload };
     case "userVideo":
       return { ...state, userVideo: action.payload };
+    case "userVideoFile":
+      return { ...state, userVideoFile: action.payload };
     case "stepClick":
       return { ...state, stepClick: action.payload };
     case "fieldCheck":
@@ -141,6 +144,8 @@ const resumeReducer = (state, action) => {
       return { ...state, entitle: action.payload };
     case "name":
       return { ...state, name: action.payload };
+    case "military":
+      return { ...state, military: action.payload };
     case "lastname":
       return { ...state, lastname: action.payload };
     case "Ename":
@@ -191,12 +196,12 @@ const resumeReducer = (state, action) => {
     case "province":
       return {
         ...state,
-        province: { name: action.payload.name, id: action.payload.id },
+        province: { fa: action.payload.fa, id: action.payload.id },
       };
     case "city":
       return {
         ...state,
-        city: { name: action.payload.name, id: action.payload.id },
+        city: { fa: action.payload.fa, id: action.payload.id },
       };
     case "experiences":
       return {
@@ -265,7 +270,8 @@ const resumeReducer = (state, action) => {
           en: { from: state.salary.en.from, to: action.payload },
         },
       };
-
+    case "salaryAgree":
+      return { ...state, salaryAgree: action.payload };
     case "progressBar-c":
       return {
         ...state,

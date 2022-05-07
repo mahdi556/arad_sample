@@ -22,6 +22,7 @@ const SubmitRn = () => {
       .then((response) => {
         console.log(response);
         formData.append("image", resumeContext.data.userImageFile);
+        formData.append("video", resumeContext.data.userVideoFile);
         formData.append("type", "normalEn");
         formData.append("ad_id", response.data.ad_id);
         axios({

@@ -1,5 +1,5 @@
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
-  
+import style from "./FormStyles/form.module.css";
 import { useContext, useEffect, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 
@@ -15,7 +15,7 @@ const Divx = ({ i, data, dataHandler }) => {
   return (
     <>
       <div id={i}>
-        <div className="col-12  mt-2 p-2">
+        <div className="col-12  mt-2 p-2 px-5">
           <div
             className="d-flex align-items-start p-2"
             style={{
@@ -29,30 +29,31 @@ const Divx = ({ i, data, dataHandler }) => {
               <div
                 className="d-flex  "
                 style={{
-                  height: 250,
+                  height: 225,
                   backgroundColor: "#EBEBEB",
                   justifyContent: "center",
                   alignItems: "center",
                   textAlign: "center",
                   borderRadius: 7,
-                  width: "90%",
+                  width: 174,
+                  fontSize:25
                 }}
               >
                 <img
                   className="me-2"
-                  src="../../../../assets/images/upload-logo.png"
-                  width="10%"
+                  src="../../../../assets/images/upload.svg"
+                  width="15%"
                 />
                 آپلود فایل
               </div>
             </div>
             <div className="d-flex col-9 ps-3   flex-wrap ">
               <div className="d-flex col-12 justify-content-between">
-                <div className="d-flex flex-column col-12 text-right">
+                <div className="d-flex flex-column col-6 text-right">
                   <label
                     style={{
                       marginBottom: "0.5rem",
-                      fontSize: "0.9rem",
+                      fontSize: "1.2rem",
                     }}
                   >
                     عنوان
@@ -60,8 +61,8 @@ const Divx = ({ i, data, dataHandler }) => {
                   <input
                     className={
                       localData.title == ""
-                        ? "col-12 inputStyle"
-                        : "col-12 inputFilled"
+                        ? "col-11 inputStyle"
+                        : "col-11 inputFilled"
                     }
                     type="text"
                     onChange={(e) => {
@@ -71,38 +72,38 @@ const Divx = ({ i, data, dataHandler }) => {
                     value={localData.title}
                   />
                 </div>
-               
-              </div>
-              <div className="d-flex flex-column col-12 text-right">
-                <label
-                  style={{
-                    marginBottom: "0.5rem",
-                    fontSize: "0.9rem",
-                  }}
-                >
-                  لینک
-                </label>
-                <input
-                  className={
-                    localData.link == ""
-                      ? "col-12 inputStyle"
-                      : "col-12 inputFilled"
-                  }
-                  type="text"
-                  onChange={(e) => {
-                    setLocalData({ ...localData, link: e.target.value });
-                    dataHandler({ ...localData, link: e.target.value });
-                  }}
-                  value={localData.link}
-                />
+
+                <div className="d-flex flex-column col-6 text-right">
+                  <label
+                    style={{
+                      marginBottom: "0.5rem",
+                      fontSize: "1.2rem",
+                    }}
+                  >
+                    لینک
+                  </label>
+                  <input
+                    className={
+                      localData.link == ""
+                        ? "col-11 inputStyle"
+                        : "col-11 inputFilled"
+                    }
+                    type="text"
+                    onChange={(e) => {
+                      setLocalData({ ...localData, link: e.target.value });
+                      dataHandler({ ...localData, link: e.target.value });
+                    }}
+                    value={localData.link}
+                  />
+                </div>
               </div>
               <div className="d-flex col-12">
-                <div className="col-12 pe-4">
+                <div className="col-12 pe-4 mt-1">
                   <div className="d-flex flex-column col-12 text-right">
                     <label
                       style={{
                         marginBottom: "0.5rem",
-                        fontSize: "0.9rem",
+                        fontSize: "1.2rem",
                       }}
                     >
                       توضیحات
@@ -114,6 +115,9 @@ const Divx = ({ i, data, dataHandler }) => {
                           : "col-12 inputFilled"
                       }
                       type="text"
+                      style={{
+                        height: 110,
+                      }}
                       onChange={(e) => {
                         setLocalData({
                           ...localData,
@@ -128,7 +132,6 @@ const Divx = ({ i, data, dataHandler }) => {
                     />
                   </div>
                 </div>
-               
               </div>
             </div>
           </div>
@@ -138,11 +141,11 @@ const Divx = ({ i, data, dataHandler }) => {
   );
 };
 
-const SampleEx = () => {
+const SampleEx = ({ handleStep }) => {
   const resumeContext = useContext(ResumeContext);
-  const [hasEx, setHasEx] = useState(false);
+  const [hasEx, setHasEx] = useState(true);
   const [data, setData] = useState([]);
-   
+
   const [i, setI] = useState(0);
 
   const regData = () => {
@@ -204,15 +207,17 @@ const SampleEx = () => {
       return data[index];
     }
   };
+  const handleHasEx = () => {
+    hasEx && handleStep(8);
+    setHasEx(!hasEx);
+  };
 
   return (
     <>
-      <div className="d-flex align-items-center">
+      <div className="d-flex align-items-center px-5">
         <div
+          className={`${style.title}  `}
           style={{
-            fontWeight: "bold",
-            fontSize: "1.2rem",
-            // marginBottom: "1rem",
             marginLeft: "auto",
           }}
         >
@@ -228,6 +233,7 @@ const SampleEx = () => {
               payload: { data: [] },
             });
             setData([]);
+            handleHasEx();
           }}
         >
           <h6
@@ -257,7 +263,6 @@ const SampleEx = () => {
           <div
             className="ms-3"
             onClick={() => {
-            
               dataHandler({
                 id: i + 1,
                 title: "",
@@ -284,9 +289,9 @@ const SampleEx = () => {
         </>
       ))}
       {data.length > 0 && (
-        <div
+        <div className="px-5"
           onClick={() => {
-            addSec(data.length + 1);
+            // addSec(data.length + 1);
             dataHandler({
               id: data.length + 1,
               title: "",
