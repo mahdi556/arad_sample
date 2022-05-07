@@ -15,23 +15,54 @@ const Adlist = () => {
   const [activePage, setActivePage] = useState({});
   const [totalPage, setTotalPage] = useState(null);
   const [currentPage, setCurrentPage] = useState(null);
+  const [nextPage, setNextPage] = useState(null);
+  const [prevPage, setPrevPage] = useState(null);
+  const [path, setPath] = useState(null);
+  const [url, setUrl] = useState(null);
   // const [activePage, setActivePage] = useState({});
 
   useEffect(() => {
+    getAdList();
+  }, []);
+  const getAdList = (url = "/getAdList") => {
     axios({
-      url: "/getAdList",
+      url: url,
       method: "get",
     })
       .then((response) => {
-        console.log(response);
         setEads(response.data.data.eads);
         setTotalPage(response.data.data.meta.last_page);
         setCurrentPage(response.data.data.meta.current_page);
+        setNextPage(response.data.data.links.next);
+        setPrevPage(response.data.data.links.prev);
+        setPath(response.data.data.meta.path);
       })
       .catch(function (error) {
         console.log(error);
       });
-  }, []);
+  };
+  const goToPage = (page) => {
+    axios({
+      url: `${path}?page=${page}`,
+      method: "get",
+    })
+      .then((response) => {
+        setEads(response.data.data.eads);
+        setTotalPage(response.data.data.meta.last_page);
+        setCurrentPage(response.data.data.meta.current_page);
+        setNextPage(response.data.data.links.next);
+        setPrevPage(response.data.data.links.prev);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+  const goNext = () => {
+    nextPage && getAdList(nextPage);
+  };
+  const goPrev = () => {
+    prevPage && getAdList(prevPage);
+  };
   const handlePageChange = (number) => {
     setActivePage(number);
   };
@@ -54,8 +85,8 @@ const Adlist = () => {
               width: "60%",
             }}
           >
-            <Filters />
-            <div class="row  gx-3 gy-4   pe-4 pt-0 ">
+            {/* <Filters /> */}
+            {/* <div class="row  gx-3 gy-4   pe-4 pt-0 ">
               {eads.length &&
                 eads.map((item, key) => (
                   <AdBoxNewEmployee
@@ -64,11 +95,17 @@ const Adlist = () => {
                     key={item.id}
                   />
                 ))}
-            </div>
+            </div> */}
           </div>
         </div>
         <div>
-          <Paginate totalPage={totalPage} currentPage={currentPage} />
+          <Paginate
+            totalPage={totalPage}
+            currentPage={currentPage}
+            goNext={goNext}
+            goPrev={goPrev}
+            goPage={goToPage}
+          />
         </div>
       </div>
     </>

@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import style from "./SearchStyles/search.module.css";
-
+import { Province } from "../StaticData/City";
 const TopBanner = () => {
   const [catInput, setCatInput] = useState(false);
   const [localInput, setLocalInput] = useState(false);
@@ -8,6 +8,42 @@ const TopBanner = () => {
   const [dropdown, setDropdown] = useState("dropdown-close");
   const [drop, setDrop] = useState(false);
   const [datas, setDatas] = useState(null);
+  const [text, setText] = useState(null);
+
+  const dropRef = useRef(null);
+  useEffect(() => {
+    // setDatas(Langsfa);
+    document.addEventListener("click", handleClickOutside, false);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, false);
+    };
+  }, [drop]);
+  const handleClickOutside = (event) => {
+    if (
+      dropRef.current &&
+      !dropRef.current.contains(event.target) &&
+      drop == true
+    ) {
+      setDropdown("close-drop");
+      setDrop(false);
+    }
+  };
+
+  const dropfilter = (text) => {
+    let filterList = [];
+    setDatas(filterList);
+    Province.filter(function check(item) {
+      if (item.fa.indexOf(text) != -1) {
+        filterList.push({ id: item.id, fa: item.fa });
+      }
+    });
+    console.log(text);
+    if (filterList.length == 0) {
+      setDrop(false);
+    }
+  };
+
+  console.log(drop, dropdown, text);
 
   return (
     <>
@@ -38,8 +74,8 @@ const TopBanner = () => {
           </h2>
         </div>
 
-        <div class="d-flex flex-row col-6 intro_sec1   justify-content-between  bg-white px-3   ">
-          {!catInput ? (
+        <div class="d-flex flex-row col-6 intro_sec1   justify-content-between  bg-white px-3 ">
+          {/* {!catInput ? (
             <div
               class=" col-6   intro2   my-3 "
               onClick={() => setCatInput(true)}
@@ -56,7 +92,7 @@ const TopBanner = () => {
                 placeholder="دسته شغلی یا عبارت کلیدی"
               />
             </div>
-          )}
+          )} */}
           {!localInput ? (
             <>
               <div
@@ -72,54 +108,57 @@ const TopBanner = () => {
             </>
           ) : (
             <div class=" col-4  intro2    my-3  ">
-              <input
+              {/* <input
                 className={`  ${style.sec1} col-12 px-2  `}
                 placeholder="موقعیت مکانی"
-              />
-              <div className="d-inline col-12 ">
+              /> */}
+              {/* <div className="d-inline col-12 "> */}
                 <input
-                  placeholder="یک زبان وارد کنید"
-                  className={`col-12 ${input}`}
+                  placeholder="یک منطقه وارد کنید"
+                  className={`col-12 ${style.sec1}`}
                   type="text"
-                  // value={text}
+                  value={text}
                   onChange={(e) => {
-                    // setText(e.target.value);
+                    setText(e.target.value);
                     setInput("inputStyle");
                     setDrop(true);
                     dropfilter(e.target.value);
-                    setDropdown("dropdown-open");
+                    // setDropdown("dropdown-open");
+                    // setLocalInput(false)
                   }}
                 />
+              {/* </div> */}
 
-                {drop == true && (
-                  <div className={dropdown} ref={dropRef}>
+              {drop === true && (
+                // <div
+                // className={dropdown == 'dropdown-open' ? style.dropdown_open : style.dropdown_close }
+                //   ref={dropRef}>
+                <div
+                  style={{
+                    maxHeight: "8rem",
+                    width: "100%",
+                    overflowY: "scroll",
+                    paddingRight: "0.8rem",
+                    paddingLeft: "0.8rem",
+                  }}
+                >
+                  {datas.map((item, key) => (
                     <div
-                      style={{
-                        maxHeight: "8rem",
-                        width: "100%",
-                        overflowY: "scroll",
-                        paddingRight: "0.8rem",
-                        paddingLeft: "0.8rem",
+                      className={` ${style.dropdown_item}`}
+                      key={item.id}
+                      onClick={() => {
+                        setText(item.fa);
+                        setDrop(false);
+                        // setDropdown("close-drop");
                       }}
                     >
-                      {datas.map((item, key) => (
-                        <div
-                          className="  dropdown-item"
-                          key={item.id}
-                          onClick={() => {
-                            setText(item.name);
-                            setDropdown("close-drop");
-                            setDrop(false);
-                          }}
-                        >
-                          {item.name}
-                        </div>
-                      ))}
+                      {item.fa}
                     </div>
-                  </div>
-                )}
-              </div>
-            </div>
+                  ))}
+                </div>
+                // </div>
+              )}
+            </div> 
           )}
           <div class="d-flex col-1 intro3  justify-content-center align-items-center   my-3 ">
             <img src="/assets/images/magnifire2.png" height={34} width={34} />
