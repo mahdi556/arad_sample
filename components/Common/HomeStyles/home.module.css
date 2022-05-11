@@ -85,9 +85,10 @@
 .sec18_1 {
   color: #fff;
   font-family: iranBLack;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   background-color: #ec4872;
   border-radius: 20px;
+  z-index: 4;
 }
 .sec20 {
   color: #fff;
@@ -103,16 +104,17 @@
   position: absolute;
   bottom: -10%;
   right: 10%;
-  width: 40%;
+   
   background-color: rgba(255, 255, 255, 0.81);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 20px;
+  z-index: 10;
 }
 .home_top_section {
   display: flex;
-  background-color: #10989e;
+  background-color: #058c9f;
   height: 80vh;
   width: 100%;
   align-items: center;
@@ -120,6 +122,7 @@
   position: relative;
   border-bottom-right-radius: 90px;
   border-bottom-left-radius: 90px;
+  /* overflow: hidden; */
 }
 .sec20 {
   display: flex;

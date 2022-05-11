@@ -463,8 +463,9 @@ div#__next > div {
   /* border-radius: 0.2rem; */
   border:solid 1px #ccc;
   width: 33%;
+  height: 35px;
   text-align: center;
-  font-size: 0.7rem;
+  font-size: 15px;
   cursor: pointer;
   position: relative;
   transition: color 0.5s;
@@ -490,8 +491,9 @@ div#__next > div {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 0.2rem;
   width: 33%;
+  height: 35px;
   text-align: center;
-  font-size: 0.7rem;
+  font-size: 15px;
   position: relative;
   transition: width 0.7s, color 0.7s;
   z-index: 2;
@@ -1153,7 +1155,7 @@ div#__next > div {
   position: absolute;
   right: 0;
   top: 0;
-  width: 74px;
+  /* width: 74px; */
   height: 22px;
   font-size: 12px;
   color: #db4e4e;
@@ -1210,7 +1212,7 @@ div#__next > div {
 #adbox {
   background-color: #fff;
   border-radius: 10px;
-  /* height: 10em; */
+  height: 10.5em;
   width: 100%;
   position: relative;
   align-items: center;

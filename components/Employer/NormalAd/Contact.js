@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
-import SwitchButtion from "../FormInputs/SwitchButton";
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+ import SwitchButtion from "../FormInputs/SwitchButton";
 
 const ContactForm = () => {
-  const normalAdContext = useContext(NormalAdContext);
+  const resumeContext = useContext(ResumeContext);
   return (
     <>
       <div
@@ -36,12 +36,12 @@ const ContactForm = () => {
             </label>
             <input
               className={
-                normalAdContext.data.cellphone == ""
+                resumeContext.data.cellphone == ""
                   ? "col-12 mb-3 ps-2 inputStyle"
                   : "col-12 mb-3 ps-2 inputFilled"
               }
               onChange={(e) =>
-                normalAdContext.dispatch({
+                resumeContext.dispatch({
                   type: "cellphone",
                   payload: e.target.value,
                 })
@@ -60,12 +60,12 @@ const ContactForm = () => {
             </label>
             <input
               className={
-                normalAdContext.data.whatsapp == ""
+                resumeContext.data.whatsapp == ""
                   ? "col-12 mb-3 ps-2 inputStyle"
                   : "col-12 mb-3 ps-2 inputFilled"
               }
               onChange={(e) =>
-                normalAdContext.dispatch({
+                resumeContext.dispatch({
                   type: "whatsapp",
                   payload: e.target.value,
                 })
@@ -86,12 +86,12 @@ const ContactForm = () => {
             </label>
             <input
               className={
-                normalAdContext.data.telegram == ""
+                resumeContext.data.telegram == ""
                   ? "col-12 mb-3 ps-2 inputStyle"
                   : "col-12 mb-3 ps-2 inputFilled"
               }
               onChange={(e) =>
-                normalAdContext.dispatch({
+                resumeContext.dispatch({
                   type: "telegram",
                   payload: e.target.value,
                 })
@@ -110,12 +110,12 @@ const ContactForm = () => {
             </label>
             <input
               className={
-                normalAdContext.data.email == ""
+                resumeContext.data.email == ""
                   ? "col-12 mb-3 ps-2 inputStyle"
                   : "col-12 mb-3 ps-2 inputFilled"
               }
               onChange={(e) =>
-                normalAdContext.dispatch({
+                resumeContext.dispatch({
                   type: "email",
                   payload: e.target.value,
                 })

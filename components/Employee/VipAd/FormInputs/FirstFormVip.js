@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import UserContext from "../../../../context/employeeContext/User/UserContext";
 import FieldError from "../../../Common/FieldError";
 import style from "./FormStyles/form.module.css";
 const FirstFormVip = () => {
@@ -9,6 +10,8 @@ const FirstFormVip = () => {
   const [videoUrl, setVideoUrl] = useState([]);
   const [display, setDisplay] = useState("none");
   const resumeContext = useContext(ResumeContext);
+  const userContext = useContext(UserContext);
+
   useEffect(() => {
     if (image.length > 0) {
       const newImageUrl = [];
@@ -25,6 +28,10 @@ const FirstFormVip = () => {
       resumeContext.dispatch({ type: "userVideoFile", payload: videofile[0] });
       resumeContext.dispatch({ type: "userVideo", payload: newVideoUrl });
      }
+     resumeContext.dispatch({
+      type: "user_id",
+      payload: userContext.data.user.id,
+    });
   }, [image, videofile]);
   useEffect(() => {
     if (resumeContext.data.stepClick) {

@@ -1,12 +1,12 @@
   
 import { useContext, useEffect, useState } from "react";
-import NormalAdContext from "../../../context/employeeContext/CreateAd/NormalAd/NormalAdContext";
+ import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
 const VerifyFirstForm = ({handleStep}) => {
   const [imageUrl, setImageUrl] = useState("");
-  const normalAdContext = useContext(NormalAdContext);
+  const resumeContext = useContext(ResumeContext);
   useEffect(() => {
-    if (normalAdContext.data.userImageFile.name) {
-      setImageUrl(URL.createObjectURL(normalAdContext.data.userImageFile));
+    if (resumeContext.data.userImageFile.name) {
+      setImageUrl(URL.createObjectURL(resumeContext.data.userImageFile));
     }
   }, []);
 
@@ -73,7 +73,7 @@ const VerifyFirstForm = ({handleStep}) => {
               <div className="ms-3 rShadow">
                 <video
                   className="rShadow"
-                  src={normalAdContext.data.userVideo}
+                  src={resumeContext.data.userVideo}
                   width={120}
                   height={120}
                   type="video/*"

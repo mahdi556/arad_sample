@@ -1,12 +1,12 @@
   
 import { useContext, useEffect, useState } from "react";
-import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
-const VerifyFirstForm = ({ handleStep }) => {
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+ const VerifyFirstForm = ({ handleStep }) => {
   const [imageUrl, setImageUrl] = useState("");
-  const normalAdContext = useContext(NormalAdContext);
+  const resumeContext = useContext(ResumeContext);
   useEffect(() => {
-    if (normalAdContext.data.userImageFile.name) {
-      setImageUrl(URL.createObjectURL(normalAdContext.data.userImageFile));
+    if (resumeContext.data.userImageFile.name) {
+      setImageUrl(URL.createObjectURL(resumeContext.data.userImageFile));
     }
   }, []);
 
@@ -73,12 +73,12 @@ const VerifyFirstForm = ({ handleStep }) => {
               <div className="d-flex col-8 flex-column">
                 <div className="d-flex ms-5  col-6 justify-content-start align-items-center mb-4 ">
                   <h5 className="col-6 fs-6 fw-light">نام شرکت:</h5>
-                  <h6 className="col-6 fs-6  ">{normalAdContext.data.name}</h6>
+                  <h6 className="col-6 fs-6  ">{resumeContext.data.name}</h6>
                 </div>
                 <div className="d-flex ms-5  col-6 justify-content-start align-items-center mb-4 ">
                   <h5 className="col-6 fs-6 fw-light">شناسه ملی:</h5>
                   <h6 className="col-6 fs-6  ">
-                    {normalAdContext.data.companyId}
+                    {resumeContext.data.companyId}
                   </h6>
                 </div>
                 <div className="col-5 ms-5 py-2"

@@ -1,6 +1,5 @@
-  
 import { useRouter } from "next/router";
-import style from './styles/rshow.module.css'
+import style from "./styles/rshow.module.css";
 const AdBoxShowCase = ({ width, data }) => {
   const router = useRouter();
 
@@ -16,11 +15,7 @@ const AdBoxShowCase = ({ width, data }) => {
     >
       <div className="d-flex col-12 py-4 ps-5  " id="adbox">
         <div className={`${style.activeCompany_sec6}    `}>
-          <img
-            src="/assets/images/active_label.svg"
-            height={100}
-            width={100}
-          />
+          <img src="/assets/images/active_label.svg" height={100} width={100} />
         </div>
         <div className="d-flex col-10 pe-2 flex-column  ">
           <div

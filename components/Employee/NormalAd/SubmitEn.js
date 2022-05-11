@@ -1,30 +1,29 @@
-import { useContext, useEffect } from "react";
-import NormalAdContext from "../../../context/employeeContext/CreateAd/NormalAd/NormalAdContext";
-import axios from "../../../axios";
+import { useContext, useEffect, useState } from "react";
+ import axios from "../../../axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
 
 const SubmitEn = () => {
   const router = useRouter();
-  
-  const normalAdContext = useContext(NormalAdContext);
+  const [disabled, setDisabled] = useState("");
+  const resumeContext = useContext(ResumeContext);
   useEffect(() => {
-    normalAdContext.dispatch({ type: "type", payload: "en" });
+    resumeContext.dispatch({ type: "type", payload: "en" });
   }, []);
-
   const sendData = () => {
     const formData = new FormData();
-
+    setDisabled("disabled");
     axios({
       url: "/submiten",
       method: "post",
-      data: normalAdContext,
+      data: resumeContext,
       headers: {
         Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
       },
     })
       .then((response) => {
-        formData.append("image", normalAdContext.data.userImageFile);
+        formData.append("image", resumeContext.data.userImageFile);
         formData.append("type", "normalEn");
         formData.append("ad_id", response.data.ad_id);
         axios({
@@ -50,6 +49,7 @@ const SubmitEn = () => {
             router.push({
               pathname: "/",
             });
+            setDisabled('')
           })
           .catch(function (error) {
             console.log(error);
@@ -63,7 +63,8 @@ const SubmitEn = () => {
   return (
     <>
       <div className="d-flex mt-5 justify-content-center">
-        <div
+        <button
+          type="button"
           className="py-2 text-white"
           style={{
             width: "35%",
@@ -73,10 +74,11 @@ const SubmitEn = () => {
             borderRadius: 8,
             cursor: "pointer",
           }}
+          disabled={disabled}
           onClick={() => sendData()}
         >
           ثبت و پرداخت آگهی
-        </div>
+        </button>
       </div>
     </>
   );

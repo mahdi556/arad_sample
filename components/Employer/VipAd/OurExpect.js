@@ -1,34 +1,35 @@
 import { useContext, useEffect, useState } from "react";
-import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
-import FieldError from "../../Common/FieldError";
+ import FieldError from "../../Common/FieldError";
 import SelectOption from "../../Employee/Resume/FormInputs/SelectOption";
 import { sex } from "../../StaticData/SalaryType";
 import AgeRange from "./AgeRange";
-import LangExpert from './LangExpert'
+import LangExpert from "./LangExpert";
 import SoftExpert from "./SoftExpert";
+import style from "../../Employee/VipAd/FormInputs/FormStyles/form.module.css";
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
 
 const OurExpect = () => {
-  const normalAdContext = useContext(NormalAdContext);
+  const resumeContext = useContext(ResumeContext);
 
   const [display, setDisplay] = useState("none");
 
   const sexHandler = (id, fa) => {
-    normalAdContext.dispatch({ type: "sex", payload: { id: id, fa: fa } });
+    resumeContext.dispatch({ type: "sex", payload: { id: id, fa: fa } });
   };
 
   useEffect(() => {
-    if (normalAdContext.data.stepClick) {
+    if (resumeContext.data.stepClick) {
       if (
-        normalAdContext.data.sex.fa !== "" &&
-        normalAdContext.data.ageRange.fa.to !== ""
+        resumeContext.data.sex.fa !== "" &&
+        resumeContext.data.ageRange.fa.to !== ""
       ) {
-        normalAdContext.dispatch({ type: "fieldCheck", payload: true });
+        resumeContext.dispatch({ type: "fieldCheck", payload: true });
       } else {
         setDisplay("");
-        normalAdContext.dispatch({ type: "stepClick", payload: false });
+        resumeContext.dispatch({ type: "stepClick", payload: false });
       }
     }
-  }, [normalAdContext.data.stepClick]);
+  }, [resumeContext.data.stepClick]);
   return (
     <>
       <div className="row pt-4 pb-4 mt-4 sec2">
@@ -56,24 +57,44 @@ const OurExpect = () => {
                 data={sex}
                 name="جنسیت"
                 valueHandler={sexHandler}
-                predata={normalAdContext.data.sex.fa}
+                predata={resumeContext.data.sex.fa}
               />
-                <FieldError
-              data={normalAdContext.data.sex.fa}
-              display={display}
-            />
+              <FieldError
+                data={resumeContext.data.sex.fa}
+                display={display}
+              />
             </div>
             <div className="col-12">
               <AgeRange />
               <FieldError
-              data={normalAdContext.data.ageRange.fa.to}
-              display={display}
-            />
+                data={resumeContext.data.ageRange.fa.to}
+                display={display}
+              />
               <SoftExpert />
               <LangExpert />
             </div>
           </div>
         </div>
+          <div
+            className="d-flex align-items-center mt-4 px-5"
+            onClick={() =>
+              resumeContext.dispatch({
+                type: "military",
+                payload: !resumeContext.data.military,
+              })
+            }
+          >
+            <h3 className={`${style.txt3} pe-3 pt-1`}>
+              سربازی را به اتمام رسانده یا معاف هستم
+            </h3>
+            <img
+              src={
+                resumeContext.data.military
+                  ? "/assets/images/checked.png"
+                  : "/assets/images/checkbox_black.svg"
+              }
+            />
+          </div>
       </div>
     </>
   );

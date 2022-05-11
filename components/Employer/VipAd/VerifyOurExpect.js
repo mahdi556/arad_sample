@@ -1,8 +1,8 @@
   
 import { useContext } from "react";
-import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
-const VerifyOurExpect = ({ handleStep }) => {
-  const normalAdContext = useContext(NormalAdContext);
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+ const VerifyOurExpect = ({ handleStep }) => {
+  const resumeContext = useContext(ResumeContext);
   return (
     <>
       <div className="row pt-4 pb-4 mt-4 sec2">
@@ -38,20 +38,20 @@ const VerifyOurExpect = ({ handleStep }) => {
         <div className="d-flex col-12 flex-wrap px-4">
           <div className="d-flex col-6 justify-content-start align-items-center mb-4">
             <h5 className="col-6 fs-6 fw-light">جنسیت:</h5>
-            <h6 className="col-6  fs-6  ">{normalAdContext.data.sex.fa}</h6>
+            <h6 className="col-6  fs-6  ">{resumeContext.data.sex.fa}</h6>
           </div>
           <div className="d-flex col-6 justify-content-start align-items-center mb-4">
             <h5 className="col-6 fs-6 fw-light ">محدوده سنی :</h5>
             <h6 className="col-6 fs-6  ">
               {" "}
-              از {normalAdContext.data.ageRange.fa.from} تا{" "}
-              {normalAdContext.data.ageRange.fa.to}
+              از {resumeContext.data.ageRange.fa.from} تا{" "}
+              {resumeContext.data.ageRange.fa.to}
             </h6>
           </div>
           <div className="d-flex col-12 justify-content-start align-items-start my-4">
             <div className="col-6">
             <h5 className="col-6 fs-6 fw-bold mb-4">مهارت نرم افزاری:</h5>
-              {normalAdContext.data.softExpert.map((item, key) => (
+              {resumeContext.data.softExpert.map((item, key) => (
                 <>
                   <div className="d-flex px-4">
                     <div className="d-flex   justify-content-start align-items-center me-5 mb-3 ">
@@ -68,7 +68,7 @@ const VerifyOurExpect = ({ handleStep }) => {
             </div>
             <div className="col-6">
             <h5 className="col-6 fs-6 fw-bold mb-4">مهارت زبان:</h5>
-              {normalAdContext.data.langExpert.map((item, key) => (
+              {resumeContext.data.langExpert.map((item, key) => (
                 <>
                   <div className="d-flex px-4">
                     <div className="d-flex   justify-content-start align-items-center me-5 mb-3 ">

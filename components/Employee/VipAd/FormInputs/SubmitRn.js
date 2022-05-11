@@ -1,15 +1,17 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "../../../../axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 const SubmitRn = () => {
   const router = useRouter();
+  const [disabled,setDisabled]=useState('');
   const resumeContext = useContext(ResumeContext);
   useEffect(() => {
     resumeContext.dispatch({ type: "type", payload: "ev" });
   }, []);
   const sendData = () => {
+    setDisabled('disabled')
     const formData = new FormData();
     axios({
       url: "/submiten",
@@ -55,6 +57,7 @@ const SubmitRn = () => {
       })
       .catch(function (error) {
         // console.log(error.response.data.errors);
+        setDisabled('');
         Swal.fire({
           position: "center",
           icon: "error",
@@ -68,7 +71,7 @@ const SubmitRn = () => {
   return (
     <>
       <div className="d-flex mt-5 justify-content-center">
-        <div
+        <button
           className="py-2 text-white"
           style={{
             width: "35%",
@@ -78,10 +81,11 @@ const SubmitRn = () => {
             borderRadius: 8,
             cursor: "pointer",
           }}
+          disabled={disabled}
           onClick={() => sendData()}
         >
           ثبت و پرداخت آگهی
-        </div>
+        </button>
       </div>
     </>
   );

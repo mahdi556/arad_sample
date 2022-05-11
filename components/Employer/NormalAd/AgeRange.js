@@ -1,8 +1,8 @@
 import { useContext } from "react";
- import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
-
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+ 
 const AgeRange = () => {
-  const normalAdContext = useContext(NormalAdContext);
+  const resumeContext = useContext(ResumeContext);
   return (
     <>
       <div className="d-flex  flex-column col-12 pt-4 justify-content-between">
@@ -23,18 +23,18 @@ const AgeRange = () => {
           <div className="   input-group input-group-sm mx-2">
             <input
               className={
-                normalAdContext.data.ageRange.fa.from == ""
+                resumeContext.data.ageRange.fa.from == ""
                   ? "col-10 inputStyle"
                   : "col-10 inputFilled"
               }
               onChange={(e) =>
-                normalAdContext.dispatch({
+                resumeContext.dispatch({
                   type: "ageRange-fa-from",
                   payload: e.target.value,
                 })
               }
               type="text"
-              value={normalAdContext.data.ageRange.fa.from}
+              value={resumeContext.data.ageRange.fa.from}
             />
             <span
               className="input-group-text"
@@ -56,17 +56,17 @@ const AgeRange = () => {
           <div className="   input-group input-group-sm  ms-2">
             <input
               className={
-                normalAdContext.data.ageRange.fa.to == ""
+                resumeContext.data.ageRange.fa.to == ""
                   ? "col-10 inputStyle"
                   : "col-10 inputFilled"
               }
               onChange={(e) =>
-                normalAdContext.dispatch({
+                resumeContext.dispatch({
                   type: "ageRange-fa-to",
                   payload: e.target.value,
                 })
               }
-              value={normalAdContext.data.ageRange.fa.to}
+              value={resumeContext.data.ageRange.fa.to}
 
             />
             <span

@@ -1,4 +1,3 @@
-  
 const RAdBoxes = ({ data }) => {
   return (
     <div
@@ -11,7 +10,17 @@ const RAdBoxes = ({ data }) => {
       <div className="d-flex col-12 p-4 rAdbox">
         <div className="d-flex col-8 pe-2 flex-column  ">
           <div className="adbox-rightLabel">
-            لغو شده
+            {data.status === "registered"
+              ? "در انتظار تایید"
+              : data.status === "paying"
+              ? "در انتظار پرداخت"
+              : data.status === "paid"
+              ? "   در انتظار تایید نهایی"
+              : data.status === "accepted"
+              ? "تایید نهایی"
+              : data.status === "rejected"
+              ? "ردشده"
+              : null}
             <div className="d-flex justify-content-center align-items-center mx-auto ">
               <img src="/assets/images/doorkari.png" width={17} height={17} />
             </div>
@@ -52,9 +61,7 @@ const RAdBoxes = ({ data }) => {
                   color: "#a8a8a8",
                   fontSize: 14,
                 }}
-              >
-                
-              </h5>
+              ></h5>
             </h6>
           </div>
         </div>

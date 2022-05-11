@@ -1,22 +1,26 @@
 import { useContext, useEffect, useState } from "react";
-import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
-  
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import UserContext from "../../../context/employeeContext/User/UserContext";
+ 
 const FirstForm = () => {
-  const normalAdContext = useContext(NormalAdContext);
+  const resumeContext = useContext(ResumeContext);
   const [image, setImage] = useState([]);
   const [imageUrl, setImageUrl] = useState([]);
+  const userContext = useContext(UserContext);
   useEffect(() => {
     if (image.length > 0) {
       const newImageUrl = [];
       newImageUrl.push(URL.createObjectURL(image[0]));
       setImageUrl(newImageUrl);
-      normalAdContext.dispatch({ type: "userImageFile", payload: image[0] });
-      normalAdContext.dispatch({ type: "userImage", payload: newImageUrl });
+      resumeContext.dispatch({ type: "userImageFile", payload: image[0] });
+      resumeContext.dispatch({ type: "userImage", payload: newImageUrl });
     }
+    resumeContext.dispatch({
+      type: "user_id",
+      payload: userContext.data.user.id,
+    });
   }, [image]);
-
   return (
-    
     <div
       className="row pt-4 pb-4"
       style={{
@@ -26,25 +30,20 @@ const FirstForm = () => {
         paddingLeft: "5rem",
       }}
     >
-      
       <div className="d-flex justify-content-center  align-items-center">
         <h6 className="arad-red fs-6 px-1">با تکمیل این قسمت ،</h6>
         <h6 className=" arad-red fs-6 fw-bold px-1">اعتبار شرکت خود</h6>
         <h6 className="arad-red fs-6  px-1">را در آگهی نمایش دهید</h6>
       </div>
-      <div className="d-flex col-12 " 
-      style={{
-        backgroundColor:'#c7e4e5',
-        height:234,
-        borderRadius:50
-      }}
+      <div
+        className="d-flex col-12 "
+        style={{
+          backgroundColor: "#c7e4e5",
+          height: 234,
+          borderRadius: 50,
+        }}
       >
-        <img 
-        src='/assets/images/enheader.png'
-        height={184}
-        width={819}
-        />
-
+        <img src="/assets/images/enheader.png" height={184} width={819} />
       </div>
       <div className="d-flex align-items-start pt-1">
         <div className="d-flex col-3 flex-column   pe-2">
@@ -150,13 +149,13 @@ const FirstForm = () => {
               نام سازمان
             </label>
             <input
-               className={
-                normalAdContext.data.name == ""
+              className={
+                resumeContext.data.name == ""
                   ? "col-12 mb-3 ps-2 inputStyle"
                   : "col-12 mb-3 ps-2 inputFilled"
               }
               onChange={(e) =>
-                normalAdContext.dispatch({
+                resumeContext.dispatch({
                   type: "name",
                   payload: e.target.value,
                 })
@@ -173,13 +172,12 @@ const FirstForm = () => {
             </label>
             <input
               className={
-                normalAdContext.data.companyId == ""
+                resumeContext.data.companyId == ""
                   ? "col-12 mb-3 ps-2 inputStyle"
                   : "col-12 mb-3 ps-2 inputFilled"
               }
-              
               onChange={(e) =>
-                normalAdContext.dispatch({
+                resumeContext.dispatch({
                   type: "companyId",
                   payload: e.target.value,
                 })

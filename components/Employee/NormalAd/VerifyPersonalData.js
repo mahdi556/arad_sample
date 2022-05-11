@@ -1,8 +1,9 @@
-  
 import { useContext } from "react";
-import NormalAdContext from "../../../context/employeeContext/CreateAd/NormalAd/NormalAdContext";
- const VerifyPersonalData = ({ handleStep }) => {
-  const normalAdContext = useContext(NormalAdContext);
+ import { numberToWords } from "@persian-tools/persian-tools";
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+
+const VerifyPersonalData = ({ handleStep }) => {
+  const resumeContext = useContext(ResumeContext);
   return (
     <>
       <div className="row pt-4 pb-4 mt-4 sec2">
@@ -38,14 +39,14 @@ import NormalAdContext from "../../../context/employeeContext/CreateAd/NormalAd/
         <div className="d-flex col-12 flex-wrap px-4">
           <div className="d-flex col-6 justify-content-start align-items-center mb-4 ">
             <h5 className="col-6 fs-6 fw-light">عنوان:</h5>
-            <h6 className="col-6 fs-6  ">{normalAdContext.data.title}</h6>
+            <h6 className="col-6 fs-6  ">{resumeContext.data.title}</h6>
           </div>
           <div className="d-flex col-6 justify-content-start align-items-center mb-4 ">
             <h5 className="col-6 fs-6 fw-light">همکاری به صورت:</h5>
             <h6 className="col-6  fs-6  ">
-              {normalAdContext.data.corporateType == 1
+              {resumeContext.data.corporateType == 1
                 ? "فقط حضوری"
-                : normalAdContext.data.corporateType == 2
+                : resumeContext.data.corporateType == 2
                 ? "فقط دورکاری"
                 : "هردو"}
             </h6>
@@ -53,43 +54,56 @@ import NormalAdContext from "../../../context/employeeContext/CreateAd/NormalAd/
           <div className="d-flex col-6 justify-content-start align-items-center mb-4">
             <h5 className="col-6 fs-6 fw-light">دسته بندی شغلی:</h5>
             <h6 className="col-6  fs-6  ">
-              {normalAdContext.data.jobCategory.fa}
+              {resumeContext.data.jobCategory.fa}
             </h6>
           </div>
           <div className="d-flex col-6 justify-content-start align-items-center mb-4">
             <h5 className="col-6 fs-6 fw-light">جنسیت:</h5>
             <h6 className="col-6  fs-6  ">
-              {normalAdContext.data.sex == 1 ? "مرد" : "زن"}
+              {resumeContext.data.sex == 1 ? "مرد" : "زن"}
             </h6>
           </div>
           <div className="d-flex col-6 justify-content-start align-items-center mb-4">
             <h5 className="col-6 fs-6 fw-light">وضعیت تاهل:</h5>
             <h6 className="col-6  fs-6  ">
-              {normalAdContext.data.married == 1 ? "مجرد" : "متاهل"}
+              {resumeContext.data.married == 1 ? "مجرد" : "متاهل"}
             </h6>
           </div>
           <div className="d-flex col-6 justify-content-start align-items-center mb-4">
             <h5 className="col-6  fs-6 fw-light">تقاضای بیمه:</h5>
             <h6 className="col-6 fs-6  ">
-              {normalAdContext.data.insurrance == 1 ? "دارم" : "ندارم"}
+              {resumeContext.data.insurrance == 1 ? "دارم" : "ندارم"}
             </h6>
           </div>
           <div className="d-flex col-6 justify-content-start align-items-center mb-4">
-            <h5 className="col-6 fs-6 fw-light">استان:</h5>
-            <h6 className="col-6 fs-6  ">
-              {normalAdContext.data.province.fa}
-            </h6>
-          </div>{" "}
-          <div className="d-flex col-6 justify-content-start align-items-center mb-4">
-            <h5 className="col-6 fs-6 fw-light">شهر:</h5>
-            <h6 className="col-6 fs-6  ">{normalAdContext.data.city.fa}</h6>
-          </div>
-          <div className="d-flex col-6 justify-content-start align-items-center mb-4">
-            <h5 className="col-6 fs-6 fw-light ">حقوق درخواستی :</h5>
-            <h6 className="col-6 fs-6  ">
-              {" "}
-              از {normalAdContext.data.salary.fa.from} تا{" "}
-              {normalAdContext.data.salary.fa.to}
+          <h5 className="col-6 fs-6 fw-light">استان:</h5>
+          <h6 className="col-6 fs-6  ">{resumeContext.data.province.fa}</h6>
+        </div>{" "}
+        <div className="d-flex col-6 justify-content-start align-items-center mb-4">
+          <h5 className="col-6 fs-6 fw-light">شهر:</h5>
+          <h6 className="col-6 fs-6  ">{resumeContext.data.city.fa}</h6>
+        </div>
+          <div className="d-flex col-12 justify-content-start align-items-start mb-4">
+            <h5 className="col-4 fs-6 fw-light ">حقوق درخواستی :</h5>
+            <h6 className="col-8 fs-6  ">
+              {resumeContext.data.salaryAgree ? (
+                "توافقی"
+              ) : (
+                <>
+                  <h6>
+                    از {resumeContext.data.salary.fa.from} تومان تا{" "}
+                    {resumeContext.data.salary.fa.to} تومان{" "}
+                  </h6>
+                  <h6
+                    style={{
+                      fontSize: 14,
+                    }}
+                  >
+                    از {numberToWords(resumeContext.data.salary.fa.to)} تومان تا{" "}
+                    {numberToWords(resumeContext.data.salary.fa.to)} تومان
+                  </h6>
+                </>
+              )}
             </h6>
           </div>
         </div>

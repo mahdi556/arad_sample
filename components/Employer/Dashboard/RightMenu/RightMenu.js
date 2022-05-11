@@ -91,7 +91,14 @@ const RightMenu = () => {
               // visibility: "hidden",
             }}
           >
-            <h6 className="mt-2 py-2 ps-2 EsubItem ">لیست آگهی های ثبت شده</h6>
+            <h6 className="mt-2 py-2 ps-2 EsubItem "
+             onClick={() =>
+              router.push({
+                pathname: "/employer/myads"
+               
+              })
+            }
+            >لیست آگهی های ثبت شده</h6>
             <h6
               className="mt-2 py-2 ps-2 EsubItem"
               onClick={() =>

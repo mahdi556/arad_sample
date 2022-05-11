@@ -1,7 +1,7 @@
   
 import { useContext, useEffect, useRef, useState } from "react";
-import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
-import ButtonAdd from "../../Employer/FormInputs/ButtonAdd";
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+ import ButtonAdd from "../../Employer/FormInputs/ButtonAdd";
 import ButtonTag from "../../Employer/FormInputs/ButtonTag";
 
 const SoftExpert = () => {
@@ -17,11 +17,11 @@ const SoftExpert = () => {
   const [input, setInput] = useState("inputStyle");
   const [datas, setDatas] = useState(null);
   const [hasEx, setHasEx] = useState(false);
-  const normalAdContext = useContext(NormalAdContext);
+  const resumeContext = useContext(ResumeContext);
 
   const dropRef = useRef(null);
   useEffect(() => {
-    normalAdContext.dispatch({
+    resumeContext.dispatch({
       type: "softExpert",
       payload: { data: expert },
     });
@@ -33,8 +33,8 @@ const SoftExpert = () => {
     };
   }, [drop, expert]);
   useEffect(() => {
-    setExpert(normalAdContext.data.softExpert);
-    if (normalAdContext.data.softExpert.length > 0) setHasEx(true);
+    setExpert(resumeContext.data.softExpert);
+    if (resumeContext.data.softExpert.length > 0) setHasEx(true);
   }, []);
   const handleClickOutside = (event) => {
     if (

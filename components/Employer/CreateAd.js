@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import NormalAdProvider from "../../context/employerContext/CreateAd/NormalAd/NormalAdProvider";
 import FirstForm from "./NormalAd/FirstForm";
 import StepButton from "./NormalAd/StepButton";
 import PersonalData from "./NormalAd/PersonalData";
@@ -11,7 +10,8 @@ import ContactForm from "./NormalAd/Contact";
 import OurExpect from "./NormalAd/OurExpect";
 import VerifyOurExpect from "./NormalAd/VerifyOurExpect";
 import SubmitRn from "./NormalAd/SubmitRn";
-
+import Description from './NormalAd/Description';
+import VerifyDescription from "./NormalAd/VerifyDescription";
 const CreateEmployerAd = () => {
   const router = useRouter();
   const [step, setStep] = useState(1);
@@ -23,8 +23,7 @@ const CreateEmployerAd = () => {
 
   return (
     <>
-      <NormalAdProvider>
-        <div
+         <div
           style={{
             width: "100%",
             backgroundColor: "#E5E5E5",
@@ -101,16 +100,29 @@ const CreateEmployerAd = () => {
                 {step > 3 && (
                   <>
                     <VerifyOurExpect handleStep={handleStep} />
+                   
+                  </>
+                )}
+                {step == 4 && (
+                  <>
+                    <Description />
+                    <StepButton handleStep={handleStep} step={4} ph={"95%"} />
+                  
+                  </>
+                )}
+                {step > 4 && (
+                  <>
+                    <VerifyDescription handleStep={handleStep} />
                     <ContactForm />
                     <SubmitRn />
                   </>
                 )}
+
               </div>
             </div>
           </div>
         </div>
-      </NormalAdProvider>
-    </>
+     </>
   );
 };
 

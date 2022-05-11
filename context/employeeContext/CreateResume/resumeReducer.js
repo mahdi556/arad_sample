@@ -3,6 +3,7 @@ const resumeReducer = (state, action) => {
     case "data":
       return {
         ...state,
+        user_id: "",
         userImage: "",
         userImageFile: {},
         userVideo: "",
@@ -96,6 +97,9 @@ const resumeReducer = (state, action) => {
         email: "",
         military: false,
       };
+    case "user_id":
+      return { ...state, user_id: action.payload };
+
     case "step":
       return { ...state, step: action.payload };
     case "userImage":
@@ -110,7 +114,10 @@ const resumeReducer = (state, action) => {
       return { ...state, stepClick: action.payload };
     case "fieldCheck":
       return { ...state, fieldCheck: action.payload };
-
+    case "companyId":
+      return { ...state, companyId: action.payload };
+    case "companyName":
+      return { ...state, companyName: action.payload };
     case "type":
       return { ...state, type: action.payload };
     case "social-twitter":
@@ -156,6 +163,11 @@ const resumeReducer = (state, action) => {
       return {
         ...state,
         corporateType: action.payload,
+      };
+    case "corporateTime":
+      return {
+        ...state,
+        corporateTime: { fa: action.payload.fa, id: action.payload.id },
       };
     case "birthday-d":
       return { ...state, birthday: { ...state.birthday, day: action.payload } };
@@ -203,6 +215,39 @@ const resumeReducer = (state, action) => {
         ...state,
         city: { fa: action.payload.fa, id: action.payload.id },
       };
+    case "workHour-fa-from":
+      return {
+        ...state,
+        workHour: {
+          ...state.workHour,
+          fa: { to: state.workHour.fa.to, from: action.payload },
+        },
+      };
+    case "workHour-fa-to":
+      return {
+        ...state,
+        workHour: {
+          ...state.workHour,
+          fa: { from: state.workHour.fa.from, to: action.payload },
+        },
+      };
+    case "ageRange-fa-from":
+      return {
+        ...state,
+        ageRange: {
+          ...state.ageRange,
+          fa: { to: state.ageRange.fa.to, from: action.payload },
+        },
+      };
+    case "ageRange-fa-to":
+      return {
+        ...state,
+        ageRange: {
+          ...state.ageRange,
+          fa: { from: state.ageRange.fa.from, to: action.payload },
+        },
+      };
+
     case "experiences":
       return {
         ...state,
@@ -272,6 +317,12 @@ const resumeReducer = (state, action) => {
       };
     case "salaryAgree":
       return { ...state, salaryAgree: action.payload };
+    case "salaryType":
+      return {
+        ...state,
+        salaryType: { fa: action.payload.fa, id: action.payload.id },
+      };
+
     case "progressBar-c":
       return {
         ...state,

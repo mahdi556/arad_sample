@@ -1,8 +1,8 @@
   
 import { useContext } from "react";
-import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
 const VerifyDescription = ({ handleStep }) => {
-  const normalAdContext = useContext(NormalAdContext);
+  const resumeContext = useContext(ResumeContext);
   return (
     <>
       <div className="row pt-4 pb-4 mt-4 sec2">
@@ -39,7 +39,7 @@ const VerifyDescription = ({ handleStep }) => {
           <div className="d-flex flex-column col-12 justify-content-start align-items-start mb-4">
             <h5 className="col-4 fs-6 fw-light">توضیحات:</h5>
             <h6 className="col-7  fs-6  ">
-              {normalAdContext.data.description}
+              {resumeContext.data.description}
             </h6>
           </div>
         </div>

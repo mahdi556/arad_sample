@@ -1,8 +1,8 @@
 import { useContext } from "react";
- import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
-
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+ 
 const WorkHours = () => {
-  const normalAdContext = useContext(NormalAdContext);
+  const resumeContext = useContext(ResumeContext);
   return (
     <>
       <div className="d-flex flex-column col-12 pt-4 justify-content-between">
@@ -23,18 +23,18 @@ const WorkHours = () => {
           <div className="   input-group input-group-sm mx-2">
             <input
               className={
-                normalAdContext.data.workHour.fa.from == ""
+                resumeContext.data.workHour.fa.from == ""
                   ? "col-10 inputStyle"
                   : "col-10 inputFilled"
               }
               onChange={(e) =>
-                normalAdContext.dispatch({
+                resumeContext.dispatch({
                   type: "workHour-fa-from",
                   payload: e.target.value,
                 })
               }
               type="text"
-              value={normalAdContext.data.workHour.fa.from}
+              value={resumeContext.data.workHour.fa.from}
             />
             <span
               className="input-group-text"
@@ -56,17 +56,17 @@ const WorkHours = () => {
           <div className="   input-group input-group-sm  ms-2">
             <input
               className={
-                normalAdContext.data.workHour.fa.to == ""
+                resumeContext.data.workHour.fa.to == ""
                   ? "col-10 inputStyle"
                   : "col-10 inputFilled"
               }
               onChange={(e) =>
-                normalAdContext.dispatch({
+                resumeContext.dispatch({
                   type: "workHour-fa-to",
                   payload: e.target.value,
                 })
               }
-              value={normalAdContext.data.workHour.fa.to}
+              value={resumeContext.data.workHour.fa.to}
 
             />
             <span

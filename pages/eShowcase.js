@@ -20,8 +20,7 @@ const EShowCase = () => {
       },
     })
       .then((response) => {
-        // console.log(response.data.data.ad);
-
+ 
         setData(response.data.data.ad);
       })
       .catch(function (error) {
@@ -43,7 +42,7 @@ const EShowCase = () => {
             <RShowSideBar data={data} />
           </div>
           <div className="  col-9 ">
-            {/* <RShowContent data={data} /> */}
+            <RShowContent data={data} /> 
           </div>
         </div>
       </div>

@@ -1,4 +1,3 @@
-  
 import style from "./HomeStyles/home.module.css";
 
 const HomeTopSection = () => {
@@ -14,13 +13,31 @@ const HomeTopSection = () => {
             <h2 className={`${style.sec17} mx-auto mt-5 ps-5  `}>
               رفع این نیاز جامعه با چیتیت
             </h2>
-            {/* <img src="/assets/images/homeTop.png" height="400vh" width={700} /> */}
           </div>
         </div>
-        <div className="col-6 d-flex   align-items-start justify-content-start mx-auto ">
-          <img className="mx-auto" src="/assets/images/ezgif.gif" />
+        <div className="col-6 d-flex   align-items-start justify-content-start mx-auto  ">
+          {/* <img className="mx-auto"
+          style={{
+            maxWidth:500,
+            maxHeight:500
+          }}
+          src="/assets/images/ezgif.gif" /> */}
+          {/* <video className="mx-auto"
+           autoPlay
+           loop
+            width={500}
+            height={500}
+            src= "/assets/images/home.mp4"
+            style={{
+              cursor: "pointer",
+            }}
+          >
+            Your browser does not support the video tag.
+          </video> */}
         </div>
-        <div className={`  ${style.sec19} py-3 px-4  `}>
+        <div
+          className={` col-xxl-5 col-xl-6 col-lg-7 ${style.sec19} py-3 px-4  `}
+        >
           <div className={`  ${style.sec18} py-3 px-4 `}>
             میخوای استخدام بشی
           </div>

@@ -1,17 +1,26 @@
-  
 import AdBoxNewEmployer from "../../Common/AdBoxNewEmployer";
 import BreakLine from "../../Employee/Resume/FormInputs/BreakLine";
 import UserContext from "../../../context/employeeContext/User/UserContext";
 import Lottie from "lottie-react";
 import { ToastContainer, toast } from "react-toastify";
 import saveLottie from "../../../components/Lottie-json/save-lottie.json";
-import { useRef, useState,useContext } from "react";
-import axios from '../../../axios'
+import { useRef, useState, useContext, useEffect } from "react";
+import axios from "../../../axios";
 const RAdShow = ({ data }) => {
   const lottieRef = useRef();
   const [play, settPlay] = useState(false);
+  const [salaryTypes, setSalaryTypes] = useState([]);
   const width = "33%";
   const userContext = useContext(UserContext);
+
+  const SalaryType = [
+    { id: 1, fa: "ماهانه", en: "" },
+    { id: 2, fa: "روزانه", en: "" },
+    { id: 3, fa: "ساعتی", en: "" },
+    { id: 4, fa: "پورسانتی", en: "" },
+    { id: 5, fa: "توافقی", en: "" },
+  ];
+
   const handleLottie = () => {
     axios({
       url: "/storesavead",
@@ -22,10 +31,9 @@ const RAdShow = ({ data }) => {
       },
     })
       .then((response) => {
-         console.log(response)
-         toast.success( response.data.message, {
-           position: toast.POSITION.TOP_CENTER,
-         });
+        toast.success(response.data.message, {
+          position: toast.POSITION.TOP_CENTER,
+        });
       })
       .catch(function (error) {
         console.log(error);
@@ -119,99 +127,114 @@ const RAdShow = ({ data }) => {
           <div className="d-flex col-12">
             <div className="d-flex col-4">
               <h6 className="col-5 txtSec1"> نحوه پرداخت حقوق </h6>
-              <h6 className="col-7 txtSec2"> ماهانه </h6>
+              <h6 className="col-7 txtSec2">
+                {" "}
+                {data.personal &&
+                  data.personal.salary_type &&
+                  SalaryType[data.personal.salary_type - 1].fa}{" "}
+              </h6>
             </div>
             <div className="d-flex col-4 ms-4">
               <h6 className="col-5 txtSec1">محدوده سنی</h6>
-              <h6 className="col-7 txtSec2">از 21 سال تا 25 سال</h6>
+              <h6 className="col-7 txtSec2">
+                از {data.personal && data.personal.fa_age_range_from} سال تا{" "}
+                {data.personal && data.personal.fa_age_range_to} سال
+              </h6>
             </div>
             <div className="d-flex col-3 ms-4 ">
               <h6 className="col-5 txtSec1">ساعات کاری</h6>
-              <h6 className="col-7 txtSec2">از ساعت 8 تا ساعت 17</h6>
+              <h6 className="col-7 txtSec2">
+                از ساعت {data.personal && data.personal.fa_work_hour_from} تا
+                ساعت {data.personal && data.personal.fa_work_hour_to}
+              </h6>
             </div>
           </div>
+          <BreakLine />
         </div>
-        <BreakLine />
-        <div className="mb-4">
-          <h5 className="mt-2 mb-5 fs-5 text-start fw-bold w-75">
-            مهارت های نرم افزاری
-          </h5>
-          <div className="row row-cols-4  ">
-            {data.softExperts &&
-              data.softExperts.map((item, key) => (
-                <div className="col  px-3">
-                  <div className="   eAdshowSec3  ">
-                    {item.fa_name}
-                    <div className="d-flex col-12 justify-content-between px-2">
-                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
-                        {item.level == 1 && "مقدماتی"}
-                      </div>
-                      <div
-                        className={
-                          item.level == 2 || item.level == 3
-                            ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
-                            : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
-                        }
-                        // {`eAdshowSec6 col-4 mt-2 me-1 pb-1`}
-                      >
-                        {item.level == 2 && "متوسط"}
-                      </div>
-                      <div
-                        className={
-                          item.level == 3
-                            ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
-                            : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
-                        }
-                      >
-                        {item.level == 3 && "پیشرفته"}
+        {data.softExpert && data.softExperts.length > 0 && (
+          <div className="mb-4">
+            <h5 className="mt-2 mb-5 fs-5 text-start fw-bold w-75">
+              مهارت های نرم افزاری
+            </h5>
+            <div className="row row-cols-4  ">
+              {data.softExperts &&
+                data.softExperts.map((item, key) => (
+                  <div className="col  px-3">
+                    <div className="   eAdshowSec3  ">
+                      {item.fa_name}
+                      <div className="d-flex col-12 justify-content-between px-2">
+                        <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                          {item.level == 1 && "مقدماتی"}
+                        </div>
+                        <div
+                          className={
+                            item.level == 2 || item.level == 3
+                              ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                              : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                          }
+                          // {`eAdshowSec6 col-4 mt-2 me-1 pb-1`}
+                        >
+                          {item.level == 2 && "متوسط"}
+                        </div>
+                        <div
+                          className={
+                            item.level == 3
+                              ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                              : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                          }
+                        >
+                          {item.level == 3 && "پیشرفته"}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+            </div>
+            <BreakLine />
           </div>
-        </div>
-        <BreakLine />
-        <div className="mb-4">
-          <h5 className="mt-2 mb-5 fs-5 text-start fw-bold w-75">
-            مهارت های زبان
-          </h5>
-          <div className="row row-cols-4  ">
-            {data.langExperts &&
-              data.langExperts.map((item, key) => (
-                <div className="col  px-3">
-                  <div className="   eAdshowSec3  ">
-                    {item.fa_name}
-                    <div className="d-flex col-12 justify-content-between px-2">
-                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
-                        {item.level == 1 && "مقدماتی"}
-                      </div>
-                      <div
-                        className={
-                          item.level == 2 || item.level == 3
-                            ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
-                            : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
-                        }
-                        // {`eAdshowSec6 col-4 mt-2 me-1 pb-1`}
-                      >
-                        {item.level == 2 && "متوسط"}
-                      </div>
-                      <div
-                        className={
-                          item.level == 3
-                            ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
-                            : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
-                        }
-                      >
-                        {item.level == 3 && "پیشرفته"}
+        )}
+        {data.langExperts && data.langExperts.length > 0 && (
+          <div className="mb-4">
+            <h5 className="mt-2 mb-5 fs-5 text-start fw-bold w-75">
+              مهارت های زبان
+            </h5>
+            <div className="row row-cols-4  ">
+              {data.langExperts &&
+                data.langExperts.map((item, key) => (
+                  <div className="col  px-3">
+                    <div className="   eAdshowSec3  ">
+                      {item.fa_name}
+                      <div className="d-flex col-12 justify-content-between px-2">
+                        <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                          {item.level == 1 && "مقدماتی"}
+                        </div>
+                        <div
+                          className={
+                            item.level == 2 || item.level == 3
+                              ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                              : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                          }
+                          // {`eAdshowSec6 col-4 mt-2 me-1 pb-1`}
+                        >
+                          {item.level == 2 && "متوسط"}
+                        </div>
+                        <div
+                          className={
+                            item.level == 3
+                              ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                              : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                          }
+                        >
+                          {item.level == 3 && "پیشرفته"}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+            </div>
+            <BreakLine />
           </div>
-        </div>
-        <BreakLine />
+        )}
         <h5 className="mt-2 mb-5 fs-5 text-start fw-bold w-75">توضیحات</h5>
         <p
           style={{
@@ -231,12 +254,12 @@ const RAdShow = ({ data }) => {
       </div>
       <h5 className="mt-5 mb-5 fs-4 text-start fw-bold w-75">آگهی های مرتبط</h5>
       <div class="row gx-5 gy-4   ">
+        {/* <AdBoxNewEmployer width={width} />
         <AdBoxNewEmployer width={width} />
         <AdBoxNewEmployer width={width} />
         <AdBoxNewEmployer width={width} />
         <AdBoxNewEmployer width={width} />
-        <AdBoxNewEmployer width={width} />
-        <AdBoxNewEmployer width={width} />
+        <AdBoxNewEmployer width={width} /> */}
       </div>
     </>
   );

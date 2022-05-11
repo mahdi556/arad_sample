@@ -1,23 +1,23 @@
 import { useContext, useEffect, useState } from "react";
-import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
 import FieldError from "../../Common/FieldError";
 
 const Description = () => {
   const [display, setDisplay] = useState("none");
 
-  const normalAdContext = useContext(NormalAdContext);
+  const resumeContext = useContext(ResumeContext);
   useEffect(() => {
-    if (normalAdContext.data.stepClick) {
+    if (resumeContext.data.stepClick) {
       if (
-         normalAdContext.data.description !== ""
+         resumeContext.data.description !== ""
       ) {
-        normalAdContext.dispatch({ type: "fieldCheck", payload: true });
+        resumeContext.dispatch({ type: "fieldCheck", payload: true });
       } else {
         setDisplay("");
-        normalAdContext.dispatch({ type: "stepClick", payload: false });
+        resumeContext.dispatch({ type: "stepClick", payload: false });
       }
     }
-  }, [normalAdContext.data.stepClick]);
+  }, [resumeContext.data.stepClick]);
   return (
     <>
       <div className="row pt-4 pb-4 mt-4 sec2">
@@ -45,7 +45,7 @@ const Description = () => {
           </label> */}
           <textarea
             className={
-              normalAdContext.data.title == ""
+              resumeContext.data.title == ""
                 ? "col-12 mb-3 ps-2 inputStyle"
                 : "col-12 mb-3 ps-2 inputFilled"
             }
@@ -54,16 +54,16 @@ const Description = () => {
             style={{
               height:150
             }}
-            value={normalAdContext.data.description}
+            value={resumeContext.data.description}
             onChange={(e) => {
-              normalAdContext.dispatch({
+              resumeContext.dispatch({
                 type: "description",
                 payload: e.target.value,
               });
             }}
           />
            <FieldError
-              data={normalAdContext.data.description}
+              data={resumeContext.data.description}
               display={display}
             />
         </div>

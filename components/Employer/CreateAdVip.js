@@ -1,23 +1,57 @@
-import { useState } from "react";
-import ContactForm from "./FormInputs/Contact";
-import FirstForm from "./FormInputs/FirstForm";
-import JobConditionVip from "./FormInputs/JobConditionVip";
-import StepButton from "./FormInputs/StepButton";
-import VerticalProgress from "./FormInputs/VerticalProgress";
+import { useRouter } from "next/router";
+import { useContext, useEffect, useState } from "react";
+import FirstForm from "./VipAd/FirstForm";
+import StepButton from "./VipAd/StepButton";
+import PersonalData from "./VipAd/PersonalData";
+import VerticalProgress from "./VipAd/VerticalProgress";
+import VerifyFirstForm from "./VipAd/VerifyFirstForm";
+import VerifyPersonalData from "./VipAd/VerifyPersonalData";
+import ContactForm from "./VipAd/Contact";
+import OurExpect from "./VipAd/OurExpect";
+import VerifyOurExpect from "./VipAd/VerifyOurExpect";
+import SubmitRn from "./VipAd/SubmitRn";
+import Description from "./VipAd/Description";
+import VerifyDescription from "./VipAd/VerifyDescription";
+import ResumeContext from "../../context/employeeContext/CreateResume/ResumeContext";
 const CreateEmployerAdVip = () => {
+  const resumeContext = useContext(ResumeContext);
+  const router = useRouter();
   const [step, setStep] = useState(1);
   const [p_height, setP_height] = useState("10%");
+  const [step2, setStep2] = useState(1);
+  const [p_height2, setP_height2] = useState("10%");
   const handleStep = (sn, ph) => {
-    setStep(sn);
-    setP_height(ph);
+    resumeContext.dispatch({
+      type: "stepClick",
+      payload: true,
+    });
+    setStep2(sn);
+    setP_height2(p_height);
   };
+  const handleStepEdit = (sn, ph) => {
+    setStep(sn);
+    setP_height(p_height);
+  };
+  useEffect(() => {
+    if (resumeContext.data.fieldCheck) {
+      resumeContext.dispatch({
+        type: "fieldCheck",
+        payload: false,
+      });
+      resumeContext.dispatch({
+        type: "stepClick",
+        payload: false,
+      });
+      setStep(step2);
+      setP_height(p_height2);
+    }
+  }, [resumeContext.data.fieldCheck]);
   return (
     <>
       <div
         style={{
           width: "100%",
           backgroundColor: "#E5E5E5",
-          // marginTop:'6rem',
           paddingTop: "9rem",
           paddingBottom: 400,
         }}
@@ -42,19 +76,69 @@ const CreateEmployerAdVip = () => {
                 width: "83%",
               }}
             >
-              <FirstForm />
+              <div
+                className="d-flex px-3 py-3  mb-5 align-items-center  "
+                style={{ backgroundColor: "#fff", borderRadius: "0.7rem" }}
+              >
+                <h3
+                  className=" mx-auto"
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: "bold",
+                    lineHeight: "1.4rem",
+                  }}
+                >
+                  آگهی ویژه (فارسی)
+                </h3>
+              </div>
+              {step == 1 && <FirstForm />}
+
               {step < 2 && (
-                <StepButton handleStep={handleStep} step={2} ph={"30%"} />
+                <StepButton handleStep={handleStep} step={1} ph={"25%"} />
               )}
 
-              {step >= 2 && (
-                <JobConditionVip step={step} handleStep={handleStep} />
+              {step > 1 && (
+                <>
+                  <VerifyFirstForm handleStep={handleStepEdit} />
+                </>
+              )}
+
+              {step == 2 && (
+                <>
+                  <PersonalData />
+                  <StepButton handleStep={handleStep} step={2} ph={"45%"} />
+                </>
+              )}
+
+              {step > 2 && (
+                <>
+                  <VerifyPersonalData handleStep={handleStepEdit} />
+                </>
+              )}
+              {step == 3 && (
+                <>
+                  <OurExpect />
+                  <StepButton handleStep={handleStep} step={3} ph={"78%"} />
+                </>
+              )}
+              {step > 3 && (
+                <>
+                  <VerifyOurExpect handleStep={handleStepEdit} />
+                </>
               )}
               {step == 4 && (
-                <StepButton handleStep={handleStep} step={5} ph={"98%"} />
+                <>
+                  <Description />
+                  <StepButton handleStep={handleStep} step={4} ph={"98%"} />
+                </>
               )}
-
-              {step > 4 && <ContactForm />}
+              {step > 4 && (
+                <>
+                  <VerifyDescription handleStep={handleStepEdit} />
+                  <ContactForm />
+                  <SubmitRn />
+                </>
+              )}
             </div>
           </div>
         </div>

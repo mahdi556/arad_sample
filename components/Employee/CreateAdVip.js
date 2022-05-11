@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import VerticalProgress from "./NormalAd/VerticalProgress";
-import ResumeProvider from "../../context/employeeContext/CreateResume/ResumeProvider";
 import CreateResumeBody from "./VipAd/CreateResumeBody";
 
 const CreateEmployeeAd = () => {

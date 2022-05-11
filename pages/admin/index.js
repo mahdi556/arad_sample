@@ -4,7 +4,11 @@ import RegisterPermission from "../../components/Admin/RegisterPermission";
 import RegisterRole from "../../components/Admin/RegisterRole";
 import AssignRoleToUser from "../../components/Admin/AssignRoleToUser";
 import AssignPermissionToRole from "../../components/Admin/AssignPermissionToRole";
+import { useRouter } from "next/router";
+
 const Admin = () => {
+  const router = useRouter();
+
   return (
     <>
       <NavBar />
@@ -21,6 +25,28 @@ const Admin = () => {
               <RegisterRole />
               <AssignPermissionToRole />
               <AssignRoleToUser />
+            </div>
+            <div className="d-flex mt-5">
+              <button
+                className="btn btn-info text-white me-4"
+                onClick={() => {
+                  router.push({
+                    pathname: "/admin/eads",
+                  });
+                }}
+              >
+                آگهی های کارجو
+              </button>
+              <button
+                className="btn btn-info text-white"
+                onClick={() => {
+                  router.push({
+                    pathname: "/admin/rads",
+                  });
+                }}
+              >
+                آگهی های کارفرما
+              </button>
             </div>
           </div>
         </div>

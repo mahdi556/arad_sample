@@ -12,10 +12,11 @@ const CreateAdEmployeePage = () => {
     <>
       <NavBar />
       {router.query.type == "normal" ? (
-        <CreateEmployeeAd />
+        <ResumeProvider>
+          <CreateEmployeeAd />
+        </ResumeProvider>
       ) : router.query.type == "vip" ? (
         <ResumeProvider>
-
           <CreateEmployeeAdVip />
         </ResumeProvider>
       ) : null}

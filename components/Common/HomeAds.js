@@ -13,7 +13,7 @@ const HomeAds = () => {
   const [rads, setRads] = useState({});
   useEffect(() => {
     axios({
-      url: "/getAds",
+      url: "/mainPageAds",
       method: "get",
     })
       .then((response) => {
@@ -215,22 +215,22 @@ const HomeAds = () => {
             </div>
           </div>
           <div className="col-5">
-              <img
+              {/* <img
               src="/assets/images/home_image3.png"
               height={400}
               width={500}
-            />
+            /> */}
           </div>
         </div>
         <div className="d-flex col-12 px-5 justify-content-center align-items-start mt-5">
           <div className="col-12 d-flex flex-column flex-wrap  align-items-center position-relative ">
             <h3 className={`  ${style.sec9}   `}>مصــــاحبه آنــلاین</h3>
             <div className="col-12 d-flex flex-wrap" style={{}}>
-                <img className="mx-auto"
+                {/* <img className="mx-auto"
                 src="/assets/images/home_image4.png"
                 height={500}
                 width={800}
-              />
+              /> */}
             </div>
             <div
               className="d-flex flex-column col-4 position-absolute"
@@ -379,27 +379,27 @@ const HomeAds = () => {
             </h5>
             <div className="d-flex col-12 mt-5">
               <div className="me-3">
-                  <img
+                  {/* <img
                   src="/assets/images/home_image9.png"
                   height={30}
                   width={100}
-                />
+                /> */}
               </div>
               <div>
-                  <img
+                  {/* <img
                   src="/assets/images/home_image10.png"
                   height={30}
                   width={100}
-                />
+                /> */}
               </div>
             </div>
           </div>
           <div className="d-flex col-6 ms-auto justify-content-end">
-              <img
+              {/* <img
               src="/assets/images/home_image6.png"
               height={300}
               width={600}
-            />
+            /> */}
           </div>
         </div>
         <div className="d-flex col-11 mx-auto px-5 justify-content-between align-items-start mt-5 py-5">

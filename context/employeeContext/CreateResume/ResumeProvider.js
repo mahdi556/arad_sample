@@ -2,6 +2,7 @@ import { useReducer } from "react";
 import ResumeContext from "./ResumeContext";
 import resumeReducer from "./resumeReducer";
 const initialData = {
+  user_id: "",
   userImage: "",
   userImageFile: {},
   userVideo: "",
@@ -19,16 +20,21 @@ const initialData = {
   title: "",
   entitle: "",
   name: "",
+  companyId: "",
   companyName: "",
   lastname: "",
   Ename: "",
   Elastname: "",
   corporateType: 1,
-  military:false,
+  military: false,
   birthday: {
     day: "",
     month: "",
     year: "",
+  },
+  salaryType: {
+    id: "",
+    fa: "",
   },
   Ebirthday: {
     day: "",
@@ -61,7 +67,7 @@ const initialData = {
     fa: { from: "", to: "" },
     en: { from: "", to: "" },
   },
-  salaryAgree:false,
+  salaryAgree: false,
   workHour: {
     fa: { from: "", to: "" },
   },
@@ -95,7 +101,7 @@ const initialData = {
   whatsapp: "",
   telegram: "",
   email: "",
-  military:false
+  military: false,
 };
 
 const ResumeProvider = (props) => {

@@ -1,20 +1,20 @@
 import { useContext, useEffect, useState } from "react";
-import NormalAdContext from "../../../context/employeeContext/CreateAd/NormalAd/NormalAdContext";
 import RadioButton from "../FormInputs/RadioButton";
 import SelectOption from "../Resume/FormInputs/SelectOption";
 import SalaryNeeded from "./SalaryNeeded";
 import { JobCats } from "../../StaticData/JobCategory";
 import { Province } from "../../StaticData/City";
 import { Cities } from "../../StaticData/City";
-
+import BirthDay from "./BirthDay";
+import style from "../VipAd/FormInputs/FormStyles/form.module.css";
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
 const PersonalData = () => {
-  const normalAdContext = useContext(NormalAdContext);
-
-  let proId = normalAdContext.data.province.id;
+  const resumeContext = useContext(ResumeContext);
+  let proId = resumeContext.data.province.id;
   const citi = Cities.filter((item, key) => item.provinceId == proId);
 
   const catHandler = (id, fa) => {
-    normalAdContext.dispatch({
+    resumeContext.dispatch({
       type: "jobCategory",
       payload: { id: id, fa: fa },
     });
@@ -27,7 +27,7 @@ const PersonalData = () => {
   });
   const handlePersonalProgress = (sec, item) => {
     sec !== "" && resumecontext.data.progressBar.c.push(item);
-    normalAdContext.dispatch({ type: "progressBar-c" });
+    resumeContext.dispatch({ type: "progressBar-c" });
   };
   const SetButtClass = (i) => {
     buttonClass[1] = "Ebutton";
@@ -37,31 +37,31 @@ const PersonalData = () => {
   };
   const sexHandler = (sex) => {
     sex == 1
-      ? normalAdContext.dispatch({
+      ? resumeContext.dispatch({
           type: "sex",
           payload: { id: sex, fa: "مرد" },
         })
-      : normalAdContext.dispatch({
+      : resumeContext.dispatch({
           type: "sex",
           payload: { id: sex, fa: "زن" },
         });
   };
   const marriedHandler = (mar) => {
-    normalAdContext.dispatch({ type: "married", payload: mar });
+    resumeContext.dispatch({ type: "married", payload: mar });
   };
   const insuranceHandler = (ins) => {
-    normalAdContext.dispatch({ type: "insurrance", payload: ins });
+    resumeContext.dispatch({ type: "insurrance", payload: ins });
   };
 
   const provinceHandler = (id, fa) => {
-    normalAdContext.dispatch({
+    resumeContext.dispatch({
       type: "province",
       payload: { id: id, fa: fa },
     });
   };
 
   const cityHandler = (id, fa) => {
-    normalAdContext.dispatch({ type: "city", payload: { id: id, fa: fa } });
+    resumeContext.dispatch({ type: "city", payload: { id: id, fa: fa } });
   };
 
   useEffect(() => {
@@ -70,13 +70,13 @@ const PersonalData = () => {
     buttonClass[3] = "Ebutton";
     setButtonClass({
       ...buttonClass,
-      [normalAdContext.data.corporateType]: "Ebutton_clicked ",
+      [resumeContext.data.corporateType]: "Ebutton_clicked ",
     });
   }, []);
 
   return (
     <>
-      <div className="row pt-4 pb-4 mt-4 sec2">
+      <div className="row pt-4 pb-4 mt-4 sec2 px-5">
         <div
           style={{
             fontWeight: "bold",
@@ -88,10 +88,10 @@ const PersonalData = () => {
         >
           اطلاعات شخصی
         </div>
-        <div className="d-flex justify-content-between col-12 px-5  ">
+        <div className="d-flex justify-content-between col-12    ">
           <div className="d-flex flex-wrap pe-4 col-12 ">
             <div className="d-flex col-12 justify-content-between">
-              <div className="col-5 mb-3">
+              <div className="col-5 ">
                 <label
                   className="fs-6  "
                   style={{
@@ -103,14 +103,14 @@ const PersonalData = () => {
                 </label>
                 <input
                   className={
-                    normalAdContext.data.title == ""
+                    resumeContext.data.title == ""
                       ? "col-12 mb-3 ps-2 inputStyle"
                       : "col-12 mb-3 ps-2 inputFilled"
                   }
                   type="text"
-                  value={normalAdContext.data.title}
+                  value={resumeContext.data.title}
                   onChange={(e) => {
-                    normalAdContext.dispatch({
+                    resumeContext.dispatch({
                       type: "title",
                       payload: e.target.value,
                     });
@@ -131,7 +131,7 @@ const PersonalData = () => {
                     className={buttonClass[1]}
                     onClick={() => {
                       SetButtClass(1);
-                      normalAdContext.dispatch({
+                      resumeContext.dispatch({
                         type: "corporateType",
                         payload: 1,
                       });
@@ -143,7 +143,7 @@ const PersonalData = () => {
                     className={buttonClass[2]}
                     onClick={() => {
                       SetButtClass(2);
-                      normalAdContext.dispatch({
+                      resumeContext.dispatch({
                         type: "corporateType",
                         payload: 2,
                       });
@@ -155,7 +155,7 @@ const PersonalData = () => {
                     className={buttonClass[3]}
                     onClick={() => {
                       SetButtClass(3);
-                      normalAdContext.dispatch({
+                      resumeContext.dispatch({
                         type: "corporateType",
                         payload: 3,
                       });
@@ -178,53 +178,59 @@ const PersonalData = () => {
                 data={JobCats}
                 name="دسته بندی شغلی"
                 valueHandler={catHandler}
-                predata={normalAdContext.data.jobCategory.fa}
+                predata={resumeContext.data.jobCategory.fa}
               />
             </div>
 
-            <div
-              className="col-12"
-              style={{
-                maxHeight: "6rem",
-                zIndex: 14,
-              }}
-            >
-              <SelectOption
-                data={Province}
-                name="استان"
-                valueHandler={provinceHandler}
-                predata={normalAdContext.data.province.fa}
-              />
-            </div>
-            {proId !== "" && (
+            <div className="d-flex col-12 justify-content-between">
               <div
-                className="col-12"
+                className={proId === "" ? "col-12 pt-2" : "col-5 pt-2"}
                 style={{
                   maxHeight: "6rem",
-                  zIndex: 13,
+                  zIndex: 14,
                 }}
               >
                 <SelectOption
-                  data={citi}
-                  name="شهر"
-                  valueHandler={cityHandler}
-                  predata={normalAdContext.data.city.fa}
+                  data={Province}
+                  name="استان"
+                  valueHandler={provinceHandler}
+                  predata={resumeContext.data.province.fa}
                 />
               </div>
-            )}
-
-            <SalaryNeeded />
+              {proId !== "" && (
+                <div
+                  className="col-5 pt-2"
+                  style={{
+                    maxHeight: "6rem",
+                    zIndex: 13,
+                  }}
+                >
+                  <SelectOption
+                    data={citi}
+                    name="شهر"
+                    valueHandler={cityHandler}
+                    predata={resumeContext.data.city.fa}
+                  />
+                </div>
+              )}
+            </div>
+            <div className="col-6 pt-4">
+              <BirthDay />
+            </div>
+            <div className="col-12 mb-5 mt-4">
+              <SalaryNeeded />
+            </div>
           </div>
         </div>
 
-        <div className="col-12 px-5">
-          <div className="d-flex   pt-4 col-9 justify-content-between">
+        <div className="col-12 ">
+          <div className="d-flex   pt-4 col-12 justify-content-between">
             <div className=" ">
               <RadioButton
                 title={"جنسیت"}
                 choices={{ 1: "مرد", 2: "زن" }}
                 valueHandler={sexHandler}
-                predata={normalAdContext.data.sex.id}
+                predata={resumeContext.data.sex.id}
               />
             </div>
             <div className=" ">
@@ -232,7 +238,7 @@ const PersonalData = () => {
                 title={"وضعیت تاهل"}
                 choices={{ 1: "مجرد", 2: "متاهل" }}
                 valueHandler={marriedHandler}
-                predata={normalAdContext.data.married}
+                predata={resumeContext.data.married}
               />
             </div>
             <div className=" ">
@@ -240,7 +246,7 @@ const PersonalData = () => {
                 title={"تقاضای بیمه"}
                 choices={{ 1: "دارم", 2: "ندارم" }}
                 valueHandler={insuranceHandler}
-                predata={normalAdContext.data.insurrance}
+                predata={resumeContext.data.insurrance}
               />
             </div>
           </div>
@@ -256,20 +262,43 @@ const PersonalData = () => {
             </label>
             <textarea
               className={
-                normalAdContext.data.title == ""
+                resumeContext.data.title == ""
                   ? "col-12 mb-3 ps-2 inputStyle"
                   : "col-12 mb-3 ps-2 inputFilled"
               }
               type="text"
-              value={normalAdContext.data.description}
+              value={resumeContext.data.description}
               onChange={(e) => {
-                normalAdContext.dispatch({
+                resumeContext.dispatch({
                   type: "description",
                   payload: e.target.value,
                 });
               }}
+              style={{
+                height: 150,
+              }}
             />
           </div>
+        </div>
+        <div
+          className="d-flex align-items-center"
+          onClick={() =>
+            resumeContext.dispatch({
+              type: "military",
+              payload: !resumeContext.data.military,
+            })
+          }
+        >
+          <h3 className={`${style.txt3} pe-3 pt-1`}>
+            سربازی را به اتمام رسانده یا معاف هستم
+          </h3>
+          <img
+            src={
+              resumeContext.data.military
+                ? "/assets/images/checked.png"
+                : "/assets/images/checkbox_black.svg"
+            }
+          />
         </div>
       </div>
     </>

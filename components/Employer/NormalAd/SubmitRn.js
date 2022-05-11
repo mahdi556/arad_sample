@@ -1,29 +1,29 @@
 import { useContext, useEffect } from "react";
-import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
 import axios from "../../../axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
+ import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
 
 const SubmitRn = () => {
   const router = useRouter();
-
-  const normalAdContext = useContext(NormalAdContext);
+  const resumeContext = useContext(ResumeContext);
   useEffect(() => {
-    normalAdContext.dispatch({ type: "type", payload: "rn" });
+    resumeContext.dispatch({ type: "type", payload: "rn" });
   }, []);
+  
   const sendData = () => {
     const formData = new FormData();
 
     axios({
       url: "/submiten",
       method: "post",
-      data: normalAdContext,
+      data: resumeContext,
       headers: {
         Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
       },
     })
       .then((response) => {
-        formData.append("image", normalAdContext.data.userImaageFile);
+        formData.append("image", resumeContext.data.userImageFile);
         formData.append("type", "normalEn");
         formData.append("ad_id", response.data.ad_id);
         axios({

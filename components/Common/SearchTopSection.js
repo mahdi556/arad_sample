@@ -17,7 +17,7 @@ const SearchTopSection = () => {
           </div>
         </div>
         <div className="col-6 d-flex   align-items-start justify-content-start mx-auto ">
-          <img className="mx-auto" src="/assets/images/ezgif.gif" />
+          {/* <img className="mx-auto" src="/assets/images/ezgif.gif" /> */}
         </div>
       </div>
      

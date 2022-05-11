@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
-import RadioButton from "../../Employee/FormInputs/RadioButton";
+ import RadioButton from "../../Employee/FormInputs/RadioButton";
 import SelectOption from "../../Employee/Resume/FormInputs/SelectOption";
 import SalaryNeeded from "./SalaryNeeded";
 import { JobCats } from "../../StaticData/JobCategory";
@@ -9,15 +8,16 @@ import { Cities } from "../../StaticData/City";
 import { SalaryType } from "../../StaticData/SalaryType";
 import { corporateTime } from "../../StaticData/SalaryType";
 import WorkHours from "./WorkHours";
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
 
 const PersonalData = () => {
-  const normalAdContext = useContext(NormalAdContext);
+  const resumeContext = useContext(ResumeContext);
 
-  let proId = normalAdContext.data.province.id;
+  let proId = resumeContext.data.province.id;
   const citi = Cities.filter((item, key) => item.provinceId == proId);
 
   const catHandler = (id, fa) => {
-    normalAdContext.dispatch({
+    resumeContext.dispatch({
       type: "jobCategory",
       payload: { id: id, fa: fa },
     });
@@ -30,7 +30,7 @@ const PersonalData = () => {
   });
   const handlePersonalProgress = (sec, item) => {
     sec !== "" && resumecontext.data.progressBar.c.push(item);
-    normalAdContext.dispatch({ type: "progressBar-c" });
+    resumeContext.dispatch({ type: "progressBar-c" });
   };
   const SetButtClass = (i) => {
     buttonClass[1] = "Ebutton";
@@ -39,27 +39,27 @@ const PersonalData = () => {
     setButtonClass({ ...buttonClass, [i]: "Ebutton_clicked " });
   };
   const insuranceHandler = (ins) => {
-    normalAdContext.dispatch({ type: "insurrance", payload: ins });
+    resumeContext.dispatch({ type: "insurrance", payload: ins });
   };
 
   const provinceHandler = (id, fa) => {
-    normalAdContext.dispatch({
+    resumeContext.dispatch({
       type: "province",
       payload: { id: id, fa: fa },
     });
   };
 
   const cityHandler = (id, fa) => {
-    normalAdContext.dispatch({ type: "city", payload: { id: id, fa: fa } });
+    resumeContext.dispatch({ type: "city", payload: { id: id, fa: fa } });
   };
   const corHandler = (id, fa) => {
-    normalAdContext.dispatch({
+    resumeContext.dispatch({
       type: "corporateTime",
       payload: { id: id, fa: fa },
     });
   };
   const salaryHandler = (id, fa) => {
-    normalAdContext.dispatch({
+    resumeContext.dispatch({
       type: "salaryType",
       payload: { id: id, fa: fa },
     });
@@ -70,7 +70,7 @@ const PersonalData = () => {
     buttonClass[3] = "Ebutton";
     setButtonClass({
       ...buttonClass,
-      [normalAdContext.data.corporateType]: "Ebutton_clicked ",
+      [resumeContext.data.corporateType]: "Ebutton_clicked ",
     });
   }, []);
 
@@ -103,14 +103,14 @@ const PersonalData = () => {
                 </label>
                 <input
                   className={
-                    normalAdContext.data.title == ""
+                    resumeContext.data.title == ""
                       ? "col-12 mb-3 ps-2 inputStyle"
                       : "col-12 mb-3 ps-2 inputFilled"
                   }
                   type="text"
-                  value={normalAdContext.data.title}
+                  value={resumeContext.data.title}
                   onChange={(e) => {
-                    normalAdContext.dispatch({
+                    resumeContext.dispatch({
                       type: "title",
                       payload: e.target.value,
                     });
@@ -131,7 +131,7 @@ const PersonalData = () => {
                     className={buttonClass[1]}
                     onClick={() => {
                       SetButtClass(1);
-                      normalAdContext.dispatch({
+                      resumeContext.dispatch({
                         type: "corporateType",
                         payload: 1,
                       });
@@ -143,7 +143,7 @@ const PersonalData = () => {
                     className={buttonClass[2]}
                     onClick={() => {
                       SetButtClass(2);
-                      normalAdContext.dispatch({
+                      resumeContext.dispatch({
                         type: "corporateType",
                         payload: 2,
                       });
@@ -155,7 +155,7 @@ const PersonalData = () => {
                     className={buttonClass[3]}
                     onClick={() => {
                       SetButtClass(3);
-                      normalAdContext.dispatch({
+                      resumeContext.dispatch({
                         type: "corporateType",
                         payload: 3,
                       });
@@ -170,65 +170,69 @@ const PersonalData = () => {
               className="col-12"
               style={{
                 maxHeight: "6rem",
-                zIndex: 11,
+                zIndex: 16,
               }}
             >
               <SelectOption
                 data={corporateTime}
                 name="نوع همکاری"
                 valueHandler={corHandler}
-                predata={normalAdContext.data.corporateTime.fa}
+                predata={resumeContext.data.corporateTime.fa}
               />
             </div>
             <div
               className="col-12"
               style={{
                 maxHeight: "6rem",
-                zIndex: 10,
+                zIndex: 15,
               }}
             >
               <SelectOption
                 data={JobCats}
                 name="دسته بندی شغلی"
                 valueHandler={catHandler}
-                predata={normalAdContext.data.jobCategory.fa}
+                predata={resumeContext.data.jobCategory.fa}
               />
             </div>
-
-            <div
-              className="col-12"
+            <div className="d-flex col-12 justify-content-between">
+             <div
+              className={proId === "" ? "col-12  " : "col-5  "}
               style={{
                 maxHeight: "6rem",
-                zIndex: 9,
+                zIndex: 14,
               }}
             >
               <SelectOption
                 data={Province}
                 name="استان"
                 valueHandler={provinceHandler}
-                predata={normalAdContext.data.province.fa}
+                predata={resumeContext.data.province.fa}
               />
+             
             </div>
             {proId !== "" && (
               <div
-                className="col-12"
+                className="col-5  "
                 style={{
                   maxHeight: "6rem",
-                  zIndex: 8,
+                  zIndex: 13,
                 }}
               >
                 <SelectOption
                   data={citi}
                   name="شهر"
                   valueHandler={cityHandler}
-                  predata={normalAdContext.data.city.fa}
+                  predata={resumeContext.data.city.fa}
                 />
               </div>
             )}
+          </div>
+            <div className="col-12 mt-3">
 
             <SalaryNeeded />
+            </div>
             <div
-              className="col-12"
+              className="col-12 mt-4"
               style={{
                 maxHeight: "6rem",
                 zIndex: 7,
@@ -238,7 +242,7 @@ const PersonalData = () => {
                 data={SalaryType}
                 name="نحوه پرداخت حقوق"
                 valueHandler={salaryHandler}
-                predata={normalAdContext.data.salaryType.fa}
+                predata={resumeContext.data.salaryType.fa}
               />
             </div>
             <WorkHours />
@@ -249,10 +253,10 @@ const PersonalData = () => {
           <div className="d-flex   pt-4 col-9 justify-content-between">
             <div className=" ">
               <RadioButton
-                title={"تقاضای بیمه"}
-                choices={{ 1: "دارم", 2: "ندارم" }}
+                title={" بیمه"}
+                choices={{ 1: "دارد", 2: "ندارد" }}
                 valueHandler={insuranceHandler}
-                predata={normalAdContext.data.insurrance}
+                predata={resumeContext.data.insurrance}
               />
             </div>
           </div>
@@ -268,14 +272,17 @@ const PersonalData = () => {
             </label>
             <textarea
               className={
-                normalAdContext.data.title == ""
+                resumeContext.data.title == ""
                   ? "col-12 mb-3 ps-2 inputStyle"
                   : "col-12 mb-3 ps-2 inputFilled"
               }
               type="text"
-              value={normalAdContext.data.description}
+              value={resumeContext.data.description}
+              style={{
+                height:150
+              }}
               onChange={(e) => {
-                normalAdContext.dispatch({
+                resumeContext.dispatch({
                   type: "description",
                   payload: e.target.value,
                 });

@@ -1,8 +1,12 @@
   
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const AdBoxNewEmployer = ({ width, data }) => {
   const router = useRouter();
+
+  useEffect(()=>{
+    },[data])
   return (
     <div
       className={width}
@@ -49,7 +53,7 @@ const AdBoxNewEmployer = ({ width, data }) => {
               lineHeight: "0.3rem",
             }}
           >
-            {data.jobCategory && data.jobCategory[0].fa_name}
+            {data && data.jobCategory[0] && data.jobCategory[0].fa_name}
             <div
               className=" d-inline-flex fw-light ms-2 mt-2"
               style={{

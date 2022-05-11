@@ -1,9 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import NormalAdContext from "../../../context/employerContext/CreateAd/NormalAd/NormalAdContext";
+import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import UserContext from "../../../context/employeeContext/User/UserContext";
   
 import FieldError from "../../Common/FieldError";
 const FirstForm = () => {
-  const normalAdContext = useContext(NormalAdContext);
+  const resumeContext = useContext(ResumeContext);
+  const userContext = useContext(UserContext);
   const [image, setImage] = useState([]);
   const [display, setDisplay] = useState("none");
   const [imageUrl, setImageUrl] = useState([]);
@@ -12,23 +14,27 @@ const FirstForm = () => {
       const newImageUrl = [];
       newImageUrl.push(URL.createObjectURL(image[0]));
       setImageUrl(newImageUrl);
-      normalAdContext.dispatch({ type: "userImageFile", payload: image[0] });
-      normalAdContext.dispatch({ type: "userImage", payload: newImageUrl });
+      resumeContext.dispatch({ type: "userImageFile", payload: image[0] });
+      resumeContext.dispatch({ type: "userImage", payload: newImageUrl });
     }
+    resumeContext.dispatch({
+      type: "user_id",
+      payload: userContext.data.user.id,
+    });
   }, [image]);
   useEffect(() => {
-    if (normalAdContext.data.stepClick) {
+    if (resumeContext.data.stepClick) {
       if (
-        normalAdContext.data.companyName !== "" &&
-        normalAdContext.data.companyId !== ""
+        resumeContext.data.companyName !== "" &&
+        resumeContext.data.companyId !== ""
       ) {
-        normalAdContext.dispatch({ type: "fieldCheck", payload: true });
+        resumeContext.dispatch({ type: "fieldCheck", payload: true });
       } else {
         setDisplay("");
-        normalAdContext.dispatch({ type: "stepClick", payload: false });
+        resumeContext.dispatch({ type: "stepClick", payload: false });
       }
     }
-  }, [normalAdContext.data.stepClick]);
+  }, [resumeContext.data.stepClick]);
   return (
     <div
       className="row pt-4 pb-4"
@@ -147,8 +153,8 @@ const FirstForm = () => {
             کامل کردن پروفایل سازمانی
           </div>
         </div>
-        <div className="d-flex col-9 ps-3 pt-2  ">
-          <div className="col-12 text-right">
+        <div className="d-flex col-9 ps-3 pt-2 ">
+          <div className="col-12 text-right  ">
             <label
               style={{
                 marginBottom: "0.5rem",
@@ -159,21 +165,21 @@ const FirstForm = () => {
             </label>
             <input
               className={
-                normalAdContext.data.companyName == ""
-                  ? "col-12 mb-1 ps-2 inputStyle"
-                  : "col-12 mb-1 ps-2 inputFilled"
+                resumeContext.data.companyName == ""
+                  ? "col-12 mb-4 ps-2 inputStyle"
+                  : "col-12 mb-4 ps-2 inputFilled"
               }
               onChange={(e) =>
-                normalAdContext.dispatch({
+                resumeContext.dispatch({
                   type: "companyName",
                   payload: e.target.value,
                 })
               }
               type="text"
-              value={normalAdContext.data.companyName}
+              value={resumeContext.data.companyName}
             />
             <FieldError
-              data={normalAdContext.data.companyName}
+              data={resumeContext.data.companyName}
               display={display}
             />
 
@@ -187,21 +193,21 @@ const FirstForm = () => {
             </label>
             <input
               className={
-                normalAdContext.data.companyId == ""
+                resumeContext.data.companyId == ""
                   ? "col-12 mb-3 ps-2 inputStyle"
                   : "col-12 mb-3 ps-2 inputFilled"
               }
               onChange={(e) =>
-                normalAdContext.dispatch({
+                resumeContext.dispatch({
                   type: "companyId",
                   payload: e.target.value,
                 })
               }
-              value={normalAdContext.data.companyId}
+              value={resumeContext.data.companyId}
               type="text"
             />
             <FieldError
-              data={normalAdContext.data.companyId}
+              data={resumeContext.data.companyId}
               display={display}
             />
           </div>
