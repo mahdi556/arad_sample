@@ -1,8 +1,8 @@
 import Box from "@mui/material/Box";
-import Modal from "react-modal";
+// import Modal from "react-modal";
 import { useState } from "react";
 import moment from "moment-jalaali";
-import DatePicker from "react-datepicker2";
+// import DatePicker from "react-datepicker2";
 
 const customStyles = {
   content: {
@@ -29,7 +29,7 @@ const RequsetInterview = ({ visible }) => {
 
   return (
     <>
-      <Modal
+      {/* <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
@@ -88,7 +88,7 @@ const RequsetInterview = ({ visible }) => {
             </div>
           </div>
         </div>
-      </Modal>
+      </Modal> */}
     </>
   );
 };

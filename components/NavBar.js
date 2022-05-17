@@ -1,4 +1,3 @@
-  
 import UserProvider from "../context/employeeContext/User/UserProvider";
 import Login from "./Common/Login";
 import { useRouter } from "next/router";
@@ -25,15 +24,18 @@ const NavBar = () => {
   return (
     // <UserProvider>
 
-    <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-white navshadow "
-    style={{
-      overflow:'visible'
-    }}
+    <nav
+      className="navbar navbar-expand-lg fixed-top navbar-light bg-white navshadow "
+      style={{
+        overflow: "visible",
+      }}
     >
-      <div className="container-fluid"
+      <div
+        className="container-fluid"
         style={{
-          overflow:'visible'
-        }}>
+          overflow: "visible",
+        }}
+      >
         {/* <a className="navbar-brand" href="#"> */}
 
         {/* </a> */}
@@ -49,9 +51,8 @@ const NavBar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav align-items-center   me-auto mb-2 mb-lg-0 ">
-             
-          <li
+          <ul className="navbar-nav align-items-center      ">
+            <li
               className="navitems ps-2 "
               onClick={() => {
                 router.push({
@@ -59,9 +60,7 @@ const NavBar = () => {
                 });
               }}
             >
-              <img
-                 src="/assets/images/logo2.png" width={100} height={50}    
-         />
+              <img src="/assets/images/logo2.png" width={120} height={50} />
             </li>
             <li
               className="navitems "
@@ -94,7 +93,7 @@ const NavBar = () => {
               >
                 لیست آگهی ها
               </h5>
-            {/* <NavBarItem /> */}
+              {/* <NavBarItem /> */}
             </li>
             <li className="navitems">
               <h5
@@ -136,10 +135,15 @@ const NavBar = () => {
                 دانلود اپلیکیشن
               </h5>
             </li> */}
-            <NewAd />
           </ul>
+          <div className="me-auto">
+            <NewAd />
+          </div>
           <Login />
-           {/* <AdminLogin /> */}
+          <div className="me-1">
+            <img src="/assets/images/circle_notif.svg" width={50} />
+          </div>
+          {/* <AdminLogin /> */}
         </div>
       </div>
     </nav>

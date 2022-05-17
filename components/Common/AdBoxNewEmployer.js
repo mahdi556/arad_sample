@@ -23,7 +23,7 @@ const AdBoxNewEmployer = ({ width, data }) => {
         <div
           className="d-flex col-8 pe-2 flex-column  "
           style={{
-            height: "7.5em",
+            height: "6.9em",
           }}
         >
           <div
@@ -41,7 +41,7 @@ const AdBoxNewEmployer = ({ width, data }) => {
                 className=" d-inline-flex ms-2"
                 style={{
                   color: "#11999e",
-                  fontSize: 14,
+                  fontSize: 1,
                 }}
               >
                 {" "}
@@ -71,7 +71,7 @@ const AdBoxNewEmployer = ({ width, data }) => {
           </h6>
 
           <div
-            className="d-flex  fw-light justify-content-start align-items-start mt-auto  "
+            className="d-flex  fw-light justify-content-start align-items-center mt-auto  "
             style={{
               fontSize: 15,
             }}
@@ -151,28 +151,30 @@ const AdBoxNewEmployer = ({ width, data }) => {
             </div>
           )}
           <div
-            className=" d-flex flex-column   justify-content-center align-items-center shadow2 "
+            className=" d-flex flex-column   justify-content-center align-items-center shadow2 mt-2 ms-auto"
             style={{
               fontSize: 15,
               borderRadius: 10,
+              width: 90,
             }}
           >
             <div
-              className="d-flex justify-content-center align-items-center "
+              className="d-flex justify-content-center align-items-center  "
               style={{
                 backgroundColor: "rgb(17,153,158,0.09)",
                 borderTopLeftRadius: 10,
                 borderTopRightRadius: 10,
-                width: "95z%",
-                height: 90,
+                width: 90,
+                height: 75,
+                overflow: "hidden",
               }}
             >
-              {data && <img src={data.image} width={74} height={74} />}
+              {data && <img src={data.image} width="100%" height="100%" />}
             </div>
             <h6
-              className="text-center my-auto py-2 "
+              className="text-center my-auto py-1 "
               style={{
-                fontSize: 14,
+                fontSize: 13,
               }}
             >
               برقراری ارتباط
@@ -181,10 +183,21 @@ const AdBoxNewEmployer = ({ width, data }) => {
         </div>
       </div>
       {data && (
-        <h6 className="adbox-salary mx-auto" id="adbox-salary">
-          حقوق پرداختی از {data.personal.fa_salary_from} تومان تا{" "}
-          {data.personal.fa_salary_to} تومان
-        </h6>
+        <div className="adbox-salary  col-12" id="adbox-salary">
+          <h6
+            className="  mx-auto 6 px-4  "
+            style={{
+              fontSize: "0.85em",
+              width: "94%",
+              borderTop: "1px solid #ddd",
+              paddingTop: 3,
+              paddingBottom: 2,
+            }}
+          >
+            حقوق پرداختی از {data.personal.fa_salary_from} تومان تا{" "}
+            {data.personal.fa_salary_to} تومان
+          </h6>
+        </div>
       )}
     </div>
   );

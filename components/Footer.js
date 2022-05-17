@@ -1,6 +1,5 @@
 const Footer = () => {
   return (
-    
     <div className="footer1-background   ">
       <img
         className="d-none d-lg-block"
@@ -23,14 +22,14 @@ const Footer = () => {
         height="95%"
         style={{
           position: "absolute",
-          bottom: "42%",
+          bottom: "50%",
           right: 0,
           zIndex: -2,
         }}
       />
       <img
         className="d-none d-lg-block"
-        src= "/assets/images/leftbuild.png"
+        src="/assets/images/leftbuild.png"
         sizes="cover"
         width="32%"
         height="95%"
@@ -122,33 +121,14 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="d-flex col-lg-6    align-items-center     flex-wrap     pb-2"
-        style={{
-          paddingTop:'5%'
-        }}
-        
+        <div
+          className="d-flex col-lg-6    align-items-center   justify-content-center  flex-wrap      pb-2"
+          style={{
+            paddingTop: "5%",
+            paddingLeft: 130,
+          }}
         >
-          <div className=" col-6  col-xl-3      ">
-            <div className="d-flex  footer-left-columns">
-              <div
-                className=" d-flex    "
-                style={{
-                  width: "23%",
-                }}
-              >
-                <div className="footer_icon-wrapper  ">
-                  <img
-                    src={require("../public/assets/images/download.png")}
-                    width="100%"
-                  />
-                </div>
-              </div>
-              <div className="d-flex  text-nowrap pt-1  ps-2  ">
-                <h3 className="footer-sec2">دانلود اپلیکیشن</h3>
-              </div>
-            </div>
-          </div>
-          <div className="   col-6  col-xl-3      ">
+          {/* <div className="   col-6  col-xl-3      ">
             <div className="d-flex  footer-left-columns">
               <div
                 className=" d-flex  "
@@ -169,51 +149,58 @@ const Footer = () => {
                 <h3 className="footer-sec1">0000 000 0912</h3>
               </div>
             </div>
-          </div>
-
-          <div className="    col-6  col-xl-3   ">
-            <div className="d-flex  gx-1   footer-left-columns">
-              <div className=" col-3   ">
-                <div className="footer_icon-wrapper">
-                  <img
-                    src={require("../public/assets/images/web.png")}
-                    
-                    width="80%"
-                  />
+          </div> */}
+          <div
+            className="d-flex flex-column me-3 col-6  col-xl-3 "
+            style={{
+              height: 100,
+            }}
+          >
+            <div
+              className="      "
+              style={{
+                width: 100,
+              }}
+            >
+              <img
+                src="/assets/images/download_box.png"
+                width={160}
+                height={70}
+              />
+            </div>
+            <div className="    col-12  col-xl-6    mt-auto  ms-3">
+              <div className="d-flex   ps-2  align-items-center  footer-left-columns justify-content-between">
+                <div className=" col-3   ">
+                  <div className="footer_icon-wrapper">
+                    <img src="/assets/images/telegram_2.svg" height={18} />
+                  </div>
                 </div>
-              </div>
-              <div className="  col-3    ">
-                <div className="footer_icon-wrapper">
-                  <img
-                    src={require("../public/assets/images/youtube.png")}
-                     
-                    width="80%"
-                  />
+                <div className="  col-3    ">
+                  <div className="footer_icon-wrapper">
+                    <img src="/assets/images/youtube_1.svg" height={18} />
+                  </div>
                 </div>
-              </div>
-              <div className=" col-3    ">
-                <div className="footer_icon-wrapper">
-                  <img
-                    src={require("../public/assets/images/twitter.png")}
-                     
-                    width="80%"
-                  />
+                <div className=" col-3    ">
+                  <div className="footer_icon-wrapper">
+                    <img src="/assets/images/dribbble_1.svg" height={18} />
+                  </div>
                 </div>
-              </div>
-              <div className="   col-3  ">
-                <div className="footer_icon-wrapper">
-                  <img
-                    src={require("../public/assets/images/insta.png")}
-                     
-                    width="80%"
-                  />
+                <div className="   col-3  ">
+                  <div className="footer_icon-wrapper">
+                    <img src="/assets/images/insta.svg" height={18} />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="  col-6 col-sm-2 col-md-3 col-lg-4  col-xl-3 justify-content-start px-2 ">
-            <div
+          <div
+            className="  col-6 col-sm-2 col-md-3 col-lg-4  col-xl-3    "
+            style={{
+              marginRight: 30,
+            }}
+          >
+            {/* <div
               className=" d-flex    align-items-center justify-content-center"
               style={{
                 backgroundColor: "#fff",
@@ -221,22 +208,32 @@ const Footer = () => {
                 height: 95,
                 width: "80%",
               }}
-            >
-              <div
+            > */}
+            {/* <div
                 className="d-flex col-9 justify-content-center align-items-center ishadow "
                 style={{
                   backgroundColor: "#38a2cf",
                   borderRadius: '1.7rem',
                   height: "80%",
                 }}
-              >
-                <img
-                  src={require("../public/assets/images/enamad.png")}
-                  style={{}}
-                  width="80%"
-                />
-              </div>
+              > */}
+            <div className="d-flex">
+              <img
+                className="me-4"
+                src="/assets/images/enemad.png"
+                width={100}
+                height={100}
+              />
+              <img
+                className="me-4"
+                src="/assets/images/enemad.png"
+                width={100}
+                height={100}
+              />
+              <img src="/assets/images/enemad.png" width={100} height={100} />
             </div>
+            {/* </div> */}
+            {/* </div> */}
           </div>
         </div>
       </div>

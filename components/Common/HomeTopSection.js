@@ -53,17 +53,11 @@ const HomeTopSection = () => {
             Your browser does not support the video tag.
           </video> */}
           </div>
-          <div
-            className={` ${style.sec19}  `}
-          >
-            <div className={`  ${style.sec18}   `}  >
-              میخوای استخدام بشی
-            </div>
+          <div className={` ${style.sec19}  `}>
+            <div className={`  ${style.sec18}   `}>میخوای استخدام بشی</div>
 
             <h4 className="home-top-sec4 mx-4 ">یا</h4>
-            <div className={`  ${style.sec18_1}  `}>
-              میخوای استخدام کنی؟
-            </div>
+            <div className={`  ${style.sec18_1}  `}>میخوای استخدام کنی؟</div>
           </div>
         </div>
       </div>

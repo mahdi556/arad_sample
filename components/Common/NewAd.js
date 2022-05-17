@@ -2,6 +2,8 @@ import UserContext from "../../context/employeeContext/User/UserContext";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import Login, { handleSignIn } from "./Login";
+import { fontSize } from "@mui/system";
+import style from "./HomeStyles/home.module.css";
 
 const NewAd = () => {
   const userContext = useContext(UserContext);
@@ -18,19 +20,15 @@ const NewAd = () => {
 
   return (
     <li
-      className="px-3 py-1"
-      style={{
-        backgroundColor: "#EC4B72",
-        borderRadius: 10,
-        color: "#fff",
-      }}
+      className={`  ${style.sec43}  d-flex px-3 py-1 `}
       onClick={() => handleNewAd()}
     >
+      <img src="/assets/images/add.svg" width={19} />
       <h5
-        className="  fs-5 text-center lh-sm py-0 my-0"
-        style={{ fontWeight: 700, cursor: "pointer" }}
+        className={`  ${style.sec42}  fs-5 text-center lh-sm  my-0 `}
+        style={{}}
       >
-        آگـــهی بزن
+        آگهـــــی بزن
       </h5>
     </li>
   );

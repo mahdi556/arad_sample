@@ -95,14 +95,14 @@
   font-style: normal;
   font-weight: normal;
   src: url("../public/assets/fonts/ttf/iransansblack3.ttf") format("truetype");
-} 
-  @font-face {
+}
+@font-face {
   font-family: iranUltraLight;
   font-style: normal;
   font-weight: normal;
   src: url("../public/assets/fonts/ttf/iransansultralight.ttf")
     format("truetype");
-} 
+}
 
 body {
   font-family: iransansdn;
@@ -143,8 +143,8 @@ div#__next > div {
   margin-left: 2rem;
   cursor: pointer;
   position: relative;
-  padding-bottom: 0.7rem;
-}
+  /* padding-bottom: 0.7rem; */
+ }
 /* .activeNav{
   color: rgb(209, 28, 28);
   font-weight: 600;
@@ -365,24 +365,26 @@ div#__next > div {
 
 .footer_text_item {
   font-family: iransansdn;
-  font-size: 12px;
+  font-size: 14px;
   color: white;
   font-weight: 300;
   padding-top: 0.4rem;
   transition: all 0.4s;
   overflow: visible;
   cursor: pointer;
+  margin-top: 1px;
 }
 .dot {
-  height: 5px;
-  width: 5px;
+  height: 9px;
+  width: 9px;
   background-color: #fff;
   border-radius: 50%;
-  transition: all 0.4s;
+  transition: all 0.6s;
 }
 .footer_text_item:hover .dot {
   display: inline-block;
-  margin-left: 0.6rem;
+  margin-left: 0.4rem;
+
   cursor: pointer;
 }
 
@@ -408,25 +410,25 @@ div#__next > div {
 .footer_icon-wrapper {
   display: flex;
   background: linear-gradient(142.28deg, #38a2cf 2.77%, #52c9ce 99.08%);
-  width: 1.6rem;
+  width: 28px;
   /* width: 100%; */
-  height: 100%;
-  border-radius: 0.4rem;
+  height: 28px;
+  border-radius: 0.6rem;
   justify-content: center;
   align-items: center;
-  padding: 0.3rem;
-  box-shadow: 0px 18px 22px rgba(0, 0, 0, 0.35);
+  /* padding: 0.3rem; */
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
 }
 .footer-left-columns {
   /* font-size: calc(0.1rem + 0.1vw); */
   background-color: #fff;
   border-radius: 0.5rem;
-  height: 35px;
+  height: 36px;
   padding-top: 0.4rem;
   padding-bottom: 0.4rem;
   padding-right: 3px;
   padding-left: 3px;
-  width: 120px;
+  width: 145px;
 }
 
 .footer-sec1 {
@@ -461,7 +463,7 @@ div#__next > div {
   color: #000;
   padding: 0.2rem;
   /* border-radius: 0.2rem; */
-  border:solid 1px #ccc;
+  border: solid 1px #ccc;
   width: 33%;
   height: 35px;
   text-align: center;
@@ -546,7 +548,6 @@ div#__next > div {
   background-color: #fff;
   z-index: 100;
   overflow: hidden;
-
   cursor: pointer;
   animation: heightDrop 0.8s;
 }
@@ -778,7 +779,7 @@ div#__next > div {
   height: 35px;
   line-height: 1.7rem;
   font-size: 18px;
- }
+}
 .inputDanger {
   background-color: #ebebeb;
   border-style: solid;
@@ -1212,7 +1213,7 @@ div#__next > div {
 #adbox {
   background-color: #fff;
   border-radius: 10px;
-  height: 10.5em;
+  height: 160px;
   width: 100%;
   position: relative;
   align-items: center;
@@ -1231,6 +1232,7 @@ div#__next > div {
 #adbox:hover ~ #adbox-salary {
   right: 0%;
   visibility: visible;
+  padding-top: 4px;
 }
 #adbox-salary {
   visibility: hidden;
@@ -1278,12 +1280,12 @@ div#__next > div {
   background-color: #11999e;
   border-radius: 20px;
   color: #fff;
-  font-size: 26px;
+  font-size: 25px;
   font-weight: bold;
   padding: 15px 40px;
   margin-top: 40px;
   text-align: center;
-  width: 40%;
+  width: 282px;
   cursor: pointer;
 }
 .home-top-sec2 {
@@ -1675,7 +1677,7 @@ div#__next > div {
 }
 
 /* The dots/bullets/indicators */
-.dot {
+/* .dot {
   cursor: pointer;
   height: 15px;
   width: 15px;
@@ -1689,7 +1691,7 @@ div#__next > div {
 .active,
 .dot:hover {
   background-color: #717171;
-}
+} */
 
 /* Fading animation */
 .fade {
@@ -1965,7 +1967,7 @@ div#__next > div {
 }
 .adType-price {
   background-color: #11999e;
-  border-radius:100px;
+  border-radius: 100px;
   font-family: iranBlack;
   font-size: 23px;
   color: #fff;
@@ -1977,10 +1979,10 @@ div#__next > div {
 }
 .adType-price2 {
   background-color: #11999e;
-  border-radius:100px;
+  border-radius: 100px;
   color: #fff;
-   margin-bottom: -30px;
-   width: 120px;
+  margin-bottom: -30px;
+  width: 120px;
   height: 40px;
 }
 
@@ -2005,15 +2007,15 @@ div#__next > div {
   cursor: pointer;
 }
 .adType-txt1 {
-font-family: iranBold;
+  font-family: iranBold;
 }
 .adType-txt2 {
-   color: rgba(0, 0, 0, 0.6);
-   font-family: iranBold;
-  }
-  .adType-txt3 {
-    color: rgba(0, 0, 0, 0.6);
-    font-weight: 300;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: iranBold;
+}
+.adType-txt3 {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 300;
 }
 .adType-down {
   display: flex;
@@ -2023,24 +2025,24 @@ font-family: iranBold;
   background-color: #ec4b72;
   border-radius: 40px;
   bottom: -5%;
- }
+}
 .adType-txt4 {
-color: #fff;
-font-weight: 700;
-font-size: 19px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 19px;
 }
 .adType-txt5 {
-   font-weight: 300;
-   color: #fff;
-   font-size: 16px;
+  font-weight: 300;
+  color: #fff;
+  font-size: 16px;
 }
 .adType-txt6 {
   color: #fff;
   font-family: iranBlack;
   font-size: 24px;
-  }
-  .adType-txt7 {
-     font-weight: 300;
-     color: #fff;
-     font-size: 16px;
-  }
+}
+.adType-txt7 {
+  font-weight: 300;
+  color: #fff;
+  font-size: 16px;
+}
