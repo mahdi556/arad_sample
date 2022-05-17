@@ -193,7 +193,7 @@ const Divx = ({ i, data, dataHandler }) => {
 const SampleEx = () => {
   const resumeContext = useContext(ResumeContext);
   const [hasEx, setHasEx] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(resumeContext.data.sampleEx);
    
   const [i, setI] = useState(0);
 
@@ -328,7 +328,7 @@ const SampleEx = () => {
       {data.length > 0 && (
         <div
           onClick={() => {
-            addSec(data.length + 1);
+            // addSec(data.length + 1);
             dataHandler({
               id: data.length + 1,
               title: "",

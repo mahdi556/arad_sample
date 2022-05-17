@@ -5,27 +5,113 @@ import StepButton from "./FormInputs/StepButton";
 import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
 import VerifyFirstForm from "./FormInputs/VerifyFirstForm";
 import FirstFormVip from "./FormInputs/FirstFormVip";
+import UserContext from "../../../context/employeeContext/User/UserContext";
 import axios from "../../../axios";
 const CreateResumeBody = () => {
   const resumeContext = useContext(ResumeContext);
   const [step, setStep] = useState(1);
+  const userContext = useContext(UserContext);
   useEffect(() => {
     setStep(resumeContext.data.step);
   }, [resumeContext.data.step]);
   useEffect(() => {
+    userContext.data.user.id != "" && getUserData();
+  }, [userContext.data.user.id]);
+  const getUserData = () => {
     axios({
       url: "/getUserResume",
       method: "post",
       data: {
-        user_id: 81,
+        user_id: userContext.data.user.id,
       },
       // headers: {
       //   Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
       // },
     })
       .then((response) => {
-        console.log(response.data.data);
-
+        console.log(response.data.data.ad);
+        let degrees = [];
+        response.data.data.ad.degrees.forEach((element) => {
+          degrees.push({
+            id: element.id,
+            title: element.fa_title,
+            degree: element.fa_degree,
+            date: {
+              d: element.fa_date_d,
+              m: element.fa_date_m,
+              y: element.fa_date_y,
+            },
+            active: element.fa_active,
+            Entitle: element.en_title,
+            Endegree: element.en_degree,
+            Endate: {
+              d: element.en_date_d,
+              m: element.en_date_m,
+              y: element.en_date_y,
+            },
+            Enactive: element.en_active,
+          });
+        });
+        let exps = [];
+        response.data.data.ad.experiences.forEach((element) => {
+          exps.push({
+            id: element.id,
+            title: element.fa_title,
+            name: element.fa_org,
+            reason: element.fa_reason,
+            start: {
+              m: element.fa_start_m,
+              y: element.fa_start_y,
+            },
+            finish: {
+              m: element.fa_finish_m,
+              y: element.fa_finish_y,
+            },
+            active: element.fa_active,
+            Entitle: element.en_title,
+            Enname: element.en_org,
+            Enreason: element.en_reason,
+            Enstart: {
+              m: element.en_start_m,
+              y: element.en_start_y,
+            },
+            Enfinish: {
+              m: element.en_finish_m,
+              y: element.en_finish_y,
+            },
+            Enactive: element.en_active,
+          });
+        });
+        let langs = [];
+        response.data.data.ad.langExperts.forEach((element) => {
+          langs.push({
+            text: element.text,
+            level: {
+              id: element.level,
+              name:
+                element.level == 1
+                  ? "مقدماتی"
+                  : element.level == 2
+                  ? "متوسط"
+                  : "پیشرفته",
+            },
+          });
+        });
+        let softs = [];
+        response.data.data.ad.softExperts.forEach((element) => {
+          softs.push({
+            text: element.text,
+            level: {
+              id: element.level,
+              name:
+                element.level == 1
+                  ? "مقدماتی"
+                  : element.level == 2
+                  ? "متوسط"
+                  : "پیشرفته",
+            },
+          });
+        });
         resumeContext.dispatch({
           type: "data",
           payload: {
@@ -38,11 +124,12 @@ const CreateResumeBody = () => {
               youtube: "",
               dribble: "",
             },
-            companyId: response.data.data.ad.company_id,
+            user_id: response.data.data.ad.user.id,
+            step: response.data.data.ad.user.step,
+            companyId: response.data.data.ad.personal.company_id,
             fieldCheck: false,
             stepClick: false,
             type: response.data.data.ad.type,
-            step: response.data.data.ad.step,
             title: response.data.data.ad.title,
             entitle: response.data.data.ad.entitle,
             name: response.data.data.ad.personal.fa_name,
@@ -56,23 +143,26 @@ const CreateResumeBody = () => {
               month: response.data.data.ad.personal.fa_birth_m,
               year: response.data.data.ad.personal.fa_birth_y,
             },
+
+            province: {
+              id: response.data.data.ad.personal.province_id,
+              fa: "",
+              en: "",
+            },
             Ebirthday: {
               day: response.data.data.ad.personal.en_birth_d,
               month: response.data.data.ad.personal.en_birth_m,
               year: response.data.data.ad.personal.en_birth_y,
             },
+
             sex: {
-              id: response.data.data.ad.personal,
-              fa: response.data.data.ad.personal,
+              id: response.data.data.ad.personal.sex,
+              fa: "",
             },
 
-            married: response.data.data.ad.personal,
-            insurrance: response.data.data.ad.personal,
-            province: {
-              id: response.data.data.ad.personal,
-              fa: response.data.data.ad.personal,
-              en: response.data.data.ad.personal,
-            },
+            married: response.data.data.ad.personal.married,
+            insurrance: response.data.data.ad.personal.insurrance,
+
             city: {
               id: response.data.data.ad.personal.city_id,
               fa: response.data.data.ad.personal.city_fa,
@@ -107,13 +197,13 @@ const CreateResumeBody = () => {
                 to: response.data.data.ad.personal.fa_age_range_to,
               },
             },
-            experiences: response.data.data.ad.experiences,
-            degree: response.data.data.ad.personal,
-            langExpert: response.data.data.ad.langExperts,
+            experiences: exps,
+            degree: degrees,
+            langExpert: langs,
             langExpertEn: "",
-            softExpert: response.data.data.ad.softExperts,
+            softExpert: softs,
             softExpertEn: "",
-            sampleEx: "",
+            sampleEx: response.data.data.ad.samples,
             adComment: "",
             description: response.data.data.ad.personal.description,
             progressBar: {
@@ -144,12 +234,12 @@ const CreateResumeBody = () => {
         //   // timer:3500
         // });
       });
-  }, []);
-  console.log(resumeContext.data);
+  };
   const handleStep = (sn) => {
     setStep(sn);
     resumeContext.dispatch({ type: "step", payload: sn });
   };
+  console.log(resumeContext.data);
   return (
     <>
       <div

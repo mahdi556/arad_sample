@@ -44,9 +44,9 @@ const StepButton = ({ handleStep, step,ph }) => {
               showConfirmButton: true,
               // timer:3500
             });
-            router.push({
-              pathname: "/",
-            });
+            // router.push({
+            //   pathname: "/",
+            // });
           })
           .catch(function (error) {
             console.log(error);

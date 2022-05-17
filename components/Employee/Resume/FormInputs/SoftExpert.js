@@ -12,13 +12,13 @@ const SoftExpert = () => {
   const [ButtonX, setButtonX] = useState({ 1: false, 2: false, 3: false });
   const [i, setI] = useState(1);
   const [text, setText] = useState(null);
+  const resumeContext = useContext(ResumeContext);
   const [level, setLevel] = useState(null);
-  const [expert, setExpert] = useState([]);
+  const [expert, setExpert] = useState(resumeContext.data.softExpert);
   const [ev, setEv] = useState("none");
   const [input, setInput] = useState("inputStyle");
   const [datas, setDatas] = useState(null);
   const [hasEx, setHasEx] = useState(false);
-  const resumeContext = useContext(ResumeContext);
 
   const dropRef = useRef(null);
   useEffect(() => {
@@ -97,7 +97,8 @@ const SoftExpert = () => {
     setExpert([...expert]);
     setText(null);
   };
-
+console.log(expert,'expert')
+console.log(resumeContext.data.softExpert,'context')
   return (
     <>
       <div className="d-flex mb-4">

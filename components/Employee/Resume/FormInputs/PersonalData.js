@@ -476,7 +476,7 @@ const PersonalData = () => {
               title={"تقاضای بیمه"}
               choices={{ 1: "دارم", 2: "ندارم" }}
               valueHandler={insuranceHandler}
-              predata={resumecontext.data.insurrance.id}
+              predata={resumecontext.data.insurrance}
             />
           </div>
         </div>

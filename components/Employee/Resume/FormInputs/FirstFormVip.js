@@ -1,6 +1,6 @@
-  
 import { useContext, useEffect, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import UserContext from "../../../../context/employeeContext/User/UserContext";
 
 const FirstFormVip = () => {
   const [socialInasta, setSocialInsta] = useState("");
@@ -12,6 +12,7 @@ const FirstFormVip = () => {
   const [videofile, setVideofile] = useState([]);
   const [videoUrl, setVideoUrl] = useState([]);
   const resumeContext = useContext(ResumeContext);
+  const userContext = useContext(UserContext);
   useEffect(() => {
     if (image.length > 0) {
       const newImageUrl = [];
@@ -19,7 +20,6 @@ const FirstFormVip = () => {
       setImageUrl(newImageUrl);
       resumeContext.dispatch({ type: "userImageFile", payload: image[0] });
       resumeContext.dispatch({ type: "userImage", payload: newImageUrl });
-      
     }
 
     if (videofile.length > 0) {
@@ -28,6 +28,10 @@ const FirstFormVip = () => {
       setVideoUrl(newVideoUrl);
       resumeContext.dispatch({ type: "userVideo", payload: newVideoUrl });
     }
+    resumeContext.dispatch({
+      type: "user_id",
+      payload: userContext.data.user.id,
+    });
   }, [image, videofile]);
 
   return (
@@ -113,7 +117,7 @@ const FirstFormVip = () => {
                 src="../../../../assets/images/upload-1.png"
                 width="20%"
               />
-               
+
               <h5>آپلود عکس</h5>
             </label>
           )}
@@ -209,11 +213,7 @@ const FirstFormVip = () => {
                   height: 40,
                 }}
               >
-                <img
-                  src="/assets/images/twitterx.png"
-                  width={35}
-                  height={30}
-                />
+                <img src="/assets/images/twitterx.png" width={35} height={30} />
               </div>
 
               <input
@@ -304,11 +304,7 @@ const FirstFormVip = () => {
                   height: 40,
                 }}
               >
-                <img
-                  src="/assets/images/youtubex.png"
-                  width={30}
-                  height={25}
-                />
+                <img src="/assets/images/youtubex.png" width={30} height={25} />
               </div>
               <input
                 dir="ltr"

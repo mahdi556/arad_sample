@@ -1,4 +1,3 @@
-  
 import { useContext, useEffect, useRef, useState } from "react";
 import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
@@ -14,12 +13,12 @@ const LangExpert = () => {
   const [i, setI] = useState(1);
   const [text, setText] = useState(null);
   const [level, setLevel] = useState(null);
-  const [expert, setExpert] = useState([]);
+  const resumeContext = useContext(ResumeContext);
+  const [expert, setExpert] = useState(resumeContext.data.LangExpert);
   const [ev, setEv] = useState("none");
   const [input, setInput] = useState("inputStyle");
   const [datas, setDatas] = useState(null);
   const [hasEx, setHasEx] = useState(false);
-  const resumeContext = useContext(ResumeContext);
 
   const dropRef = useRef(null);
   useEffect(() => {
@@ -111,6 +110,7 @@ const LangExpert = () => {
     setText(null);
   };
 
+   
   return (
     <>
       <div className="d-flex mb-4">
@@ -269,7 +269,11 @@ const LangExpert = () => {
             <div className="d-flex my-2 flex-wrap">
               {expert.map((item, key) => (
                 <div onClick={() => removeExpert(item.id)}>
-                  <ButtonTag data={item.text + " : " + item.level.name} />
+                  <ButtonTag
+                    data={
+                      item.text + " : " + item.level.name
+                    }
+                  />
                 </div>
               ))}
             </div>

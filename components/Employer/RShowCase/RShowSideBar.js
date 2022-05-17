@@ -1,4 +1,5 @@
-  
+import SendingResume from "./SendingResume";
+
 const RShowSideBar = ({ data }) => {
   return (
     <>
@@ -6,7 +7,7 @@ const RShowSideBar = ({ data }) => {
         <div>
           {/* <img src="/assets/images/shatelLogo.png" width={136} height={136} /> */}
           <img
-             src={data.image}
+            src={data.image}
             height={100}
             width={100}
             style={{ borderRadius: "50%" }}
@@ -97,23 +98,7 @@ const RShowSideBar = ({ data }) => {
           <img src="/assets/images/messages2.png" width={24} height={24} />
           <h5 className="ms-2 mt-1">چت آراد</h5>
         </div>
-        <div className="d-flex flex-column jusify-content-center align-items-center eShowCase_sec1">
-          <h2>ارسال رزومه</h2>
-          <h3>تکمیل بیشتر از 30٪ درصد رزومه</h3>
-          <div className="orLine">یا</div>
-          <div className="py-1 px-3 mb-2 mt-3 upload">آپلود رزومه</div>
-          <div
-            className=" px-3 mt-2 d-flex align-items-center justify-content-center "
-            style={{
-              color: "#fff",
-              backgroundColor: "#EC4B72",
-              borderRadius: 10,
-              width: "100%",
-            }}
-          >
-            <h5 className="ms-2  mt-1  ">ارسال</h5>
-          </div>
-        </div>
+        <SendingResume data={data} />
         <div>
           <img src="/assets/images/whiteLine.png" width={300} height={3} />
         </div>

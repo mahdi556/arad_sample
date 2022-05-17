@@ -440,8 +440,8 @@ const Divx = ({ i, data, dataHandler }) => {
 
 const DegreeDoc = () => {
   const [hasEx, setHasEx] = useState(false);
-  const [data, setData] = useState([]);
   const resumeContext = useContext(ResumeContext);
+  const [data, setData] = useState(resumeContext.data.degree);
   const regData = () => {
     return new Promise((resolve, reject) => {
       setData(resumeContext.data.degree);

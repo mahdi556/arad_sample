@@ -1,12 +1,10 @@
-  
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 const AdBoxNewEmployer = ({ width, data }) => {
   const router = useRouter();
 
-  useEffect(()=>{
-    },[data])
+  useEffect(() => {}, [data]);
   return (
     <div
       className={width}
@@ -21,14 +19,20 @@ const AdBoxNewEmployer = ({ width, data }) => {
         });
       }}
     >
-      <div className="d-flex col-12 p-4 adbox" id="adbox">
-        <div className="d-flex col-8 pe-2 flex-column  ">
+      <div className="d-flex col-12 p-4 adbox align-items-start" id="adbox">
+        <div
+          className="d-flex col-8 pe-2 flex-column  "
+          style={{
+            height: "7.5em",
+          }}
+        >
           <div
-            className="  mb-4"
+            className="   "
             style={{
+              marginBottom: 2,
               fontSize: 18,
               // lineHeight: "1.7r/em",
-              fontWeight: 400,
+              fontFamily: "iranMedium",
             }}
           >
             {data && data.title}
@@ -49,13 +53,13 @@ const AdBoxNewEmployer = ({ width, data }) => {
           <h6
             className="mb-3"
             style={{
-              fontSize: '0.9rem',
+              fontSize: "0.9rem",
               lineHeight: "0.3rem",
             }}
           >
             {data && data.jobCategory[0] && data.jobCategory[0].fa_name}
             <div
-              className=" d-inline-flex fw-light ms-2 mt-2"
+              className=" d-inline-flex fw-light ms-1 mt-2 "
               style={{
                 color: "#a8a8a8",
                 fontSize: 14,
@@ -67,7 +71,7 @@ const AdBoxNewEmployer = ({ width, data }) => {
           </h6>
 
           <div
-            className="d-flex  fw-light justify-content-start align-items-start"
+            className="d-flex  fw-light justify-content-start align-items-start mt-auto  "
             style={{
               fontSize: 15,
             }}
@@ -157,8 +161,9 @@ const AdBoxNewEmployer = ({ width, data }) => {
               className="d-flex justify-content-center align-items-center "
               style={{
                 backgroundColor: "rgb(17,153,158,0.09)",
-                borderRadius: 10,
-                width: "100%",
+                borderTopLeftRadius: 10,
+                borderTopRightRadius: 10,
+                width: "95z%",
                 height: 90,
               }}
             >

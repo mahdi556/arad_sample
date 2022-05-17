@@ -567,7 +567,7 @@ const JoBExperience = () => {
   const resumeContext = useContext(ResumeContext);
   const [expert, setExpert] = useState([]);
   const [hasEx, setHasEx] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(resumeContext.data.experiences);
   const regData = () => {
     return new Promise((resolve, reject) => {
       setData(resumeContext.data.experiences);
