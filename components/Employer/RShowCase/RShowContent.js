@@ -11,8 +11,8 @@ const RShowContent = ({ data }) => {
           <div
             className={
               tab == 1
-                ? "col-4 py-2 rightsec jobAds-selected-top"
-                : "col-4 py-2 rightsec "
+                ? "col-6 py-2 rightsec jobAds-selected-top"
+                : "col-6 py-2 rightsec "
             }
             onClick={() => setTab(1)}
           >
@@ -21,14 +21,14 @@ const RShowContent = ({ data }) => {
           <div
             className={
               tab == 2
-                ? "col-4 py-2 middlesec jobAds-selected-top"
-                : "col-4 py-2 middlesec "
+                ? "col-6 py-2 leftsec jobAds-selected-top"
+                : "col-6 py-2 leftsec "
             }
             onClick={() => setTab(2)}
           >
             فرصت های شغلی
           </div>
-          <div className="col-4 py-2 leftsec">پست ها</div>
+          {/* <div className="col-4 py-2 leftsec">پست ها</div> */}
         </div>
         {tab == 1 ? <RCProfile /> : <JobAds data={data} />}
       </div>

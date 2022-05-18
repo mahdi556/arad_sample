@@ -37,6 +37,7 @@ const Adshow = () => {
     })
       .then((response) => {
         setData(response.data.data.ad);
+        console.log(response);
       })
       .catch(function (error) {
         console.log(error);
@@ -63,22 +64,28 @@ const Adshow = () => {
         console.log(error);
       });
   };
- 
+
   return (
     <>
       <ToastContainer />
       <NavBar />
-      <div className="d-flex col-12 mt-5 position-relative">
-        <div className="col-8">
+      <div
+        className="d-flex col-12 mt-5 position-relative justify-content-center "
+        style={{
+          paddingRight: 73,
+        }}
+      >
+        <div className="col-9">
           <div
-            className="d-flex flex-column col-11 mt-5 px-5 mx-auto position-relative"
+            className="d-flex flex-column col-11  px-5 mx-auto position-relative"
             style={{
               backgroundColor: "#fff",
               borderRadius: 30,
+              marginTop: 100,
             }}
           >
             <div
-              className="d-flex pe-4  ps-3 pt-2 align-items-center"
+              className="d-flex pe-4  ps-4 pt-2 pb-2 align-items-center"
               style={{
                 position: "absolute",
                 top: 0,
@@ -90,15 +97,15 @@ const Adshow = () => {
               }}
             >
               <div
-                className="me-3"
+                className="me-2"
                 style={{
                   cursor: "pointer",
                 }}
               >
                 <img
                   src="/assets/images/shareWhite.svg"
-                  height={32}
-                  width={32}
+                  height={25}
+                  width={25}
                 />
               </div>
               <div
@@ -109,8 +116,8 @@ const Adshow = () => {
               >
                 <img
                   src="/assets/images/saveWhite.svg"
-                  height={32}
-                  width={32}
+                  height={25}
+                  width={25}
                 />
               </div>
             </div>
@@ -131,7 +138,7 @@ const Adshow = () => {
                   className="  mb-4"
                   style={{
                     fontFamily: "iranBlack",
-                    fontSize: "40px",
+                    fontSize: "34px",
                   }}
                 >
                   {data && data.title}
@@ -142,52 +149,53 @@ const Adshow = () => {
                     fontSize: 23,
                   }}
                 >
-                   {data.user && data.user.name}{" "}
+                  {data.user && data.user.name}{" "}
                 </h6>
               </div>
-             { data.video && 
-              <div className="d-flex flex-column ms-auto">
-                <h5
-                  className=" mb-4"
-                  style={{
-                    fontFamily: "iranBlack",
-                    fontSize: 20,
-                  }}
-                >
-                  ویدیو معرفی
-                </h5>
-                <div
-                  style={{
-                    borderRadius: 20,
-                    overflow: "hidden",
-                  }}
-                >
-                  {/* <img
+              {data.video && (
+                <div className="d-flex flex-column ms-auto">
+                  <h5
+                    className=" mb-4"
+                    style={{
+                      fontFamily: "iranBlack",
+                      fontSize: 20,
+                    }}
+                  >
+                    ویدیو معرفی
+                  </h5>
+                  <div
+                    style={{
+                      borderRadius: 20,
+                      overflow: "hidden",
+                    }}
+                  >
+                    {/* <img
                     src={"/assets/images/video-sample.png"}
                     height={160}
                     width={230}
                   /> */}
 
-                  <video
-                    width="267"
-                    height="144"
-                    src={data.video}
-                    poster="/assets/images/video-sample.png"
-                    onClick={({ target: video }) =>
-                      video.paused ? video.play() : video.pause()
-                    }
-                    style={{
-                      cursor: "pointer",
-                    }}
-                  >
-                    Your browser does not support the video tag.
-                  </video>
+                    <video
+                      width="267"
+                      height="144"
+                      src={data.video}
+                      poster="/assets/images/video-sample.png"
+                      onClick={({ target: video }) =>
+                        video.paused ? video.play() : video.pause()
+                      }
+                      style={{
+                        cursor: "pointer",
+                      }}
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
                 </div>
-              </div>}
+              )}
             </div>
             <BreakLine />
             <div className="d-flex justify-content-between mt-4">
-              <div className="d-flex flex-column  col-4 ">
+              <div className="d-flex flex-column  col-5 ">
                 <div className="d-flex mb-2 ">
                   <h6 className="col-5 txtSec1 px-2"> دسته بندی حرفه</h6>
                   <h6 className="col-7 txtSec2 px-2">
@@ -235,7 +243,7 @@ const Adshow = () => {
                 </div>
               </div>
 
-              <div className="d-flex flex-column  col-4 ">
+              <div className="d-flex flex-column  col-5 ">
                 <div className="d-flex mb-2 ">
                   <h6 className="col-5 txtSec1 px-2"> میزان حقوق دریافتی</h6>
                   <h6 className="col-7 txtSec2 px-2">
@@ -276,10 +284,19 @@ const Adshow = () => {
                 </div>
               </div>
             </div>
-            <BreakLine />
+            <div className="row  flex-wrap">
+              <BreakLine />
+            </div>
             {data.experiences && data.experiences.length > 0 && (
-              <div className="d-flex flex-column me-auto mb-4 col-12">
-                <h5 className=" d-flex fw-bold mb-4">سوابق کاری</h5>
+              <div className="d-flex flex-column me-auto   mb-4 col-12">
+                <h5
+                  className=" d-flex   mb-4"
+                  style={{
+                    fontFamily: "iranBlack",
+                  }}
+                >
+                  سوابق کاری
+                </h5>
                 <div className=" row g-2  mb-4 flex-wrap ">
                   {data.experiences &&
                     data.experiences.map((item, key) => (
@@ -381,13 +398,20 @@ const Adshow = () => {
                         </div>
                       </div>
                     ))}
+                  <BreakLine />
                 </div>
-                <BreakLine />
               </div>
             )}
             {data.degrees && data.degrees.length > 0 && (
-              <div className="d-flex flex-column me-auto mb-4 col-12">
-                <h5 className=" d-flex fw-bold mb-4">سوابق تحصیلی</h5>
+              <div className="d-flex flex-column me-auto   mb-4 col-12">
+                <h5
+                  className=" d-flex   mb-4"
+                  style={{
+                    fontFamily: "iranBlack",
+                  }}
+                >
+                  سوابق تحصیلی
+                </h5>
                 <div className=" row g-2  mb-4 flex-wrap ">
                   {data.degrees &&
                     data.degrees.map((item, key) => (
@@ -422,14 +446,15 @@ const Adshow = () => {
                                 fontSize: 18,
                               }}
                             >
-                              {item.fa_major}{" "}
+                              {item.fa_degree}{" "}
                             </h6>
                           </div>
                           <div className="d-flex px-3 pt-2 mb-2">
                             <h3
                               className="me-auto"
                               style={{
-                                fontSize: 18,
+                                fontSize: 16,
+                                color: "#000",
                               }}
                             >
                               آخرین مدرک تحصیلی :
@@ -448,7 +473,8 @@ const Adshow = () => {
                             <h3
                               className="me-auto"
                               style={{
-                                fontSize: 20,
+                                fontSize: 16,
+                                color: "#000",
                               }}
                             >
                               سال فارغ التحصیلی
@@ -473,7 +499,12 @@ const Adshow = () => {
             )}
             {data.langExperts && data.langExperts.length > 0 && (
               <div className="mb-4">
-                <h5 className="mt-2 mb-5 fs-5 text-start fw-bold w-75">
+                <h5
+                  className="mt-2 mb-5 fs-5 text-start   w-75"
+                  style={{
+                    fontFamily: "iranBlack",
+                  }}
+                >
                   مهارت های زبان
                 </h5>
                 <div className="row row-cols-4  ">
@@ -481,7 +512,7 @@ const Adshow = () => {
                     data.langExperts.map((item, key) => (
                       <div className="col  px-3">
                         <div className="   eAdshowSec3  ">
-                          {item.fa_name}
+                          {item.text}
                           <div className="d-flex col-12 justify-content-between px-2">
                             <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
                               {item.level == 1 && "مقدماتی"}
@@ -515,7 +546,12 @@ const Adshow = () => {
             )}
             {data.softExperts && data.softExperts.length > 0 && (
               <div className="mb-4">
-                <h5 className="mt-2 mb-5 fs-5 text-start fw-bold w-75">
+                <h5
+                  className="mt-2 mb-5 fs-5 text-start   w-75"
+                  style={{
+                    fontFamily: "iranBlack",
+                  }}
+                >
                   مهارت های نرم افزاری
                 </h5>
                 <div className="row row-cols-4  ">
@@ -555,7 +591,12 @@ const Adshow = () => {
                 <BreakLine />
               </div>
             )}
-            <h5 className="mt-2 mb-5 fs-5 text-start fw-bold w-75">
+            <h5
+              className="mt-2 mb-5 fs-5 text-start   w-75"
+              style={{
+                fontFamily: "iranBlack",
+              }}
+            >
               نمونه کارها
             </h5>
             <div className=" row g-2  mb-4 flex-wrap ">
@@ -649,7 +690,12 @@ const Adshow = () => {
               </div>
             </div>
             <BreakLine />
-            <h5 className="mt-2 mb-3 fs-5 text-start fw-bold w-75">
+            <h5
+              className="mt-2 mb-3 fs-5 text-start  w-75"
+              style={{
+                fontFamily: "iranBlack",
+              }}
+            >
               نوضیحات تکمیلی
             </h5>
             <p className="px-1 fs-9 mb-5">
@@ -659,41 +705,28 @@ const Adshow = () => {
         </div>
         <div className="col-3 ">
           <div
-            className="d-flex flex-column col-10 mt-5 mx-auto py-2 px-2 align-items-center "
+            className="d-flex flex-column col-10     py-2 px-2 align-items-center "
             style={{
-              position:"sticky",
-              top:'12%',
+              position: "sticky",
+              top: "15%",
               backgroundColor: "#fff",
               borderRadius: 30,
+              marginTop: 100,
             }}
           >
             <div
-              className="py-2 my-2 text-white d-flex align-items-center justify-content-center"
-              style={{
-                width: "80%",
-                fontSize: "1rem",
-                backgroundColor: "#E92B59",
-                textAlign: "center",
-                borderRadius: 10,
-                cursor: "pointer",
-              }}
+              className="py-2 my-2   d-flex align-items-center justify-content-center adShowModal"
+               
               onClick={() => setOpen1(true)}
             >
-              <div className="me-2 mt-1">
+              <div className="me-2 mt-1  " >
                 <img src="/assets/images/call.svg" width={23} height={23} />
               </div>
               اطلاعات تماس
             </div>
             <div
-              className="py-2 my-2 text-white d-flex align-items-center justify-content-center"
-              style={{
-                width: "80%",
-                fontSize: " 1rem",
-                backgroundColor: "#E92B59",
-                textAlign: "center",
-                borderRadius: 10,
-                cursor: "pointer",
-              }}
+              className="py-2 my-2   d-flex align-items-center justify-content-center adShowModal"
+             
             >
               <div className="me-2 mt-1">
                 <img
@@ -705,15 +738,8 @@ const Adshow = () => {
               درخواست مصاحبه آنلاین
             </div>
             <div
-              className="py-2 my-2 text-white d-flex align-items-center justify-content-center"
-              style={{
-                width: "80%",
-                fontSize: "1rem",
-                backgroundColor: "#E92B59",
-                textAlign: "center",
-                borderRadius: 10,
-                cursor: "pointer",
-              }}
+              className="py-2 my-2   d-flex align-items-center justify-content-center adShowModal"
+              
             >
               <div className="me-2 mt-1">
                 <img
@@ -722,18 +748,11 @@ const Adshow = () => {
                   height={23}
                 />
               </div>
-              چت آراد
+              چت در چیتیت
             </div>
             <div
-              className="py-2 mt-2   text-white d-flex align-items-center justify-content-center"
-              style={{
-                width: "80%",
-                fontSize: "1rem",
-                backgroundColor: "#E92B59",
-                textAlign: "center",
-                borderRadius: 10,
-                cursor: "pointer",
-              }}
+              className="py-2 mt-2     d-flex align-items-center justify-content-center adShowModal"
+               
             >
               <div className="me-2 mt-1 ">
                 <img src="/assets/images/network.svg" width={23} height={23} />
@@ -744,127 +763,115 @@ const Adshow = () => {
         </div>
       </div>
       <Footer />
-      <Modal open={open1} onClose={()=>setOpen1(false)}>
+      <Modal open={open1} onClose={() => setOpen1(false)}>
         <Box sx={style} className="px-4 py-3">
           <div className="col-12 d-flex flex-column  justify-content-between py-5 px-5">
             <h1
-            style={{
-              fontFamily:'iranBlack',
-              fontSize:45
-            }}
+              style={{
+                fontFamily: "iranBlack",
+                fontSize: 35,
+              }}
             >
               اطلاعات تماس
             </h1>
             <div className="d-flex mt-4 px-4 align-items-center">
-              <div className="d-flex me-4 align-items-center justify-content-center"
-              style={{
-                height:50,
-                width:52,
-                borderTopRightRadius:5,
-                borderBottomLeftRadius:5,
-                borderTopLeftRadius:'50%',
-                borderBottomRightRadius:'50%',
-                backgroundColor:'#11999e'
-              }}
+              <div
+                className="d-flex me-4 align-items-center justify-content-center"
+                style={{
+                  height: 50,
+                  width: 52,
+                  borderTopRightRadius: 5,
+                  borderBottomLeftRadius: 5,
+                  borderTopLeftRadius: "50%",
+                  borderBottomRightRadius: "50%",
+                  backgroundColor: "#11999e",
+                }}
               >
-
-              <img
-              src='/assets/images/mobile.svg'
-              height={30}
-              width={30}
-              />
+                <img src="/assets/images/mobile.svg" height={30} width={30} />
               </div>
-              <h3 className="mt-2"
-               style={{
-                fontFamily:'iranBlack',
-                fontSize:23
-              }}
+              <h3
+                className="mt-2"
+                style={{
+                  fontFamily: "iranBlack",
+                  fontSize: 23,
+                }}
               >
-                  {data.personal && data.personal.cellphone}
+                {data.personal && data.personal.cellphone}
               </h3>
             </div>
             <div className="d-flex mt-4 px-4 align-items-center">
-              <div className="d-flex me-4 align-items-center justify-content-center"
-              style={{
-                height:50,
-                width:52,
-                borderTopRightRadius:5,
-                borderBottomLeftRadius:5,
-                borderTopLeftRadius:'50%',
-                borderBottomRightRadius:'50%',
-                backgroundColor:'#11999e'
-              }}
+              <div
+                className="d-flex me-4 align-items-center justify-content-center"
+                style={{
+                  height: 50,
+                  width: 52,
+                  borderTopRightRadius: 5,
+                  borderBottomLeftRadius: 5,
+                  borderTopLeftRadius: "50%",
+                  borderBottomRightRadius: "50%",
+                  backgroundColor: "#11999e",
+                }}
               >
-
-              <img
-              src='/assets/images/whatsapp.svg'
-              height={30}
-              width={30}
-              />
+                <img src="/assets/images/whatsapp.svg" height={30} width={30} />
               </div>
-              <h3 className="mt-2"
-               style={{
-                fontFamily:'iranBlack',
-                fontSize:23
-              }}
+              <h3
+                className="mt-2"
+                style={{
+                  fontFamily: "iranBlack",
+                  fontSize: 23,
+                }}
               >
-                   {data.personal && data.personal.whatsapp}
+                {data.personal && data.personal.whatsapp}
               </h3>
             </div>
             <div className="d-flex mt-4 px-4 align-items-center">
-              <div className="d-flex me-4 align-items-center justify-content-center"
-              style={{
-                height:50,
-                width:52,
-                borderTopRightRadius:5,
-                borderBottomLeftRadius:5,
-                borderTopLeftRadius:'50%',
-                borderBottomRightRadius:'50%',
-                backgroundColor:'#11999e'
-              }}
+              <div
+                className="d-flex me-4 align-items-center justify-content-center"
+                style={{
+                  height: 50,
+                  width: 52,
+                  borderTopRightRadius: 5,
+                  borderBottomLeftRadius: 5,
+                  borderTopLeftRadius: "50%",
+                  borderBottomRightRadius: "50%",
+                  backgroundColor: "#11999e",
+                }}
               >
-
-              <img
-              src='/assets/images/telegram.svg'
-              height={30}
-              width={30}
-              />
+                <img src="/assets/images/telegram.svg" height={30} width={30} />
               </div>
-              <h3 className="mt-2"
-               style={{
-                fontFamily:'iranBlack',
-                fontSize:23
-              }}
+              <h3
+                className="mt-2"
+                style={{
+                  fontFamily: "iranBlack",
+                  fontSize: 23,
+                }}
               >
-                   {data.personal && data.personal.telegram}
+                {data.personal && data.personal.telegram}
               </h3>
             </div>
             <div className="d-flex mt-4 px-4 align-items-center">
-              <div className="d-flex me-4 align-items-center justify-content-center"
-              style={{
-                height:50,
-                width:52,
-                borderTopRightRadius:5,
-                borderBottomLeftRadius:5,
-                borderTopLeftRadius:'50%',
-                borderBottomRightRadius:'50%',
-                backgroundColor:'#11999e'
-              }}
+              <div
+                className="d-flex me-4 align-items-center justify-content-center"
+                style={{
+                  height: 50,
+                  width: 52,
+                  borderTopRightRadius: 5,
+                  borderBottomLeftRadius: 5,
+                  borderTopLeftRadius: "50%",
+                  borderBottomRightRadius: "50%",
+                  backgroundColor: "#11999e",
+                }}
               >
-
-              <img
-              src='/assets/images/email.svg'
-              height={30}
-              width={30}
-              />
+                <img src="/assets/images/email.svg" height={30} width={30} />
               </div>
-              <h3 className="mt-2"
-               style={{
-                fontFamily:'iranBlack',
-                fontSize:23
-              }}
+              <h3
+                className="mt-2"
+                style={{
+                  fontFamily: "iranBlack",
+                  fontSize: 23,
+                }}
               >
-                   {data.personal && data.personal.email}
+                {data.personal && data.personal.email}
               </h3>
             </div>
           </div>
