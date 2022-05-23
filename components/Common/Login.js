@@ -1,4 +1,3 @@
-  
 import axios from "../../axios";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -6,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import InputCode from "./InputCode";
 import UserContext from "../../context/employeeContext/User/UserContext";
 import { useRouter } from "next/router";
+import { fontFamily, fontSize } from "@mui/system";
 const style = {
   position: "absolute",
   top: "50%",
@@ -171,21 +171,39 @@ const Login = () => {
   return (
     <>
       <div
-        className="d-flex px-2 py-2 me-5 align-items-center "
-        style={{
-          borderRadius: 10,
-          backgroundColor: "#11999E",
-          borderWidth: 1,
-          borderStyle: "solid",
-          fontSize: 14,
-          color: "#fff",
-          cursor: "pointer",
-        }}
+        className="d-flex px-2 py-2 me-3 align-items-center "
+        // style={{
+        //   borderRadius: 10,
+        //   backgroundColor: "#11999E",
+        //   borderWidth: 1,
+        //   borderStyle: "solid",
+        //   fontSize: 14,
+        //   color: "#fff",
+        //   cursor: "pointer",
+        // }}
         // onClick={handleOpen1}
         onClick={() => handleSignIn()}
       >
         {userContext.data.user.auth ? (
-          `${userContext.data.user.firstName}  ${userContext.data.user.lastName}`
+          <div className=""  
+          
+          style={{
+            backgroundColor:'#c7e4e5',
+            borderRadius:10,
+            padding:'13px 18px',
+            fontSize:20,
+            fontWeight:700
+          }}
+          >
+             {userContext.data.user.firstName}  {' '}
+            {userContext.data.user.lastName} 
+
+            <img className="ms-3" 
+            
+            src='/assets/images/arrow_black.svg' 
+            width={18}
+            />
+          </div>
         ) : (
           <>
             <div className="d-flex me-2  ">

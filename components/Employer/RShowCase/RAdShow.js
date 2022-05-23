@@ -7,6 +7,7 @@ import saveLottie from "../../../components/Lottie-json/save-lottie.json";
 import { useRef, useState, useContext, useEffect } from "react";
 import axios from "../../../axios";
 const RAdShow = ({ data }) => {
+  console.log(data);
   const lottieRef = useRef();
   const [play, settPlay] = useState(false);
   const [salaryTypes, setSalaryTypes] = useState([]);
@@ -45,7 +46,11 @@ const RAdShow = ({ data }) => {
       <div className="d-flex flex-column px-4 eAdshow">
         <div className="d-flex justify-content-between">
           <div className="d-flex flex-column mt-4">
-            <h1 className="eAdshowSec1">
+            <h1 className="eAdshowSec1"
+              style={{
+                fontFamily: "iranBlack",
+              }}
+            >
               {" "}
               {data.title}{" "}
               <h5 className="d-inline-flex">
@@ -60,7 +65,7 @@ const RAdShow = ({ data }) => {
             </h1>
             <h4 className="eAdshowSec2">
               دسته {data.jobCategory && data.jobCategory[0].fa_name}
-              <h6 className="d-inline-flex fw-light">3روز پیش</h6>
+              {/* <h6 className="d-inline-flex fw-light">3روز پیش</h6> */}
             </h4>
           </div>
           <div className="d-flex pt-4">
@@ -89,8 +94,8 @@ const RAdShow = ({ data }) => {
           </div>
         </div>
         <BreakLine />
-        <div className="d-flex flex-column pe-4">
-          <div className="d-flex col-12">
+        <div className="d-flex flex-column ">
+          <div className="d-flex col-12 justify-content-between">
             <div className="d-flex col-4">
               <h6 className="col-5 txtSec1"> میزان حقوق دریافتی</h6>
               <h6 className="col-7 txtSec2">
@@ -124,7 +129,7 @@ const RAdShow = ({ data }) => {
               </h6>
             </div>
           </div>
-          <div className="d-flex col-12">
+          <div className="d-flex col-12 justify-content-between">
             <div className="d-flex col-4">
               <h6 className="col-5 txtSec1"> نحوه پرداخت حقوق </h6>
               <h6 className="col-7 txtSec2">
@@ -151,51 +156,59 @@ const RAdShow = ({ data }) => {
           </div>
           <BreakLine />
         </div>
-        {data.softExpert && data.softExperts.length > 0 && (
-          <div className="mb-4">
-            <h5 className="mt-2 mb-5 fs-5 text-start fw-bold w-75">
-              مهارت های نرم افزاری
-            </h5>
-            <div className="row row-cols-4  ">
-              {data.softExperts &&
-                data.softExperts.map((item, key) => (
-                  <div className="col  px-3">
-                    <div className="   eAdshowSec3  ">
-                      {item.fa_name}
-                      <div className="d-flex col-12 justify-content-between px-2">
-                        <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
-                          {item.level == 1 && "مقدماتی"}
-                        </div>
-                        <div
-                          className={
-                            item.level == 2 || item.level == 3
-                              ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
-                              : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
-                          }
-                          // {`eAdshowSec6 col-4 mt-2 me-1 pb-1`}
-                        >
-                          {item.level == 2 && "متوسط"}
-                        </div>
-                        <div
-                          className={
-                            item.level == 3
-                              ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
-                              : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
-                          }
-                        >
-                          {item.level == 3 && "پیشرفته"}
-                        </div>
+        {/* {data.softExpert && data.softExperts.length > 0 && ( */}
+        <div className="mb-4">
+          <h5 className="mt-2 mb-5 fs-5 text-start   w-75"
+            style={{
+              fontFamily: "iranBlack",
+            }}
+          >
+            مهارت های نرم افزاری
+          </h5>
+          <div className="row row-cols-4  ">
+            {data.softExperts &&
+              data.softExperts.map((item, key) => (
+                <div className="col  px-3">
+                  <div className="   eAdshowSec3  ">
+                    {item.fa_name}
+                    <div className="d-flex col-12 justify-content-between px-2">
+                      <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
+                        {item.level == 1 && "مقدماتی"}
+                      </div>
+                      <div
+                        className={
+                          item.level == 2 || item.level == 3
+                            ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                            : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                        }
+                        // {`eAdshowSec6 col-4 mt-2 me-1 pb-1`}
+                      >
+                        {item.level == 2 && "متوسط"}
+                      </div>
+                      <div
+                        className={
+                          item.level == 3
+                            ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                            : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                        }
+                      >
+                        {item.level == 3 && "پیشرفته"}
                       </div>
                     </div>
                   </div>
-                ))}
-            </div>
-            <BreakLine />
+                </div>
+              ))}
           </div>
-        )}
+          <BreakLine />
+        </div>
+        {/* )} */}
         {data.langExperts && data.langExperts.length > 0 && (
           <div className="mb-4">
-            <h5 className="mt-2 mb-5 fs-5 text-start fw-bold w-75">
+            <h5 className="mt-2 mb-5 fs-5 text-start   w-75"
+              style={{
+                fontFamily: "iranBlack",
+              }}
+            >
               مهارت های زبان
             </h5>
             <div className="row row-cols-4  ">
@@ -235,7 +248,11 @@ const RAdShow = ({ data }) => {
             <BreakLine />
           </div>
         )}
-        <h5 className="mt-2 mb-5 fs-5 text-start fw-bold w-75">توضیحات</h5>
+        <h5 className="mt-2 mb-5 fs-5 text-start  w-75"
+          style={{
+            fontFamily: "iranBlack",
+          }}
+        >توضیحات</h5>
         <p
           style={{
             fontSize: 16,
@@ -244,7 +261,12 @@ const RAdShow = ({ data }) => {
         >
           {data.personal && data.personal.description}
         </p>
-        <h5 className="  my-5 fs-4 text-start fw-bold w-75">تسهیلات و مزایا</h5>
+        <BreakLine />
+        <h5 className="  my-5 fs-4 text-start   w-75"
+          style={{
+            fontFamily: "iranBlack",
+          }}
+        >تسهیلات و مزایا</h5>
         <div className="d-flex flex-wrap mb-3">
           <h3 className="d-flex eAdshowSec7 mx-2">وام</h3>
           <h3 className="d-flex eAdshowSec7 mx-2">مکان استراحت</h3>
