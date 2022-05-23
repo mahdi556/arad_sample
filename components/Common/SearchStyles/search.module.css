@@ -34,7 +34,7 @@
 .dropdown_open {
   display: flex;
   flex-direction: column;
-  height: 90%;
+  max-height: 9rem;
   width: 100%;
   border-radius: 0.7rem;
   border-style: solid;

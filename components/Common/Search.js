@@ -13,21 +13,7 @@ import { useEffect, useState } from "react";
 const Search = () => {
   const [eads, setEads] = useState({});
 
-  useEffect(() => {
-    axios({
-      url: "/getAdList",
-      method: "get",
-    })
-      .then((response) => {
-        console.log(response)
-        setEads(response.data.data.eads);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
-
-  return (
+   return (
     <>
       <NavBar />
       <TopBanner />

@@ -1,4 +1,4 @@
-const ButtonTag = ({data}) => {
+const ButtonTag = ({data,deleteTag,en}) => {
   return (
    
       <div className="d-flex TagButton">
@@ -9,6 +9,7 @@ const ButtonTag = ({data}) => {
           sizes="cover"
           width={10}
           height={10}
+          onClick={()=>deleteTag(en)}
         />
       </div>
      

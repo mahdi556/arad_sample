@@ -1,16 +1,17 @@
-import ReactDOM from "react-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
-import { faUserShield } from "@fortawesome/free-solid-svg-icons";
+import { useContext, useEffect, useState } from "react";
+import FilterContext from "../context/employeeContext/FilterContext/FilterContext";
 import SwitchButtion from "./Employee/FormInputs/SwitchButton";
-  
 
-const SideBar = () => {
+const SideBar = ({ data, sendFilterData }) => {
+  const filterContext = useContext(FilterContext);
   const [dropdown, setDropdown] = useState({ 1: styles.hide, 2: styles.hide });
   const [sideVisible, setSideVisible] = useState({
     width: "70%",
     display: "",
   });
+  const [ins, setIns] = useState(0);
+  const [corType, setCorType] = useState(1);
+
   const toggle = (i) => {
     if (dropdown[i] === styles.hide) {
       dropdown[1] = styles.hide;
@@ -32,6 +33,30 @@ const SideBar = () => {
     sideVisible.width !== 0
       ? setSideVisible({ width: 0, display: "none" })
       : setSideVisible({ width: "70%", display: "" });
+  };
+  const insHandler = (value) => {
+    filterContext.dispatch({
+      type: "ins",
+      payload: value,
+    });
+  };
+  const militaryHandler = (value) => {
+    filterContext.dispatch({
+      type: "military",
+      payload: value,
+    });
+  };
+  const experienceHandler = (value) => {
+    filterContext.dispatch({
+      type: "experience",
+      payload: value,
+    });
+  };
+  const vipHandler = (value) => {
+    filterContext.dispatch({
+      type: "vip",
+      payload: value,
+    });
   };
 
   return (
@@ -59,14 +84,14 @@ const SideBar = () => {
             }}
           >
             <li className="sidebar-item   ">
-              <div className="sidebar-radio ">
+              {/* <div className="sidebar-radio ">
                 <span>ارسال آگهی های پیشنهادی</span>
                 <div className="ms-auto">
                   <SwitchButtion />
                 </div>
-              </div>
+              </div> */}
             </li>
-            <li className="sidebar-item  ">
+            {/* <li className="sidebar-item  ">
               <div className="sidebar-link" onClick={() => toggle(1)}>
                 <span>دسته بندی</span>
                 <i className="ms-auto bi bi-chevron-down"></i>
@@ -85,8 +110,8 @@ const SideBar = () => {
                   <a href="">مهندس</a>
                 </li>
               </ul>
-            </li>
-            <li className="sidebar-item ">
+            </li> */}
+            {/* <li className="sidebar-item ">
               <div className="sidebar-link" onClick={() => toggle(2)}>
                 <span>نیاز به سابقه</span>
                 <i className="ms-auto bi bi-chevron-down"></i>
@@ -145,55 +170,59 @@ const SideBar = () => {
                   <a href="">مهندس</a>
                 </li>
               </ul>
-            </li>
+            </li> */}
             <li className="sidebar-item  ">
-              <a className="sidebar-link" href="">
-                <span>شرکت های معتبر</span>
+              <div className="sidebar-link" href="">
+                <span>کارت پایان خدمت یا معافیت</span>
                 <div className="ms-auto">
-                  <SwitchButtion />
-                </div>
-              </a>
-            </li>
-            <li className="sidebar-item  ">
-              <a className="sidebar-link" href="">
-                <span>دورکاری</span>
-                <div className="ms-auto">
-                  <SwitchButtion />
-                </div>
-              </a>
-            </li>
-            <li className="sidebar-item  ">
-              <a className="sidebar-link" href="">
-                <span>بیمه</span>
-                <div className="ms-auto">
-                  <SwitchButtion />
-                </div>
-              </a>
-            </li>
-            <li className="sidebar-item  ">
-              <a className="sidebar-link" href="">
-                <span>آگهی های ویژه</span>
-                <div className="ms-2">
-                  <img
-                    src="/assets/images/crown.png"
-                    width={18}
-                    height={18}
+                  <SwitchButtion
+                    valueHandler={militaryHandler}
+                    status={filterContext.data.military}
                   />
                 </div>
+              </div>
+            </li>
+            <li className="sidebar-item  ">
+              <div className="sidebar-link" href="">
+                <span>دارای سابقه کاری</span>
                 <div className="ms-auto">
-                  <SwitchButtion />
+                  <SwitchButtion
+                    valueHandler={experienceHandler}
+                    status={filterContext.data.experience}
+                  />
                 </div>
-              </a>
+              </div>
+            </li>
+            <li className="sidebar-item  ">
+              <div className="sidebar-link" href="">
+                <span>درخواست بیمه</span>
+                <div className="ms-auto">
+                  <SwitchButtion
+                    valueHandler={insHandler}
+                    status={filterContext.data.ins}
+                  />
+                </div>
+              </div>
+            </li>
+            <li className="sidebar-item  ">
+              <div className="sidebar-link" href="">
+                <span>آگهی های متخصص</span>
+                <div className="ms-2">
+                  <img src="/assets/images/crown.png" width={18} height={18} />
+                </div>
+                <div className="ms-auto">
+                <SwitchButtion
+                    valueHandler={vipHandler}
+                    status={filterContext.data.vip}
+                  />
+                </div>
+              </div>
             </li>
           </ul>
           <div className=" row justify-content-center align-items-center pt-5 ">
             <div className=" d-flex flex-row justify-content-center align-items-center fs-11">
               <div className="me-1">
-                <img
-                  src="/assets/images/support1.png"
-                  width={18}
-                  height={18}
-                />
+                <img src="/assets/images/support1.png" width={18} height={18} />
               </div>
               <div className="d-flex">تماس با پشتیبانی 0000 000 0912</div>
             </div>
@@ -204,7 +233,7 @@ const SideBar = () => {
                 backgroundColor: "#e92b59",
                 borderRadius: 20,
                 color: "#fff",
-                fontSize:15
+                fontSize: 15,
               }}
             >
               دانلود اپلیکیشن
@@ -219,12 +248,12 @@ const SideBar = () => {
           </div>
         </div>
 
-        <div className="d-flex align-items-center justify-content-center  sidebar-handle">
+        {/* <div className="d-flex align-items-center justify-content-center  sidebar-handle">
           <i
             className="bi bi-chevron-right   "
             onClick={() => toggleSidebar()}
           ></i>
-        </div>
+        </div> */}
       </div>
     </>
   );
