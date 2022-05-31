@@ -33,11 +33,13 @@
     "react-dom": "17.0.2",
     "react-icons": "^4.3.1",
     "react-js-pagination": "^3.0.3",
+    "react-lottie": "^1.2.3",
     "react-modal": "^3.15.1",
     "react-modern-drawer": "^1.1.1",
     "react-pdf": "^5.7.2",
     "react-persian-datepicker": "^3.0.2",
     "react-toastify": "^8.2.0",
+    "react-use-downloader": "^1.1.7",
     "sass": "^1.49.7",
     "sweetalert2": "^11.4.7"
   },

@@ -1,8 +1,24 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
- 
+import FieldError from "../../Common/FieldError";
+
 const Description = () => {
   const resumeContext = useContext(ResumeContext);
+  const [display, setDisplay] = useState("none");
+
+  useEffect(() => {
+    if (resumeContext.data.stepClick) {
+      if (
+        resumeContext.data.description !== "" 
+       ) {
+        resumeContext.dispatch({ type: "fieldCheck", payload: true });
+      } else {
+        setDisplay("");
+        resumeContext.dispatch({ type: "stepClick", payload: false });
+      }
+    }
+  }, [resumeContext.data.stepClick]);
+
   return (
     <>
       <div className="row pt-4 pb-4 mt-4 sec2">
@@ -34,6 +50,7 @@ const Description = () => {
               });
             }}
           />
+          <FieldError data={resumeContext.data.description} display={display} />
         </div>
       </div>
     </>

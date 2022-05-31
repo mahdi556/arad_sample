@@ -6,18 +6,13 @@ const RightMenu = () => {
   return (
     <>
       <div
-        className="pt-3"
+        className="pt-5"
         style={{
-          width: "20%",
+          // width: "20%",
           backgroundColor: "#fff",
           borderTopLeftRadius: 25,
-          // marginBottom: 200,
-          // height: "100%",
           zIndex: 10,
-          //  overflow: 'hidden',
-          position: "absolute",
-          top: "5%",
-          right: 0,
+          paddingBottom:200
         }}
       >
         <div className="d-flex flex-column ps-5 pt-4 align-items-center">

@@ -10,16 +10,15 @@ import Filters from "./Filters";
 import TopBanner from "./TopBanner";
 import { useEffect, useState } from "react";
  
-const Search = () => {
-  const [eads, setEads] = useState({});
-
+const Search = ({type}) => {
+ 
    return (
     <>
       <NavBar />
-      <TopBanner />
+      <TopBanner  type={type}/>
       <SupportDrawer />
 
-      <Adlist />
+      <Adlist type={type} />
       <Footer />
     </>
   );

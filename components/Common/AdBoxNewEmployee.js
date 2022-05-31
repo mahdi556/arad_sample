@@ -28,8 +28,10 @@ const AdBoxNewEmployee = ({ width, data }) => {
             style={{
               marginBottom: 2,
               fontSize: 18,
-              // lineHeight: "1.7r/em",
               fontFamily: "iranMedium",
+              whiteSpace: 'nowrap', 
+              overflow: 'hidden',
+              textOverflow: 'ellipsis', 
             }}
           >
             {data && data.title}

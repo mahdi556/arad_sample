@@ -1,16 +1,13 @@
 import { useContext, useEffect, useState } from "react";
-import style from "./HomeStyles/home.module.css";
 import axios from "../../axios";
 import AdBoxNewEmployer from "./AdBoxNewEmployer";
-import AdBoxNewEmployee from "./AdBoxNewEmployee";
 import { useRouter } from "next/router";
-import NavBarItem from "./NavBarItem";
 import Filters from "./Filters";
 import SideBar from "../SideBar";
 import Paginate from "./Paginate";
 import FilterContext from "../../context/employeeContext/FilterContext/FilterContext";
 
-const Adlist = ({ cat_id, local_id }) => {
+const Adlist = ({ cat_id, local_id ,type}) => {
   const filterContext = useContext(FilterContext);
   const router = useRouter();
   const [eads, setEads] = useState({});
@@ -26,8 +23,7 @@ const Adlist = ({ cat_id, local_id }) => {
   useEffect(() => {
     getAdList();
   }, [filterContext.data, cat_id]);
-
-   const getAdList = (
+  const getAdList = (
     url = router.query.cat ? "/getSearchedAds" : "/getAdList"
   ) => {
     if (router.query.cat) {
@@ -38,10 +34,11 @@ const Adlist = ({ cat_id, local_id }) => {
           cat_id: cat_id,
           local_id: local_id,
           params: filterContext.data,
+          type:type
         },
       })
         .then((response) => {
-          console.log(response);
+          console.log(response)
           setEads(response.data.data.eads);
           setTotalPage(response.data.data.meta.last_page);
           setCurrentPage(response.data.data.meta.current_page);
@@ -55,10 +52,14 @@ const Adlist = ({ cat_id, local_id }) => {
     } else {
       axios({
         url: url,
-        method: "get",
+        method: "post",
+        data:{
+          type:type
+        }
       })
         .then((response) => {
           console.log(response);
+
           setEads(response.data.data.eads);
           setTotalPage(response.data.data.meta.last_page);
           setCurrentPage(response.data.data.meta.current_page);
@@ -113,11 +114,12 @@ const Adlist = ({ cat_id, local_id }) => {
         >
           <div className="d-flex col-12">
             <div className="col-3">
-              <SideBar data={eads}   />
+              <SideBar data={eads} />
             </div>
             <div className="  col-8 ">
-              <Filters   />
-              <div class="row    gx-5 gy-4  ms-4 ps-1 ">
+              {filterContext.data.showFilterBox && <Filters />}
+
+              <div class="row    gx-5 gy-4   ps-1 ">
                 {eads.length > 0 &&
                   eads.map((item, key) => (
                     <AdBoxNewEmployer

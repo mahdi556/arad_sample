@@ -33,26 +33,22 @@ const HomeTopSection = () => {
               </h2>
             </div>
           </div>
-          <div className="col-6 d-flex   align-items-start justify-content-start   ">
-            {/* <img className="mx-auto"
-          style={{
-            maxWidth:500,
-            maxHeight:500
-          }}
-          src="/assets/images/ezgif.gif" /> */}
-            {/* <video className="mx-auto"
+          <div className="col-4  d-flex   align-items-start justify-content-start   ">
+            
+            <video className="mx-auto"
            autoPlay
            loop
-            width={500}
-            height={500}
+            width={600}
+            height={600}
             src= "/assets/images/home.mp4"
             style={{
               cursor: "pointer",
             }}
           >
             Your browser does not support the video tag.
-          </video> */}
+          </video>
           </div>
+          <div className="col-2"></div>
           <div className={` ${style.sec19}  `}>
             <div className={`  ${style.sec18}   `}>میخوای استخدام بشی</div>
 

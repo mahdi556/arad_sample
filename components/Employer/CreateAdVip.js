@@ -26,11 +26,11 @@ const CreateEmployerAdVip = () => {
       payload: true,
     });
     setStep2(sn);
-    setP_height2(p_height);
+    setP_height2(ph);
   };
   const handleStepEdit = (sn, ph) => {
     setStep(sn);
-    setP_height(p_height);
+    setP_height(ph);
   };
   useEffect(() => {
     if (resumeContext.data.fieldCheck) {
@@ -46,6 +46,7 @@ const CreateEmployerAdVip = () => {
       setP_height(p_height2);
     }
   }, [resumeContext.data.fieldCheck]);
+
   return (
     <>
       <div

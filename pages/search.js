@@ -1,11 +1,11 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import HomePage from "../components/Common/HomePage";
+import { useEffect } from "react";
 import Search from "../components/Common/Search";
 import FilterProvider from "../context/employeeContext/FilterContext/FilterProvider";
 export default function Home() {
   const router = useRouter();
-
+      useEffect(()=>{},[router.query.type])
   return (
     <>
       <Head>
@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <FilterProvider>
-        <Search />
+        <Search type={router.query.type} />
       </FilterProvider>
     </>
   );

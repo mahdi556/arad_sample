@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
- import RadioButton from "../../Employee/FormInputs/RadioButton";
+import RadioButton from "../../Employee/FormInputs/RadioButton";
 import SelectOption from "../../Employee/Resume/FormInputs/SelectOption";
 import SalaryNeeded from "./SalaryNeeded";
 import { JobCats } from "../../StaticData/JobCategory";
@@ -9,9 +9,11 @@ import { SalaryType } from "../../StaticData/SalaryType";
 import { corporateTime } from "../../StaticData/SalaryType";
 import WorkHours from "./WorkHours";
 import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import FieldError from "../../Common/FieldError";
 
 const PersonalData = () => {
   const resumeContext = useContext(ResumeContext);
+  const [display, setDisplay] = useState("none");
 
   let proId = resumeContext.data.province.id;
   const citi = Cities.filter((item, key) => item.provinceId == proId);
@@ -73,6 +75,24 @@ const PersonalData = () => {
       [resumeContext.data.corporateType]: "Ebutton_clicked ",
     });
   }, []);
+  useEffect(() => {
+    if (resumeContext.data.stepClick) {
+      if (
+        resumeContext.data.title !== "" &&
+        resumeContext.data.corporateTime.fa !== "" &&
+        resumeContext.data.jobCategory.fa !== "" &&
+        resumeContext.data.province.fa !== "" &&
+        resumeContext.data.city.fa !== "" &&
+        resumeContext.data.salaryType.fa !== "" &&
+        resumeContext.data.workHour.fa.from !== "" 
+      ) {
+        resumeContext.dispatch({ type: "fieldCheck", payload: true });
+      } else {
+        setDisplay("");
+        resumeContext.dispatch({ type: "stepClick", payload: false });
+      }
+    }
+  }, [resumeContext.data.stepClick]);
 
   return (
     <>
@@ -194,42 +214,53 @@ const PersonalData = () => {
                 predata={resumeContext.data.jobCategory.fa}
               />
             </div>
+            <FieldError
+              data={resumeContext.data.jobCategory.fa}
+              display={display}
+            />
+
             <div className="d-flex col-12 justify-content-between">
-             <div
-              className={proId === "" ? "col-12  " : "col-5  "}
-              style={{
-                maxHeight: "6rem",
-                zIndex: 14,
-              }}
-            >
-              <SelectOption
-                data={Province}
-                name="استان"
-                valueHandler={provinceHandler}
-                predata={resumeContext.data.province.fa}
-              />
-             
-            </div>
-            {proId !== "" && (
               <div
-                className="col-5  "
+                className={proId === "" ? "col-12  " : "col-5  "}
                 style={{
                   maxHeight: "6rem",
-                  zIndex: 13,
+                  zIndex: 14,
                 }}
               >
                 <SelectOption
-                  data={citi}
-                  name="شهر"
-                  valueHandler={cityHandler}
-                  predata={resumeContext.data.city.fa}
+                  data={Province}
+                  name="استان"
+                  valueHandler={provinceHandler}
+                  predata={resumeContext.data.province.fa}
+                />
+                <FieldError
+                  data={resumeContext.data.province.fa}
+                  display={display}
                 />
               </div>
-            )}
-          </div>
+              {proId !== "" && (
+                <div
+                  className="col-5  "
+                  style={{
+                    maxHeight: "6rem",
+                    zIndex: 13,
+                  }}
+                >
+                  <SelectOption
+                    data={citi}
+                    name="شهر"
+                    valueHandler={cityHandler}
+                    predata={resumeContext.data.city.fa}
+                  />
+                  <FieldError
+                    data={resumeContext.data.city.fa}
+                    display={display}
+                  />
+                </div>
+              )}
+            </div>
             <div className="col-12 mt-3">
-
-            <SalaryNeeded />
+              <SalaryNeeded />
             </div>
             <div
               className="col-12 mt-4"
@@ -244,8 +275,16 @@ const PersonalData = () => {
                 valueHandler={salaryHandler}
                 predata={resumeContext.data.salaryType.fa}
               />
+              <FieldError
+                data={resumeContext.data.salaryType.fa}
+                display={display}
+              />
             </div>
             <WorkHours />
+            <FieldError
+              data={resumeContext.data.workHour.fa.from}
+              display={display}
+            />
           </div>
         </div>
 
@@ -260,35 +299,7 @@ const PersonalData = () => {
               />
             </div>
           </div>
-          <div className="col-12 mb-3 mt-5">
-            <label
-              className="fs-6  "
-              style={{
-                marginBottom: "0.5rem",
-                fontWeight: "normal",
-              }}
-            >
-              توضیحات آگهی
-            </label>
-            <textarea
-              className={
-                resumeContext.data.title == ""
-                  ? "col-12 mb-3 ps-2 inputStyle"
-                  : "col-12 mb-3 ps-2 inputFilled"
-              }
-              type="text"
-              value={resumeContext.data.description}
-              style={{
-                height:150
-              }}
-              onChange={(e) => {
-                resumeContext.dispatch({
-                  type: "description",
-                  payload: e.target.value,
-                });
-              }}
-            />
-          </div>
+          
         </div>
       </div>
     </>

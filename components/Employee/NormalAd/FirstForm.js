@@ -7,6 +7,8 @@ const FirstForm = () => {
   const [imageUrl, setImageUrl] = useState([]);
   const [videofile, setVideofile] = useState([]);
   const [videoUrl, setVideoUrl] = useState([]);
+  const [display, setDisplay] = useState("none");
+
    const userContext = useContext(UserContext);
   const resumeContext=useContext(ResumeContext)
 
@@ -34,6 +36,14 @@ const FirstForm = () => {
       payload: userContext.data.user.id,
     });
   }, [image, videofile]);
+  useEffect(() => {
+    if (resumeContext.data.stepClick) {
+         resumeContext.dispatch({ type: "fieldCheck", payload: true });
+       
+       
+    }
+  }, [resumeContext.data.stepClick]);
+
   return (
     <div
       className="row pt-1 "

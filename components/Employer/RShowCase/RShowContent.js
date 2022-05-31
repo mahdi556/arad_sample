@@ -6,7 +6,7 @@ const RShowContent = ({ data }) => {
   const [tab, setTab] = useState(2);
   return (
     <>
-      <div className="eShowContainer mx-auto ">
+      <div className="eShowContainer mx-auto pb-5">
         <div className="d-flex col-12 justify-content-center mainSec bg-white ">
           <div
             className={
@@ -32,6 +32,7 @@ const RShowContent = ({ data }) => {
         </div>
         {tab == 1 ? <RCProfile /> : <JobAds data={data} />}
       </div>
+      
     </>
   );
 };

@@ -33,6 +33,10 @@ const AdBoxNewEmployer = ({ width, data }) => {
               fontSize: 18,
               // lineHeight: "1.7r/em",
               fontFamily: "iranMedium",
+              whiteSpace: 'nowrap', 
+              overflow: 'hidden',
+              textOverflow: 'ellipsis', 
+            
             }}
           >
             {data && data.title}

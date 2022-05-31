@@ -4,14 +4,28 @@ import { sex } from "../../StaticData/SalaryType";
 import AgeRange from "./AgeRange";
 import style from "../../Employee/VipAd/FormInputs/FormStyles/form.module.css";
 import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import FieldError from "../../Common/FieldError";
 
 const OurExpect = () => {
   const resumeContext = useContext(ResumeContext);
   const sexHandler = (id, fa) => {
     resumeContext.dispatch({ type: "sex", payload: { id: id, fa: fa } });
   };
+  const [display, setDisplay] = useState("none");
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (resumeContext.data.stepClick) {
+      if (
+        resumeContext.data.ageRange.fa.from !== "" &&
+        resumeContext.data.ageRange.fa.from !== ""
+      ) {
+        resumeContext.dispatch({ type: "fieldCheck", payload: true });
+      } else {
+        setDisplay("");
+        resumeContext.dispatch({ type: "stepClick", payload: false });
+      }
+    }
+  }, [resumeContext.data.stepClick]);
 
   return (
     <>
@@ -43,8 +57,14 @@ const OurExpect = () => {
                 predata={resumeContext.data.sex.fa}
               />
             </div>
+            <FieldError data={resumeContext.data.sex.fa} display={display} />
+
             <div className="col-12">
               <AgeRange />
+              <FieldError
+                data={resumeContext.data.ageRange.fa.from}
+                display={display}
+              />
             </div>
           </div>
         </div>

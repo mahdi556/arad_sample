@@ -11,7 +11,33 @@ const Divx = ({ i, data, dataHandler }) => {
     link: data.link,
     faDiscription: data.faDiscription,
     enDiscription: data.enDiscription,
+    file: data.file,
+    fileUrl: data.fileUrl,
+    ucode: data.ucode,
   });
+  const [image, setImage] = useState([]);
+  const [imageUrl, setImageUrl] = useState([]);
+
+  useEffect(() => {
+    if (image.length > 0) {
+      const newImageUrl = [];
+      newImageUrl.push(URL.createObjectURL(image[0]));
+      setImageUrl(newImageUrl);
+      setLocalData({
+        ...localData,
+        file: image[0],
+        ucode: image[0].lastModified,
+        fileUrl: newImageUrl,
+      });
+      dataHandler({
+        ...localData,
+        fileUrl: newImageUrl,
+        file: image[0],
+        ucode: image[0].lastModified,
+      });
+    }
+  }, [image]);
+
   return (
     <>
       <div id={i}>
@@ -26,26 +52,75 @@ const Divx = ({ i, data, dataHandler }) => {
             }}
           >
             <div className="d-flex col-3 flex-column   pe-2">
-              <div
-                className="d-flex  "
-                style={{
-                  height: 225,
-                  backgroundColor: "#EBEBEB",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  textAlign: "center",
-                  borderRadius: 7,
-                  width: 174,
-                  fontSize:25
-                }}
-              >
-                <img
-                  className="me-2"
-                  src="../../../../assets/images/upload.svg"
-                  width="15%"
-                />
-                آپلود فایل
-              </div>
+             
+              {image.length > 0 ? (
+                <>
+                  <div
+                    className="row"
+                    style={{
+                      height: 225,
+                      backgroundColor: "#EBEBEB",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      textAlign: "center",
+                      borderRadius: 7,
+                      width: 174,
+                      fontSize: 25,
+                    }}
+                  >
+                    {imageUrl.map((imageSrc) => (
+                      <img src={imageSrc} width="5%" />
+                    ))}
+                    <label
+                      className="d-flex mt-2 justify-content-center align-items-center "
+                      htmlFor="changeImage"
+                      style={{ cursor: "pointer" }}
+                    >
+                      <input
+                        type="file"
+                        style={{ display: "none" }}
+                        id="changeImage"
+                        onChange={(e) => setImage(e.target.files)}
+                      />
+                      <img
+                        className="me-2"
+                        src="../../../../assets/images/upload-1.png"
+                        width="10%"
+                      />
+                      تغییر فایل
+                    </label>
+                  </div>
+                </>
+              ) : (
+                <label
+                  htmlFor="imageInput"
+                  className="d-flex flex-column shadow1 "
+                  style={{
+                    height: 225,
+                    backgroundColor: "#EBEBEB",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center",
+                    borderRadius: 7,
+                    width: 174,
+                    fontSize: 25,
+                  }}
+                >
+                  <input
+                    type="file"
+                    style={{ display: "none" }}
+                    id="imageInput"
+                    onChange={(e) => setImage(e.target.files)}
+                  />
+                  <img
+                    className="me-2"
+                    src="../../../../assets/images/upload.svg"
+                    width="15%"
+                  />
+
+                  <h5 className={`${style.txt1}  `}>آپلود فایل</h5>
+                </label>
+              )}
             </div>
             <div className="d-flex col-9 ps-3   flex-wrap ">
               <div className="d-flex col-12 justify-content-between">
@@ -196,6 +271,9 @@ const SampleEx = ({ handleStep }) => {
         link: props.link,
         faDiscription: props.faDiscription,
         enDiscription: props.enDiscription,
+        file: props.file,
+        fileUrl: props.fileUrl,
+        ucode: props.ucode,
       },
     ]);
   };
@@ -270,6 +348,9 @@ const SampleEx = ({ handleStep }) => {
                 faDiscription: "",
                 enDiscription: "",
                 link: "",
+                file: "",
+                fileUrl: "",
+                ucode: "",
               });
               setHasEx(true);
               setI(i + 1);
@@ -289,7 +370,8 @@ const SampleEx = ({ handleStep }) => {
         </>
       ))}
       {data.length > 0 && (
-        <div className="px-5"
+        <div
+          className="px-5"
           onClick={() => {
             // addSec(data.length + 1);
             dataHandler({
@@ -299,6 +381,9 @@ const SampleEx = ({ handleStep }) => {
               link: "",
               faDiscription: "",
               enDiscription: "",
+              file: "",
+              fileUrl: "",
+              ucode: "",
             });
             setI(data.length + 1);
             setHasEx(true);

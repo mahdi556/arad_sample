@@ -324,7 +324,7 @@ const PersonalData = () => {
               />
             </div>
           </div>
-          <div
+          {/* <div
             className="col-12 mt-3"
             style={{
               maxHeight: "6rem",
@@ -337,7 +337,7 @@ const PersonalData = () => {
               valueHandler={catHandler}
               predata={resumeContext.data.jobCategory.fa}
             />
-          </div>
+          </div> */}
           <Options name="تسهیلات و مزایا" />
         </div>
       </div>

@@ -1,11 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
 import UserContext from "../../../context/employeeContext/User/UserContext";
- 
+import FieldError from "../../Common/FieldError";
+
 const FirstForm = () => {
   const resumeContext = useContext(ResumeContext);
   const [image, setImage] = useState([]);
   const [imageUrl, setImageUrl] = useState([]);
+  const [display, setDisplay] = useState("none");
+
   const userContext = useContext(UserContext);
   useEffect(() => {
     if (image.length > 0) {
@@ -20,6 +23,20 @@ const FirstForm = () => {
       payload: userContext.data.user.id,
     });
   }, [image]);
+
+  useEffect(() => {
+    if (resumeContext.data.stepClick) {
+      if (
+        resumeContext.data.name !== "" &&
+        resumeContext.data.companyId !== ""
+      ) {
+        resumeContext.dispatch({ type: "fieldCheck", payload: true });
+      } else {
+        setDisplay("");
+        resumeContext.dispatch({ type: "stepClick", payload: false });
+      }
+    }
+  }, [resumeContext.data.stepClick]);
   return (
     <div
       className="row pt-4 pb-4"
@@ -116,12 +133,7 @@ const FirstForm = () => {
                 <h5>آپلود لوگو</h5>
               </label>
             )}
-            {/* <img
-              className="me-2"
-              src="../../../../assets/images/upload-logo.png"
-              width="10%"
-            /> */}
-          </div>
+           </div>
           <div
             style={{
               marginTop: 5,
@@ -161,7 +173,9 @@ const FirstForm = () => {
                 })
               }
               type="text"
+              value={resumeContext.data.name}
             />
+            <FieldError data={resumeContext.data.name} display={display} />
             <label
               style={{
                 marginBottom: "0.5rem",
@@ -183,7 +197,9 @@ const FirstForm = () => {
                 })
               }
               type="text"
+              value={resumeContext.data.companyId}
             />
+            <FieldError data={resumeContext.data.companyId} display={display} />
           </div>
         </div>
       </div>

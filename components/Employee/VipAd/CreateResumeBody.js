@@ -19,7 +19,6 @@ const CreateResumeBody = ({ handleStep2 }) => {
       payload: true,
     });
     setStep2(sn);
-    //
   };
   useEffect(() => {
     if (resumeContext.data.fieldCheck) {
@@ -32,6 +31,7 @@ const CreateResumeBody = ({ handleStep2 }) => {
         payload: false,
       });
       resumeContext.dispatch({ type: "step", payload: step2 });
+      handleStep2(step2)
     }
   }, [resumeContext.data.fieldCheck]);
 

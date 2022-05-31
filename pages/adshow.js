@@ -1,9 +1,10 @@
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
+import useDownloader from "react-use-downloader";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-
 import axios from "../axios";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import BreakLine from "../components/Employee/Resume/FormInputs/BreakLine";
@@ -27,6 +28,8 @@ const Adshow = () => {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
+  const { size, elapsed, percentage, download, cancel, error, isInProgress } =
+    useDownloader();
   useEffect(() => {
     axios({
       url: "/getAd",
@@ -46,6 +49,7 @@ const Adshow = () => {
   // const myLoader = ({ src, width, quality }) => {
   //   return data.image;
   // };
+  console.log(data);
   const handleLottie = () => {
     axios({
       url: "/storesavead",
@@ -73,6 +77,7 @@ const Adshow = () => {
         className="d-flex col-12 mt-5 position-relative justify-content-center "
         style={{
           paddingRight: 73,
+          paddingBottom: 200,
         }}
       >
         <div className="col-9">
@@ -284,313 +289,325 @@ const Adshow = () => {
                 </div>
               </div>
             </div>
-            <div className="row  flex-wrap">
-              <BreakLine />
-            </div>
+            <div className="row  flex-wrap"></div>
             {data.experiences && data.experiences.length > 0 && (
-              <div className="d-flex flex-column me-auto   mb-4 col-12">
-                <h5
-                  className=" d-flex   mb-4"
-                  style={{
-                    fontFamily: "iranBlack",
-                  }}
-                >
-                  سوابق کاری
-                </h5>
-                <div className=" row g-2  mb-4 flex-wrap ">
-                  {data.experiences &&
-                    data.experiences.map((item, key) => (
-                      <div className="col-4 px-2">
-                        <div
-                          className="    "
-                          style={{
-                            backgroundColor: "#fff",
-                            borderRadius: 20,
-                            boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
-                          }}
-                        >
+              <>
+                <BreakLine />
+                <div className="d-flex flex-column me-auto   mb-4 col-12">
+                  <h5
+                    className=" d-flex   mb-4"
+                    style={{
+                      fontFamily: "iranBlack",
+                    }}
+                  >
+                    سوابق کاری
+                  </h5>
+                  <div className=" row g-2   flex-wrap ">
+                    {data.experiences &&
+                      data.experiences.map((item, key) => (
+                        <div className="col-4 px-2">
                           <div
-                            className="d-flex col-12 px-4 py-2 justify-content-between align-items-center"
+                            className="    "
                             style={{
-                              backgroundColor: "#11999e",
-                              borderTopLeftRadius: 20,
-                              borderTopRightRadius: 20,
+                              backgroundColor: "#fff",
+                              borderRadius: 20,
+                              boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
                             }}
                           >
-                            <h5
-                              className="text-center text-white"
+                            <div
+                              className="d-flex col-12 px-4 py-2 justify-content-between align-items-center"
                               style={{
-                                fontSize: 16,
+                                backgroundColor: "#11999e",
+                                borderTopLeftRadius: 20,
+                                borderTopRightRadius: 20,
                               }}
                             >
-                              نام سازمان:{" "}
-                            </h5>
-                            <h6
-                              className="text-center text-white fw-light"
-                              style={{
-                                fontSize: 18,
-                              }}
-                            >
-                              {item.fa_org}{" "}
-                            </h6>
-                          </div>
-                          <div className="d-flex px-3 pt-2 mb-2">
-                            <h3
-                              className="me-auto"
-                              style={{
-                                fontSize: 20,
-                              }}
-                            >
-                              سمت
-                            </h3>
-                            <h3
-                              className="fw-light"
-                              style={{
-                                fontSize: 18,
-                                color: "rgba(0,0,0,0.5)",
-                              }}
-                            >
-                              {item.fa_title}
-                            </h3>
-                          </div>
-                          <div className="d-flex px-3 pt-2 mb-2">
-                            <h3
-                              className="me-auto"
-                              style={{
-                                fontSize: 20,
-                              }}
-                            >
-                              میزان سابقه
-                            </h3>
-                            <h3
-                              className="fw-light"
-                              style={{
-                                fontSize: 18,
-                                color: "rgba(0,0,0,0.5)",
-                              }}
-                            >
-                              {" "}
-                              از
-                              {item.fa_start_y}/{item.fa_start_m}
-                              تا
-                              {item.fa_finish_y}/{item.fa_finish_m}
-                            </h3>
-                          </div>
-                          <div className="d-flex px-3 pt-2 mb-2">
-                            <h3
-                              className="me-auto"
-                              style={{
-                                fontSize: 20,
-                              }}
-                            >
-                              دلیل ترک
-                            </h3>
-                            <h3
-                              className="fw-light"
-                              style={{
-                                fontSize: 18,
-                                color: "rgba(0,0,0,0.5)",
-                              }}
-                            >
-                              {item.fa_reason}{" "}
-                            </h3>
+                              <h5
+                                className="text-center text-white"
+                                style={{
+                                  fontSize: 16,
+                                }}
+                              >
+                                نام سازمان:{" "}
+                              </h5>
+                              <h6
+                                className="text-center text-white fw-light"
+                                style={{
+                                  fontSize: 18,
+                                }}
+                              >
+                                {item.fa_org}{" "}
+                              </h6>
+                            </div>
+                            <div className="d-flex px-3 pt-2 mb-2">
+                              <h3
+                                className="me-auto"
+                                style={{
+                                  fontSize: 20,
+                                }}
+                              >
+                                سمت
+                              </h3>
+                              <h3
+                                className="fw-light"
+                                style={{
+                                  fontSize: 18,
+                                  color: "rgba(0,0,0,0.5)",
+                                }}
+                              >
+                                {item.fa_title}
+                              </h3>
+                            </div>
+                            <div className="d-flex px-3 pt-2 mb-2">
+                              <h3
+                                className="me-auto"
+                                style={{
+                                  fontSize: 20,
+                                }}
+                              >
+                                میزان سابقه
+                              </h3>
+                              <h3
+                                className="fw-light"
+                                style={{
+                                  fontSize: 18,
+                                  color: "rgba(0,0,0,0.5)",
+                                }}
+                              >
+                                {" "}
+                                از
+                                {item.fa_start_y}/{item.fa_start_m}
+                                تا
+                                {item.fa_finish_y}/{item.fa_finish_m}
+                              </h3>
+                            </div>
+                            <div className="d-flex px-3 pt-2 mb-2">
+                              <h3
+                                className="me-auto"
+                                style={{
+                                  fontSize: 20,
+                                }}
+                              >
+                                دلیل ترک
+                              </h3>
+                              <h3
+                                className="fw-light"
+                                style={{
+                                  fontSize: 18,
+                                  color: "rgba(0,0,0,0.5)",
+                                }}
+                              >
+                                {item.fa_reason}{" "}
+                              </h3>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
-                  <BreakLine />
+                      ))}
+                  </div>
                 </div>
-              </div>
+              </>
             )}
             {data.degrees && data.degrees.length > 0 && (
-              <div className="d-flex flex-column me-auto   mb-4 col-12">
-                <h5
-                  className=" d-flex   mb-4"
-                  style={{
-                    fontFamily: "iranBlack",
-                  }}
-                >
-                  سوابق تحصیلی
-                </h5>
-                <div className=" row g-2  mb-4 flex-wrap ">
-                  {data.degrees &&
-                    data.degrees.map((item, key) => (
-                      <div className="col-4 px-2">
-                        <div
-                          className="    "
-                          style={{
-                            backgroundColor: "#fff",
-                            borderRadius: 20,
-                            boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
-                          }}
-                        >
+              <>
+                <BreakLine />
+                <div className="d-flex flex-column me-auto   mb-4 col-12">
+                  <h5
+                    className=" d-flex   mb-4"
+                    style={{
+                      fontFamily: "iranBlack",
+                    }}
+                  >
+                    سوابق تحصیلی
+                  </h5>
+                  <div className=" row g-2  flex-wrap ">
+                    {data.degrees &&
+                      data.degrees.map((item, key) => (
+                        <div className="col-4 px-2">
                           <div
-                            className="d-flex col-12 px-4 py-2 justify-content-between align-items-center"
+                            className="    "
                             style={{
-                              backgroundColor: "#11999e",
-                              borderTopLeftRadius: 20,
-                              borderTopRightRadius: 20,
+                              backgroundColor: "#fff",
+                              borderRadius: 20,
+                              boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
                             }}
                           >
-                            <h5
-                              className="text-center text-white"
+                            <div
+                              className="d-flex col-12 px-4 py-2 justify-content-between align-items-center"
                               style={{
-                                fontSize: 16,
+                                backgroundColor: "#11999e",
+                                borderTopLeftRadius: 20,
+                                borderTopRightRadius: 20,
                               }}
                             >
-                              رشته تحصیلی :{" "}
-                            </h5>
-                            <h6
-                              className="text-center text-white fw-light"
-                              style={{
-                                fontSize: 18,
-                              }}
-                            >
-                              {item.fa_degree}{" "}
-                            </h6>
-                          </div>
-                          <div className="d-flex px-3 pt-2 mb-2">
-                            <h3
-                              className="me-auto"
-                              style={{
-                                fontSize: 16,
-                                color: "#000",
-                              }}
-                            >
-                              آخرین مدرک تحصیلی :
-                            </h3>
-                            <h3
-                              className="fw-light"
-                              style={{
-                                fontSize: 16,
-                                color: "rgba(0,0,0,0.5)",
-                              }}
-                            >
-                              {item.fa_name}
-                            </h3>
-                          </div>
-                          <div className="d-flex px-3 pt-2 mb-2">
-                            <h3
-                              className="me-auto"
-                              style={{
-                                fontSize: 16,
-                                color: "#000",
-                              }}
-                            >
-                              سال فارغ التحصیلی
-                            </h3>
-                            <h3
-                              className="fw-light"
-                              style={{
-                                fontSize: 18,
-                                color: "rgba(0,0,0,0.5)",
-                              }}
-                            >
-                              {" "}
-                              {item.fa_date_y}/{item.fa_date_m}/{item.fa_date_d}
-                            </h3>
+                              <h5
+                                className="text-center text-white"
+                                style={{
+                                  fontSize: 16,
+                                }}
+                              >
+                                رشته تحصیلی :{" "}
+                              </h5>
+                              <h6
+                                className="text-center text-white fw-light"
+                                style={{
+                                  fontSize: 18,
+                                }}
+                              >
+                                {item.fa_degree}{" "}
+                              </h6>
+                            </div>
+                            <div className="d-flex px-3 pt-2 mb-2">
+                              <h3
+                                className="me-auto"
+                                style={{
+                                  fontSize: 16,
+                                  color: "#000",
+                                }}
+                              >
+                                آخرین مدرک تحصیلی :
+                              </h3>
+                              <h3
+                                className="fw-light"
+                                style={{
+                                  fontSize: 16,
+                                  color: "rgba(0,0,0,0.5)",
+                                }}
+                              >
+                                {item.fa_name}
+                              </h3>
+                            </div>
+                            <div className="d-flex px-3 pt-2 mb-2">
+                              <h3
+                                className="me-auto"
+                                style={{
+                                  fontSize: 16,
+                                  color: "#000",
+                                }}
+                              >
+                                سال فارغ التحصیلی
+                              </h3>
+                              <h3
+                                className="fw-light"
+                                style={{
+                                  fontSize: 18,
+                                  color: "rgba(0,0,0,0.5)",
+                                }}
+                              >
+                                {" "}
+                                {item.fa_date_y}/{item.fa_date_m}/
+                                {item.fa_date_d}
+                              </h3>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                  </div>
                 </div>
-                <BreakLine />
-              </div>
+              </>
             )}
             {data.langExperts && data.langExperts.length > 0 && (
-              <div className="mb-4">
-                <h5
-                  className="mt-2 mb-5 fs-5 text-start   w-75"
-                  style={{
-                    fontFamily: "iranBlack",
-                  }}
-                >
-                  مهارت های زبان
-                </h5>
-                <div className="row row-cols-4  ">
-                  {data.langExperts &&
-                    data.langExperts.map((item, key) => (
-                      <div className="col  px-3">
-                        <div className="   eAdshowSec3  ">
-                          {item.text}
-                          <div className="d-flex col-12 justify-content-between px-2">
-                            <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
-                              {item.level == 1 && "مقدماتی"}
-                            </div>
-                            <div
-                              className={
-                                item.level == 2 || item.level == 3
-                                  ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
-                                  : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
-                              }
-                              // {`eAdshowSec6 col-4 mt-2 me-1 pb-1`}
-                            >
-                              {item.level == 2 && "متوسط"}
-                            </div>
-                            <div
-                              className={
-                                item.level == 3
-                                  ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
-                                  : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
-                              }
-                            >
-                              {item.level == 3 && "پیشرفته"}
+              <>
+                <BreakLine />
+                <div className="mb-4">
+                  <h5
+                    className="mt-2 mb-5 fs-5 text-start   w-75"
+                    style={{
+                      fontFamily: "iranBlack",
+                    }}
+                  >
+                    مهارت های زبان
+                  </h5>
+                  <div className="row row-cols-4  ">
+                    {data.langExperts &&
+                      data.langExperts.map((item, key) => (
+                        <div className="col  px-3">
+                          <div className="   eAdshowSec3  ">
+                            {item.text}
+                            <div className="d-flex col-12 justify-content-between px-2">
+                              <div
+                                className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}
+                              >
+                                {item.level == 1 && "مقدماتی"}
+                              </div>
+                              <div
+                                className={
+                                  item.level == 2 || item.level == 3
+                                    ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                                    : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                                }
+                                // {`eAdshowSec6 col-4 mt-2 me-1 pb-1`}
+                              >
+                                {item.level == 2 && "متوسط"}
+                              </div>
+                              <div
+                                className={
+                                  item.level == 3
+                                    ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                                    : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                                }
+                              >
+                                {item.level == 3 && "پیشرفته"}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                  </div>
                 </div>
-                <BreakLine />
-              </div>
+              </>
             )}
             {data.softExperts && data.softExperts.length > 0 && (
-              <div className="mb-4">
-                <h5
-                  className="mt-2 mb-5 fs-5 text-start   w-75"
-                  style={{
-                    fontFamily: "iranBlack",
-                  }}
-                >
-                  مهارت های نرم افزاری
-                </h5>
-                <div className="row row-cols-4  ">
-                  {data.softExperts &&
-                    data.softExperts.map((item, key) => (
-                      <div className="col  px-3">
-                        <div className="   eAdshowSec3  ">
-                          {item.fa_name}
-                          <div className="d-flex col-12 justify-content-between px-2">
-                            <div className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}>
-                              {item.level == 1 && "مقدماتی"}
-                            </div>
-                            <div
-                              className={
-                                item.level == 2 || item.level == 3
-                                  ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
-                                  : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
-                              }
-                              // {`eAdshowSec6 col-4 mt-2 me-1 pb-1`}
-                            >
-                              {item.level == 2 && "متوسط"}
-                            </div>
-                            <div
-                              className={
-                                item.level == 3
-                                  ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
-                                  : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
-                              }
-                            >
-                              {item.level == 3 && "پیشرفته"}
+              <>
+                <BreakLine />
+                <div className="mb-4">
+                  <h5
+                    className="mt-2 mb-5 fs-5 text-start   w-75"
+                    style={{
+                      fontFamily: "iranBlack",
+                    }}
+                  >
+                    مهارت های نرم افزاری
+                  </h5>
+                  <div className="row row-cols-4  ">
+                    {data.softExperts &&
+                      data.softExperts.map((item, key) => (
+                        <div className="col  px-3">
+                          <div className="   eAdshowSec3  ">
+                            {item.fa_name}
+                            <div className="d-flex col-12 justify-content-between px-2">
+                              <div
+                                className={`eAdshowSec6 col-4 mt-2 me-1 pb-1`}
+                              >
+                                {item.level == 1 && "مقدماتی"}
+                              </div>
+                              <div
+                                className={
+                                  item.level == 2 || item.level == 3
+                                    ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                                    : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                                }
+                                // {`eAdshowSec6 col-4 mt-2 me-1 pb-1`}
+                              >
+                                {item.level == 2 && "متوسط"}
+                              </div>
+                              <div
+                                className={
+                                  item.level == 3
+                                    ? "eAdshowSec6 col-4 mt-2 me-1 pb-1"
+                                    : "eAdshowSec8 col-4 mt-2 me-1 pb-1"
+                                }
+                              >
+                                {item.level == 3 && "پیشرفته"}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                  </div>
                 </div>
-                <BreakLine />
-              </div>
+              </>
             )}
+            <BreakLine />
             <h5
               className="mt-2 mb-5 fs-5 text-start   w-75"
               style={{
@@ -600,94 +617,44 @@ const Adshow = () => {
               نمونه کارها
             </h5>
             <div className=" row g-2  mb-4 flex-wrap ">
-              <div className="col-4 px-2">
-                <div
-                  className=" d-flex flex-column align-items-center justify-content-center py-2   "
-                  style={{
-                    backgroundColor: "#fff",
-                    borderRadius: 20,
-                    boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
-                  }}
-                >
-                  <img
-                    src="/assets/images/sample-work.png"
-                    height={200}
-                    width={300}
-                  />
-                  <h5 className="mt-2 mb-1 fs-6 text-start fw-bold w-75">
-                    طراح ui/ux
-                  </h5>
-                  <h5 className="mt-1 mb-1 fs-6 text-end fw-light text-primary w-75">
-                    https://www.figma.com/file/
-                  </h5>
-                  <p className="px-3 fs-9">
-                    لورم ایپسوملورم ایپسوملورم ایپسوملورم ایپسوملورم ایپسوملورم
-                    ایپسوملورم ایپسوملورم ایپسوم
-                  </p>
-                </div>
-              </div>
-              <div className="col-4 px-2">
-                <div
-                  className=" d-flex flex-column align-items-center justify-content-center py-2   "
-                  style={{
-                    backgroundColor: "#fff",
-                    borderRadius: 20,
-                    boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
-                  }}
-                >
-                  <img
-                    src="/assets/images/sample-work.png"
-                    height={200}
-                    width={300}
-                  />
-                  <h5 className="mt-2 mb-1 fs-6 text-start fw-bold w-75">
-                    طراح ui/ux
-                  </h5>
-                  <h5 className="mt-1 mb-1 fs-6 text-end fw-light text-primary w-75">
-                    https://www.figma.com/file/
-                  </h5>
-                  <p className="px-3 fs-9">
-                    لورم ایپسوملورم ایپسوملورم ایپسوملورم ایپسوملورم ایپسوملورم
-                    ایپسوملورم ایپسوملورم ایپسوم
-                  </p>
-                </div>
-              </div>
-              <div className="col-4 px-2">
-                <div
-                  className=" d-flex flex-column align-items-center justify-content-center py-2   "
-                  style={{
-                    backgroundColor: "#fff",
-                    borderRadius: 20,
-                    boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
-                  }}
-                >
-                  <img
-                    src="/assets/images/sample-work.png"
-                    height={200}
-                    width={300}
-                  />
-                  <h5 className="mt-2 mb-1 fs-6 text-start fw-bold w-75">
-                    طراح ui/ux
-                  </h5>
-                  <h5 className="mt-1 mb-1 fs-6 text-end fw-light text-primary w-75">
-                    https://www.figma.com/file/
-                  </h5>
-                  <p className="px-3 fs-9">
-                    لورم ایپسوملورم ایپسوملورم ایپسوملورم ایپسوملورم ایپسوملورم
-                    ایپسوملورم ایپسوملورم ایپسوم
-                  </p>
-                </div>
-              </div>
-              <div className="col-4 px-2">
-                <div
-                  className="    "
-                  style={{
-                    backgroundColor: "#fff",
-                    borderRadius: 20,
-                    boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
-                  }}
-                ></div>
-              </div>
+              {data.samples &&
+                data.samples.length > 0 &&
+                data.samples.map((item, key) => (
+                  <div className="col-4 px-2">
+                    <div
+                      className=" d-flex flex-column align-items-center justify-content-center py-2   "
+                      style={{
+                        backgroundColor: "#fff",
+                        borderRadius: 20,
+                        boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                      }}
+                    >
+                      <p>
+                        Download is in{" "}
+                        {isInProgress ? "in progress" : "stopped"}
+                      </p>
+                      <button onClick={() => download(item.file, item.title)}>
+                        Click to download the file
+                      </button>
+                      <button onClick={() => cancel()}>
+                        Cancel the download
+                      </button>
+                      <p>Download size in bytes {size}</p>
+                      <label for="file">Downloading progress:</label>
+                      <progress id="file" value={percentage} max="100" />
+                      <p>Elapsed time in seconds {elapsed}</p>
+                      {error && <p>possible error {JSON.stringify(error)}</p>}
+
+                      <h5 className="mt-2 mb-1 fs-6 text-start fw-bold w-75">
+                        {item.title}
+                      </h5>
+                      <h5 className="mt-1 mb-1 fs-6 text-end fw-light text-primary w-75">
+                        {item.link}
+                      </h5>
+                      <p className="px-3 fs-9">{item.faDiscription} </p>
+                    </div>
+                  </div>
+                ))}
             </div>
             <BreakLine />
             <h5
@@ -716,18 +683,14 @@ const Adshow = () => {
           >
             <div
               className="py-2 my-2   d-flex align-items-center justify-content-center adShowModal"
-               
               onClick={() => setOpen1(true)}
             >
-              <div className="me-2 mt-1  " >
+              <div className="me-2 mt-1  ">
                 <img src="/assets/images/call.svg" width={23} height={23} />
               </div>
               اطلاعات تماس
             </div>
-            <div
-              className="py-2 my-2   d-flex align-items-center justify-content-center adShowModal"
-             
-            >
+            <div className="py-2 my-2   d-flex align-items-center justify-content-center adShowModal">
               <div className="me-2 mt-1">
                 <img
                   src="/assets/images/interview.svg"
@@ -737,10 +700,7 @@ const Adshow = () => {
               </div>
               درخواست مصاحبه آنلاین
             </div>
-            <div
-              className="py-2 my-2   d-flex align-items-center justify-content-center adShowModal"
-              
-            >
+            <div className="py-2 my-2   d-flex align-items-center justify-content-center adShowModal">
               <div className="me-2 mt-1">
                 <img
                   src="/assets/images/chat-arad.svg"
@@ -750,10 +710,7 @@ const Adshow = () => {
               </div>
               چت در چیتیت
             </div>
-            <div
-              className="py-2 mt-2     d-flex align-items-center justify-content-center adShowModal"
-               
-            >
+            <div className="py-2 mt-2     d-flex align-items-center justify-content-center adShowModal">
               <div className="me-2 mt-1 ">
                 <img src="/assets/images/network.svg" width={23} height={23} />
               </div>

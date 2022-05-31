@@ -23,7 +23,7 @@ const SupportDrawer = () => {
           >
             <div className="d-flex mb-3 col-12">
               {!drawer && (
-                <img src="/assets/images/phone.svg" width="25%" height="60%" />
+                <img src="/assets/images/phone.svg" width="20%" height="60%" />
               )}
               {drawer && (
                 <div
@@ -49,7 +49,7 @@ const SupportDrawer = () => {
               {!drawer && (
                 <img
                   src="/assets/images/message.svg"
-                  width="25%"
+                  width="22%"
                   height="60%"
                 />
               )}
@@ -76,7 +76,7 @@ const SupportDrawer = () => {
               {!drawer && (
                 <img
                   src="/assets/images/headphone.svg"
-                  width="25%"
+                  width="22%"
                   height="60%"
                 />
               )}

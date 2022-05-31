@@ -20,7 +20,6 @@ const EShowCase = () => {
       },
     })
       .then((response) => {
- 
         setData(response.data.data.ad);
       })
       .catch(function (error) {
@@ -30,23 +29,30 @@ const EShowCase = () => {
   return (
     <>
       <NavBar />
-      <div
-        className="mx-auto"
-        style={{
-          backgroundColor: "#f2f5f6",
-          height: "100%",
-        }}
-      >
-        <div className="d-flex col-12">
-          <div className="col-3">
+      <div>
+        <div
+          className="d-flex col-12  "
+          style={{
+            backgroundColor: "#f2f5f6",
+            height: "100%",
+          }}
+        >
+          <div
+            className="col-3  "
+            style={{
+              zIndex: 10,
+            }}
+          >
             <RShowSideBar data={data} />
           </div>
           <div className="  col-9 ">
-            <RShowContent data={data} /> 
+            <RShowContent data={data} />
           </div>
         </div>
       </div>
-      <Footer />
+      <div className="p-footer">
+        <Footer />
+      </div>
     </>
   );
 };

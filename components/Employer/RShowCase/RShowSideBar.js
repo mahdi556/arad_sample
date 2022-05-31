@@ -3,7 +3,11 @@ import SendingResume from "./SendingResume";
 const RShowSideBar = ({ data }) => {
   return (
     <>
-      <div className="eShowCase">
+      <div className="eShowCase   "
+      style={{
+        height:'100%'
+      }}
+      >
         <div>
           {/* <img src="/assets/images/shatelLogo.png" width={136} height={136} /> */}
           <img
@@ -117,7 +121,7 @@ const RShowSideBar = ({ data }) => {
           </h2>
         </div>
         <div>
-          <img src="/assets/images/mapSample.png" width={365} height={285} />
+          {/* <img src="/assets/images/mapSample.png" width={365} height={285} /> */}
         </div>
       </div>
     </>

@@ -8,7 +8,9 @@ import { Cities } from "../../StaticData/City";
 import BirthDay from "./BirthDay";
 import style from "../VipAd/FormInputs/FormStyles/form.module.css";
 import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import FieldError from "../../Common/FieldError";
 const PersonalData = () => {
+  const [display, setDisplay] = useState("none");
   const resumeContext = useContext(ResumeContext);
   let proId = resumeContext.data.province.id;
   const citi = Cities.filter((item, key) => item.provinceId == proId);
@@ -73,6 +75,24 @@ const PersonalData = () => {
       [resumeContext.data.corporateType]: "Ebutton_clicked ",
     });
   }, []);
+  useEffect(() => {
+    if (resumeContext.data.stepClick) {
+      if (
+        resumeContext.data.title !== "" &&
+        resumeContext.data.jobCategory.fa !== "" &&
+        resumeContext.data.province.fa !== "" &&
+        resumeContext.data.city.fa !== "" &&
+        resumeContext.data.birthday.year !== "" &&
+        resumeContext.data.salary.fa.to !== "" &&
+        resumeContext.data.description !== ""
+      ) {
+        resumeContext.dispatch({ type: "fieldCheck", payload: true });
+      } else {
+        setDisplay("");
+        resumeContext.dispatch({ type: "stepClick", payload: false });
+      }
+    }
+  }, [resumeContext.data.stepClick]);
 
   return (
     <>
@@ -116,6 +136,10 @@ const PersonalData = () => {
                     });
                   }}
                 />
+                 <FieldError
+                data={resumeContext.data.title}
+                display={display}
+              />
               </div>
               <div className="col-5">
                 <label
@@ -179,6 +203,10 @@ const PersonalData = () => {
                 name="دسته بندی شغلی"
                 valueHandler={catHandler}
                 predata={resumeContext.data.jobCategory.fa}
+              />{" "}
+              <FieldError
+                data={resumeContext.data.jobCategory.fa}
+                display={display}
               />
             </div>
 
@@ -196,6 +224,10 @@ const PersonalData = () => {
                   valueHandler={provinceHandler}
                   predata={resumeContext.data.province.fa}
                 />
+                 <FieldError
+                data={resumeContext.data.province.fa}
+                display={display}
+              />
               </div>
               {proId !== "" && (
                 <div
@@ -211,14 +243,26 @@ const PersonalData = () => {
                     valueHandler={cityHandler}
                     predata={resumeContext.data.city.fa}
                   />
+                    <FieldError
+                data={resumeContext.data.city.fa}
+                display={display}
+              />
                 </div>
               )}
             </div>
             <div className="col-6 pt-4">
               <BirthDay />
+              <FieldError
+                data={resumeContext.data.birthday.year}
+                display={display}
+              />
             </div>
             <div className="col-12 mb-5 mt-4">
               <SalaryNeeded />
+              <FieldError
+                data={resumeContext.data.salary.fa.to}
+                display={display}
+              />
             </div>
           </div>
         </div>
@@ -262,7 +306,7 @@ const PersonalData = () => {
             </label>
             <textarea
               className={
-                resumeContext.data.title == ""
+                resumeContext.data.description == ""
                   ? "col-12 mb-3 ps-2 inputStyle"
                   : "col-12 mb-3 ps-2 inputFilled"
               }
@@ -278,6 +322,10 @@ const PersonalData = () => {
                 height: 150,
               }}
             />
+            <FieldError
+                data={resumeContext.data.description}
+                display={display}
+              />
           </div>
         </div>
         <div

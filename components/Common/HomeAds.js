@@ -34,6 +34,7 @@ const HomeAds = () => {
         className="mx-auto"
         style={{
           maxWidth: 2300,
+          paddingBottom:150
         }}
       >
         <div
@@ -71,7 +72,7 @@ const HomeAds = () => {
               className=" homeButton mx-auto "
               onClick={() =>
                 router.push({
-                  pathname: "/eadslist",
+                  pathname: "/search",
                   query: { type: "employee" },
                 })
               }
@@ -104,8 +105,8 @@ const HomeAds = () => {
               className=" homeButton mx-auto "
               onClick={() =>
                 router.push({
-                  pathname: "/eadslist",
-                  query: { type: "employee" },
+                  pathname: "/search",
+                  query: { type: "employer" },
                 })
               }
             >
@@ -441,7 +442,7 @@ const HomeAds = () => {
         <div
           className={`    d-flex col-12      justify-content-center align-items-center mt-5   `}
         >
-          <div className={`  ${style.sec12} d-flex mx-auto  `}>
+          <div className={`  ${style.sec12} d-flex mx-auto no-wrap  `}>
             <div
               className="d-flex flex-column col-6 justify-content-center align-items-start    "
               style={{

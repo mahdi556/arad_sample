@@ -82,8 +82,8 @@ const NavBar = () => {
               className="navitems"
               onClick={() => {
                 router.push({
-                  pathname: "/employee/createAdPage",
-                  query: { type: "normal" },
+                  pathname: "/search",
+                 
                 });
               }}
             >
