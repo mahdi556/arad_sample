@@ -9,8 +9,7 @@ const HomePage = () => {
   return (
     <>
       {/* <UserProvider> */}
-      <NavBar />
-      <HomeTopSection />
+       <HomeTopSection />
       <HomeAds />
       <SupportDrawer />
 

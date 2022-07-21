@@ -24,7 +24,7 @@ const RAdShow = ({ data }) => {
               </h5>
             </h1>
             <h4 className="eAdshowSec2">
-              دسته {data.jobCategory && data.jobCategory[0].fa_name}
+              دسته {data.jobCategory && data.jobCategory.fa_name}
               <h6 className="d-inline-flex fw-light">3روز پیش</h6>
             </h4>
           </div>
@@ -187,7 +187,7 @@ const RAdShow = ({ data }) => {
         </div>
       </div>
       <h5 className="mt-5 mb-5 fs-4 text-start fw-bold w-75">آگهی های مرتبط</h5>
-      <div class="row gx-5 gy-4   ">
+      <div className="row gx-5 gy-4   ">
         <AdBoxNewEmployer width={width} />
         <AdBoxNewEmployer width={width} />
         <AdBoxNewEmployer width={width} />

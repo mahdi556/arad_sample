@@ -1,43 +1,28 @@
-import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
-
+import NavBar from "../../components/NavBar";
 import { useContext } from "react";
-import UserContext from "../context/employeeContext/User/UserContext";
 import { useRouter } from "next/router";
+import AuthContext from "context/Auth/AuthContext";
+import AdContext from "context/Ad/AdContext";
 
 const AdType = () => {
   const router = useRouter();
-  const userContext = useContext(UserContext);
-  const handleNavigate1 = () => {
-    userContext.data.user.role[0] == "employee"
-      ? router.push({
-          pathname: "/employee/createAdPage",
-          query: { type: "normal" },
-        })
-      : userContext.data.user.role[0] == "employer"
-      ? router.push({
-          pathname: "/employer/createAdPage",
-          query: { type: "normal" },
-        })
+  const { user } = useContext(AuthContext);
+  const { setType } = useContext(AdContext);
+  const handleNavigate1 = (level) => {
+    user.role.includes("employee") && level == "normal"
+      ? setType("en")
+      : user.role.includes("employee") && level == "vip"
+      ? setType("ev")
+      : user.role.includes("employer") && level == "normal"
+      ? setType("rn")
+      : user.role.includes("employer") && level == "vip"
+      ? setType("rv")
       : null;
-  };
-  const handleNavigate2 = () => {
-    userContext.data.user.role[0] == "employee"
-      ? router.push({
-          pathname: "/employee/createAdPage",
-          query: { type: "vip" },
-        })
-      : userContext.data.user.role[0] == "employer"
-      ? router.push({
-          pathname: "/employer/createAdPage",
-          query: { type: "vip" },
-        })
-      : null;
+    router.push("/ads/newAd");
   };
   return (
     <>
-      <NavBar />
-      <div
+       <div
         className=" bg-white col-10 mx-auto  pb-5 pt-3 px-4"
         style={{
           borderRadius: 20,
@@ -57,7 +42,7 @@ const AdType = () => {
         <div className="d-flex justify-content-center  mt-5">
           <div
             className="mx-auto   adType-parent position-relative"
-            onClick={() => handleNavigate1()}
+            onClick={() => handleNavigate1("normal")}
           >
             <div className="adType-price px-4 py-1  col-4 mx-auto"> رایگان</div>
             <div className="mt-5  d-flex flex-column align-items-center pt-4">
@@ -74,7 +59,7 @@ const AdType = () => {
           </div>
           <div
             className="mx-auto   adType-parent-white position-relative"
-            onClick={() => handleNavigate2()}
+            onClick={() => handleNavigate1("vip")}
           >
             <div className="d-flex adType-price2 px-4 pt-2  col-4 mx-auto">
               <h3 className="adType-txt6 me-2 ">20</h3>
@@ -125,7 +110,6 @@ const AdType = () => {
           <img src="/assets/images/play.svg" height={80} width={80} />
         </div>
       </div>
-      <Footer />
     </>
   );
 };

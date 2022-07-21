@@ -1,16 +1,15 @@
-  
+import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import axios from "../../../axios";
 import RAdBoxes from "./RAdBoxes";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import BreakeLine from "../../Employee/Resume/FormInputs/BreakLine";
 import AdBoxNewEmployer from "../../Common/AdBoxNewEmployer";
-import UserContext from "../../../context/employeeContext/User/UserContext";
+import AuthContext from "context/Auth/AuthContext";
 const width = "33%";
 const RShowMain = () => {
-  const userContext = useContext(UserContext);
+  const { user } = useContext(AuthContext);
   const [reged, setReged] = useState([]);
   const [rads, setRads] = useState({});
 
@@ -77,12 +76,12 @@ const RShowMain = () => {
     ],
   };
   useEffect(() => {
-    userContext.data.user.id !== "" &&
+    user &&
       axios({
         url: "/getmyEmployeeAds",
         method: "post",
         data: {
-          user_id: userContext.data.user.id,
+          user_id: user.id,
         },
       })
         .then((response) => {
@@ -92,7 +91,7 @@ const RShowMain = () => {
         .catch(function (error) {
           console.log(error);
         });
-  }, [userContext.data.user.id]);
+  }, [user]);
 
   return (
     <>
@@ -114,17 +113,17 @@ const RShowMain = () => {
               <h4>
                 تکمیل رزومه <h6 className="mt-2"> + سابقه کاری </h6>
               </h4>
-              <div class="progress blue mt-1">
+              <div className="progress blue mt-1">
                 {" "}
-                <span class="progress-left">
+                <span className="progress-left">
                   {" "}
-                  <span class="progress-bar"></span>{" "}
+                  <span className="progress-bar"></span>{" "}
                 </span>{" "}
-                <span class="progress-right">
+                <span className="progress-right">
                   {" "}
-                  <span class="progress-bar"></span>{" "}
+                  <span className="progress-bar"></span>{" "}
                 </span>
-                <div class="progress-value">90%</div>
+                <div className="progress-value">90%</div>
               </div>
             </div>
             <div
@@ -142,8 +141,7 @@ const RShowMain = () => {
               className="d-flex rShowCase-sec3  col-3"
               onClick={() =>
                 router.push({
-                  pathname: "/employee/createAdPage",
-                  query: { type: "vip" },
+                  pathname: "/ads/adtype",
                 })
               }
               style={{
@@ -152,11 +150,7 @@ const RShowMain = () => {
             >
               <h4 className="rShowCase-sec4">ثبت آگهی</h4>
               <div>
-                <img
-                  src="/assets/images/speaker.png"
-                  height={60}
-                  width={60}
-                />
+                <img src="/assets/images/speaker.png" height={60} width={60} />
               </div>
             </div>
           </div>
@@ -175,12 +169,12 @@ const RShowMain = () => {
             </div>
             <div
               className="d-flex align-items-center py-2 col-5 mx-auto rShowCase-sec6"
-              onClick={() =>
-                router.push({
-                  pathname: "/employee/createAdPage",
-                  query: { type: "normal" },
-                })
-              }
+              // onClick={() =>
+              //   router.push({
+              //     pathname: "/employee/createAdPage",
+              //     query: { type: "normal" },
+              //   })
+              // }
             >
               <div className="d-inline-flex me-3  ">
                 <img
@@ -253,7 +247,7 @@ const RShowMain = () => {
         <h3 className="my-5 ms-5 text-start fw-bold w-75 ">
           آگهی های پیشنهادی
         </h3>
-        <div class="row    gx-5 gy-4  mx-4 px-5 ">
+        <div className="row    gx-5 gy-4  mx-4 px-5 ">
           {rads.length &&
             rads.map((item, key) => (
               <AdBoxNewEmployer

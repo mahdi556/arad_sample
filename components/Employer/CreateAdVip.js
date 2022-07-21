@@ -12,7 +12,7 @@ import VerifyOurExpect from "./VipAd/VerifyOurExpect";
 import SubmitRn from "./VipAd/SubmitRn";
 import Description from "./VipAd/Description";
 import VerifyDescription from "./VipAd/VerifyDescription";
-import ResumeContext from "../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 const CreateEmployerAdVip = () => {
   const resumeContext = useContext(ResumeContext);
   const router = useRouter();

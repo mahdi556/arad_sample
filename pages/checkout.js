@@ -20,8 +20,7 @@ const Checkout = () => {
   };
   return (
     <>
-      <NavBar />
-      <div
+       <div
         className="d-flex justify-content-between"
         style={{
           width: "100%",

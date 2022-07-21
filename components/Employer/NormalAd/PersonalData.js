@@ -8,7 +8,7 @@ import { Cities } from "../../StaticData/City";
 import { SalaryType } from "../../StaticData/SalaryType";
 import { corporateTime } from "../../StaticData/SalaryType";
 import WorkHours from "./WorkHours";
-import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 import FieldError from "../../Common/FieldError";
 
 const PersonalData = () => {

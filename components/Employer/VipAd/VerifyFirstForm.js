@@ -1,6 +1,6 @@
   
 import { useContext, useEffect, useState } from "react";
-import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
  const VerifyFirstForm = ({ handleStep }) => {
   const [imageUrl, setImageUrl] = useState("");
   const resumeContext = useContext(ResumeContext);

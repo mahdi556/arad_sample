@@ -1,37 +1,41 @@
-  
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { useRouter } from "next/router";
+import AuthContext from "context/Auth/AuthContext";
 const RightMenu = () => {
   const router = useRouter();
+  const { user } = useContext(AuthContext);
+
   return (
     <>
       <div
-        className="pt-3"
+        className="pt-5"
         style={{
-          width: "20%",
           backgroundColor: "#fff",
           borderTopLeftRadius: 25,
-          // marginBottom: 200,
-          // height: "100%",
           zIndex: 10,
-          //  overflow: 'hidden',
-          position: "absolute",
-          top: "5%",
-          right: 0,
+          paddingBottom: 200,
+          height: "100%",
         }}
       >
         <div className="d-flex ps-5 pt-4 align-items-center">
           <img src="/assets/images/Eavatar.png" width={50} height={50} />
           <h4
-            className="ms-3"
+            className="ms-3  "
             style={{
               fontSize: 19,
             }}
           >
-            مهدی حقیقتی
+            {user && user.name}
           </h4>
         </div>
-        <div className="d-flex ms-4 mt-5">
+        <div
+          className="d-flex ms-4 mt-5  py-2 ps-2 EsubItem"
+          onClick={() =>
+            router.push({
+              pathname: "/employee",
+            })
+          }
+        >
           <div>
             <img src="/assets/images/edashboard.png" width={20} height={20} />
           </div>
@@ -48,11 +52,7 @@ const RightMenu = () => {
         </div>
         <div className="d-flex ms-4 mt-4">
           <div>
-            <img
-              src="/assets/images/einterviews.png"
-              width={20}
-              height={20}
-            />
+            <img src="/assets/images/einterviews.png" width={20} height={20} />
           </div>
 
           <h6
@@ -65,7 +65,14 @@ const RightMenu = () => {
             مصاحبه ها
           </h6>
         </div>
-        <div className="d-flex ms-4 mt-4">
+        <div
+          className="d-flex ms-4 mt-4  py-2 ps-2 EsubItem"
+          onClick={() =>
+            router.push({
+              pathname: "/ads/adtype",
+            })
+          }
+        >
           <div>
             <img src="/assets/images/ead.png" width={20} height={20} />
           </div>
@@ -113,7 +120,12 @@ const RightMenu = () => {
             </h6>
             <h6
               className="mt-2 py-2 ps-2 EsubItem"
-              onClick={() => router.push("/employee/sent-resume")}
+              onClick={() =>
+                router.push({
+                  pathname: "/employee/jobs",
+                  query: { tab: "sentResume" },
+                })
+              }
             >
               پیگیری رزومه های ارسال شده
             </h6>
@@ -145,21 +157,25 @@ const RightMenu = () => {
           >
             <h6
               className="mt-2 py-2 ps-2 EsubItem"
-              onClick={() => router.push("/employee/companies")}
+              onClick={() =>
+                router.push({
+                  pathname: "/employee/jobs",
+                  query: { tab: "suggestedAds" },
+                })
+              }
             >
               فرصت های شغلی پیشنهادی
             </h6>
             <h6
               className="mt-2 py-2 ps-2 EsubItem"
-              onClick={() => router.push("/employee/companies")}
+              onClick={() =>
+                router.push({
+                  pathname: "/employee/jobs",
+                  query: { tab: "savedAds" },
+                })
+              }
             >
               شغل های ذخیره شده
-            </h6>
-            <h6
-              className="mt-2 py-2 ps-2 EsubItem"
-              onClick={() => router.push("/employee/companies")}
-            >
-              آگهی های ویژه
             </h6>
           </div>
         </div>
@@ -167,11 +183,7 @@ const RightMenu = () => {
         <div>
           <div className="d-flex ms-4 mt-4">
             <div>
-              <img
-                src="/assets/images/ecompanies.png"
-                width={20}
-                height={20}
-              />
+              <img src="/assets/images/ecompanies.png" width={20} height={20} />
             </div>
 
             <h6
@@ -208,7 +220,7 @@ const RightMenu = () => {
               className="mt-2 py-2 ps-2 EsubItem"
               onClick={() => router.push("/employee/companies")}
             >
-              شغل های پیشنهادی
+              آگهی های ویژه
             </h6>
           </div>
         </div>
@@ -229,7 +241,7 @@ const RightMenu = () => {
           </h6>
         </div> */}
 
-        <div className="d-flex ms-4 mt-4">
+        {/* <div className="d-flex ms-4 mt-4">
           <div>
             <img src="/assets/images/etest.png" width={20} height={20} />
           </div>
@@ -243,7 +255,7 @@ const RightMenu = () => {
           >
             آزمون خودشناسی
           </h6>
-        </div>
+        </div> */}
         <div className="d-flex ms-4 mt-4">
           <div>
             <img src="/assets/images/esetting.png" width={20} height={20} />

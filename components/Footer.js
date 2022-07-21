@@ -65,31 +65,31 @@ const Footer = () => {
               <span className="dot "></span>جستجو در فرصت های شغلی
             </h3>
           </div>
-          <div className="d-flex flex-row align-items-center pb-1">
+          {/* <div className="d-flex flex-row align-items-center pb-1">
             <h3 className="footer_text_item">
               <span className="dot "></span>آزمون های استخدامی
             </h3>
-          </div>
+          </div> */}
         </div>
         <div className="col-lg-2 col-6   align-items-start">
           <h3 className="footer_text_title">کارفرمایان</h3>
           <div className="d-flex flex-row align-items-center pb-1">
             <h3 className="footer_text_item">
-              <span className="dot "></span>ثبت آگهی
+              <span className="dot "></span>ثبت آگهی ضغلی
             </h3>
           </div>
           <div className="d-flex flex-row align-items-center pb-1">
             <h3 className="  footer_text_item">
               <span className="dot"> </span>
-              کار در منزل(دورکاری)
+              ثبت سازمان به عنوان شرکت معتبر
             </h3>
           </div>
           <div className="d-flex flex-row align-items-center pb-1">
             <h3 className="footer_text_item">
-              <span className="dot "></span>ساخت رزومه حرفه ای (رایگان)
+              <span className="dot "></span> جست و جوی افراد جویای کار
             </h3>
           </div>
-          <div className="d-flex  align-items-center ">
+          {/* <div className="d-flex  align-items-center ">
             <h3 className="footer_text_item">
               {" "}
               <span className="dot "></span>جستجو در فرصت های شغلی
@@ -100,23 +100,13 @@ const Footer = () => {
               {" "}
               <span className="dot "></span>آزمون های استخدامی
             </h3>
-          </div>
+          </div> */}
         </div>
         <div className="col-lg-2 col-6   align-items-start pe-2">
           <h3 className="footer_text_title">خدمات</h3>
           <div className="d-flex flex-row align-items-center pb-1">
             <h3 className="footer_text_item">
-              <span className="dot "></span>قوانین اداره کار
-            </h3>
-          </div>
-          <div className="d-flex flex-row align-items-center pb-1">
-            <h3 className="footer_text_item">
-              <span className="dot "></span>مقالات
-            </h3>
-          </div>
-          <div className="d-flex flex-row align-items-center pb-1">
-            <h3 className="footer_text_item">
-              <span className="dot "></span>آزمون ها
+              <span className="dot "></span>دانستنی های استخدام
             </h3>
           </div>
         </div>
@@ -168,8 +158,13 @@ const Footer = () => {
                 height={70}
               />
             </div>
-            <div className="    col-12  col-xl-6    mt-auto  ms-3">
-              <div className="d-flex   ps-2  align-items-center  footer-left-columns justify-content-between">
+            <div className="col-12  col-xl-6  position-relative  mt-auto  ms-3 wrapper ">
+              {/* <div className="col-12 footer_social"> 
+                    شبکه های اجتماعی
+              </div> */}
+              <div className="contents">
+                {/* <div className="inner">These are the contents of this div</div> */}
+              <div className="d-flex     align-items-center  footer-left-columns inner justify-content-between">
                 <div className=" col-3   ">
                   <div className="footer_icon-wrapper">
                     <img src="/assets/images/telegram_2.svg" height={18} />
@@ -191,6 +186,11 @@ const Footer = () => {
                   </div>
                 </div>
               </div>
+              </div>
+                <div className="col-12 footer_social "> 
+                    شبکه های اجتماعی
+              </div>
+
             </div>
           </div>
 

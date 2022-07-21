@@ -1,10 +1,9 @@
+import axios from "axios";
 import BreakLine from "./BreakLine";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import UserContext from "../../context/employeeContext/User/UserContext";
 import { ToastContainer, toast } from "react-toastify";
 import { useRef, useState, useContext, useEffect } from "react";
-import axios from "../../axios";
 import moment from "jalali-moment";
 const style = {
   position: "absolute",
@@ -22,7 +21,6 @@ const RAdShow = ({ data }) => {
   const lottieRef = useRef();
   const [play, settPlay] = useState(false);
   const width = "33%";
-  const userContext = useContext(UserContext);
   const [open4, setOpen4] = useState(false);
   const [reason, setReason] = useState("");
 
@@ -89,7 +87,7 @@ const RAdShow = ({ data }) => {
                 </h5>
               </h1>
               <h4 className="eAdshowSec2">
-                دسته {data.jobCategory && data.jobCategory[0].fa_name}
+                دسته {data.jobCategory && data.jobCategory.fa_name}
                 <h6 className="d-inline-flex fw-light">3روز پیش</h6>
               </h4>
             </div>
@@ -300,28 +298,28 @@ const RAdShow = ({ data }) => {
             <div className="col-12 d-flex flex-column">
               <button
                 type="button"
-                class="btn btn-primary mb-2 col-8 mx-auto"
+                className="btn btn-primary mb-2 col-8 mx-auto"
                 onClick={() => handleStatus("paying")}
               >
                 تایید جهت پرداخت
               </button>
               <button
                 type="button"
-                class="btn btn-success  mb-2 col-6 mx-auto"
+                className="btn btn-success  mb-2 col-6 mx-auto"
                 onClick={() => handleStatus("accepted")}
               >
                 تایید نهایی
               </button>
               <button
                 type="button"
-                class="btn btn-danger  mb-2 col-6 mx-auto"
+                className="btn btn-danger  mb-2 col-6 mx-auto"
                 onClick={() => setOpen4(true)}
               >
                 رد آگهی
               </button>
               <button
                 type="button"
-                class="btn btn-warning  mb-2 col-6 mx-auto"
+                className="btn btn-warning  mb-2 col-6 mx-auto"
                 onClick={() => handleStatus("suspensed")}
               >
                 تعلیق آگهی

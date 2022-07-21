@@ -1,5 +1,4 @@
 const resumeReducer = (state, action) => {
-  
   switch (action.type) {
     case "data":
       return {
@@ -34,8 +33,7 @@ const resumeReducer = (state, action) => {
           month: "",
           year: "",
         },
-        sex:action.payload.sex,
-
+        sex: action.payload.sex,
         married: action.payload.married,
         insurrance: action.payload.insurrance,
         city: action.payload.city,
@@ -56,11 +54,11 @@ const resumeReducer = (state, action) => {
         ageRange: {
           fa: { from: "", to: "" },
         },
-        experiences:action.payload.experiences,
-        degree:  action.payload.degree,
+        experiences: action.payload.experiences,
+        degree: action.payload.degree,
         langExpert: action.payload.langExpert,
-        langExpertEn:[],
-        softExpert:action.payload.softExpert,
+        langExpertEn: [],
+        softExpert: action.payload.softExpert,
         softExpertEn: [],
         sampleEx: action.payload.sampleEx,
         adComment: "",
@@ -104,10 +102,16 @@ const resumeReducer = (state, action) => {
       return { ...state, companyName: action.payload };
     case "type":
       return { ...state, type: action.payload };
-    case "social-twitter":
+
+    case "socials":
       return {
         ...state,
-        socials: { ...state.socials, twitter: action.payload },
+        socials: action.payload,
+      };
+    case "other_socials":
+      return {
+        ...state,
+        other_socials: action.payload,
       };
     case "social-insta":
       return {
@@ -246,6 +250,11 @@ const resumeReducer = (state, action) => {
       return {
         ...state,
         langExpert: action.payload.data,
+      };
+      case "benefits":
+      return {
+        ...state,
+        benefits: action.payload.data,
       };
     case "langExpertEn":
       return {

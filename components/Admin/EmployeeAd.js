@@ -1,11 +1,10 @@
+import axios from "axios";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import axios from "../../axios";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import BreakLine from "../../components/Employee/Resume/FormInputs/BreakLine";
 import { useContext, useEffect, useState } from "react";
-import UserContext from "../../context/employeeContext/User/UserContext";
 import moment from "jalali-moment";
 const style = {
   position: "absolute",
@@ -21,7 +20,6 @@ const style = {
 
 const EmployeeAd = ({ data }) => {
   const router = useRouter();
-  const userContext = useContext(UserContext);
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
@@ -190,7 +188,7 @@ const EmployeeAd = ({ data }) => {
                 <div className="d-flex mb-2 ">
                   <h6 className="col-5 txtSec1 px-2"> دسته بندی حرفه</h6>
                   <h6 className="col-7 txtSec2 px-2">
-                    {data.jobCategory && data.jobCategory[0].fa_name}
+                    {data.jobCategory && data.jobCategory.fa_name}
                   </h6>
                 </div>
                 <div className="d-flex mb-2 ">
@@ -695,28 +693,28 @@ const EmployeeAd = ({ data }) => {
             <div className="col-12 d-flex flex-column">
               <button
                 type="button"
-                class="btn btn-primary mb-2 col-8 mx-auto"
+                className="btn btn-primary mb-2 col-8 mx-auto"
                 onClick={() => handleStatus("paying")}
               >
                 تایید جهت پرداخت
               </button>
               <button
                 type="button"
-                class="btn btn-success  mb-2 col-6 mx-auto"
+                className="btn btn-success  mb-2 col-6 mx-auto"
                 onClick={() => handleStatus("accepted")}
               >
                 تایید نهایی
               </button>
               <button
                 type="button"
-                class="btn btn-danger  mb-2 col-6 mx-auto"
+                className="btn btn-danger  mb-2 col-6 mx-auto"
                 onClick={() => setOpen4(true)}
               >
                 رد آگهی
               </button>
               <button
                 type="button"
-                class="btn btn-warning  mb-2 col-6 mx-auto"
+                className="btn btn-warning  mb-2 col-6 mx-auto"
                 onClick={() => handleStatus("suspensed")}
               >
                 تعلیق آگهی

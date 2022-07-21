@@ -1,6 +1,5 @@
 // import UserProvider from "../../context/employeeContext/User/UserProvider";
 import Footer from "../Footer";
-import axios from "../../axios";
 import NavBar from "../NavBar";
 import Adlist from "./Adlist";
 import SearchBar from "./SearchBar";
@@ -14,8 +13,7 @@ const Search = ({type}) => {
  
    return (
     <>
-      <NavBar />
-      <TopBanner  type={type}/>
+       <TopBanner  type={type}/>
       <SupportDrawer />
 
       <Adlist type={type} />

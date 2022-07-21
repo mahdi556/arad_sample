@@ -16,10 +16,10 @@ const BirthDay = () => {
         </label>
       </div>
       <div className="col-12  d-flex">
-        <div class="input-group input-group-sm mx-1">
-          <input class="form-control inputStyle" />
+        <div className="input-group input-group-sm mx-1">
+          <input className="form-control inputStyle" />
           <span
-            class="input-group-text"
+            className="input-group-text"
             style={{
               backgroundColor: "#11999e",
               height: "100%",
@@ -32,10 +32,10 @@ const BirthDay = () => {
             روز
           </span>
         </div>
-        <div class="input-group input-group-sm mx-1 ">
-          <input class="form-control inputStyle" />
+        <div className="input-group input-group-sm mx-1 ">
+          <input className="form-control inputStyle" />
           <span
-            class="input-group-text"
+            className="input-group-text"
             style={{
               backgroundColor: "#11999e",
               height: "100%",
@@ -48,10 +48,10 @@ const BirthDay = () => {
             ماه
           </span>
         </div>
-        <div class="input-group input-group-sm mx-1">
-          <input class="form-control inputStyle" />
+        <div className="input-group input-group-sm mx-1">
+          <input className="form-control inputStyle" />
           <span
-            class="input-group-text"
+            className="input-group-text"
             style={{
               backgroundColor: "#11999e",
               height: "100%",

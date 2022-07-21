@@ -1,11 +1,14 @@
 import style from "./HomeStyles/home.module.css";
+import { useRouter } from "next/router";
 
 const HomeTopSection = () => {
+  const router = useRouter();
+
   return (
     <>
       <div className="col-12 d-flex ">
         <div className={`${style.home_top_section}     `}>
-          <div className="d-flex col-7 ">
+          <div className="d-flex col-6 ">
             <div
               className="d-flex flex-column align-items-start justify-content-start "
               style={{
@@ -33,27 +36,61 @@ const HomeTopSection = () => {
               </h2>
             </div>
           </div>
-          <div className="col-4  d-flex   align-items-start justify-content-start   ">
-            
-            <video className="mx-auto"
-           autoPlay
-           loop
-            width={600}
-            height={600}
-            src= "/assets/images/home.mp4"
-            style={{
-              cursor: "pointer",
-            }}
-          >
-            Your browser does not support the video tag.
-          </video>
+          <div className="col-5  d-flex   align-items-start justify-content-start   ">
+            <video
+              className=""
+              autoPlay
+              loop
+              width={800}
+              height={800}
+              src="/assets/images/home.mp4"
+              style={{
+                cursor: "pointer",
+              }}
+            >
+              Your browser does not support the video tag.
+            </video>
           </div>
           <div className="col-2"></div>
           <div className={` ${style.sec19}  `}>
-            <div className={`  ${style.sec18}   `}>میخوای استخدام بشی</div>
+            <div
+              className={`${style.sec18} ${style.loader}`}
+              onClick={() =>
+                router.push({
+                  pathname: "/search",
+                  query: { type: "employee" },
+                })
+              }
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              میخوای استخدام بشی
+            </div>
 
             <h4 className="home-top-sec4 mx-4 ">یا</h4>
-            <div className={`  ${style.sec18_1}  `}>میخوای استخدام کنی؟</div>
+            <div
+              className={`  ${style.sec18_1} ${style.loader2} `}
+              onClick={() =>
+                router.push({
+                  pathname: "/search",
+                  query: { type: "employer" },
+                })
+              }
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              میخوای استخدام کنی؟
+            </div>
+            {/* <div className={`  ${style.loader}   `}>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div> */}
           </div>
         </div>
       </div>

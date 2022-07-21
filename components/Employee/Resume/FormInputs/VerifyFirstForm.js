@@ -1,6 +1,7 @@
-  
+import SectionEditTitle from "components/Ads/Layouts/SectionEditTitle";
+import SectionLayout from "components/Ads/Layouts/SectionLayout";
 import { useContext, useEffect, useState } from "react";
-import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 const VerifyFirstForm = () => {
   const [imageUrl, setImageUrl] = useState("");
   const resumeContext = useContext(ResumeContext);
@@ -12,15 +13,7 @@ const VerifyFirstForm = () => {
 
   return (
     <>
-      <div
-        className="row pt-4 pb-4"
-        style={{
-          background: "#fff",
-          borderRadius: 15,
-          paddingRight: "2rem",
-          paddingLeft: "2rem",
-        }}
-      >
+      <SectionLayout>
         <div className="d-flex align-items-start pt-1">
           <div
             className="d-flex col-6 flex-column   pe-2"
@@ -28,35 +21,7 @@ const VerifyFirstForm = () => {
               fontWeight: 600,
             }}
           >
-            <div
-              className="col-12"
-              style={{
-                display: "flex",
-                fontWeight: "bold",
-                fontSize: "1.2rem",
-                marginBottom: "1rem",
-                marginLeft: "auto",
-                alignItems: "center",
-              }}
-            >
-              معرفی من
-              <div
-                className="ms-2 pt-2"
-                style={{
-                  cursor: "pointer",
-                }}
-                onClick={() => {
-                  resumeContext.dispatch({type:'step',payload:1})
-                }}
-              >
-                <img
-                  src="/assets/images/editForm.png"
-                  width={20}
-                  height={20}
-                  layout="fixed"
-                />
-              </div>
-            </div>
+            <SectionEditTitle title="معرفی من" stap={1} />
 
             <div className="d-flex mt-3 align-items-center">
               <div className="rShadow">
@@ -91,11 +56,7 @@ const VerifyFirstForm = () => {
             <div className="row col-12 offset-1 mt-4 mb-2">
               <div className="d-flex mb-3">
                 {/* <div > */}
-                <img
-                  src="/assets/images/twitterx.png"
-                  width={30}
-                  height={30}
-                />
+                <img src="/assets/images/twitterx.png" width={30} height={30} />
                 {/* </div> */}
 
                 <h6 className="ms-4 text-center w-100">
@@ -118,11 +79,7 @@ const VerifyFirstForm = () => {
               </div>
 
               <div className="d-flex mb-3">
-                <img
-                  src="/assets/images/youtubex.png"
-                  width={30}
-                  height={30}
-                />
+                <img src="/assets/images/youtubex.png" width={30} height={30} />
                 <h6 className="ms-4 text-center w-100">
                   {resumeContext.data.socials.youtube}
                 </h6>
@@ -130,7 +87,7 @@ const VerifyFirstForm = () => {
             </div>
           </div>
         </div>
-      </div>
+      </SectionLayout>
     </>
   );
 };

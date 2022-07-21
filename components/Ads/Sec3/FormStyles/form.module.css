@@ -1,0 +1,83 @@
+.title {
+  font-family: iranBlack;
+  font-size: 20px;
+}
+.txt1 {
+  font-size: 22px;
+}
+.txt2 {
+  color: #ec4b72;
+}
+.txt3 {
+  font-size: 18px;
+}
+.inputStyle {
+  background-color: #ebebeb;
+  border-style: none;
+  border-radius: 5px;
+  height: 2rem;
+  line-height: 1.7rem;
+  font-size: 18px;
+}
+.inputDanger {
+  background-color: #ebebeb;
+  border-style: solid;
+  border-color: #ec4b72;
+  border-width: 1px;
+  border-radius: 5px;
+  line-height: 2rem;
+  font-size: 17px;
+  height: 35px;
+}
+.inputFilled {
+  background-color: #ebebeb;
+  border: solid #11999e 2px;
+  border-left-style: none;
+  border-left: none;
+  border-radius: 5px;
+  line-height: 1.4rem;
+  font-size: 16px;
+  height: 35px;
+}
+.inputFilled:hover {
+  outline: none;
+}
+.inputFilled:focus {
+  outline: none;
+}
+
+.inputStyle:hover {
+  outline: none;
+}
+.inputStyle:focus {
+  outline: none;
+}
+.txt4 {
+  color: #11999e;
+  font-size: 16px;
+}
+
+.sec1 {
+  border: 1px solid #11999e;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  padding: 1px 10px;
+  cursor: pointer;
+  width: 15%;
+}
+.numberToWords {
+  /* position: absolute;
+  top: 100%;
+  right: 0; */
+  font-size: 0.8rem;
+}
+
+.txt5 {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 18px;
+}
+.txt6 {
+  color: rgba(0, 0, 0, 1);
+  font-size: 18px;
+}

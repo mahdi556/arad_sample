@@ -1,5 +1,5 @@
+import axios from "axios";
 import Box from "@mui/material/Box";
-import axios from "../../axios";
 import Modal from "@mui/material/Modal";
 import { useContext, useEffect, useState } from "react";
 import ButtonAd from "./ButtonAdd";

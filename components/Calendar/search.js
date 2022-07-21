@@ -13,8 +13,7 @@ const Search = () => {
   }, [value]);
   return (
     <>
-      <NavBar />
-      <div className="col-12" dir="ltr">
+       <div className="col-12" dir="ltr">
         <div
           className="d-flex col-12 mt-5"
           style={{

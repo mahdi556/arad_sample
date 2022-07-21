@@ -1,8 +1,8 @@
 import Layout from "../../components/Layouts/Employee/layout";
 import Head from "next/head";
 import CreateResumeBody from "../../components/Employee/Resume/CreateResumeBody";
-import ResumeProvider from "../../context/employeeContext/CreateResume/ResumeProvider";
-const Dashboard = () => {
+import ResumeProvider from "context/Ad/CreateResume/ResumeProvider";
+ const Dashboard = () => {
   return (
     <>
       <Layout>

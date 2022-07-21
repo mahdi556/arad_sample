@@ -1,12 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import style from "./HomeStyles/home.module.css";
-import axios from "../../axios";
 import AdBoxNewEmployer from "./AdBoxNewEmployer";
 import AdBoxNewEmployee from "./AdBoxNewEmployee";
 import { useRouter } from "next/router";
-import NavBarItem from "./NavBarItem";
+import UserContext from "../../context/employeeContext/User/UserContext";
 
 const HomeAds = () => {
+  const userContext = useContext(UserContext);
+  const handleNewAd = () => {
+    if (userContext.data.user.auth) {
+      router.push({
+        pathname: "/adtype",
+      });
+    } else {
+      userContext.dispatch({ type: "signUp", payload: true });
+    }
+  };
   const router = useRouter();
   const [eads, setEads] = useState({});
   const [rads, setRads] = useState({});
@@ -34,7 +44,7 @@ const HomeAds = () => {
         className="mx-auto"
         style={{
           maxWidth: 2300,
-          paddingBottom:150
+          paddingBottom: 150,
         }}
       >
         <div
@@ -52,7 +62,7 @@ const HomeAds = () => {
             <h1 className=" homeColTitel mx-auto ">افراد جویای کار</h1>
 
             <div
-              class="row  gx-3 gy-4   pe-4 pt-0 "
+              className="row  gx-3 gy-4   pe-4 pt-0 "
               style={{
                 borderLeftStyle: "solid",
                 borderLeftColor: "#000",
@@ -91,7 +101,7 @@ const HomeAds = () => {
                 آگهی های شغلی
               </h1>
             </div>
-            <div class="row  gx-4 gy-4  ms-4 ps-1 ">
+            <div className="row  gx-4 gy-4  ms-4 ps-1 ">
               {rads.length &&
                 rads.map((item, key) => (
                   <AdBoxNewEmployer
@@ -165,7 +175,9 @@ const HomeAds = () => {
                 borderRadius: 10,
                 textAlign: "center",
                 width: "50%",
+                cursor: "pointer",
               }}
+              onClick={() => handleNewAd()}
             >
               ثبت آگهی کارجو
             </div>
@@ -222,9 +234,11 @@ const HomeAds = () => {
                 borderRadius: 10,
                 textAlign: "center",
                 width: "50%",
+                cursor: "pointer",
               }}
+              onClick={() => handleNewAd()}
             >
-              ثبت آگهی کارجو
+              ثبت آگهی کارفرما
             </div>
           </div>
         </div>
@@ -526,19 +540,15 @@ const HomeAds = () => {
                   sec1 ? style.sec40_open : style.sec40
                 } col-8 mt-2 ps-3 `}
               >
-                ما با بررسی و در ک نیاز جامعه در حوزه استخدام تصمیم گرفتیم به
-                عنوان یک پل ارتباطی هوشمند بین کارجو و کارفرما قرار بگیریم همه
-                اقشار جویای کار از کارگز ساده تا افراد متخصص در حوزه های مختلف
-                را به سمت شغل مورد نظرشان سوق دهیم. یک ارتباط هوشمند در هر کجایی
-                که هستید خود را به همه صاحبین کسب و کار معرفی کنید و بدون اتلاف
-                وقت به کار مورد علاقه خود مشغول شوید.
+                دنمشوه یطابترا لپ کی ناونع هب میتفرگ میمصت مادختسا هزوح رد هعماج
+                زاین کرد و یسررب اب ام یاه هزوح رد صصختم دارفا ات هداس رگراک زا
+                راک یایوج راشقا همه میریگب رارق امرفراک و وجراک نیب دیتسه هک
+                ییاجکره رد دنمشوه طابترا کی .میه قوس ناشرظن دروم لغش تمس هب ار
+                فلتخم .دیوش لوغشم دوخ هقالع دروم راک هب تقو فالتا نود و دینک
+                یفرعم راک و بسک نیبحاص همه هب ار د{" "}
               </div>
             </div>
-            <img
-              src="/assets/images/break_line.svg"
-              height={10}
-              width={500}
-            />
+            <img src="/assets/images/break_line.svg" height={10} width={500} />
             <div>
               <div
                 className={`  ${style.sec14_1}  d-flex justify-content-between align-items-center col-8 ps-3 pe-1 `}
@@ -558,7 +568,7 @@ const HomeAds = () => {
                   )}
                 </div>
                 <div className={`${!sec2 ? "arrow" : ""}`}>
-                  {!sec2&& (
+                  {!sec2 && (
                     <img
                       className="img-fluid  "
                       src="../../../../assets/images/arrow_double2.svg"
@@ -581,11 +591,7 @@ const HomeAds = () => {
                 وقت به کار مورد علاقه خود مشغول شوید.
               </div>
             </div>
-              <img
-              src="/assets/images/break_line.svg"
-              height={10}
-              width={500}
-            />
+            <img src="/assets/images/break_line.svg" height={10} width={500} />
             <div>
               <div
                 className={`  ${style.sec14_1}  d-flex justify-content-between align-items-center col-8 ps-3 pe-1 `}
@@ -630,9 +636,7 @@ const HomeAds = () => {
             </div>
           </div>
 
-          <div className="col-4 "
-          style={{marginRight:90}}
-          >
+          <div className="col-4 " style={{ marginRight: 90 }}>
             <img
               src="/assets/images/home_image11.png"
               height={400}

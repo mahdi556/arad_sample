@@ -1,18 +1,17 @@
-import NavBar from "../../components/NavBar";
-import Footer from "../../components/Footer";
-import RightMenu from "../../components/Employee/RightMenu/RightMenu";
 import Layout from "../../components/Layouts/Employee/layout";
 import Head from "next/head";
 import EShowContent from "../../components/Employee/EShowCase/EShowContent";
+import { useRouter } from "next/router";
 const Dashboard = () => {
+  const router = useRouter();
   return (
     <>
       <Layout>
         <Head>
           <title>رزومه های ارسال شده</title>
         </Head>
-        <EShowContent />
-      </Layout>
+        <EShowContent section={router.query.tab} />
+       </Layout>
     </>
   );
 };

@@ -1,6 +1,6 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import AdBoxShowCase from "./AdBoxShowCase";
-import axios from "../../axios";
 
 const EAdsAdmin = () => {
   const [eads, setEads] = useState({});

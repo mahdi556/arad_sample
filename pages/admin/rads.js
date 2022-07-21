@@ -4,8 +4,7 @@ import RAdsAdmin from "../../components/Admin/RAdsAdmin";
 const AdminAdS = () => {
   return (
     <>
-      <NavBar />
-      <div
+       <div
         className="mx-auto"
         style={{
           backgroundColor: "#f2f5f6",

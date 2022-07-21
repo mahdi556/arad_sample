@@ -1,15 +1,14 @@
 import Footer from "../components/Footer";
-import NavBar from "../components/NavBar";
+import axios from "axios";
 import useDownloader from "react-use-downloader";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import axios from "../axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import BreakLine from "../components/Employee/Resume/FormInputs/BreakLine";
 import { useContext, useEffect, useState } from "react";
-import UserContext from "../context/employeeContext/User/UserContext";
+import AuthContext from "context/Auth/AuthContext";
 const style = {
   position: "absolute",
   top: "50%",
@@ -24,7 +23,7 @@ const style = {
 const Adshow = () => {
   const router = useRouter();
   const [data, setData] = useState({});
-  const userContext = useContext(UserContext);
+  const { user } = useContext(AuthContext);
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
@@ -46,16 +45,12 @@ const Adshow = () => {
         console.log(error);
       });
   }, [router.query.ad]);
-  // const myLoader = ({ src, width, quality }) => {
-  //   return data.image;
-  // };
-  console.log(data);
   const handleLottie = () => {
     axios({
       url: "/storesavead",
       method: "post",
       data: {
-        user_id: userContext.data.user.id,
+        user_id: user.id,
         ad_id: data.id,
       },
     })
@@ -72,7 +67,6 @@ const Adshow = () => {
   return (
     <>
       <ToastContainer />
-      <NavBar />
       <div
         className="d-flex col-12 mt-5 position-relative justify-content-center "
         style={{
@@ -174,12 +168,7 @@ const Adshow = () => {
                       overflow: "hidden",
                     }}
                   >
-                    {/* <img
-                    src={"/assets/images/video-sample.png"}
-                    height={160}
-                    width={230}
-                  /> */}
-
+               
                     <video
                       width="267"
                       height="144"
@@ -204,7 +193,7 @@ const Adshow = () => {
                 <div className="d-flex mb-2 ">
                   <h6 className="col-5 txtSec1 px-2"> دسته بندی حرفه</h6>
                   <h6 className="col-7 txtSec2 px-2">
-                    {data.jobCategory && data.jobCategory[0].fa_name}
+                    {data.jobCategory && data.jobCategory.fa_name}
                   </h6>
                 </div>
                 <div className="d-flex mb-2 ">

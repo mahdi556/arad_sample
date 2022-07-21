@@ -1,19 +1,19 @@
 import AdBoxNewEmployer from "../../Common/AdBoxNewEmployer";
 import BreakLine from "../../Employee/Resume/FormInputs/BreakLine";
-import UserContext from "../../../context/employeeContext/User/UserContext";
+import axios from "axios";
 import Lottie from "lottie-react";
 import { ToastContainer, toast } from "react-toastify";
 import saveLottie from "../../../components/Lottie-json/save-lottie.json";
 import { useRef, useState, useContext, useEffect } from "react";
-import axios from "../../../axios";
 import { Hidden } from "@mui/material";
+import AuthContext from "context/Auth/AuthContext";
 const RAdShow = ({ data }) => {
   const lottieRef = useRef();
   const [play, settPlay] = useState(false);
   const [salaryTypes, setSalaryTypes] = useState([]);
   const [shareClass, setShareClass] = useState("share_close");
   const width = "33%";
-  const userContext = useContext(UserContext);
+  const { user } = useContext(AuthContext);
 
   const SalaryType = [
     { id: 1, fa: "ماهانه", en: "" },
@@ -28,7 +28,7 @@ const RAdShow = ({ data }) => {
       url: "/storesavead",
       method: "post",
       data: {
-        user_id: userContext.data.user.id,
+        user_id: user.id,
         ad_id: data.id,
       },
     })
@@ -66,7 +66,7 @@ const RAdShow = ({ data }) => {
               </h5>
             </h1>
             <h4 className="eAdshowSec2">
-              دسته {data.jobCategory && data.jobCategory[0].fa_name}
+              دسته {data.jobCategory && data.jobCategory.fa_name}
               {/* <h6 className="d-inline-flex fw-light">3روز پیش</h6> */}
             </h4>
           </div>
@@ -99,7 +99,7 @@ const RAdShow = ({ data }) => {
                 }}
                 onClick={() => setShareClass("share")}
               >
-                <img 
+                <img
                   src="/assets/images/share.png"
                   style={{
                     visibility: shareClass == "share" ? "hidden" : "visible",
@@ -108,53 +108,54 @@ const RAdShow = ({ data }) => {
                   width={32}
                 />
               </div>
-                <div className={shareClass}>
-                  <img className="share_button2"
-                    src="/assets/images/share.png"
-                    height={32}
-                    width={32}
-                    onClick={() => setShareClass("share_close")}
+              <div className={shareClass}>
+                <img
+                  className="share_button2"
+                  src="/assets/images/share.png"
+                  height={32}
+                  width={32}
+                  onClick={() => setShareClass("share_close")}
+                />
+                <div className="share_sec1">
+                  <img
+                    src="/assets/images/share_1.svg"
+                    height={22}
+                    width={22}
                   />
-                  <div className="share_sec1">
-                    <img
-                      src="/assets/images/share_1.svg"
-                      height={22}
-                      width={22}
-                    />
-                  </div>
-                  <div className="share_sec1">
-                    {" "}
-                    <img
-                      src="/assets/images/share_2.svg"
-                      height={22}
-                      width={22}
-                    />
-                  </div>
-                  <div className="share_sec1">
-                    {" "}
-                    <img
-                      src="/assets/images/share_3.svg"
-                      height={22}
-                      width={22}
-                    />
-                  </div>
-                  <div className="share_sec1">
-                    {" "}
-                    <img
-                      src="/assets/images/share_4.svg"
-                      height={22}
-                      width={22}
-                    />
-                  </div>
-                  <div className="share_sec1">
-                    {" "}
-                    <img
-                      src="/assets/images/share_5.svg"
-                      height={22}
-                      width={22}
-                    />
-                  </div>
                 </div>
+                <div className="share_sec1">
+                  {" "}
+                  <img
+                    src="/assets/images/share_2.svg"
+                    height={22}
+                    width={22}
+                  />
+                </div>
+                <div className="share_sec1">
+                  {" "}
+                  <img
+                    src="/assets/images/share_3.svg"
+                    height={22}
+                    width={22}
+                  />
+                </div>
+                <div className="share_sec1">
+                  {" "}
+                  <img
+                    src="/assets/images/share_4.svg"
+                    height={22}
+                    width={22}
+                  />
+                </div>
+                <div className="share_sec1">
+                  {" "}
+                  <img
+                    src="/assets/images/share_5.svg"
+                    height={22}
+                    width={22}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -352,7 +353,7 @@ const RAdShow = ({ data }) => {
         </div>
       </div>
       <h5 className="mt-5 mb-5 fs-4 text-start fw-bold w-75">آگهی های مرتبط</h5>
-      <div class="row gx-5 gy-4   ">
+      <div className="row gx-5 gy-4   ">
         {/* <AdBoxNewEmployer width={width} />
         <AdBoxNewEmployer width={width} />
         <AdBoxNewEmployer width={width} />

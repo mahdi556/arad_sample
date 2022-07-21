@@ -1,26 +1,9 @@
-import UserProvider from "../context/employeeContext/User/UserProvider";
 import Login from "./Common/Login";
 import { useRouter } from "next/router";
 import AdminLogin from "./Common/AdminLogin";
-import UserContext from "../context/employeeContext/User/UserContext";
-import { useContext, useEffect, useState } from "react";
 import NewAd from "./Common/NewAd";
-import NavBarItem from "./Common/NavBarItem";
 const NavBar = () => {
-  const userContext = useContext(UserContext);
-  const [user, setUser] = useState({});
   const router = useRouter();
-  useEffect(() => {
-    if (window.localStorage.getItem("user") !== null) {
-      setUser(JSON.parse(window.localStorage.getItem("user")));
-    }
-  }, []);
-  useEffect(() => {
-    userContext.dispatch({
-      type: "user",
-      payload: user,
-    });
-  }, [user]);
   return (
     // <UserProvider>
 
@@ -83,7 +66,6 @@ const NavBar = () => {
               onClick={() => {
                 router.push({
                   pathname: "/search",
-                 
                 });
               }}
             >

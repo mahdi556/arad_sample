@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
-import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
-import axios from '../../../../axios'
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const StepButton = ({ handleStep, step,ph }) => {
   const resumeContext = useContext(ResumeContext);

@@ -1,49 +1,140 @@
 import { useContext, useEffect, useState } from "react";
-import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 import UserContext from "../../../../context/employeeContext/User/UserContext";
 import FieldError from "../../../Common/FieldError";
 import style from "./FormStyles/form.module.css";
+const AddSocial = ({ item, addFromChild }) => {
+  const resumeContext = useContext(ResumeContext);
+  const [social, setSocial] = useState({ name: "", address: "" });
+  useEffect(() => {
+    addFromChild(item, social);
+  }, [social]);
+
+  return (
+    <>
+      <div className="d-flex justify-content-between col-12 px-3  mb-2">
+        <input
+          dir="ltr"
+          className=" col-4  inputStyle mb-1 me-2"
+          style={
+            resumeContext.data.socials.twitter == ""
+              ? { fontSize: 11 }
+              : { fontSize: 13 }
+          }
+          placeholder=" نام شبکه اجتماعی"
+          type="text"
+          onChange={(e) => {
+            setSocial({
+              ...social,
+              name: e.target.value,
+            });
+          }}
+          // value={resumeContext.data.socials.twitter}
+        />
+        <input
+          dir="ltr"
+          className=" col-8  inputStyle mb-1"
+          style={
+            resumeContext.data.socials.twitter == ""
+              ? { fontSize: 11 }
+              : { fontSize: 13 }
+          }
+          placeholder=" آدرس شبکه اجتماعی"
+          type="text"
+          onChange={(e) => {
+            setSocial({
+              ...social,
+              address: e.target.value,
+            });
+          }}
+          // value={resumeContext.data.other_socials[item]}
+        />
+      </div>
+    </>
+  );
+};
 const FirstFormVip = () => {
   const [image, setImage] = useState([]);
   const [imageUrl, setImageUrl] = useState([]);
   const [videofile, setVideofile] = useState([]);
   const [videoUrl, setVideoUrl] = useState([]);
   const [display, setDisplay] = useState("none");
+  const [social, setSocial] = useState([]);
+  const [i, setI] = useState([]);
+  const [j, setJ] = useState(0);
+  const [other, setOther] = useState([]);
   const resumeContext = useContext(ResumeContext);
   const userContext = useContext(UserContext);
 
   useEffect(() => {
     if (image.length > 0) {
-      const newImageUrl = [];
-      newImageUrl.push(URL.createObjectURL(image[0]));
-      setImageUrl(newImageUrl);
-      resumeContext.dispatch({ type: "userImageFile", payload: image[0] });
-      resumeContext.dispatch({ type: "userImage", payload: newImageUrl });
+      if (image[0].size > 2024000) {
+        window.alert("حداکثر حجم آپلودعکس ، 2 مگابایت  می باشد");
+      } else {
+        const newImageUrl = [];
+        newImageUrl.push(URL.createObjectURL(image[0]));
+        setImageUrl(newImageUrl);
+        resumeContext.dispatch({ type: "userImageFile", payload: image[0] });
+        resumeContext.dispatch({ type: "userImage", payload: newImageUrl });
+      }
     }
 
     if (videofile.length > 0) {
-      const newVideoUrl = [];
-      newVideoUrl.push(URL.createObjectURL(videofile[0]));
-      setVideoUrl(newVideoUrl);
-      resumeContext.dispatch({ type: "userVideoFile", payload: videofile[0] });
-      resumeContext.dispatch({ type: "userVideo", payload: newVideoUrl });
-     }
-     resumeContext.dispatch({
+      if (videofile[0].size > 10240000) {
+        window.alert("حداکثر حجم آپلودویدئو ،10 مگابایت  می باشد");
+      } else {
+        const newVideoUrl = [];
+        newVideoUrl.push(URL.createObjectURL(videofile[0]));
+        setVideoUrl(newVideoUrl);
+        resumeContext.dispatch({
+          type: "userVideoFile",
+          payload: videofile[0],
+        });
+        resumeContext.dispatch({ type: "userVideo", payload: newVideoUrl });
+      }
+    }
+    resumeContext.dispatch({
       type: "user_id",
       payload: userContext.data.user.id,
     });
   }, [image, videofile]);
   useEffect(() => {
     if (resumeContext.data.stepClick) {
-      if (resumeContext.data.socials.twitter !== "") {
-        resumeContext.dispatch({ type: "fieldCheck", payload: true });
-      } else {
-        setDisplay("");
-        resumeContext.dispatch({ type: "stepClick", payload: false });
-      }
+      resumeContext.dispatch({ type: "fieldCheck", payload: true });
     }
   }, [resumeContext.data.stepClick]);
-
+  useEffect(() => {
+    resumeContext.dispatch({
+      type: "socials",
+      payload: social,
+    });
+    resumeContext.dispatch({
+      type: "other_socials",
+      payload: other,
+    });
+  }, [social, other]);
+  const addFromChild = (item, soc) => {
+    var index = other.findIndex((object) => {
+      return object.id == item;
+    });
+    if (index == -1) {
+      setOther([...other, { id: item, name: soc.name, address: soc.address }]);
+    } else {
+      other.splice(index, 1);
+      setOther([...other, { id: item, name: soc.name, address: soc.address }]);
+    }
+  };
+  const handleSocial = (i,name, address) => {
+    var index = social.findIndex((object) => {
+      return object.id == i;
+    });
+    if (index == -1) {
+      setSocial([...social, { id: i, name: name, address: address }]);
+    } else {
+      social.splice(index, 1);
+      setSocial([...social, { id: i, name: name, address: address }]);
+    }
+  };
   return (
     <div
       className="row pt-4 pb-4"
@@ -227,25 +318,19 @@ const FirstFormVip = () => {
                   dir="ltr"
                   className="   inputStyle mb-1"
                   style={
-                    resumeContext.data.socials.twitter == ""
+                    !resumeContext.data.socials[0]
                       ? { fontSize: 11 }
                       : { fontSize: 18 }
                   }
                   placeholder=" وارد کردن لینک پروفایل توییتر"
                   type="text"
-                  onChange={(e) =>
-                    resumeContext.dispatch({
-                      type: "social-twitter",
-                      payload: e.target.value,
-                    })
-                  }
-                  value={resumeContext.data.socials.twitter}
+                  onChange={(e) => {
+                    handleSocial(1,'social_twitter', e.target.value);
+                    
+                  }}
                 />
 
-                <FieldError
-                  data={resumeContext.data.socials.twitter}
-                  display={display}
-                />
+                
               </div>
             </div>
             <div
@@ -267,24 +352,17 @@ const FirstFormVip = () => {
                   dir="ltr"
                   className=" mb-1  inputStyle"
                   style={
-                    resumeContext.data.socials.dribble == ""
+                    !resumeContext.data.socials[1]
                       ? { fontSize: 13 }
                       : { fontSize: 18 }
                   }
                   placeholder=" وارد کردن لینک پروفایل دریبل"
                   type="text"
                   onChange={(e) =>
-                    resumeContext.dispatch({
-                      type: "social-dribble",
-                      payload: e.target.value,
-                    })
+                    handleSocial(2,'social_dribble', e.target.value)
                   }
-                  value={resumeContext.data.socials.dribble}
-                />
-                <FieldError
-                  data={resumeContext.data.socials.dribble}
-                  display={display}
-                />
+                 />
+                
               </div>
             </div>
             <div
@@ -302,28 +380,21 @@ const FirstFormVip = () => {
                 <img src="/assets/images/instax.png" width={32} height={30} />
               </div>
               <div className="d-flex flex-column col-10 mb-2">
-               <input
-                dir="ltr"
-                className=" mb-1   inputStyle "
-                style={
-                  resumeContext.data.socials.instagram == ""
-                    ? { fontSize: 11 }
-                    : { fontSize: 18 }
-                }
-                placeholder=" وارد کردن لینک پروفایل ایسنتاگرام"
-                type="text"
-                onChange={(e) =>
-                  resumeContext.dispatch({
-                    type: "social-insta",
-                    payload: e.target.value,
-                  })
-                }
-                value={resumeContext.data.socials.instagram}
-              />
-               <FieldError
-                  data={resumeContext.data.socials.instagram}
-                  display={display}
-                />
+                <input
+                  dir="ltr"
+                  className=" mb-1   inputStyle "
+                  style={
+                    !resumeContext.data.socials[2]
+                      ? { fontSize: 11 }
+                      : { fontSize: 18 }
+                  }
+                  placeholder=" وارد کردن لینک پروفایل ایسنتاگرام"
+                  type="text"
+                  onChange={(e) =>
+                    handleSocial(3,'social_instagram', e.target.value)
+                  }
+                 />
+                
               </div>
             </div>
             <div
@@ -341,35 +412,39 @@ const FirstFormVip = () => {
                 <img src="/assets/images/youtubex.png" width={30} height={25} />
               </div>
               <div className="d-flex flex-column col-10 mb-2">
-              <input
-                dir="ltr"
-                className=" inputStyle mb-1"
-                style={
-                  resumeContext.data.socials.youtube == ""
-                    ? { fontSize: 11 }
-                    : { fontSize: 18 }
-                }
-                placeholder=" وارد کردن لینک پروفایل یوتیوب"
-                type="text"
-                onChange={(e) =>
-                  resumeContext.dispatch({
-                    type: "social-youtube",
-                    payload: e.target.value,
-                  })
-                }
-                value={resumeContext.data.socials.youtube}
-              />
-              <FieldError
-                  data={resumeContext.data.socials.youtube}
-                  display={display}
-                />
+                <input
+                  dir="ltr"
+                  className=" inputStyle mb-1"
+                  style={
+                    !resumeContext.data.socials[3]
+                      ? { fontSize: 11 }
+                      : { fontSize: 18 }
+                  }
+                  placeholder=" وارد کردن لینک پروفایل یوتیوب"
+                  type="text"
+                  onChange={(e) =>
+                    handleSocial(4,'social_youtube', e.target.value)
+                  }
+                 />
+                
               </div>
+            </div>
+            <div className="d-flex flex-column col-12  px-1">
+              {i.map((item, key) => (
+                <AddSocial item={item} key={item} addFromChild={addFromChild} />
+              ))}
             </div>
             <div
               className="d-flex align-items-center justify-content-start "
               style={{
                 color: "#11999e",
                 fontWeight: 300,
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setJ(j + 1);
+                setI([...i, j]);
+                console.log(i);
               }}
             >
               <svg

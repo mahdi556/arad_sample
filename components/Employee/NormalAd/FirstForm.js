@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
- import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 import UserContext from "../../../context/employeeContext/User/UserContext";
 
 const FirstForm = () => {
@@ -9,27 +9,35 @@ const FirstForm = () => {
   const [videoUrl, setVideoUrl] = useState([]);
   const [display, setDisplay] = useState("none");
 
-   const userContext = useContext(UserContext);
-  const resumeContext=useContext(ResumeContext)
+  const userContext = useContext(UserContext);
+  const resumeContext = useContext(ResumeContext);
 
   useEffect(() => {
     if (image.length > 0) {
-      const newImageUrl = [];
-      newImageUrl.push(URL.createObjectURL(image[0]));
-      setImageUrl(newImageUrl);
-      resumeContext.dispatch({ type: "userImageFile", payload: image[0] });
-      resumeContext.dispatch({ type: "userImage", payload: newImageUrl });
+      if (image[0].size > 2024000) {
+        window.alert("حداکثر حجم آپلودعکس ، 2 مگابایت  می باشد");
+      } else {
+        const newImageUrl = [];
+        newImageUrl.push(URL.createObjectURL(image[0]));
+        setImageUrl(newImageUrl);
+        resumeContext.dispatch({ type: "userImageFile", payload: image[0] });
+        resumeContext.dispatch({ type: "userImage", payload: newImageUrl });
+      }
     }
 
     if (videofile.length > 0) {
-      const newVideoUrl = [];
-      newVideoUrl.push(URL.createObjectURL(videofile[0]));
-      setVideoUrl(newVideoUrl);
-      resumeContext.dispatch({
-        type: "userVideoFile",
-        payload: videofile[0],
-      });
-      resumeContext.dispatch({ type: "userVideo", payload: newVideoUrl });
+      if (videofile[0].size > 10240000) {
+        window.alert("حداکثر حجم آپلودویدئو ،10 مگابایت  می باشد");
+      } else {
+        const newVideoUrl = [];
+        newVideoUrl.push(URL.createObjectURL(videofile[0]));
+        setVideoUrl(newVideoUrl);
+        resumeContext.dispatch({
+          type: "userVideoFile",
+          payload: videofile[0],
+        });
+        resumeContext.dispatch({ type: "userVideo", payload: newVideoUrl });
+      }
     }
     resumeContext.dispatch({
       type: "user_id",
@@ -38,9 +46,7 @@ const FirstForm = () => {
   }, [image, videofile]);
   useEffect(() => {
     if (resumeContext.data.stepClick) {
-         resumeContext.dispatch({ type: "fieldCheck", payload: true });
-       
-       
+      resumeContext.dispatch({ type: "fieldCheck", payload: true });
     }
   }, [resumeContext.data.stepClick]);
 
@@ -122,7 +128,7 @@ const FirstForm = () => {
                 width={23}
               />
 
-              <h5>آپلود لگو</h5>
+              <h5>آپلود تصویر</h5>
             </label>
           )}
         </div>

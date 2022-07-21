@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MySentResume from "./MySentResume";
 import SuggestAds from "./SuggestAds";
 import SavedAds from "./SavedAds";
-const EShowContent = ({ data }) => {
+const EShowContent = ({ section }) => {
   const [tab, setTab] = useState(1);
+  useEffect(() => {
+    section == "suggestedAds"
+      ? setTab(2)
+      : section == "savedAds"
+      ? setTab(3)
+      : section == "sentResume"
+      ? setTab(1)
+      : null;
+  }, [section]);
   return (
     <>
       <div className="eShowContainer mx-auto ">
@@ -30,7 +39,7 @@ const EShowContent = ({ data }) => {
           </div>
           <div
             className={
-              tab == 2
+              tab == 3
                 ? "col-4 py-2 leftsec jobAds-selected-top"
                 : "col-4 py-2 leftsec "
             }

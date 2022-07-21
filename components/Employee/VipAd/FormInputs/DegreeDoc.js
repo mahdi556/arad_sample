@@ -1,7 +1,6 @@
-import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
-
+import ButtonAdd from "components/Ads/Tools/ButtonAdd";
 import { useContext, useEffect, useState } from "react";
-import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 
 const Divx = ({ i, data, dataHandler }) => {
   const [localData, setLocalData] = useState({
@@ -194,7 +193,8 @@ const Divx = ({ i, data, dataHandler }) => {
                   </span>
                 </div>
               </div>
-              <div   className="d-flex align-items-center mt-2"
+              <div
+                className="d-flex align-items-center mt-2"
                 onClick={() => {
                   setLocalData({ ...localData, active: !localData.active });
                   datahandler({ ...localData, active: !localData.active });
@@ -379,7 +379,8 @@ const DegreeDoc = ({ handleStep }) => {
         </>
       ))}
       {data.length > 0 && (
-        <div className="px-5"
+        <div
+          className="px-5"
           onClick={() => {
             dataHandler({
               id: data.length + 1,

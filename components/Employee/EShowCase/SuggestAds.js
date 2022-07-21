@@ -1,29 +1,31 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AdBoxShowCase from "./AdBoxShowCase";
-import axios from "../../../axios";
+import axios from "axios";
+import AuthContext from "context/Auth/AuthContext";
 
 const SuggestAds = () => {
   const [rads, setRads] = useState({});
-  console.log('response')
+  const { user } = useContext(AuthContext);
   useEffect(() => {
-    axios({
-      url: "/getEmployerAds",
-      method: "post",
-      data: {
-        user_id: 81,
-      },
-    })
-      .then((response) => {
-         setRads(response.data.data.rads);
+    user &&
+      axios({
+        url: "/EmployeeSuggestedAds",
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
       })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
+        .then((response) => {
+          setRads(response.data.data.rads);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+  }, [user]);
   return (
     <>
-       <div className="mt-5"> 
-         {rads.length &&
+      <div className="mt-5">
+        {rads.length &&
           rads.map((item, key) => (
             <AdBoxShowCase
               width={" col-xl-12 col-xxl-12 "}

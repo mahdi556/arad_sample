@@ -1,8 +1,8 @@
 import { useContext, useEffect } from "react";
-import axios from "../../../../axios";
+import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
-import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 const SubmitRn = () => {
   const router = useRouter();
   const resumeContext = useContext(ResumeContext);

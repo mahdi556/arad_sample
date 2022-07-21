@@ -1,24 +1,16 @@
- import RightMenu from "../../Employer/Dashboard/RightMenu/RightMenu";
+import RightMenu from "../../Employer/Dashboard/RightMenu/RightMenu";
 import Footer from "../../Footer";
 import NavBar from "../../NavBar";
 export default function Layout({ children }) {
   return (
     <>
-      <NavBar />
-      <div >
-        <div className="d-flex mt-5  "
+       <div>
+        <div
+          className="d-flex mt-5  "
           style={{
-             height: "100%",
-          }}>
-          {/* <style global jsx>{`
-            html,
-            body,
-            body > div:first-child,
-            div#__next,
-            div#__next > div {
-              height: 100%;
-            }
-          `}</style> */}
+            height: "100%",
+          }}
+        >
           <div
             style={{
               width: "25%",

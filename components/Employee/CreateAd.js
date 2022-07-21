@@ -8,7 +8,7 @@ import VerifyFirstForm from "./NormalAd/VerifyFirstForm";
 import VerifyPersonalData from "./NormalAd/VerifyPersonalData";
 import ContactForm from "./NormalAd/Contact";
 import SubmitEn from "./NormalAd/SubmitEn";
-import ResumeContext from "../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 
 const CreateEmployeeAd = () => {
   const router = useRouter();
@@ -74,7 +74,7 @@ const CreateEmployeeAd = () => {
               }}
             >
               <div
-                className="d-flex px-3 py-3  mb-4 align-items-center  "
+                className="d-flex col-12  py-3  mb-4 align-items-center  "
                 style={{ backgroundColor: "#fff", borderRadius: "0.7rem" }}
               >
                 <h3

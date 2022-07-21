@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
-import UserContext from "../../../../context/employeeContext/User/UserContext";
-
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
+ 
 const FirstFormVip = () => {
   const [socialInasta, setSocialInsta] = useState("");
   const [socialYoutube, setSocialYoutube] = useState("");
@@ -12,8 +11,7 @@ const FirstFormVip = () => {
   const [videofile, setVideofile] = useState([]);
   const [videoUrl, setVideoUrl] = useState([]);
   const resumeContext = useContext(ResumeContext);
-  const userContext = useContext(UserContext);
-  useEffect(() => {
+   useEffect(() => {
     if (image.length > 0) {
       const newImageUrl = [];
       newImageUrl.push(URL.createObjectURL(image[0]));
@@ -28,10 +26,7 @@ const FirstFormVip = () => {
       setVideoUrl(newVideoUrl);
       resumeContext.dispatch({ type: "userVideo", payload: newVideoUrl });
     }
-    resumeContext.dispatch({
-      type: "user_id",
-      payload: userContext.data.user.id,
-    });
+     
   }, [image, videofile]);
 
   return (

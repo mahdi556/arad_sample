@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from "react";
-import UserContext from "../../../context/employeeContext/User/UserContext";
-import axios from "../../../axios";
+import axios from "axios";
+import { toast } from "react-toastify";
+import AuthContext from "context/Auth/AuthContext";
+
 const SendingResume = ({ data }) => {
+  const { user } = useContext(AuthContext);
   const [image, setImage] = useState([]);
   const [imageUrl, setImageUrl] = useState([]);
-  const userContext = useContext(UserContext);
   useEffect(() => {
     if (image.length > 0) {
       const newImageUrl = [];
@@ -12,7 +14,7 @@ const SendingResume = ({ data }) => {
       setImageUrl(newImageUrl);
     }
   }, [image]);
-//   console.log(data);
+  //   console.log(data);
   const sendResume = (type) => {
     const formData = new FormData();
     {
@@ -21,18 +23,22 @@ const SendingResume = ({ data }) => {
     formData.append("type", type);
     formData.append("ad_id", data.id);
     formData.append("reciever_id", data.user.id);
-    formData.append("sender_id", userContext.data.user.id);
+    formData.append("sender_id", user.id);
 
     axios({
-      url: "/sendResumeToEmployee",
+      url: "/sendResumeToEmployer",
       method: "post",
       data: formData,
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
     })
       .then((response) => {
         console.log(response);
+        toast.success("رزومه شما با موفقیت ارسال شد");
       })
       .catch(function (error) {
-        console.log(error);
+        toast.error(error.response.data.message);
       });
   };
 
@@ -40,10 +46,14 @@ const SendingResume = ({ data }) => {
     <>
       <div className="d-flex flex-column jusify-content-center align-items-center eShowCase_sec1">
         <h2>ارسال رزومه</h2>
-        <h3 className="upload pt-1" onClick={() => sendResume("site")}>
-          ارسال رزومه تکمیل شده
-        </h3>
-        <div className="orLine">یا</div>
+        {image.length == 0 && (
+          <>
+            <h3 className="upload pt-1" onClick={() => sendResume("site")}>
+              ارسال رزومه تکمیل شده
+            </h3>
+            <div className="orLine">یا</div>
+          </>
+        )}
 
         {image.length > 0 ? (
           <>
@@ -87,18 +97,21 @@ const SendingResume = ({ data }) => {
             آپلود رزومه
           </label>
         )}
-        <div
-          className=" px-3 mt-2 d-flex align-items-center justify-content-center "
-          style={{
-            color: "#fff",
-            backgroundColor: "#EC4B72",
-            borderRadius: 10,
-            width: "100%",
-          }}
-          onClick={() => sendResume("upload")}
-        >
-          <h5 className="ms-2  mt-1  ">ارسال</h5>
-        </div>
+        {image.length > 0 && (
+          <div
+            className=" px-3 mt-2 d-flex align-items-center justify-content-center "
+            style={{
+              color: "#fff",
+              backgroundColor: "#EC4B72",
+              borderRadius: 10,
+              width: "100%",
+              cursor: "pointer",
+            }}
+            onClick={() => sendResume("upload")}
+          >
+            <h5 className="ms-2  mt-1  ">ارسال</h5>
+          </div>
+        )}
       </div>
     </>
   );

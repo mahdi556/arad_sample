@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import AdBoxShowCase from "./AdBoxShowCase";
-import axios from "../../../axios";
+import axios from "axios";
 
 const JobAsList = ({ id }) => {
   const [rads, setRads] = useState({});

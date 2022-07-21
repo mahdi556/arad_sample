@@ -1,23 +1,21 @@
-import UserContext from "../../context/employeeContext/User/UserContext";
 import { useRouter } from "next/router";
 import { useContext } from "react";
-import Login, { handleSignIn } from "./Login";
-import { fontSize } from "@mui/system";
 import style from "./HomeStyles/home.module.css";
+import AuthContext from "context/Auth/AuthContext";
 
 const NewAd = () => {
-  const userContext = useContext(UserContext);
   const router = useRouter();
+  const { user, handleSignIn } = useContext(AuthContext);
   const handleNewAd = () => {
-    if (userContext.data.user.auth) {
-      router.push({
-        pathname: "/adtype",
+    if (user) {
+       router.push({
+        pathname: "/ads/adtype",
       });
-    } else {
-      userContext.dispatch({ type: "signUp", payload: true });
+    } 
+    else {
+      handleSignIn();
     }
   };
-
   return (
     <li
       className={`  ${style.sec43}  d-flex px-3 py-1 `}

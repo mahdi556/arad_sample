@@ -10,7 +10,7 @@ import WorkHours from "./WorkHours";
 import Options from "./Options";
 import SelectOption from "../../Employee/Resume/FormInputs/SelectOption";
 import FieldError from "../../Common/FieldError";
-import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 
 const PersonalData = () => {
   const resumeContext = useContext(ResumeContext);

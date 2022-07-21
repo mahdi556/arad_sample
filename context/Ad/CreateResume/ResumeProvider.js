@@ -6,12 +6,8 @@ const initialData = {
   userImage: "",
   userImageFile: {},
   userVideo: "",
-  socials: {
-    twitter: "",
-    instagram: "",
-    youtube: "",
-    dribble: "",
-  },
+  socials: [],
+  other_socials:[],
   companyId: "",
   fieldCheck: false,
   stepClick: false,
@@ -63,6 +59,7 @@ const initialData = {
     fa: "",
     en: "",
   },
+  benefits:[],
   salary: {
     fa: { from: "", to: "" },
     en: { from: "", to: "" },

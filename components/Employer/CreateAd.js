@@ -12,7 +12,7 @@ import VerifyOurExpect from "./NormalAd/VerifyOurExpect";
 import SubmitRn from "./NormalAd/SubmitRn";
 import Description from "./NormalAd/Description";
 import VerifyDescription from "./NormalAd/VerifyDescription";
-import ResumeContext from "../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 const CreateEmployerAd = () => {
   const router = useRouter();
   const [step, setStep] = useState(1);

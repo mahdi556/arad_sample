@@ -1,7 +1,7 @@
 const FieldError = ({ data,display }) => {
   return (
     data == "" && (
-      <div className=""
+      <div className="mb-1"
         style={{
           fontSize: 14,
           color: "#EC4B72",

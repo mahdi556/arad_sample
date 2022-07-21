@@ -16,9 +16,9 @@ const BirthDayEnglish = () => {
         </label>
       </div>
       <div className="col-12  d-flex">
-        <div class="input-group input-group-sm mx-1">
+        <div className="input-group input-group-sm mx-1">
           <span
-            class="input-group-text"
+            className="input-group-text"
             style={{
               backgroundColor: "#11999e",
               height: "100%",
@@ -30,7 +30,7 @@ const BirthDayEnglish = () => {
           >
             Day
           </span>
-          <input class="form-control inputStyle" 
+          <input className="form-control inputStyle" 
           value={resumeContext.data.birthday.day}
           onChange={(e) => {
            resumeContext.dispatch({
@@ -40,9 +40,9 @@ const BirthDayEnglish = () => {
           }}
           />
         </div>
-        <div class="input-group input-group-sm mx-1 ">
+        <div className="input-group input-group-sm mx-1 ">
           <span
-            class="input-group-text"
+            className="input-group-text"
             style={{
               backgroundColor: "#11999e",
               height: "100%",
@@ -54,11 +54,11 @@ const BirthDayEnglish = () => {
           >
             Month
           </span>
-          <input class="form-control inputStyle" />
+          <input className="form-control inputStyle" />
         </div>
-        <div class="input-group input-group-sm mx-1">
+        <div className="input-group input-group-sm mx-1">
           <span
-            class="input-group-text"
+            className="input-group-text"
             style={{
               backgroundColor: "#11999e",
               height: "100%",
@@ -70,7 +70,7 @@ const BirthDayEnglish = () => {
           >
             Year
           </span>
-          <input class="form-control inputStyle" />
+          <input className="form-control inputStyle" />
         </div>
       </div>
 

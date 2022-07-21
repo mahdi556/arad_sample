@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import axios from "../../axios";
+import axios from "axios";
 import AdBoxNewEmployer from "./AdBoxNewEmployer";
 import { useRouter } from "next/router";
 import Filters from "./Filters";
@@ -119,7 +119,7 @@ const Adlist = ({ cat_id, local_id ,type}) => {
             <div className="  col-8 ">
               {filterContext.data.showFilterBox && <Filters />}
 
-              <div class="row    gx-5 gy-4   ps-1 ">
+              <div className="row    gx-5 gy-4   ps-1 ">
                 {eads.length > 0 &&
                   eads.map((item, key) => (
                     <AdBoxNewEmployer

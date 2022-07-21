@@ -5,24 +5,13 @@ import NavBar from "../../NavBar";
 export default function Layout({ children }) {
   return (
     <>
-      <NavBar />
-      <div
-        style={
-          {
-            // minHeight: 1000,
-          }
-        }
-      >
-        <div className="d-flex mt-5  ">
-          <style global jsx>{`
-            html,
-            body,
-            body > div:first-child,
-            div#__next,
-            div#__next > div {
-              height: 100%;
-            }
-          `}</style>
+      <div>
+        <div
+          className="d-flex mt-5  "
+          style={{
+            height: "100%",
+          }}
+        >
           <div
             style={{
               width: "25%",

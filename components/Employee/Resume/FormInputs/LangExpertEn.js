@@ -1,6 +1,6 @@
   
 import { useContext, useEffect, useRef, useState } from "react";
-import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
 import ButtonTag from "../../FormInputs/ButtonTag";
 import { Langsen } from "../../../StaticData/SalaryType";

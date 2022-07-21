@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "../../../axios";
 import style from "./styles/eshow.module.css";
   
 import SearchBar from "./SearchBar";
@@ -16,8 +15,8 @@ const ActiveCompanies = ({ id }) => {
             <div className={`${style.activeCompany_sec6}    `}>
               <img
                 src="/assets/images/active_label.svg"
-                height={129}
-                width={129}
+                height={110}
+                width={110}
               />
             </div>
             <div className={`${style.activeCompany_sec7}    `}>
@@ -26,8 +25,8 @@ const ActiveCompanies = ({ id }) => {
             <div className={`${style.activeCompany_sec1}  mx-auto mt-4   `}>
               <img
                 src="/assets/images/companyLogo.png"
-                height={129}
-                width={129}
+                height={110}
+                width={110}
               />
             </div>
             <h4 className={`${style.activeCompany_sec2}    mt-2 ms-3  `}>
@@ -40,7 +39,7 @@ const ActiveCompanies = ({ id }) => {
               اصفهان تهران ...
             </h5>
             <div
-              className={`${style.activeCompany_sec5}    mt-2 mx-auto py-1 px-5  `}
+              className={`${style.activeCompany_sec5}    mt-2   py-1 px-5  `}
             >
               {" "}
               جزییات سازمان

@@ -1,10 +1,9 @@
 import RShowContent from "../components/Employer/RShowCase/RShowContent";
 import RShowSideBar from "../components/Employer/RShowCase/RShowSideBar";
 import Footer from "../components/Footer";
-import NavBar from "../components/NavBar";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import axios from "../axios";
+import axios from "axios";
 
 const EShowCase = () => {
   const router = useRouter();
@@ -28,8 +27,7 @@ const EShowCase = () => {
   }, [router.query.ad]);
   return (
     <>
-      <NavBar />
-      <div>
+       <div>
         <div
           className="d-flex col-12  "
           style={{

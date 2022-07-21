@@ -11,8 +11,7 @@ const Admin = () => {
 
   return (
     <>
-      <NavBar />
-      <div
+       <div
         className="mx-auto"
         style={{
           backgroundColor: "#f2f5f6",
@@ -51,7 +50,7 @@ const Admin = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

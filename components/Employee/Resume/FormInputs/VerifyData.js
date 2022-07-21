@@ -1,6 +1,6 @@
   
 import { useContext } from "react";
-import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 import { Province } from "../../../StaticData/City";
 import { Cities } from "../../../StaticData/City";
 import { JobCats } from "../../../StaticData/JobCategory";

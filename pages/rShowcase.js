@@ -5,8 +5,7 @@ import NavBar from "../components/NavBar";
 const RShowCase = () => {
   return (
     <>
-      <NavBar />
-      <div
+       <div
         className="d-flex justify-content-between"
         style={{
           width: "100%",

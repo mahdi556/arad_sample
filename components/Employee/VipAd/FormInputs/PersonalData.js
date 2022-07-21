@@ -7,7 +7,7 @@ import { Province } from "../../../StaticData/City";
 import { Cities } from "../../../StaticData/City";
 import { JobCats } from "../../../StaticData/JobCategory";
 import FieldError from "../../../Common/FieldError";
-import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 import style from "./FormStyles/form.module.css";
 
 const PersonalData = () => {

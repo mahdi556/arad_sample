@@ -1,6 +1,5 @@
-  
 import { useContext, useEffect, useRef, useState } from "react";
-import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 import ButtonAdd from "../FormInputs/ButtonAdd";
 import ButtonTag from "../FormInputs/ButtonTag";
 // import SoftExpertEn from "./SoftExpertEn";

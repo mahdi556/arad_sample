@@ -1,7 +1,7 @@
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
   
 import { useContext, useEffect, useState } from "react";
-import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 
 const Divx = ({ i, data, dataHandler }) => {
   const [localData, setLocalData] = useState({

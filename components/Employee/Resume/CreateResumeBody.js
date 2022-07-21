@@ -1,28 +1,28 @@
 import { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import ContactForm from "./FormInputs/Contact";
 import JobConditionVip from "./FormInputs/JobConditionVip";
 import StepButton from "./FormInputs/StepButton";
-import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 import VerifyFirstForm from "./FormInputs/VerifyFirstForm";
 import FirstFormVip from "./FormInputs/FirstFormVip";
-import UserContext from "../../../context/employeeContext/User/UserContext";
-import axios from "../../../axios";
+import AuthContext from "context/Auth/AuthContext";
 const CreateResumeBody = () => {
   const resumeContext = useContext(ResumeContext);
   const [step, setStep] = useState(1);
-  const userContext = useContext(UserContext);
+  const { user } = useContext(AuthContext);
   useEffect(() => {
     setStep(resumeContext.data.step);
   }, [resumeContext.data.step]);
   useEffect(() => {
-    userContext.data.user.id != "" && getUserData();
-  }, [userContext.data.user.id]);
+    user && user.id != "" && getUserData();
+  }, [user]);
   const getUserData = () => {
     axios({
       url: "/getUserResume",
       method: "post",
       data: {
-        user_id: userContext.data.user.id,
+        user_id: user.id,
       },
       // headers: {
       //   Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,

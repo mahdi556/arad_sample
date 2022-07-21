@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "../../../axios";
 import style from "./styles/eshow.module.css";
-  
+import axios from "axios";
+
 import AdBoxNewEmployer from "../../Common/AdBoxNewEmployer";
 import SearchBar from "./SearchBar";
 const VipAds = ({ id }) => {
@@ -36,7 +36,7 @@ const VipAds = ({ id }) => {
           </div>
         </div>
       </div>
-      <div class="row   mt-3 gx-3 gy-4   ps-1 ">
+      <div className="row   mt-3 gx-3 gy-4   ps-1 ">
         {rads.length &&
           rads.map(
             (item, key) =>

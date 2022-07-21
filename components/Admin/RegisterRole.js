@@ -1,6 +1,5 @@
   
 import Box from "@mui/material/Box";
-import axios from "../../axios";
 import Modal from "@mui/material/Modal";
 import Swal from 'sweetalert2'
 import { useContext, useState } from "react";
@@ -25,7 +24,6 @@ const RegisterRole = () => {
   const [name, setName] = useState("");
   const [displayName, setDisplayName] = useState("");
  
-  // const userContext = useContext(UserContext);
   const roleRegister = () => {
     axios({
       url: "/roleRegister",

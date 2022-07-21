@@ -438,14 +438,60 @@ div#__next > div {
 }
 .footer-left-columns {
   /* font-size: calc(0.1rem + 0.1vw); */
-  background-color: #fff;
+  background-color: transparent;
   border-radius: 0.5rem;
   height: 36px;
   padding-top: 0.4rem;
   padding-bottom: 0.4rem;
-  padding-right: 3px;
+  padding-right: 0px;
   padding-left: 3px;
-  width: 145px;
+  width: 0%;
+  /* display: none; */
+  cursor: pointer;
+}
+.contents,
+.contents .inner {
+  display: inline-block;
+}
+
+.contents {
+  position: absolute;
+  top: 0;
+  right: 0;
+  white-space: nowrap;
+  margin-left: -1em;
+  padding-left: 1em;
+}
+
+.contents .inner {
+  width: 0%;
+  overflow: hidden;
+  -webkit-transition: width 1s ease-in-out;
+  -moz-transition: width 1s ease-in-out;
+  -o-transition: width 1s ease-in-out;
+  transition: width 1s ease-in-out;
+}
+.footer_social {
+  background: linear-gradient(142.28deg, #38a2cf 2.77%, #52c9ce 99.08%);
+  border-radius: 0.5rem;
+  height: 36px;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-right: 10px;
+  padding-left: 3px;
+  color: #fff;
+  cursor: pointer;
+  width: 146px;
+}
+
+.wrapper:hover .contents .inner {
+  width: 146px;
+  background-color: #fff;
+  padding-right: 10px;
+  /* display: ''; */
+}
+.footer-left-columns {
+  width: 146px;
 }
 
 .footer-sec1 {
@@ -567,7 +613,13 @@ div#__next > div {
   z-index: 100;
   overflow: hidden;
   cursor: pointer;
+  scrollbar-color: #ec4b72 #ccc;
+  scrollbar-width: thin;
+
   animation: heightDrop 0.8s;
+}
+.dropdown-open::-webkit-scrollbar-track {
+  background: #ec4b72;
 }
 
 @keyframes heightDrop {
@@ -701,7 +753,7 @@ div#__next > div {
   font-size: 0.8rem;
   background-color: #ebebeb;
   padding: 0.3rem;
-  border-radius: 0.4rem;
+  /* border-radius: 0.4rem; */
   cursor: pointer;
   /* transition: all 1s; */
 }
@@ -712,7 +764,7 @@ div#__next > div {
   background-color: #ebebeb;
   padding: 0.3rem;
   color: #fff;
-  border-radius: 0.3rem;
+  /* border-radius: 0.3rem; */
   cursor: pointer;
   position: relative;
   z-index: 5;
@@ -795,8 +847,8 @@ div#__next > div {
   border-style: none;
   border-radius: 5px;
   height: 35px;
-  line-height: 1.7rem;
-  font-size: 18px;
+  line-height: 1.4rem;
+  font-size: 16px;
 }
 .inputDanger {
   background-color: #ebebeb;
@@ -2194,28 +2246,32 @@ div#__next > div {
 /* //MultiRangeSlide */
 
 /* SHARE AD ANIMATION */
-.share_button{
+.share_button {
   transition-property: transform;
   transition-duration: 1s;
 }
-.share_button:hover{
-  animation-name: rotate_share; 
-  animation-duration: 1.5s; 
+.share_button:hover {
+  animation-name: rotate_share;
+  animation-duration: 1.5s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
-.share_button2{
+.share_button2 {
   cursor: pointer;
-  animation-name: rotate_share; 
-  animation-duration: 1.5s; 
+  animation-name: rotate_share;
+  animation-duration: 1.5s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   transition-property: transform;
   transition-duration: 1s;
 }
 @keyframes rotate_share {
-  from {transform: rotate(0deg);}
-  to {transform: rotate(360deg);}
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 .share {
   position: absolute;
@@ -2232,7 +2288,7 @@ div#__next > div {
   padding-top: 10px;
   padding-bottom: 10px;
   box-shadow: 0px 9px 8px rgba(0, 0, 0, 0.25);
-  animation: share 1s ;
+  animation: share 1s;
 }
 @keyframes share {
   0% {
@@ -2243,20 +2299,102 @@ div#__next > div {
   }
 }
 
-.share_sec1{
+.share_sec1 {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 40px;
   width: 48px;
-  background-color: #C7E4E5;
+  background-color: #c7e4e5;
   border-radius: 10px;
   margin-top: 15px;
   cursor: pointer;
-  box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.share_close{
+.share_close {
   display: none;
-   
 }
 /* SHARE AD ANIMATION */
+/* NPROGRESS */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: #11999e;
+
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #11999e, 0 0 5px #11999e;
+  opacity: 1;
+
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+  -ms-transform: rotate(3deg) translate(0px, -4px);
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+  display: block;
+  position: fixed;
+  z-index: 1031;
+  top: 15px;
+  right: 15px;
+}
+
+#nprogress .spinner-icon {
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+
+  border: solid 2px transparent;
+  border-top-color: #11999e;
+  border-left-color: #11999e;
+  border-radius: 50%;
+
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+  animation: nprogress-spinner 400ms linear infinite;
+}
+
+.nprogress-custom-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+  position: absolute;
+}
+
+@-webkit-keyframes nprogress-spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes nprogress-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* NPROGRESS */
+

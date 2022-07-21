@@ -1,11 +1,10 @@
-import axios from "../../axios";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { useContext, useEffect, useState } from "react";
 import InputCode from "./InputCode";
-import UserContext from "../../context/employeeContext/User/UserContext";
 import { useRouter } from "next/router";
-import { fontFamily, fontSize } from "@mui/system";
+import { toast } from "react-toastify";
+import AuthContext from "../../context/Auth/AuthContext";
 const style = {
   position: "absolute",
   top: "50%",
@@ -23,193 +22,172 @@ const Login = () => {
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
   const handleOpen1 = () => setOpen1(true);
-  const handleClose1 = () => setOpen1(false);
+  const handleClose1 = () => {
+    setLoading(false);
+    setOpen1(false);
+  };
   const handleOpen2 = () => setOpen2(true);
-  const handleClose2 = () => setOpen2(false);
+  const handleClose2 = () => {
+    setLoading(false);
+    setOpen2(false);
+  };
   const handleOpen3 = () => setOpen3(true);
   const handleClose3 = () => setOpen3(false);
-  const [token, setToken] = useState(null);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [cellphone, setCellphone] = useState("");
   const [otp, setOtp] = useState("");
   const [roll, setRoll] = useState("");
-  const [countdown, setCountdown] = useState("");
-  const [resend, setResend] = useState(false);
-  const userContext = useContext(UserContext);
+  const [loading, setLoading] = useState(false);
+  const [loadingResend, setLoadingResend] = useState(false);
+  const [timer, setTimer] = useState("");
+  const [show, setShow] = useState(false);
+  const {
+    user,
+    register,
+    checkOtp,
+    status,
+    setStatus,
+    signUp,
+    handleSignIn,
+    resendOtp,
+  } = useContext(AuthContext);
   useEffect(() => {
-    userContext.data.user.signUp && handleOpen1();
-    userContext.dispatch({ type: "signUp", payload: false });
-  }, [userContext.data.user.signUp]);
-
-  const handleSignIn = () => {
-    !userContext.data.user.auth && handleOpen1();
-    userContext.data.user.auth && userContext.data.user.role[0] == "employer"
-      ? router.push({
-          pathname: "/employer",
-        })
-      : router.push({
-          pathname: "/employee",
-        });
-  };
-  const initialSingHandler = () => {
-    axios({
-      url: "/register",
-      method: "post",
-      data: {
-        cellphone: cellphone,
-      },
-    })
-      .then((response) => {
-        setToken(response.data.login_token);
-        // startTimer();
-        const login_token = response.data.login_token;
-        // navigation.navigate("Forget", {
-        //   cellphone: cellphone,
-        //   login_token: login_token,
-        // });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    // }
-  };
-  const otpCheckHandler = () => {
-    axios({
-      url: "/checkotp",
-      method: "post",
-      data: {
-        cellphone: cellphone,
-        otp: otp,
-        login_token: token,
-      },
-    })
-      .then((response) => {
-        if (response.status == 200) {
-          handleClose2();
-          if (response.data.new == 1) {
-            handleOpen3();
-          } else {
-            userContext.dispatch({
-              type: "user",
-              payload: {
-                id: response.data.id,
-                firstName: response.data.firstName,
-                lastName: response.data.lastName,
-                auth: true,
-                role: response.data.role,
-              },
-            });
-            window.localStorage.setItem(
-              "user",
-              JSON.stringify({
-                id: response.data.id,
-                firstName: response.data.firstName,
-                lastName: response.data.lastName,
-                auth: true,
-                role: response.data.role,
-              })
-            );
-            response.data.role == "employee"
-              ? router.push("/employee")
-              : response.data.role == "employer"
-              ? router.push("/employer")
-              : null;
-          }
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    // }
-  };
-  const signUpHandler = () => {
-    axios({
-      url: "/firstSignUp",
-      method: "post",
-      data: {
-        firstName: firstName,
-        lastName: lastName,
-        role: roll,
-        login_token: token,
-      },
-    })
-      .then((response) => {
-        console.log(response);
-        userContext.dispatch({
-          type: "user",
-          payload: {
-            id: response.data.id,
-            firstName: response.data.firstName,
-            lastName: response.data.lastName,
-            auth: true,
-            role: response.data.role,
-          },
-        });
-        window.localStorage.setItem(
-          "user",
-          JSON.stringify({
-            id: response.data.id,
-            firstName: response.data.firstName,
-            lastName: response.data.lastName,
-            auth: true,
-            role: response.data.role,
-          })
-        );
-        handleClose3();
-        response.data.role == "employee"
+    if (status == "login") {
+      setLoading(false);
+      handleOpen1();
+      setStatus("");
+    }
+    if (status == "success") {
+      setLoading(false);
+      handleClose1();
+      handleOpen2();
+    }
+    if (status == "successOtp") {
+      setLoading(false);
+      handleClose2();
+      setStatus("");
+      if (user.new == 1) {
+        handleOpen3();
+      } else {
+        user.role == "employee"
           ? router.push("/employee")
-          : response.data.role == "employer"
+          : user.role == "employer"
           ? router.push("/employer")
           : null;
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    // }
+      }
+    }
+    if (status == "successSignUp") {
+      setLoading(false);
+      handleClose3();
+      if (user.role.includes("employee")) {
+        router.push("/employee");
+      } else if (user.role.includes("employer")) {
+        router.push("/employer");
+      }
+    }
+  }, [status]);
+
+  useEffect(() => {
+    if (status == "success") {
+      let time = "0:06";
+      let interval = setInterval(() => {
+        let countdown = time.split(":");
+        let minutes = parseInt(countdown[0], 10);
+        let seconds = parseInt(countdown[1], 10);
+        --seconds;
+        minutes = seconds < 0 ? --minutes : minutes;
+        if (minutes < 0) {
+          clearInterval(interval);
+          setShow(true);
+        }
+        seconds = seconds < 0 ? 59 : seconds;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        time = minutes + ":" + seconds;
+        setTimer(time);
+      }, 1000);
+      return () => {
+        clearInterval(interval);
+        setTimer("");
+      };
+    }
+  }, [loadingResend, status]);
+  const initialSingHandler = async () => {
+    if (cellphone === "") {
+      toast.error("شماره موبایل الزامی است");
+      return;
+    }
+
+    const pattern = /^(\+98|0)?9\d{9}$/;
+    if (!pattern.test(cellphone)) {
+      toast.error("فرمت شماره موبایل معتبر نیست");
+      return;
+    }
+    setLoading(true);
+    const result1 = await register({ cellphone });
   };
+  const otpCheckHandler = async () => {
+    if (otp === "") {
+      toast.error("کد ورود الزامی است");
+      return;
+    }
+    const pattern = /^[0-9]{4}$/;
+    if (!pattern.test(otp)) {
+      toast.error("فرمت کد ورود معتبر نیست");
+      return;
+    }
+
+    setLoading(true);
+    const result2 = await checkOtp({ otp });
+  };
+  const handleResendOtp = async () => {
+    setLoadingResend(true);
+    await resendOtp();
+    setLoadingResend(false);
+    setShow(false);
+  };
+
+  const signUpHandler = async () => {
+    const result3 = await signUp({ firstName, lastName, roll });
+  };
+
   return (
     <>
       <div
         className="d-flex px-2 py-2 me-3 align-items-center "
-        // style={{
-        //   borderRadius: 10,
-        //   backgroundColor: "#11999E",
-        //   borderWidth: 1,
-        //   borderStyle: "solid",
-        //   fontSize: 14,
-        //   color: "#fff",
-        //   cursor: "pointer",
-        // }}
-        // onClick={handleOpen1}
         onClick={() => handleSignIn()}
       >
-        {userContext.data.user.auth ? (
-          <div className=""  
-          
-          style={{
-            backgroundColor:'#c7e4e5',
-            borderRadius:10,
-            padding:'13px 18px',
-            fontSize:20,
-            fontWeight:700
-          }}
+        {user ? (
+          <div
+            className=""
+            style={{
+              backgroundColor: "#c7e4e5",
+              borderRadius: 10,
+              padding: "13px 18px",
+              fontSize: 20,
+              fontWeight: 700,
+              cursor: "pointer",
+            }}
           >
-             {userContext.data.user.firstName}  {' '}
-            {userContext.data.user.lastName} 
-
-            <img className="ms-3" 
-            
-            src='/assets/images/arrow_black.svg' 
-            width={18}
+            {user.first_name} {user.last_name}
+            <img
+              className="ms-3"
+              src="/assets/images/arrow_black.svg"
+              width={18}
             />
           </div>
         ) : (
           <>
-            <div className="d-flex me-2  ">
+            <div
+              className="d-flex me-2  "
+              style={{
+                cursor: "pointer",
+              }}
+            >
               <img src="/assets/images/login.svg" height={22} width={24} />
+              ورود/ثبت نام
             </div>
-            ورود/ثبت نام
           </>
         )}
       </div>
@@ -279,12 +257,22 @@ const Login = () => {
                 width: "80%",
               }}
               onClick={() => {
-                initialSingHandler();
-                handleClose1();
-                handleOpen2();
+                !loading && initialSingHandler();
               }}
             >
-              ارسال کد تایید
+              {loading ? (
+                <>
+                  <div className="d-flex col-12 justify-content-center align-items-center  ">
+                    <span
+                      className="spinner-border spinner-border-sm me-3"
+                      role="status"
+                    ></span>
+                    <h5>در حال بررسی</h5>
+                  </div>
+                </>
+              ) : (
+                <h6>ارسال کد تایید</h6>
+              )}
             </div>
           </div>
         </Box>
@@ -357,7 +345,7 @@ const Login = () => {
                   }}
                 />
               </div>
-              {resend ? (
+              {show ? (
                 <div
                   className="text-end mt-2"
                   style={{
@@ -365,15 +353,13 @@ const Login = () => {
                     color: "#ec4b72",
                   }}
                   onClick={() => {
-                    initialSingHandler();
-                    setResend(false);
-                    // startTimer();
+                    handleResendOtp();
                   }}
                 >
                   ارسال مجدد
                 </div>
               ) : (
-                <div className="text-end mt-2">{countdown}</div>
+                <div className="text-end mt-2">{timer}</div>
               )}
             </div>
             <div
@@ -387,9 +373,23 @@ const Login = () => {
                 cursor: "pointer",
                 marginTop: 100,
               }}
-              onClick={() => otpCheckHandler()}
+              onClick={() => {
+                !loading && otpCheckHandler();
+              }}
             >
-              ورود یا ثبت نام
+              {loading ? (
+                <>
+                  <div className="d-flex col-12 justify-content-center align-items-center  ">
+                    <span
+                      className="spinner-border spinner-border-sm me-3"
+                      role="status"
+                    ></span>
+                    <h5>در حال بررسی</h5>
+                  </div>
+                </>
+              ) : (
+                <h6>ارسال کد تایید</h6>
+              )}
             </div>
           </div>
         </Box>
@@ -524,9 +524,23 @@ const Login = () => {
                 borderRadius: 8,
                 cursor: "pointer",
               }}
-              onClick={() => signUpHandler()}
+              onClick={() => {
+                !loading && signUpHandler();
+              }}
             >
-              ثبت نام
+              {loading ? (
+                <>
+                  <div className="d-flex col-12 justify-content-center align-items-center  ">
+                    <span
+                      className="spinner-border spinner-border-sm me-3"
+                      role="status"
+                    ></span>
+                    <h5>در حال بررسی</h5>
+                  </div>
+                </>
+              ) : (
+                <h6>ثبت نام</h6>
+              )}
             </div>
           </div>
         </Box>

@@ -1,7 +1,7 @@
 import ButtonAdd from "../../../Employer/FormInputs/ButtonAdd";
 import style from "./FormStyles/form.module.css";
 import { useContext, useEffect, useState } from "react";
-import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 import BreakLine from "./BreakLine";
 import FieldError from "../../../Common/FieldError";
 

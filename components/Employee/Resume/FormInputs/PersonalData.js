@@ -3,7 +3,7 @@ import BirthDay from "./BirthDay";
 import BirthDayEnglish from "./BirthDayEnglish";
 import SelectOption from "./SelectOption";
 import RadioButton from "../../FormInputs/RadioButton";
-import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 import SalaryNeededEn from "./SalaryNeededEn";
 import SalaryNeeded from "./SalaryNeeded";
 import SelectOptionEn from "./SelectOptionEn";

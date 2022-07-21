@@ -4,8 +4,7 @@ import EAdsAdmin from "../../components/Admin/EAdsAdmin";
 const AdminAdS = () => {
   return (
     <>
-      <NavBar />
-      <div
+       <div
         className="mx-auto"
         style={{
           backgroundColor: "#f2f5f6",

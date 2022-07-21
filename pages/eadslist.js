@@ -11,8 +11,7 @@ const EAdsList = () => {
 
   return (
     <>
-      <NavBar />
-      <FilterProvider>
+       <FilterProvider>
         <SearchBar />
         <Adlist cat_id={router.query.cat} local_id={router.query.localId} type={router.query.type} />
       </FilterProvider>

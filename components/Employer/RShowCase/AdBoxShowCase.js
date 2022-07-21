@@ -45,7 +45,7 @@ const AdBoxShowCase = ({ width, data }) => {
               lineHeight: "0.2rem",
             }}
           >
-            {data.jobCategory[0] && data.jobCategory[0].fa_name}
+            {data.jobCategory && data.jobCategory.fa_name}
             <div
               className=" d-inline-flex fw-light ms-2"
               style={{

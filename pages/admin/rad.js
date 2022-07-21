@@ -1,7 +1,7 @@
-import NavBar from "../../components/NavBar";
 import { useRouter } from "next/router";
+import axios from "axios";
+
 import { useEffect, useState } from "react";
-import axios from "../../axios";
 import EmployerAd from "../../components/Admin/EmployerAd";
 const Admin = () => {
   const router = useRouter();
@@ -26,8 +26,7 @@ console.log(router.query.ad)
 
   return (
     <>
-      <NavBar />
-      <div
+       <div
         className="mx-auto"
         style={{
           backgroundColor: "#f2f5f6",

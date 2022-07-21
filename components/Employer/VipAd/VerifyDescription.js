@@ -1,6 +1,6 @@
   
 import { useContext } from "react";
-import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 const VerifyDescription = ({ handleStep }) => {
   const resumeContext = useContext(ResumeContext);
   return (

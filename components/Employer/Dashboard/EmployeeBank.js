@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import AdBoxShowCase from "./AdBoxShowCase";
 import style from "./styles/rshow.module.css";
-import axios from "../../../axios";
 import SearchBar from "../../Employee/EShowCase/SearchBar";
   
 const EmployeeBank = () => {

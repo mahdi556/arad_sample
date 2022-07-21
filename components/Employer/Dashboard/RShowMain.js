@@ -1,17 +1,16 @@
-  
 import RAdBoxes from "./RAdBoxes";
+import axios from "axios";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import style from "./styles/rshow.module.css";
-import axios from "../../../axios";
 import BreakeLine from "../../Employee/Resume/FormInputs/BreakLine";
 import AdBoxNewEmployer from "../../Common/AdBoxNewEmployer";
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import UserContext from "../../../context/employeeContext/User/UserContext";
+import AuthContext from "context/Auth/AuthContext";
 const width = "33%";
 const RShowMain = () => {
-  const userContext = useContext(UserContext);
+  const { user } = useContext(AuthContext);
   const [reged, setReged] = useState([]);
   const router = useRouter();
   const data = {
@@ -75,12 +74,12 @@ const RShowMain = () => {
     ],
   };
   useEffect(() => {
-    userContext.data.user.id !== "" &&
+    user &&
       axios({
         url: "/getmyEmployeeAds",
         method: "post",
         data: {
-          user_id: userContext.data.user.id,
+          user_id: user.id,
         },
       })
         .then((response) => {
@@ -89,7 +88,7 @@ const RShowMain = () => {
         .catch(function (error) {
           console.log(error);
         });
-  }, [userContext.data.user.id]);
+  }, [user]);
 
   return (
     <>
@@ -136,11 +135,7 @@ const RShowMain = () => {
             >
               <h4 className="rShowCase-sec4">ثبت آگهی ویژه</h4>
               <div>
-                <img
-                  src="/assets/images/speaker.png"
-                  height={60}
-                  width={60}
-                />
+                <img src="/assets/images/speaker.png" height={60} width={60} />
               </div>
             </div>
           </div>

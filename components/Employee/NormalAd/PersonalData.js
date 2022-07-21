@@ -7,7 +7,7 @@ import { Province } from "../../StaticData/City";
 import { Cities } from "../../StaticData/City";
 import BirthDay from "./BirthDay";
 import style from "../VipAd/FormInputs/FormStyles/form.module.css";
-import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 import FieldError from "../../Common/FieldError";
 const PersonalData = () => {
   const [display, setDisplay] = useState("none");
@@ -83,7 +83,8 @@ const PersonalData = () => {
         resumeContext.data.province.fa !== "" &&
         resumeContext.data.city.fa !== "" &&
         resumeContext.data.birthday.year !== "" &&
-        resumeContext.data.salary.fa.to !== "" &&
+        (resumeContext.data.salary.fa.to !== "" ||
+          resumeContext.data.salaryAgree) &&
         resumeContext.data.description !== ""
       ) {
         resumeContext.dispatch({ type: "fieldCheck", payload: true });
@@ -136,10 +137,7 @@ const PersonalData = () => {
                     });
                   }}
                 />
-                 <FieldError
-                data={resumeContext.data.title}
-                display={display}
-              />
+                <FieldError data={resumeContext.data.title} display={display} />
               </div>
               <div className="col-5">
                 <label
@@ -203,7 +201,7 @@ const PersonalData = () => {
                 name="دسته بندی شغلی"
                 valueHandler={catHandler}
                 predata={resumeContext.data.jobCategory.fa}
-              />{" "}
+              />
               <FieldError
                 data={resumeContext.data.jobCategory.fa}
                 display={display}
@@ -212,9 +210,9 @@ const PersonalData = () => {
 
             <div className="d-flex col-12 justify-content-between">
               <div
-                className={proId === "" ? "col-12 pt-2" : "col-5 pt-2"}
+                className={proId === "" ? "col-12 pt-2 mt-2" : "col-5 pt-2"}
                 style={{
-                  maxHeight: "6rem",
+                  maxHeight: "8rem",
                   zIndex: 14,
                 }}
               >
@@ -224,10 +222,10 @@ const PersonalData = () => {
                   valueHandler={provinceHandler}
                   predata={resumeContext.data.province.fa}
                 />
-                 <FieldError
-                data={resumeContext.data.province.fa}
-                display={display}
-              />
+                <FieldError
+                  data={resumeContext.data.province.fa}
+                  display={display}
+                />
               </div>
               {proId !== "" && (
                 <div
@@ -243,27 +241,27 @@ const PersonalData = () => {
                     valueHandler={cityHandler}
                     predata={resumeContext.data.city.fa}
                   />
-                    <FieldError
-                data={resumeContext.data.city.fa}
-                display={display}
-              />
+                  <FieldError
+                    data={resumeContext.data.city.fa}
+                    display={display}
+                  />
                 </div>
               )}
             </div>
             <div className="col-6 pt-4">
               <BirthDay />
-              <FieldError
-                data={resumeContext.data.birthday.year}
-                display={display}
-              />
+            <FieldError
+              data={resumeContext.data.birthday.year}
+              display={display}
+            />
             </div>
             <div className="col-12 mb-5 mt-4">
               <SalaryNeeded />
-              <FieldError
-                data={resumeContext.data.salary.fa.to}
-                display={display}
-              />
             </div>
+            <FieldError
+              data={resumeContext.data.salary.fa.to}
+              display={display}
+            />
           </div>
         </div>
 
@@ -323,31 +321,36 @@ const PersonalData = () => {
               }}
             />
             <FieldError
-                data={resumeContext.data.description}
-                display={display}
-              />
+              data={resumeContext.data.description}
+              display={display}
+            />
           </div>
         </div>
-        <div
-          className="d-flex align-items-center"
-          onClick={() =>
-            resumeContext.dispatch({
-              type: "military",
-              payload: !resumeContext.data.military,
-            })
-          }
-        >
-          <h3 className={`${style.txt3} pe-3 pt-1`}>
-            سربازی را به اتمام رسانده یا معاف هستم
-          </h3>
-          <img
-            src={
-              resumeContext.data.military
-                ? "/assets/images/checked.png"
-                : "/assets/images/checkbox_black.svg"
+        {resumeContext.data.sex.id == 1 && (
+          <div
+            className="d-flex align-items-center"
+            onClick={() =>
+              resumeContext.dispatch({
+                type: "military",
+                payload: !resumeContext.data.military,
+              })
             }
-          />
-        </div>
+            style={{
+              cursor:'pointer'
+            }}
+          >
+            <h3 className={`${style.txt3} pe-3 pt-1`}>
+              سربازی را به اتمام رسانده یا معاف هستم
+            </h3>
+            <img
+              src={
+                resumeContext.data.military
+                  ? "/assets/images/checked.png"
+                  : "/assets/images/checkbox_black.svg"
+              }
+            />
+          </div>
+        )}
       </div>
     </>
   );

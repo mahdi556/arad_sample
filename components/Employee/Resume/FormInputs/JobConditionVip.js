@@ -4,7 +4,7 @@ import PersonalData from "./PersonalData";
 import DegreeDoc from "./DegreeDoc";
 import VerifyData from "./VerifyData";
 import SampleEx from "./SampleEx";
-import ResumeContext from "../../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 import VerifyExperience from "./VerifyExperience";
 import BreakLine from "./BreakLine";
 import VerifyDegree from "./VerifyDegree";

@@ -89,7 +89,7 @@ const SearchInputs = ({ type }) => {
   return (
     <>
       <div
-        class="d-flex flex-row col-12 intro_sec1   justify-content-center  bg-white px-3  "
+        className="d-flex flex-row col-12 intro_sec1   justify-content-center  bg-white px-3  "
         style={{
           height: 90,
           paddingTop: 12,
@@ -98,7 +98,7 @@ const SearchInputs = ({ type }) => {
       >
         {!catInput ? (
           <div
-            class=" col-6   intro2 me-4   "
+            className=" col-6   intro2 me-4   "
             onClick={() => setCatInput(true)}
           >
             <h6 className="text-black fw-bold ps-3 pt-2 ">
@@ -108,7 +108,7 @@ const SearchInputs = ({ type }) => {
           </div>
         ) : (
           <div
-            class=" col-6  intro2   me-4  "
+            className=" col-6  intro2   me-4  "
             style={
               {
                 // marginTop:5
@@ -197,7 +197,7 @@ const SearchInputs = ({ type }) => {
         {!localInput ? (
           <>
             <div
-              class=" col-4  intro2    me-4  "
+              className=" col-4  intro2    me-4  "
               onClick={() => setLocalInput(true)}
             >
               <h6 className="text-black ps-3 pt-2 fw-bold "> موقعیت مکانی </h6>
@@ -205,7 +205,7 @@ const SearchInputs = ({ type }) => {
             </div>
           </>
         ) : (
-          <div class=" col-4  intro2  me-4   ">
+          <div className=" col-4  intro2  me-4   ">
             <h6
               className="text-black  ps-3 pt-2 "
               style={{
@@ -283,7 +283,7 @@ const SearchInputs = ({ type }) => {
           </div>
         )}
         <div
-          class="d-flex col-1 intro3  justify-content-center align-items-center    "
+          className="d-flex col-1 intro3  justify-content-center align-items-center    "
           onClick={() => searchHandle()}
         >
           <img src="/assets/images/magnifire2.png" height={34} width={34} />

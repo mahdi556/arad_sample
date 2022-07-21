@@ -3,7 +3,7 @@ import SelectOption from "../../Employee/Resume/FormInputs/SelectOption";
 import { sex } from "../../StaticData/SalaryType";
 import AgeRange from "./AgeRange";
 import style from "../../Employee/VipAd/FormInputs/FormStyles/form.module.css";
-import ResumeContext from "../../../context/employeeContext/CreateResume/ResumeContext";
+import ResumeContext from "context/Ad/CreateResume/ResumeContext";
 import FieldError from "../../Common/FieldError";
 
 const OurExpect = () => {

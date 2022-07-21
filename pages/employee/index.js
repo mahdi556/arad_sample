@@ -1,6 +1,6 @@
-import Layout from "../../components/Layouts/Employee/layout";
+import Layout from "components/Layouts/Employee/layout";
 import Head from "next/head";
-import RShowMain from "../../components/Employee/EShowCase/RShowMain";
+import RShowMain from "components/Employee/EShowCase/RShowMain";
 const Dashboard = () => {
   return (
     <>
@@ -8,7 +8,6 @@ const Dashboard = () => {
         <Head>
           <title>First Post</title>
         </Head>
-
         <RShowMain />
       </Layout>
     </>

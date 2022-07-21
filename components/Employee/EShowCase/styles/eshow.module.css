@@ -57,7 +57,7 @@
 .activeCompany {
   background-color: #fff;
   border-radius: 20px;
-  height: 355px;
+  height: 290px;
   /* width: 273px; */
   position: relative;
 }
@@ -65,27 +65,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 153px;
-  height: 142px;
+  width: 120px;
+  height: 110px;
   border-radius: 10px;
   box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.25);
 }
 .activeCompany_sec2 {
-  font-size: 25px;
+  font-size: 18px;
 }
 .activeCompany_sec3 {
   color: #4f4f4f;
-  font-size: 18px;
+  font-size: 15px;
 }
 .activeCompany_sec4 {
   color: #5c5c5c;
-  font-size: 18px;
+  font-size: 15px;
 }
 .activeCompany_sec5 {
   background-color: #11999e;
   color: #fff;
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 14px;
+  text-align: center;
 }
 .activeCompany_sec6 {
   position: absolute;

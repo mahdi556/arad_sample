@@ -7,6 +7,9 @@ module.exports = {
     
   // },
   
+  env: {
+    customKey: 'my-value',
+  },
 },
 {
   swcMinify: false // it should be false by default 
