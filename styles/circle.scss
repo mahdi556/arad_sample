@@ -1,0 +1,237 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:700);
+
+// -- vars
+$bg-color: #34495e;
+$default-size: 0.6em;
+$label-font-size: $default-size / 4;
+$label-font-size-redo: $default-size * 4;
+
+// -- mixins
+@mixin size($width, $height) {
+  height: $height;
+  width: $width;
+}
+
+@mixin draw-progress($progress, $color) {
+  .pie {
+    .half-circle {
+      border-color: $color;
+    }
+
+    .left-side {
+      transform: rotate($progress * 3.6deg);
+    }
+
+    @if $progress <= 50 {
+      .right-side {
+        display: none;
+      }
+    } @else {
+      clip: rect(auto, auto, auto, auto);
+
+      .right-side {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+@mixin draw-progress--solid($progress, $color, $bg-color) {
+  background: linear-gradient(to right, $color 50%, $bg-color 50%);
+
+  &:before {
+    @if $progress <= 50 {
+      background: $bg-color;
+      transform: rotate((100 - (50 - $progress)) / 100 * 360deg * -1);
+    } @else {
+      background: $color;
+      transform: rotate((100 - $progress) / 100 * 360deg);
+    }
+  }
+}
+
+// -- selectors
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.set-size {
+  font-size: 4em;
+}
+
+.charts-container {
+  &:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+}
+
+.pie-wrapper {
+  @include size($default-size, $default-size);
+  float: left;
+  margin: 15px;
+  position: relative;
+
+  &:nth-child(3n + 1) {
+    clear: both;
+  }
+
+  .pie {
+    @include size(100%, 100%);
+    clip: rect(0, $default-size, $default-size, $default-size / 2);
+    left: 0;
+    position: absolute;
+    top: 0;
+
+    .half-circle {
+      @include size(100%, 100%);
+      border: ($default-size / 6) solid #11999e;
+      border-radius: 50%;
+      clip: rect(0, $default-size / 2, $default-size, 0);
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .label {
+    background: transparent;
+    border: #11999e solid 1px;
+    border-radius: 50%;
+    bottom: $label-font-size-redo / 10;
+    color: #ecf0f1;
+    cursor: default;
+    display: block;
+    font-size: 16px;
+    left: $label-font-size-redo / 10;
+    line-height: $label-font-size-redo * 0.7;
+    position: absolute;
+    right: $label-font-size-redo / 10;
+    text-align: center;
+    top: $label-font-size-redo / 10;
+
+    .smaller {
+      color: #bdc3c7;
+      font-size: 0.45em;
+      padding-bottom: 20px;
+      vertical-align: super;
+    }
+  }
+
+  .shadow {
+    @include size(100%, 100%);
+    border: $default-size / 10 solid #bdc3c7;
+    border-radius: 50%;
+  }
+
+  &.style-2 {
+    .label {
+      background: none;
+      color: #7f8c8d;
+
+      .smaller {
+        color: #bdc3c7;
+      }
+    }
+  }
+
+  .label {
+    background: transparent;
+    border: #11999e solid 1px;
+    border-radius: 50%;
+    bottom: $label-font-size-redo / 10;
+    color: #000;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    left: $label-font-size-redo / 10;
+    line-height: $label-font-size-redo * 0.7;
+    position: absolute;
+    right: $label-font-size-redo / 10;
+    text-align: center;
+    top: $label-font-size-redo / 10;
+
+    // .smaller {
+    //   color: #bdc3c7;
+    //   font-size: 0.45em;
+    //   padding-bottom: 20px;
+    //   vertical-align: super;
+    // }
+  }
+
+  .shadow {
+    @include size(100%, 100%);
+    border: $default-size / 10 solid #bdc3c7;
+    border-radius: 50%;
+  }
+
+  &.style-2 {
+    .label {
+      background: none;
+      color: #7f8c8d;
+
+      .smaller {
+        color: #bdc3c7;
+      }
+    }
+  }
+
+
+  &.progress-0 {
+    @include draw-progress(0, #11999e);
+  }
+  &.progress-10 {
+    @include draw-progress(10, #11999e);
+  }
+  &.progress-20 {
+    @include draw-progress(20, #11999e);
+  }
+  &.progress-30 {
+    @include draw-progress(30, #11999e);
+  }
+  &.progress-40 {
+    @include draw-progress(40, #11999e);
+  }
+  &.progress-50 {
+    @include draw-progress(50, #11999e);
+  }
+  &.progress-60 {
+    @include draw-progress(60, #11999e);
+  }
+  &.progress-70 {
+    @include draw-progress(70, #11999e);
+  }
+  &.progress-80 {
+    @include draw-progress(80, #11999e);
+  }
+  &.progress-90 {
+    @include draw-progress(90, #11999e);
+  }
+
+  &.progress-100 {
+    @include draw-progress(100, #11999e);
+  }
+}
+
+// .pie-wrapper--solid {
+//   border-radius: 50%;
+//   overflow: hidden;
+
+//   // &:before {
+//   //   border-radius: 0 100% 100% 0 / 50%;
+//   //   content: "";
+//   //   display: block;
+//   //   height: 100%;
+//   //   // margin-left: 50%;
+//   //   transform-origin: left;
+//   // }
+
+//   .label {
+//     background: transparent;
+//   }
+// }
