@@ -6,6 +6,7 @@ import InputCode from "./InputCode";
 import UserContext from "../../context/employeeContext/User/UserContext";
 import {useRouter} from "next/router";
 import EmployerDashboardMenu from "../Employee/dashboardMenu/EmployerDashboardMenu";
+import JobSeekerDashboardMenu from "../Employee/dashboardMenu/JobSeekerDashboardMenu";
 
 const style = {
     position: "absolute",
@@ -229,7 +230,8 @@ const Login = () => {
             </div>
             {openMegaMenu && (
                 <div className="sub-menu-content position-absolute">
-                    <EmployerDashboardMenu/>
+                    {/*<EmployerDashboardMenu/>*/}
+                    <JobSeekerDashboardMenu/>
                 </div>
             )}
             <Modal open={open1} onClose={handleClose1}>

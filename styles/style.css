@@ -2502,7 +2502,7 @@ div#__next > div {
 
 .sub-menu-content {
     cursor: auto;
-    padding: 35px 50px;
+    padding: 35px 50px 70px;
     top: 70px;
     left: 60px;
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.83), rgba(255, 255, 255, 0.83)), #11999E;
@@ -2556,11 +2556,48 @@ div#__next > div {
     margin-right: 9px;
     text-decoration: none;
 }
-
+.mega-menu .status{
+    margin-right: 9px;
+    color: #11999E;
+    font-size: 18px;
+    font-family: iransansdn,sans-serif;
+    font-weight: 400;
+    margin-top: 2px;
+}
 .dashboard-button .img {
     transition: all 0.4s;
 }
 
 .dashboard-button .img.rotate-image {
     transform: rotate(180deg);
+}
+
+.logout-button {
+    left: 30px;
+    bottom: 30px;
+    text-align: left;
+}
+
+.logout-button .log-out {
+    color: rgba(236, 75, 114, 0.64);
+    font-family: iransansdn, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 1600px) {
+    .sub-menu-content {
+        padding: 35px 40px 70px;
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .sub-menu-content {
+        display: none;
+    }
+
+    .dashboard-button {
+        display: none !important;
+    }
 }

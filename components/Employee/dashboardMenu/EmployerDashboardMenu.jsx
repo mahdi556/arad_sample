@@ -9,12 +9,12 @@ const EmployerDashboardMenu = () => {
                     <h4 className="list-title">آگهی ها</h4>
                     <ul className="list-unstyled">
                         <li className="d-flex align-items-center">
-                            <div className="icon notification"><img src="/assets/images/Vector.svg" alt="vector"/></div>
+                            <div className="icon"><img src="/assets/images/Vector.svg" alt="vector"/></div>
                             <Link className="text" href="/">لیست آگهی های ثبت شده</Link>
                         </li>
                     </ul>
                 </div>
-                <div className="item mt-4">
+         {/*       <div className="item mt-4">
                     <h4 className="list-title">تقویم مصاحبه آنلاین</h4>
                     <ul className="list-unstyled">
                         <li className="d-flex align-items-center">
@@ -22,7 +22,7 @@ const EmployerDashboardMenu = () => {
                             <Link className="text" href="/">مصاحبه ها</Link>
                         </li>
                     </ul>
-                </div>
+                </div>*/}
             </div>
             <div className="col-3">
                 <div className="item">
@@ -88,6 +88,10 @@ const EmployerDashboardMenu = () => {
                         </li>
                     </ul>
                 </div>
+            </div>
+            <div className="logout-button position-absolute">
+                <img src="/assets/images/Group10853.svg" alt="vector"/>
+                <span className="log-out ms-2">خروج از حساب کاربری</span>
             </div>
         </div>
     );
