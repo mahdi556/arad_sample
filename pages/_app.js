@@ -3,6 +3,7 @@ import "../styles/style.css";
 import "../styles/circle.scss";
 import "react-toastify/dist/ReactToastify.css";
 import "react-modern-drawer/dist/index.css";
+import 'animate.css';
 
 import { useEffect } from "react";
 import UserProvider from "../context/employeeContext/User/UserProvider";
