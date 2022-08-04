@@ -23,7 +23,7 @@ const JobSeekerDashboardMenu = () => {
                         <li className="d-flex align-items-center">
                             <div className="icon"><img src="/assets/images/89564.svg" alt="vector"/></div>
                             <Link className="text" href="/">شرکت های دنبال شونده</Link>
-                        </li>
+                        </li> 
                     </ul>
                 </div>
             </div>

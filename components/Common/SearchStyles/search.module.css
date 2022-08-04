@@ -32,6 +32,9 @@
 }
 
 .dropdown_open {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 16px);
   display: flex;
   flex-direction: column;
   width: 100%;

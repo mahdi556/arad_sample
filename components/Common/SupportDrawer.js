@@ -6,7 +6,7 @@ const SupportDrawer = () => {
   const [drawer, setDrawer] = React.useState(false);
   return (
     <>
-      <div className={`${drawer ? style.sec20_open : style.sec20}  mb-4  `}>
+      <div className={`${drawer ? style.sec20_open : style.sec20}  mb-4  `} style={{zIndex:15}}>
         <div className={`${style.sec21}   `}>
           <div lassName={`${style.sec22}   `}>
             <img src="/assets/images/drawer.svg" width="100%" height="100%" />

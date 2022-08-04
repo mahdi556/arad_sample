@@ -6,7 +6,6 @@ module.exports = {
   //   contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     
   // },
-  
 },
 {
   swcMinify: false // it should be false by default 

@@ -61,7 +61,7 @@ const AdBoxNewEmployer = ({ width, data }) => {
               lineHeight: "0.3rem",
             }}
           >
-            {data && data.jobCategory && data.jobCategory[0].fa_name}
+            {data && data.jobCategory && data.jobCategory.fa_name}
             <div
               className=" d-inline-flex fw-light ms-1 mt-2 "
               style={{
