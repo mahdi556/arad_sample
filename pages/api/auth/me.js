@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     // console.log(req.cookies.token)
     try {
       axios({
-        url: "/me",
+        url: "/auth/me",
         method: "get",
         // withCredentials: true,
         headers: {

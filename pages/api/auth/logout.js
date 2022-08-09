@@ -2,7 +2,7 @@ import cookie from "cookie";
 import axios from "axios";
 export default async function handler(req, res) {
   axios({
-    url: "/logout",
+    url: "/auth/logout",
     method: "post",
     headers: {
       Authorization: `Bearer ${req.cookies.token}`,

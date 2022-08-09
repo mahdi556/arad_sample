@@ -2,7 +2,7 @@ import cookie from "cookie";
 import axios from "axios";
 export default async function handler(req, res) {
   axios({
-    url: "/loginOffice",
+    url: "/auth/loginOffice",
     method: "post",
     data: {
       password: req.body.password,

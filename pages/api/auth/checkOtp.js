@@ -3,7 +3,7 @@ import axios from "axios";
 export default async function handler(req, res) {
   console.log(req.body.otp);
   axios({
-    url: "/checkotp",
+    url: "/auth/checkotp",
     method: "post",
     data: {
       otp: req.body.otp,
@@ -20,6 +20,12 @@ export default async function handler(req, res) {
           path: "/",
         }),
         cookie.serialize("token", response.data.data.token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV !== "development",
+          maxAge: 60 * 60 * 24 * 7, // 1 week
+          path: "/",
+        }),
+        cookie.serialize("role", response.data.data.user.role, {
           httpOnly: true,
           secure: process.env.NODE_ENV !== "development",
           maxAge: 60 * 60 * 24 * 7, // 1 week

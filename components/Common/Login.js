@@ -5,6 +5,9 @@ import InputCode from "./InputCode";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import AuthContext from "../../context/Auth/AuthContext";
+import EmployerDashboardMenu from "../Employee/dashboardMenu/EmployerDashboardMenu";
+import JobSeekerDashboardMenu from "../Employee/dashboardMenu/JobSeekerDashboardMenu";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -33,6 +36,7 @@ const Login = () => {
   };
   const handleOpen3 = () => setOpen3(true);
   const handleClose3 = () => setOpen3(false);
+  const [openMegaMenu, setOpenMegaMenu] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [cellphone, setCellphone] = useState("");
@@ -154,31 +158,38 @@ const Login = () => {
 
   return (
     <>
-      <div
-        className="d-flex px-2 py-2 me-3 align-items-center "
-        onClick={() => handleSignIn()}
-      >
-        {user ? (
+    
+      {user ? (
+        <>
           <div
-            className=""
-            style={{
-              backgroundColor: "#c7e4e5",
-              borderRadius: 10,
-              padding: "13px 18px",
-              fontSize: 20,
-              fontWeight: 700,
-              cursor: "pointer",
-            }}
+            className={`d-flex px-3 py-2 me-4 align-items-center dashboard-button ${
+              openMegaMenu ? "open" : "close"
+            }`}
+            onClick={() => setOpenMegaMenu(!openMegaMenu)}
           >
-            {user.first_name} {user.last_name}
+            داشبورد من
             <img
-              className="ms-3"
+              className={`ms-2 img ${openMegaMenu && "rotate-image"}`}
               src="/assets/images/arrow_black.svg"
               width={18}
             />
+            <div
+              className={`fake-button ${openMegaMenu ? "d-block" : "d-none"}`}
+            ></div>
           </div>
-        ) : (
-          <>
+          {openMegaMenu && (
+            <div className="sub-menu-content position-absolute">
+              {/*<EmployerDashboardMenu/>*/}
+              <JobSeekerDashboardMenu />
+            </div>
+          )}
+        </>
+      ) : (
+        <>
+          <div
+            className="d-flex px-2 py-2 me-3 align-items-center "
+            onClick={() => handleSignIn()}
+          >
             <div
               className="d-flex me-2  "
               style={{
@@ -188,10 +199,10 @@ const Login = () => {
               <img src="/assets/images/login.svg" height={22} width={24} />
               ورود/ثبت نام
             </div>
-          </>
-        )}
-      </div>
-
+          </div>
+        </>
+      )}
+      {/* </div> */}
       <Modal open={open1} onClose={handleClose1}>
         <Box sx={style} className="px-4 py-3">
           <div className="col-12 d-flex flex-column  justify-content-between">
@@ -548,5 +559,4 @@ const Login = () => {
     </>
   );
 };
-
 export default Login;

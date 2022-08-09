@@ -3,7 +3,7 @@ import axios from "axios";
 import cookie from "cookie";
 export default async function handler(req, res) {
   axios({
-    url: "/register",
+    url: "/auth/register",
     method: "post",
     data: {
       cellphone: req.body.cellphone,

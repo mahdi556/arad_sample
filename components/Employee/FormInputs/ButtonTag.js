@@ -5,7 +5,7 @@ const ButtonTag = ({data,deleteTag,en}) => {
         {data}
         <img
           className="deleteTag"
-          src= "../../../../assets/images/delete.png" 
+          src= "../../../../assets/images/Group4971.svg"
           sizes="cover"
           width={10}
           height={10}

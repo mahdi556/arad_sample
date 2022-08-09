@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     }
 
     try {
-      const resApi = await axios.post("/resend-otp", {
+      const resApi = await axios.post("/auth/resend-otp", {
         login_token: req.cookies.login_token,
       });
 
